@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2015-12-21T12:00:19.854088000000Z
+// 2016-01-18T14:30:08.262123Z
 
 #ifndef HEADER_TypeInfo_H
 #define HEADER_TypeInfo_H
@@ -41,8 +41,9 @@ namespace data {
   };
   class MyRight : public ::MyEither {
     public:
-      std::shared_ptr<::Pipeline> _0;
-      std::vector<std::shared_ptr<::TypeInfo>> _1;
+      String _0;
+      std::shared_ptr<::Pipeline> _1;
+      std::vector<std::shared_ptr<::TypeInfo>> _2;
       MyRight() { tag = tag::MyRight; }
   };
 }

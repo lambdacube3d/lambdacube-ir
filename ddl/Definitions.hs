@@ -469,7 +469,7 @@ typeInfo = do
 
   data_ "MyEither" $ do
     const_ "MyLeft"   ["TypeInfo", Array "TypeInfo"]
-    const_ "MyRight"  ["Pipeline", Array "TypeInfo"]
+    const_ "MyRight"  [String, "Pipeline", Array "TypeInfo"]
 
 modules = do
   module_ "IR" ir

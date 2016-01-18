@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2015-12-21T12:00:19.854088000000Z
+// 2016-01-18T14:30:08.262123Z
 
 #include "TypeInfo.hpp"
 template<> json toJSON<std::shared_ptr<TypeInfo>>(std::shared_ptr<TypeInfo> &v) {
@@ -56,6 +56,7 @@ template<> json toJSON<std::shared_ptr<MyEither>>(std::shared_ptr<MyEither> &v) 
         std::shared_ptr<data::MyRight> tv = std::static_pointer_cast<data::MyRight>(v);
         obj["arg0"] = toJSON(tv->_0);
         obj["arg1"] = toJSON(tv->_1);
+        obj["arg2"] = toJSON(tv->_2);
       }
       break;
   }
@@ -75,8 +76,9 @@ template<> std::shared_ptr<MyEither> fromJSON<std::shared_ptr<MyEither>>(W<std::
   else if (tag == "MyRight") {
     tagType = ::MyEither::tag::MyRight;
     std::shared_ptr<data::MyRight> tv(new data::MyRight());
-    tv->_0 = fromJSON(W<std::shared_ptr<::Pipeline>>(), obj["arg0"]);
-    tv->_1 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg1"]);
+    tv->_0 = fromJSON(W<String>(), obj["arg0"]);
+    tv->_1 = fromJSON(W<std::shared_ptr<::Pipeline>>(), obj["arg1"]);
+    tv->_2 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg2"]);
     return tv;
   }
   else throw "unknown constructor: " + tag;

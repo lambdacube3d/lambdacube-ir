@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2015-12-21T12:00:19.854088000000Z
+// 2016-01-18T14:30:08.262123Z
 
 enum TypeInfo {
   case TypeInfo(TypeInfo_Data)
@@ -14,7 +14,7 @@ enum TypeInfo {
 
 enum MyEither {
   case MyLeft(TypeInfo,Array<TypeInfo>)
-  case MyRight(Pipeline,Array<TypeInfo>)
+  case MyRight(String,Pipeline,Array<TypeInfo>)
 }
 
 
@@ -90,8 +90,8 @@ extension MyEither {
     switch self {
       case .MyLeft(let arg0, let arg1):
         return [ "tag" : "MyLeft", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON]
-      case .MyRight(let arg0, let arg1):
-        return [ "tag" : "MyRight", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON]
+      case .MyRight(let arg0, let arg1, let arg2):
+        return [ "tag" : "MyRight", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON, "arg2" : arg2.toJSON]
     }
   }
 }
