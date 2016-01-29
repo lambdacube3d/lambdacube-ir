@@ -1,14 +1,14 @@
 -- generated file, do not modify!
--- 2016-01-18T14:30:07.798481Z
+-- 2016-01-28T13:15:30.803775Z
 
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
-module IR where
+module LambdaCube.IR where
 
 import Data.Int
 import Data.Word
 import Data.Map
 import Data.Vector (Vector(..))
-import Linear
+import LambdaCube.Linear
 
 import Data.Text
 import Data.Aeson hiding (Value,Bool)

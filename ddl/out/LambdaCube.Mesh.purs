@@ -1,7 +1,7 @@
 -- generated file, do not modify!
--- 2016-01-18T14:30:08.223471Z
+-- 2016-01-28T13:15:31.220124Z
 
-module Mesh where
+module LambdaCube.Mesh where
 import Prelude
 import Data.Generic
 import Data.Maybe (Maybe(..))

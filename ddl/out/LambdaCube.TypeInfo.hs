@@ -1,21 +1,21 @@
 -- generated file, do not modify!
--- 2016-01-18T14:30:08.262123Z
+-- 2016-01-28T13:15:31.255126Z
 
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
-module TypeInfo where
+module LambdaCube.TypeInfo where
 
 import Data.Int
 import Data.Word
 import Data.Map
 import Data.Vector (Vector(..))
-import Linear
+import LambdaCube.Linear
 
 import Data.Text
 import Data.Aeson hiding (Value,Bool)
 import Data.Aeson.Types hiding (Value,Bool)
 import Control.Monad
 
-import IR
+import LambdaCube.IR
 
 data TypeInfo
   = TypeInfo

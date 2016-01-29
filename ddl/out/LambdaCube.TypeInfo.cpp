@@ -1,7 +1,7 @@
 // generated file, do not modify!
-// 2016-01-18T14:30:08.262123Z
+// 2016-01-28T13:15:31.255126Z
 
-#include "TypeInfo.hpp"
+#include "LambdaCube.TypeInfo.hpp"
 template<> json toJSON<std::shared_ptr<TypeInfo>>(std::shared_ptr<TypeInfo> &v) {
   json obj({});
   switch (v->tag) { 

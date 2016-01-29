@@ -1,7 +1,7 @@
 -- generated file, do not modify!
--- 2016-01-18T14:30:07.798481Z
+-- 2016-01-28T13:15:30.803775Z
 
-module IR where
+module LambdaCube.IR where
 import Prelude
 import Data.Generic
 import Data.Maybe (Maybe(..))

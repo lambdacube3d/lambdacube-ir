@@ -1,8 +1,8 @@
 // generated file, do not modify!
-// 2016-01-18T14:30:07.798481Z
+// 2016-01-28T13:15:30.803775Z
 
-#ifndef HEADER_IR_H
-#define HEADER_IR_H
+#ifndef HEADER_LambdaCube.IR_H
+#define HEADER_LambdaCube.IR_H
 
 #include "RT.hpp"
 

@@ -8,6 +8,8 @@ import qualified Data.HashMap.Strict          as HashMap
 import           Data.Text                    (Text)
 import qualified Data.Map as Map
 
+import System.Directory
+
 import Data.Time.Clock
 import Control.Monad.Writer
 

@@ -1,0 +1,209 @@
+-- generated file, do not modify!
+-- 2016-01-28T13:15:31.27456Z
+
+module TestData where
+import Prelude
+import Data.Generic
+import Data.Maybe (Maybe(..))
+import Data.StrMap (StrMap(..))
+import Data.Map (Map(..))
+import Data.List (List(..))
+import Linear
+
+import Data.Argonaut.Combinators ((~>), (:=), (.?))
+import Data.Argonaut.Core (jsonEmptyObject)
+import Data.Argonaut.Printer (printJson)
+import Data.Argonaut.Encode (EncodeJson, encodeJson)
+import Data.Argonaut.Decode (DecodeJson, decodeJson)
+
+import LambdaCube.IR
+import LambdaCube.Mesh
+import LambdaCube.PipelineSchema
+
+data ClientInfo
+  = ClientInfo
+  { clientName :: String
+  , clientBackend :: Backend
+  }
+
+
+data Frame
+  = Frame
+  { renderCount :: Int
+  , frameUniforms :: StrMap Value
+  , frameTextures :: StrMap Int
+  }
+
+
+data Scene
+  = Scene
+  { objectArrays :: StrMap (Array Int)
+  , renderTargetWidth :: Int
+  , renderTargetHeight :: Int
+  , frames :: Array Frame
+  }
+
+
+data RenderJob
+  = RenderJob
+  { meshes :: Array Mesh
+  , textures :: Array String
+  , schema :: PipelineSchema
+  , scenes :: Array Scene
+  , pipelines :: Array Pipeline
+  }
+
+
+data FrameResult
+  = FrameResult
+  { frRenderTimes :: Array Float
+  , frImageWidth :: Int
+  , frImageHeight :: Int
+  }
+
+
+data RenderJobResult
+  = RenderJobResult FrameResult
+  | RenderJobError String
+
+
+
+instance encodeJsonClientInfo :: EncodeJson ClientInfo where
+  encodeJson v = case v of
+    ClientInfo r ->
+      "tag" := "ClientInfo" ~>
+      "clientName" := r.clientName ~>
+      "clientBackend" := r.clientBackend ~>
+      jsonEmptyObject
+
+instance decodeJsonClientInfo :: DecodeJson ClientInfo where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "ClientInfo" -> do
+        clientName <- obj .? "clientName"
+        clientBackend <- obj .? "clientBackend"
+        pure $ ClientInfo
+          { clientName:clientName
+          , clientBackend:clientBackend
+          } 
+
+instance encodeJsonFrame :: EncodeJson Frame where
+  encodeJson v = case v of
+    Frame r ->
+      "tag" := "Frame" ~>
+      "renderCount" := r.renderCount ~>
+      "frameUniforms" := r.frameUniforms ~>
+      "frameTextures" := r.frameTextures ~>
+      jsonEmptyObject
+
+instance decodeJsonFrame :: DecodeJson Frame where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "Frame" -> do
+        renderCount <- obj .? "renderCount"
+        frameUniforms <- obj .? "frameUniforms"
+        frameTextures <- obj .? "frameTextures"
+        pure $ Frame
+          { renderCount:renderCount
+          , frameUniforms:frameUniforms
+          , frameTextures:frameTextures
+          } 
+
+instance encodeJsonScene :: EncodeJson Scene where
+  encodeJson v = case v of
+    Scene r ->
+      "tag" := "Scene" ~>
+      "objectArrays" := r.objectArrays ~>
+      "renderTargetWidth" := r.renderTargetWidth ~>
+      "renderTargetHeight" := r.renderTargetHeight ~>
+      "frames" := r.frames ~>
+      jsonEmptyObject
+
+instance decodeJsonScene :: DecodeJson Scene where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "Scene" -> do
+        objectArrays <- obj .? "objectArrays"
+        renderTargetWidth <- obj .? "renderTargetWidth"
+        renderTargetHeight <- obj .? "renderTargetHeight"
+        frames <- obj .? "frames"
+        pure $ Scene
+          { objectArrays:objectArrays
+          , renderTargetWidth:renderTargetWidth
+          , renderTargetHeight:renderTargetHeight
+          , frames:frames
+          } 
+
+instance encodeJsonRenderJob :: EncodeJson RenderJob where
+  encodeJson v = case v of
+    RenderJob r ->
+      "tag" := "RenderJob" ~>
+      "meshes" := r.meshes ~>
+      "textures" := r.textures ~>
+      "schema" := r.schema ~>
+      "scenes" := r.scenes ~>
+      "pipelines" := r.pipelines ~>
+      jsonEmptyObject
+
+instance decodeJsonRenderJob :: DecodeJson RenderJob where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "RenderJob" -> do
+        meshes <- obj .? "meshes"
+        textures <- obj .? "textures"
+        schema <- obj .? "schema"
+        scenes <- obj .? "scenes"
+        pipelines <- obj .? "pipelines"
+        pure $ RenderJob
+          { meshes:meshes
+          , textures:textures
+          , schema:schema
+          , scenes:scenes
+          , pipelines:pipelines
+          } 
+
+instance encodeJsonFrameResult :: EncodeJson FrameResult where
+  encodeJson v = case v of
+    FrameResult r ->
+      "tag" := "FrameResult" ~>
+      "frRenderTimes" := r.frRenderTimes ~>
+      "frImageWidth" := r.frImageWidth ~>
+      "frImageHeight" := r.frImageHeight ~>
+      jsonEmptyObject
+
+instance decodeJsonFrameResult :: DecodeJson FrameResult where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "FrameResult" -> do
+        frRenderTimes <- obj .? "frRenderTimes"
+        frImageWidth <- obj .? "frImageWidth"
+        frImageHeight <- obj .? "frImageHeight"
+        pure $ FrameResult
+          { frRenderTimes:frRenderTimes
+          , frImageWidth:frImageWidth
+          , frImageHeight:frImageHeight
+          } 
+
+instance encodeJsonRenderJobResult :: EncodeJson RenderJobResult where
+  encodeJson v = case v of
+    RenderJobResult arg0 -> "tag" := "RenderJobResult" ~> "arg0" := arg0 ~> jsonEmptyObject
+    RenderJobError arg0 -> "tag" := "RenderJobError" ~> "arg0" := arg0 ~> jsonEmptyObject
+
+instance decodeJsonRenderJobResult :: DecodeJson RenderJobResult where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "RenderJobResult" -> RenderJobResult <$> obj .? "arg0"
+      "RenderJobError" -> RenderJobError <$> obj .? "arg0"
+

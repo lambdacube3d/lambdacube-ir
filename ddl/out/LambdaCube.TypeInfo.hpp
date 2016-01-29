@@ -1,12 +1,12 @@
 // generated file, do not modify!
-// 2016-01-18T14:30:08.262123Z
+// 2016-01-28T13:15:31.255126Z
 
-#ifndef HEADER_TypeInfo_H
-#define HEADER_TypeInfo_H
+#ifndef HEADER_LambdaCube.TypeInfo_H
+#define HEADER_LambdaCube.TypeInfo_H
 
 #include "RT.hpp"
 
-#include "IR.hpp"
+#include "LambdaCube.IR.hpp"
 
 class TypeInfo {
   public:

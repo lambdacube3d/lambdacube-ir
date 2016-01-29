@@ -471,9 +471,98 @@ typeInfo = do
     const_ "MyLeft"   ["TypeInfo", Array "TypeInfo"]
     const_ "MyRight"  [String, "Pipeline", Array "TypeInfo"]
 
+pipelineSchema = do
+  data_ "StreamType" $ do
+    enum_ "Attribute_Word"
+    enum_ "Attribute_V2U"
+    enum_ "Attribute_V3U"
+    enum_ "Attribute_V4U"
+    enum_ "Attribute_Int"
+    enum_ "Attribute_V2I"
+    enum_ "Attribute_V3I"
+    enum_ "Attribute_V4I"
+    enum_ "Attribute_Float"
+    enum_ "Attribute_V2F"
+    enum_ "Attribute_V3F"
+    enum_ "Attribute_V4F"
+    enum_ "Attribute_M22F"
+    enum_ "Attribute_M23F"
+    enum_ "Attribute_M24F"
+    enum_ "Attribute_M32F"
+    enum_ "Attribute_M33F"
+    enum_ "Attribute_M34F"
+    enum_ "Attribute_M42F"
+    enum_ "Attribute_M43F"
+    enum_ "Attribute_M44F"
+
+  data_ "ObjectArraySchema" $ do
+    constR_ "ObjectArraySchema"
+      [ "primitive"   #:: "FetchPrimitive"
+      , "attributes"  #:: Map String "StreamType"
+      ]
+
+  data_ "PipelineSchema" $ do
+    constR_ "PipelineSchema"
+      [ "objectArrays"  #:: Map String "ObjectArraySchema"
+      , "uniforms"      #:: Map String "InputType"
+      ]
+
+testData = do
+  -- client info
+  data_ "ClientInfo" $ do
+    constR_ "ClientInfo"
+      [ "clientName"    #:: String
+      , "clientBackend" #:: "Backend"
+      ]
+
+  -- test scene description
+  data_ "Frame" $ do
+    constR_ "Frame"
+      [ "renderCount"   #:: Int
+      , "frameUniforms" #:: Map String "Value"
+      , "frameTextures" #:: Map String Int
+      ]
+
+  data_ "Scene" $ do
+    constR_ "Scene"
+      [ "objectArrays"        #:: Map String (Array Int)
+      , "renderTargetWidth"   #:: Int
+      , "renderTargetHeight"  #:: Int
+      , "frames"              #:: Array "Frame"
+      ]
+
+  data_ "RenderJob" $ do
+    constR_ "RenderJob"
+      [ "meshes"    #:: Array "Mesh"
+      , "textures"  #:: Array String -- png texture
+      , "schema"    #:: "PipelineSchema"
+      , "scenes"    #:: Array "Scene"
+      , "pipelines" #:: Array "Pipeline"
+      ]
+
+  -- test result
+  data_ "FrameResult" $ do
+    constR_ "FrameResult"
+      [ "frRenderTimes" #:: Array Float
+      , "frImageWidth"  #:: Int
+      , "frImageHeight" #:: Int
+      ]
+
+  data_ "RenderJobResult" $ do
+    const_ "RenderJobResult"  ["FrameResult"]
+    const_ "RenderJobError"   [String]
+
 modules = do
-  module_ "IR" ir
-  module_ "Mesh" mesh
-  module_ "TypeInfo" $ do
-    import_ ["IR"]
+  module_ "LambdaCube.IR" ir
+  module_ "LambdaCube.PipelineSchema" $ do
+    import_ ["LambdaCube.IR"]
+    pipelineSchema
+  module_ "LambdaCube.Mesh" mesh
+  module_ "LambdaCube.TypeInfo" $ do
+    import_ ["LambdaCube.IR"]
     typeInfo
+  module_ "TestData" $ do
+    import_ ["LambdaCube.IR"]
+    import_ ["LambdaCube.Mesh"]
+    import_ ["LambdaCube.PipelineSchema"]
+    testData

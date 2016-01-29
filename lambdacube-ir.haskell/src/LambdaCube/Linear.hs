@@ -1,5 +1,5 @@
 {-# LANGUAGE DeriveFunctor, OverloadedStrings #-}
-module Linear where
+module LambdaCube.Linear where
 
 import Data.Int
 import Data.Word

@@ -1,7 +1,7 @@
 -- generated file, do not modify!
--- 2016-01-18T14:30:08.262123Z
+-- 2016-01-28T13:15:31.255126Z
 
-module TypeInfo where
+module LambdaCube.TypeInfo where
 import Prelude
 import Data.Generic
 import Data.Maybe (Maybe(..))
@@ -16,7 +16,7 @@ import Data.Argonaut.Printer (printJson)
 import Data.Argonaut.Encode (EncodeJson, encodeJson)
 import Data.Argonaut.Decode (DecodeJson, decodeJson)
 
-import IR
+import LambdaCube.IR
 
 data TypeInfo
   = TypeInfo
