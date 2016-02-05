@@ -3,14 +3,14 @@
 
 name:                lambdacube-ir
 version:             0.2.0.0
--- synopsis:            
--- description:         
+synopsis:            LambdaCube 3D intermediate representation of 3D graphics pipelines
+description:         LambdaCube 3D intermediate representation of 3D graphics pipelines
 license:             BSD3
 license-file:        LICENSE
 author:              Csaba Hruska
 maintainer:          csaba.hruska@gmail.com
 -- copyright:           
--- category:            
+category:            Graphics
 build-type:          Simple
 -- extra-source-files:  
 cabal-version:       >=1.10
