@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-01-28T13:15:31.255126Z
+-- 2016-02-08T13:33:24.089367000000Z
 
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
 module LambdaCube.TypeInfo where

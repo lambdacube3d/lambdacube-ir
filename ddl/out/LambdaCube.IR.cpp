@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-01-28T13:15:30.803775Z
+// 2016-02-08T13:33:23.674070000000Z
 
 #include "LambdaCube.IR.hpp"
 template<> json toJSON<std::shared_ptr<ArrayValue>>(std::shared_ptr<ArrayValue> &v) {
@@ -2826,6 +2826,7 @@ template<> json toJSON<std::shared_ptr<Pipeline>>(std::shared_ptr<Pipeline> &v) 
       obj["tag"] = "Pipeline";
       {
         std::shared_ptr<data::Pipeline> tv = std::static_pointer_cast<data::Pipeline>(v);
+        obj["info"] = toJSON(tv->info);
         obj["backend"] = toJSON(tv->backend);
         obj["textures"] = toJSON(tv->textures);
         obj["samplers"] = toJSON(tv->samplers);
@@ -2846,6 +2847,7 @@ template<> std::shared_ptr<Pipeline> fromJSON<std::shared_ptr<Pipeline>>(W<std::
   if (tag == "Pipeline") {
     tagType = ::Pipeline::tag::Pipeline;
     std::shared_ptr<data::Pipeline> tv(new data::Pipeline());
+    tv->info = fromJSON(W<String>(), obj["info"]);
     tv->backend = fromJSON(W<std::shared_ptr<::Backend>>(), obj["backend"]);
     tv->textures = fromJSON(W<std::vector<std::shared_ptr<::TextureDescriptor>>>(), obj["textures"]);
     tv->samplers = fromJSON(W<std::vector<std::shared_ptr<::SamplerDescriptor>>>(), obj["samplers"]);

@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-01-28T13:15:30.803775Z
+-- 2016-02-08T13:33:23.674070000000Z
 
 module LambdaCube.IR where
 import Prelude
@@ -442,7 +442,8 @@ data Backend
 
 data Pipeline
   = Pipeline
-  { backend :: Backend
+  { info :: String
+  , backend :: Backend
   , textures :: Array TextureDescriptor
   , samplers :: Array SamplerDescriptor
   , targets :: Array RenderTarget
@@ -1553,6 +1554,7 @@ instance encodeJsonPipeline :: EncodeJson Pipeline where
   encodeJson v = case v of
     Pipeline r ->
       "tag" := "Pipeline" ~>
+      "info" := r.info ~>
       "backend" := r.backend ~>
       "textures" := r.textures ~>
       "samplers" := r.samplers ~>
@@ -1569,6 +1571,7 @@ instance decodeJsonPipeline :: DecodeJson Pipeline where
     tag <- obj .? "tag"
     case tag of
       "Pipeline" -> do
+        info <- obj .? "info"
         backend <- obj .? "backend"
         textures <- obj .? "textures"
         samplers <- obj .? "samplers"
@@ -1578,7 +1581,8 @@ instance decodeJsonPipeline :: DecodeJson Pipeline where
         streams <- obj .? "streams"
         commands <- obj .? "commands"
         pure $ Pipeline
-          { backend:backend
+          { info:info
+          , backend:backend
           , textures:textures
           , samplers:samplers
           , targets:targets

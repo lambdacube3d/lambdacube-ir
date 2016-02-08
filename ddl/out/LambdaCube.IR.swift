@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-01-28T13:15:30.803775Z
+// 2016-02-08T13:33:23.674070000000Z
 
 typealias StreamName = Int
 
@@ -470,6 +470,7 @@ enum Backend {
 enum Pipeline {
   case Pipeline(Pipeline_Data)
     struct Pipeline_Data {
+      var info : String
       var backend : Backend
       var textures : Array<TextureDescriptor>
       var samplers : Array<SamplerDescriptor>
@@ -1336,6 +1337,7 @@ extension Pipeline {
     switch self {
       case .Pipeline(let v):
         return [ "tag" : "Pipeline"
+               , "info" : v.info.toJSON
                , "backend" : v.backend.toJSON
                , "textures" : v.textures.toJSON
                , "samplers" : v.samplers.toJSON

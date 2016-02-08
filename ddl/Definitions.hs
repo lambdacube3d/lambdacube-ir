@@ -421,7 +421,8 @@ ir = do
 
   data_ "Pipeline" $ do
     constR_ "Pipeline"
-      [ "backend"       #:: "Backend"
+      [ "info"          #:: String
+      , "backend"       #:: "Backend"
       , "textures"      #:: Array "TextureDescriptor"
       , "samplers"      #:: Array "SamplerDescriptor"
       , "targets"       #:: Array "RenderTarget"

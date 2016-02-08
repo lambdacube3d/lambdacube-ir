@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-01-28T13:15:30.803775Z
+// 2016-02-08T13:33:23.674070000000Z
 
 #ifndef HEADER_LambdaCube.IR_H
 #define HEADER_LambdaCube.IR_H
@@ -1050,6 +1050,7 @@ public:
 namespace data { 
   class Pipeline {
   public: 
+    String info;
     std::shared_ptr<::Backend> backend;
     std::vector<std::shared_ptr<::TextureDescriptor>> textures;
     std::vector<std::shared_ptr<::SamplerDescriptor>> samplers;

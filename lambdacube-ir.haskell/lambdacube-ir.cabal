@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                lambdacube-ir
-version:             0.2.0.0
+version:             0.3.0.0
 synopsis:            LambdaCube 3D intermediate representation of 3D graphics pipelines
 description:         LambdaCube 3D intermediate representation of 3D graphics pipelines
 license:             BSD3

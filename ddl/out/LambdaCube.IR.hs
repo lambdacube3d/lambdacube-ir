@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-01-28T13:15:30.803775Z
+-- 2016-02-08T13:33:23.674070000000Z
 
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
 module LambdaCube.IR where
@@ -484,7 +484,8 @@ data Backend
 
 data Pipeline
   = Pipeline
-  { backend :: Backend
+  { info :: String
+  , backend :: Backend
   , textures :: Vector TextureDescriptor
   , samplers :: Vector SamplerDescriptor
   , targets :: Vector RenderTarget
@@ -1571,6 +1572,7 @@ instance ToJSON Pipeline where
   toJSON v = case v of
     Pipeline{..} -> object
       [ "tag" .= ("Pipeline" :: Text)
+      , "info" .= info
       , "backend" .= backend
       , "textures" .= textures
       , "samplers" .= samplers
@@ -1586,6 +1588,7 @@ instance FromJSON Pipeline where
     tag <- obj .: "tag"
     case tag :: Text of
       "Pipeline" -> do
+        info <- obj .: "info"
         backend <- obj .: "backend"
         textures <- obj .: "textures"
         samplers <- obj .: "samplers"
@@ -1595,7 +1598,8 @@ instance FromJSON Pipeline where
         streams <- obj .: "streams"
         commands <- obj .: "commands"
         pure $ Pipeline
-          { backend = backend
+          { info = info
+          , backend = backend
           , textures = textures
           , samplers = samplers
           , targets = targets
