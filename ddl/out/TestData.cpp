@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-08T13:33:24.109009000000Z
+// 2016-02-12T16:05:13.383716000000Z
 
 #include "TestData.hpp"
 template<> json toJSON<std::shared_ptr<ClientInfo>>(std::shared_ptr<ClientInfo> &v) {
@@ -101,6 +101,37 @@ template<> std::shared_ptr<Scene> fromJSON<std::shared_ptr<Scene>>(W<std::shared
   return o;
 }
 
+template<> json toJSON<std::shared_ptr<PipelineInfo>>(std::shared_ptr<PipelineInfo> &v) {
+  json obj({});
+  switch (v->tag) { 
+    case ::PipelineInfo::tag::PipelineInfo:
+      obj["tag"] = "PipelineInfo";
+      {
+        std::shared_ptr<data::PipelineInfo> tv = std::static_pointer_cast<data::PipelineInfo>(v);
+        obj["pipelineName"] = toJSON(tv->pipelineName);
+        obj["pipeline"] = toJSON(tv->pipeline);
+      }
+      break;
+  }
+  return obj;
+}
+
+template<> std::shared_ptr<PipelineInfo> fromJSON<std::shared_ptr<PipelineInfo>>(W<std::shared_ptr<PipelineInfo>> v, json &obj) {
+  enum ::PipelineInfo::tag tagType;
+  std::string tag = obj["tag"];
+  if (tag == "PipelineInfo") {
+    tagType = ::PipelineInfo::tag::PipelineInfo;
+    std::shared_ptr<data::PipelineInfo> tv(new data::PipelineInfo());
+    tv->pipelineName = fromJSON(W<String>(), obj["pipelineName"]);
+    tv->pipeline = fromJSON(W<std::shared_ptr<::Pipeline>>(), obj["pipeline"]);
+    return tv;
+  }
+  else throw "unknown constructor: " + tag;
+  std::shared_ptr<::PipelineInfo> o(new ::PipelineInfo());
+  o->tag = tagType;
+  return o;
+}
+
 template<> json toJSON<std::shared_ptr<RenderJob>>(std::shared_ptr<RenderJob> &v) {
   json obj({});
   switch (v->tag) { 
@@ -129,7 +160,7 @@ template<> std::shared_ptr<RenderJob> fromJSON<std::shared_ptr<RenderJob>>(W<std
     tv->textures = fromJSON(W<std::vector<String>>(), obj["textures"]);
     tv->schema = fromJSON(W<std::shared_ptr<::PipelineSchema>>(), obj["schema"]);
     tv->scenes = fromJSON(W<std::vector<std::shared_ptr<::Scene>>>(), obj["scenes"]);
-    tv->pipelines = fromJSON(W<std::vector<std::shared_ptr<::Pipeline>>>(), obj["pipelines"]);
+    tv->pipelines = fromJSON(W<std::vector<std::shared_ptr<::PipelineInfo>>>(), obj["pipelines"]);
     return tv;
   }
   else throw "unknown constructor: " + tag;

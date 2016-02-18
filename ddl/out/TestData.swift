@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-08T13:33:24.109009000000Z
+// 2016-02-12T16:05:13.383716000000Z
 
 enum ClientInfo {
   case ClientInfo(ClientInfo_Data)
@@ -28,6 +28,14 @@ enum Scene {
     }
 }
 
+enum PipelineInfo {
+  case PipelineInfo(PipelineInfo_Data)
+    struct PipelineInfo_Data {
+      var pipelineName : String
+      var pipeline : Pipeline
+    }
+}
+
 enum RenderJob {
   case RenderJob(RenderJob_Data)
     struct RenderJob_Data {
@@ -35,7 +43,7 @@ enum RenderJob {
       var textures : Array<String>
       var schema : PipelineSchema
       var scenes : Array<Scene>
-      var pipelines : Array<Pipeline>
+      var pipelines : Array<PipelineInfo>
     }
 }
 
@@ -143,6 +151,17 @@ extension Scene {
     }
   }
 }
+extension PipelineInfo {
+  var toJSON : [String: AnyObject] {
+    switch self {
+      case .PipelineInfo(let v):
+        return [ "tag" : "PipelineInfo"
+               , "pipelineName" : v.pipelineName.toJSON
+               , "pipeline" : v.pipeline.toJSON
+               ]
+    }
+  }
+}
 extension RenderJob {
   var toJSON : [String: AnyObject] {
     switch self {
@@ -200,6 +219,7 @@ enum Type {
   case ClientInfo
   case Frame
   case Scene
+  case PipelineInfo
   case RenderJob
   case FrameResult
   case RenderJobResult

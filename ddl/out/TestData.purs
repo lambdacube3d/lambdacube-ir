@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-02-08T13:33:24.109009000000Z
+-- 2016-02-12T16:05:13.383716000000Z
 
 module TestData where
 import Prelude
@@ -44,13 +44,20 @@ data Scene
   }
 
 
+data PipelineInfo
+  = PipelineInfo
+  { pipelineName :: String
+  , pipeline :: Pipeline
+  }
+
+
 data RenderJob
   = RenderJob
   { meshes :: Array Mesh
   , textures :: Array String
   , schema :: PipelineSchema
   , scenes :: Array Scene
-  , pipelines :: Array Pipeline
+  , pipelines :: Array PipelineInfo
   }
 
 
@@ -138,6 +145,27 @@ instance decodeJsonScene :: DecodeJson Scene where
           , renderTargetWidth:renderTargetWidth
           , renderTargetHeight:renderTargetHeight
           , frames:frames
+          } 
+
+instance encodeJsonPipelineInfo :: EncodeJson PipelineInfo where
+  encodeJson v = case v of
+    PipelineInfo r ->
+      "tag" := "PipelineInfo" ~>
+      "pipelineName" := r.pipelineName ~>
+      "pipeline" := r.pipeline ~>
+      jsonEmptyObject
+
+instance decodeJsonPipelineInfo :: DecodeJson PipelineInfo where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "PipelineInfo" -> do
+        pipelineName <- obj .? "pipelineName"
+        pipeline <- obj .? "pipeline"
+        pure $ PipelineInfo
+          { pipelineName:pipelineName
+          , pipeline:pipeline
           } 
 
 instance encodeJsonRenderJob :: EncodeJson RenderJob where

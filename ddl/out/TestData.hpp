@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-08T13:33:24.109009000000Z
+// 2016-02-12T16:05:13.383716000000Z
 
 #ifndef HEADER_TestData_H
 #define HEADER_TestData_H
@@ -55,6 +55,20 @@ namespace data {
       Scene() { tag = tag::Scene; }
   };
 }
+class PipelineInfo {
+  public:
+    enum class tag { 
+      PipelineInfo
+    } tag;
+};
+namespace data { 
+  class PipelineInfo : public ::PipelineInfo {
+    public:
+      String pipelineName;
+      std::shared_ptr<::Pipeline> pipeline;
+      PipelineInfo() { tag = tag::PipelineInfo; }
+  };
+}
 class RenderJob {
   public:
     enum class tag { 
@@ -68,7 +82,7 @@ namespace data {
       std::vector<String> textures;
       std::shared_ptr<::PipelineSchema> schema;
       std::vector<std::shared_ptr<::Scene>> scenes;
-      std::vector<std::shared_ptr<::Pipeline>> pipelines;
+      std::vector<std::shared_ptr<::PipelineInfo>> pipelines;
       RenderJob() { tag = tag::RenderJob; }
   };
 }

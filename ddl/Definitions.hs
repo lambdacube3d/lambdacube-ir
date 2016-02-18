@@ -532,13 +532,19 @@ testData = do
       , "frames"              #:: Array "Frame"
       ]
 
+  data_ "PipelineInfo" $ do
+    constR_ "PipelineInfo"
+      [ "pipelineName"  #:: String
+      , "pipeline"      #:: "Pipeline"
+      ]
+
   data_ "RenderJob" $ do
     constR_ "RenderJob"
       [ "meshes"    #:: Array "Mesh"
       , "textures"  #:: Array String -- png texture
       , "schema"    #:: "PipelineSchema"
       , "scenes"    #:: Array "Scene"
-      , "pipelines" #:: Array "Pipeline"
+      , "pipelines" #:: Array "PipelineInfo"
       ]
 
   -- test result

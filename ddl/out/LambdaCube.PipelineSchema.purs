@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-02-08T13:33:24.035933000000Z
+-- 2016-02-12T16:05:13.310528000000Z
 
 module LambdaCube.PipelineSchema where
 import Prelude
