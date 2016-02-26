@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-12T16:05:13.364534000000Z
+// 2016-02-26T10:42:57.376331000000Z
 
 enum TypeInfo {
   case TypeInfo(TypeInfo_Data)
@@ -12,9 +12,9 @@ enum TypeInfo {
     }
 }
 
-enum MyEither {
-  case MyLeft(TypeInfo,Array<TypeInfo>)
-  case MyRight(String,Pipeline,Array<TypeInfo>)
+enum CompileResult {
+  case CompileError(Array<TypeInfo>,Array<TypeInfo>)
+  case Compiled(String,Pipeline,Array<TypeInfo>)
 }
 
 
@@ -85,13 +85,13 @@ extension TypeInfo {
     }
   }
 }
-extension MyEither {
+extension CompileResult {
   var toJSON : [String: AnyObject] {
     switch self {
-      case .MyLeft(let arg0, let arg1):
-        return [ "tag" : "MyLeft", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON]
-      case .MyRight(let arg0, let arg1, let arg2):
-        return [ "tag" : "MyRight", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON, "arg2" : arg2.toJSON]
+      case .CompileError(let arg0, let arg1):
+        return [ "tag" : "CompileError", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON]
+      case .Compiled(let arg0, let arg1, let arg2):
+        return [ "tag" : "Compiled", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON, "arg2" : arg2.toJSON]
     }
   }
 }
@@ -114,7 +114,7 @@ enum Type {
   case Maybe(Type)
   case Map(Type,Type)
   case TypeInfo
-  case MyEither
+  case CompileResult
 }
 
 func fromJSON(type: Type, personName: String) -> Any {

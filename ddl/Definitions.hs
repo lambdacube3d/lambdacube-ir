@@ -468,9 +468,9 @@ typeInfo = do
       , "text"        #:: String
       ]
 
-  data_ "MyEither" $ do
-    const_ "MyLeft"   ["TypeInfo", Array "TypeInfo"]
-    const_ "MyRight"  [String, "Pipeline", Array "TypeInfo"]
+  data_ "CompileResult" $ do
+    const_ "CompileError" [Array "TypeInfo", Array "TypeInfo"]
+    const_ "Compiled"     [String, "Pipeline", Array "TypeInfo"]
 
 pipelineSchema = do
   data_ "StreamType" $ do

@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-12T16:05:13.364534000000Z
+// 2016-02-26T10:42:57.376331000000Z
 
 #include "LambdaCube.TypeInfo.hpp"
 template<> json toJSON<std::shared_ptr<TypeInfo>>(std::shared_ptr<TypeInfo> &v) {
@@ -39,21 +39,21 @@ template<> std::shared_ptr<TypeInfo> fromJSON<std::shared_ptr<TypeInfo>>(W<std::
   return o;
 }
 
-template<> json toJSON<std::shared_ptr<MyEither>>(std::shared_ptr<MyEither> &v) {
+template<> json toJSON<std::shared_ptr<CompileResult>>(std::shared_ptr<CompileResult> &v) {
   json obj({});
   switch (v->tag) { 
-    case ::MyEither::tag::MyLeft:
-      obj["tag"] = "MyLeft";
+    case ::CompileResult::tag::CompileError:
+      obj["tag"] = "CompileError";
       {
-        std::shared_ptr<data::MyLeft> tv = std::static_pointer_cast<data::MyLeft>(v);
+        std::shared_ptr<data::CompileError> tv = std::static_pointer_cast<data::CompileError>(v);
         obj["arg0"] = toJSON(tv->_0);
         obj["arg1"] = toJSON(tv->_1);
       }
       break;
-    case ::MyEither::tag::MyRight:
-      obj["tag"] = "MyRight";
+    case ::CompileResult::tag::Compiled:
+      obj["tag"] = "Compiled";
       {
-        std::shared_ptr<data::MyRight> tv = std::static_pointer_cast<data::MyRight>(v);
+        std::shared_ptr<data::Compiled> tv = std::static_pointer_cast<data::Compiled>(v);
         obj["arg0"] = toJSON(tv->_0);
         obj["arg1"] = toJSON(tv->_1);
         obj["arg2"] = toJSON(tv->_2);
@@ -63,26 +63,26 @@ template<> json toJSON<std::shared_ptr<MyEither>>(std::shared_ptr<MyEither> &v) 
   return obj;
 }
 
-template<> std::shared_ptr<MyEither> fromJSON<std::shared_ptr<MyEither>>(W<std::shared_ptr<MyEither>> v, json &obj) {
-  enum ::MyEither::tag tagType;
+template<> std::shared_ptr<CompileResult> fromJSON<std::shared_ptr<CompileResult>>(W<std::shared_ptr<CompileResult>> v, json &obj) {
+  enum ::CompileResult::tag tagType;
   std::string tag = obj["tag"];
-  if (tag == "MyLeft") {
-    tagType = ::MyEither::tag::MyLeft;
-    std::shared_ptr<data::MyLeft> tv(new data::MyLeft());
-    tv->_0 = fromJSON(W<std::shared_ptr<::TypeInfo>>(), obj["arg0"]);
+  if (tag == "CompileError") {
+    tagType = ::CompileResult::tag::CompileError;
+    std::shared_ptr<data::CompileError> tv(new data::CompileError());
+    tv->_0 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg0"]);
     tv->_1 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg1"]);
     return tv;
   }
-  else if (tag == "MyRight") {
-    tagType = ::MyEither::tag::MyRight;
-    std::shared_ptr<data::MyRight> tv(new data::MyRight());
+  else if (tag == "Compiled") {
+    tagType = ::CompileResult::tag::Compiled;
+    std::shared_ptr<data::Compiled> tv(new data::Compiled());
     tv->_0 = fromJSON(W<String>(), obj["arg0"]);
     tv->_1 = fromJSON(W<std::shared_ptr<::Pipeline>>(), obj["arg1"]);
     tv->_2 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg2"]);
     return tv;
   }
   else throw "unknown constructor: " + tag;
-  std::shared_ptr<::MyEither> o(new ::MyEither());
+  std::shared_ptr<::CompileResult> o(new ::CompileResult());
   o->tag = tagType;
   return o;
 }
