@@ -459,12 +459,17 @@ mesh = do
       ]
 
 typeInfo = do
-  data_ "TypeInfo" $ do
-    constR_ "TypeInfo"
+  data_ "Range" $ do
+    constR_ "Range"
       [ "startLine"   #:: Int
       , "startColumn" #:: Int
       , "endLine"     #:: Int
       , "endColumn"   #:: Int
+      ]
+
+  data_ "TypeInfo" $ do
+    constR_ "TypeInfo"
+      [ "range"       #:: "Range"
       , "text"        #:: String
       ]
 

@@ -1,7 +1,42 @@
 // generated file, do not modify!
-// 2016-02-26T10:42:57.376331000000Z
+// 2016-02-26T11:29:11.823283000000Z
 
 #include "LambdaCube.TypeInfo.hpp"
+template<> json toJSON<std::shared_ptr<Range>>(std::shared_ptr<Range> &v) {
+  json obj({});
+  switch (v->tag) { 
+    case ::Range::tag::Range:
+      obj["tag"] = "Range";
+      {
+        std::shared_ptr<data::Range> tv = std::static_pointer_cast<data::Range>(v);
+        obj["startLine"] = toJSON(tv->startLine);
+        obj["startColumn"] = toJSON(tv->startColumn);
+        obj["endLine"] = toJSON(tv->endLine);
+        obj["endColumn"] = toJSON(tv->endColumn);
+      }
+      break;
+  }
+  return obj;
+}
+
+template<> std::shared_ptr<Range> fromJSON<std::shared_ptr<Range>>(W<std::shared_ptr<Range>> v, json &obj) {
+  enum ::Range::tag tagType;
+  std::string tag = obj["tag"];
+  if (tag == "Range") {
+    tagType = ::Range::tag::Range;
+    std::shared_ptr<data::Range> tv(new data::Range());
+    tv->startLine = fromJSON(W<Int>(), obj["startLine"]);
+    tv->startColumn = fromJSON(W<Int>(), obj["startColumn"]);
+    tv->endLine = fromJSON(W<Int>(), obj["endLine"]);
+    tv->endColumn = fromJSON(W<Int>(), obj["endColumn"]);
+    return tv;
+  }
+  else throw "unknown constructor: " + tag;
+  std::shared_ptr<::Range> o(new ::Range());
+  o->tag = tagType;
+  return o;
+}
+
 template<> json toJSON<std::shared_ptr<TypeInfo>>(std::shared_ptr<TypeInfo> &v) {
   json obj({});
   switch (v->tag) { 
@@ -9,10 +44,7 @@ template<> json toJSON<std::shared_ptr<TypeInfo>>(std::shared_ptr<TypeInfo> &v) 
       obj["tag"] = "TypeInfo";
       {
         std::shared_ptr<data::TypeInfo> tv = std::static_pointer_cast<data::TypeInfo>(v);
-        obj["startLine"] = toJSON(tv->startLine);
-        obj["startColumn"] = toJSON(tv->startColumn);
-        obj["endLine"] = toJSON(tv->endLine);
-        obj["endColumn"] = toJSON(tv->endColumn);
+        obj["range"] = toJSON(tv->range);
         obj["text"] = toJSON(tv->text);
       }
       break;
@@ -26,10 +58,7 @@ template<> std::shared_ptr<TypeInfo> fromJSON<std::shared_ptr<TypeInfo>>(W<std::
   if (tag == "TypeInfo") {
     tagType = ::TypeInfo::tag::TypeInfo;
     std::shared_ptr<data::TypeInfo> tv(new data::TypeInfo());
-    tv->startLine = fromJSON(W<Int>(), obj["startLine"]);
-    tv->startColumn = fromJSON(W<Int>(), obj["startColumn"]);
-    tv->endLine = fromJSON(W<Int>(), obj["endLine"]);
-    tv->endColumn = fromJSON(W<Int>(), obj["endColumn"]);
+    tv->range = fromJSON(W<std::shared_ptr<::Range>>(), obj["range"]);
     tv->text = fromJSON(W<String>(), obj["text"]);
     return tv;
   }

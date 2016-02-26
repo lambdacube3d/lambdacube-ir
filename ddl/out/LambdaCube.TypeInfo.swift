@@ -1,13 +1,20 @@
 // generated file, do not modify!
-// 2016-02-26T10:42:57.376331000000Z
+// 2016-02-26T11:29:11.823283000000Z
 
-enum TypeInfo {
-  case TypeInfo(TypeInfo_Data)
-    struct TypeInfo_Data {
+enum Range {
+  case Range(Range_Data)
+    struct Range_Data {
       var startLine : Int
       var startColumn : Int
       var endLine : Int
       var endColumn : Int
+    }
+}
+
+enum TypeInfo {
+  case TypeInfo(TypeInfo_Data)
+    struct TypeInfo_Data {
+      var range : Range
       var text : String
     }
 }
@@ -71,15 +78,25 @@ extension Maybe {
 
 
 
+extension Range {
+  var toJSON : [String: AnyObject] {
+    switch self {
+      case .Range(let v):
+        return [ "tag" : "Range"
+               , "startLine" : v.startLine.toJSON
+               , "startColumn" : v.startColumn.toJSON
+               , "endLine" : v.endLine.toJSON
+               , "endColumn" : v.endColumn.toJSON
+               ]
+    }
+  }
+}
 extension TypeInfo {
   var toJSON : [String: AnyObject] {
     switch self {
       case .TypeInfo(let v):
         return [ "tag" : "TypeInfo"
-               , "startLine" : v.startLine.toJSON
-               , "startColumn" : v.startColumn.toJSON
-               , "endLine" : v.endLine.toJSON
-               , "endColumn" : v.endColumn.toJSON
+               , "range" : v.range.toJSON
                , "text" : v.text.toJSON
                ]
     }
@@ -113,6 +130,7 @@ enum Type {
   case List(Type)
   case Maybe(Type)
   case Map(Type,Type)
+  case Range
   case TypeInfo
   case CompileResult
 }

@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-02-26T10:42:57.376331000000Z
+-- 2016-02-26T11:29:11.823283000000Z
 
 module LambdaCube.TypeInfo where
 import Prelude
@@ -18,12 +18,18 @@ import Data.Argonaut.Decode (DecodeJson, decodeJson)
 
 import LambdaCube.IR
 
-data TypeInfo
-  = TypeInfo
+data Range
+  = Range
   { startLine :: Int
   , startColumn :: Int
   , endLine :: Int
   , endColumn :: Int
+  }
+
+
+data TypeInfo
+  = TypeInfo
+  { range :: Range
   , text :: String
   }
 
@@ -34,14 +40,38 @@ data CompileResult
 
 
 
-instance encodeJsonTypeInfo :: EncodeJson TypeInfo where
+instance encodeJsonRange :: EncodeJson Range where
   encodeJson v = case v of
-    TypeInfo r ->
-      "tag" := "TypeInfo" ~>
+    Range r ->
+      "tag" := "Range" ~>
       "startLine" := r.startLine ~>
       "startColumn" := r.startColumn ~>
       "endLine" := r.endLine ~>
       "endColumn" := r.endColumn ~>
+      jsonEmptyObject
+
+instance decodeJsonRange :: DecodeJson Range where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "Range" -> do
+        startLine <- obj .? "startLine"
+        startColumn <- obj .? "startColumn"
+        endLine <- obj .? "endLine"
+        endColumn <- obj .? "endColumn"
+        pure $ Range
+          { startLine:startLine
+          , startColumn:startColumn
+          , endLine:endLine
+          , endColumn:endColumn
+          } 
+
+instance encodeJsonTypeInfo :: EncodeJson TypeInfo where
+  encodeJson v = case v of
+    TypeInfo r ->
+      "tag" := "TypeInfo" ~>
+      "range" := r.range ~>
       "text" := r.text ~>
       jsonEmptyObject
 
@@ -51,16 +81,10 @@ instance decodeJsonTypeInfo :: DecodeJson TypeInfo where
     tag <- obj .? "tag"
     case tag of
       "TypeInfo" -> do
-        startLine <- obj .? "startLine"
-        startColumn <- obj .? "startColumn"
-        endLine <- obj .? "endLine"
-        endColumn <- obj .? "endColumn"
+        range <- obj .? "range"
         text <- obj .? "text"
         pure $ TypeInfo
-          { startLine:startLine
-          , startColumn:startColumn
-          , endLine:endLine
-          , endColumn:endColumn
+          { range:range
           , text:text
           } 
 

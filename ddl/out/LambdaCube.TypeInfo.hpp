@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-26T10:42:57.376331000000Z
+// 2016-02-26T11:29:11.823283000000Z
 
 #ifndef HEADER_LambdaCube.TypeInfo_H
 #define HEADER_LambdaCube.TypeInfo_H
@@ -8,6 +8,22 @@
 
 #include "LambdaCube.IR.hpp"
 
+class Range {
+  public:
+    enum class tag { 
+      Range
+    } tag;
+};
+namespace data { 
+  class Range : public ::Range {
+    public:
+      Int startLine;
+      Int startColumn;
+      Int endLine;
+      Int endColumn;
+      Range() { tag = tag::Range; }
+  };
+}
 class TypeInfo {
   public:
     enum class tag { 
@@ -17,10 +33,7 @@ class TypeInfo {
 namespace data { 
   class TypeInfo : public ::TypeInfo {
     public:
-      Int startLine;
-      Int startColumn;
-      Int endLine;
-      Int endColumn;
+      std::shared_ptr<::Range> range;
       String text;
       TypeInfo() { tag = tag::TypeInfo; }
   };

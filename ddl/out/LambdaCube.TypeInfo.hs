@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-02-26T10:42:57.376331000000Z
+-- 2016-02-26T11:29:11.823283000000Z
 
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
 module LambdaCube.TypeInfo where
@@ -17,12 +17,19 @@ import Control.Monad
 
 import LambdaCube.IR
 
-data TypeInfo
-  = TypeInfo
+data Range
+  = Range
   { startLine :: Int
   , startColumn :: Int
   , endLine :: Int
   , endColumn :: Int
+  }
+
+  deriving (Show, Eq, Ord)
+
+data TypeInfo
+  = TypeInfo
+  { range :: Range
   , text :: String
   }
 
@@ -34,14 +41,38 @@ data CompileResult
   deriving (Show, Eq, Ord)
 
 
-instance ToJSON TypeInfo where
+instance ToJSON Range where
   toJSON v = case v of
-    TypeInfo{..} -> object
-      [ "tag" .= ("TypeInfo" :: Text)
+    Range{..} -> object
+      [ "tag" .= ("Range" :: Text)
       , "startLine" .= startLine
       , "startColumn" .= startColumn
       , "endLine" .= endLine
       , "endColumn" .= endColumn
+      ]
+
+instance FromJSON Range where
+  parseJSON (Object obj) = do
+    tag <- obj .: "tag"
+    case tag :: Text of
+      "Range" -> do
+        startLine <- obj .: "startLine"
+        startColumn <- obj .: "startColumn"
+        endLine <- obj .: "endLine"
+        endColumn <- obj .: "endColumn"
+        pure $ Range
+          { startLine = startLine
+          , startColumn = startColumn
+          , endLine = endLine
+          , endColumn = endColumn
+          } 
+  parseJSON _ = mzero
+
+instance ToJSON TypeInfo where
+  toJSON v = case v of
+    TypeInfo{..} -> object
+      [ "tag" .= ("TypeInfo" :: Text)
+      , "range" .= range
       , "text" .= text
       ]
 
@@ -50,16 +81,10 @@ instance FromJSON TypeInfo where
     tag <- obj .: "tag"
     case tag :: Text of
       "TypeInfo" -> do
-        startLine <- obj .: "startLine"
-        startColumn <- obj .: "startColumn"
-        endLine <- obj .: "endLine"
-        endColumn <- obj .: "endColumn"
+        range <- obj .: "range"
         text <- obj .: "text"
         pure $ TypeInfo
-          { startLine = startLine
-          , startColumn = startColumn
-          , endLine = endLine
-          , endColumn = endColumn
+          { range = range
           , text = text
           } 
   parseJSON _ = mzero

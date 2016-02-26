@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-26T10:42:57.376331000000Z
+// 2016-02-26T11:29:11.823283000000Z
 
 #ifndef HEADER_LambdaCube.TypeInfo_H
 #define HEADER_LambdaCube.TypeInfo_H
@@ -9,12 +9,25 @@
 #include "LambdaCube.IR.hpp"
 
 namespace data { 
-  class TypeInfo {
+  class Range {
   public: 
     Int startLine;
     Int startColumn;
     Int endLine;
     Int endColumn;
+  };
+}
+class Range {
+public:
+  enum class tag { 
+    Range
+  } tag;
+  std::shared_ptr<data::Range> Range;
+};
+namespace data { 
+  class TypeInfo {
+  public: 
+    std::shared_ptr<::Range> range;
     String text;
   };
 }
