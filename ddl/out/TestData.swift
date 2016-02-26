@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-26T11:29:11.839781000000Z
+// 2016-02-26T11:37:22.627476000000Z
 
 enum ClientInfo {
   case ClientInfo(ClientInfo_Data)

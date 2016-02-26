@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-02-26T11:29:11.823283000000Z
+-- 2016-02-26T11:37:22.609565000000Z
 
 module LambdaCube.TypeInfo where
 import Prelude
@@ -35,7 +35,7 @@ data TypeInfo
 
 
 data CompileResult
-  = CompileError (Array TypeInfo) (Array TypeInfo)
+  = CompileError (Array Range) String (Array TypeInfo)
   | Compiled String Pipeline (Array TypeInfo)
 
 
@@ -90,7 +90,7 @@ instance decodeJsonTypeInfo :: DecodeJson TypeInfo where
 
 instance encodeJsonCompileResult :: EncodeJson CompileResult where
   encodeJson v = case v of
-    CompileError arg0 arg1 -> "tag" := "CompileError" ~> "arg0" := arg0 ~> "arg1" := arg1 ~> jsonEmptyObject
+    CompileError arg0 arg1 arg2 -> "tag" := "CompileError" ~> "arg0" := arg0 ~> "arg1" := arg1 ~> "arg2" := arg2 ~> jsonEmptyObject
     Compiled arg0 arg1 arg2 -> "tag" := "Compiled" ~> "arg0" := arg0 ~> "arg1" := arg1 ~> "arg2" := arg2 ~> jsonEmptyObject
 
 instance decodeJsonCompileResult :: DecodeJson CompileResult where
@@ -98,6 +98,6 @@ instance decodeJsonCompileResult :: DecodeJson CompileResult where
     obj <- decodeJson json
     tag <- obj .? "tag"
     case tag of
-      "CompileError" -> CompileError <$> obj .? "arg0" <*> obj .? "arg1"
+      "CompileError" -> CompileError <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2"
       "Compiled" -> Compiled <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2"
 

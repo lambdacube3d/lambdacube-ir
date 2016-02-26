@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-26T11:29:11.823283000000Z
+// 2016-02-26T11:37:22.609565000000Z
 
 #include "LambdaCube.TypeInfo.hpp"
 template<> json toJSON<std::shared_ptr<Range>>(std::shared_ptr<Range> &v) {
@@ -77,6 +77,7 @@ template<> json toJSON<std::shared_ptr<CompileResult>>(std::shared_ptr<CompileRe
         std::shared_ptr<data::CompileError> tv = std::static_pointer_cast<data::CompileError>(v);
         obj["arg0"] = toJSON(tv->_0);
         obj["arg1"] = toJSON(tv->_1);
+        obj["arg2"] = toJSON(tv->_2);
       }
       break;
     case ::CompileResult::tag::Compiled:
@@ -98,8 +99,9 @@ template<> std::shared_ptr<CompileResult> fromJSON<std::shared_ptr<CompileResult
   if (tag == "CompileError") {
     tagType = ::CompileResult::tag::CompileError;
     std::shared_ptr<data::CompileError> tv(new data::CompileError());
-    tv->_0 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg0"]);
-    tv->_1 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg1"]);
+    tv->_0 = fromJSON(W<std::vector<std::shared_ptr<::Range>>>(), obj["arg0"]);
+    tv->_1 = fromJSON(W<String>(), obj["arg1"]);
+    tv->_2 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg2"]);
     return tv;
   }
   else if (tag == "Compiled") {

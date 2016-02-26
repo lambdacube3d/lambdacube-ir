@@ -474,7 +474,7 @@ typeInfo = do
       ]
 
   data_ "CompileResult" $ do
-    const_ "CompileError" [Array "TypeInfo", Array "TypeInfo"]
+    const_ "CompileError" [Array "Range", String, Array "TypeInfo"]
     const_ "Compiled"     [String, "Pipeline", Array "TypeInfo"]
 
 pipelineSchema = do
