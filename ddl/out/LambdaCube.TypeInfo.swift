@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-02-26T11:37:22.609565000000Z
+// 2016-03-01T13:00:40.810157000000Z
 
 enum Range {
   case Range(Range_Data)
@@ -21,7 +21,7 @@ enum TypeInfo {
 
 enum CompileResult {
   case CompileError(Array<Range>,String,Array<TypeInfo>)
-  case Compiled(String,Pipeline,Array<TypeInfo>)
+  case Compiled(String,String,Pipeline,Array<TypeInfo>)
 }
 
 
@@ -107,8 +107,8 @@ extension CompileResult {
     switch self {
       case .CompileError(let arg0, let arg1, let arg2):
         return [ "tag" : "CompileError", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON, "arg2" : arg2.toJSON]
-      case .Compiled(let arg0, let arg1, let arg2):
-        return [ "tag" : "Compiled", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON, "arg2" : arg2.toJSON]
+      case .Compiled(let arg0, let arg1, let arg2, let arg3):
+        return [ "tag" : "Compiled", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON, "arg2" : arg2.toJSON, "arg3" : arg3.toJSON]
     }
   }
 }
