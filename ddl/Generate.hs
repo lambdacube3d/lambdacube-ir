@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings, FlexibleInstances #-}
+{-# LANGUAGE OverloadedStrings, FlexibleInstances, LambdaCase #-}
 import qualified Data.Text.Lazy as LText
 import           Text.EDE
 import           Text.EDE.Filters
@@ -7,8 +7,10 @@ import           Data.HashMap.Strict          (HashMap)
 import qualified Data.HashMap.Strict          as HashMap
 import           Data.Text                    (Text)
 import qualified Data.Map as Map
+import qualified Data.Set as Set
 
 import System.Directory
+import System.FilePath
 
 import Data.Time.Clock
 import Control.Monad.Writer
@@ -32,7 +34,7 @@ main = do
   dataCs <- eitherParseFile "templates/data.cs.ede"
   dataHs <- eitherParseFile "templates/data.hs.ede"
   dataPs <- eitherParseFile "templates/data.purs.ede"
-  let generate (ModuleDef name imports def) = do
+  let generate mod@(ModuleDef name imports def) = do
         dt <- getCurrentTime
         let env = fromPairs
               [ "dataAndType" .= def
@@ -40,6 +42,8 @@ main = do
               , "moduleName"  .= name
               , "dateTime"    .= dt
               , "imports"     .= imports
+              , "usedTypes"   .= collectTypes aliasMap mod
+              , "usedCSTypes" .= (Set.fromList $ Map.elems $ Map.fromList [ (csType name aliasMap t,t) | t <- Set.toList $ collectTypes aliasMap mod])
               ]
             aliasMap = Map.fromList [(n,t) | TypeAlias n t <- def]
             mylib :: HashMap Text Term
@@ -50,7 +54,8 @@ main = do
                 , "hsType"          @: hsType aliasMap
                 , "psType"          @: psType aliasMap
                 , "cppType"         @: cppType aliasMap
-                , "csType"          @: csType aliasMap
+                , "csType"          @: csType name aliasMap
+                , "csTypeEnum"      @: csTypeEnum aliasMap
                 , "javaType"        @: javaType aliasMap
                 , "swiftType"       @: swiftType aliasMap
                 ]
@@ -63,12 +68,23 @@ main = do
         either error (\x -> writeFile ("out/" ++ name ++ "2.hpp") $ LText.unpack x) $ dataHpp2 >>= (\t -> eitherRenderWith mylib t env)
         either error (\x -> writeFile ("out/" ++ name ++ ".hpp") $ LText.unpack x) $ dataHpp >>= (\t -> eitherRenderWith mylib t env)
         either error (\x -> writeFile ("out/" ++ name ++ ".cpp") $ LText.unpack x) $ dataCpp >>= (\t -> eitherRenderWith mylib t env)
-        {-
         -- Java
-        either error (\x -> writeFile ("out/" ++ name ++ ".java") $ LText.unpack x) $ dataJava >>= (\t -> eitherRenderWith mylib t env)
+        forM_ [a | a@DataDef{} <- def {-TODO-}] $ \d -> do
+          let env = fromPairs
+                [ "def"         .= d
+                , "moduleName"  .= name
+                , "dateTime"    .= dt
+                , "imports"     .= imports
+                ]
+              toPath a = flip map a $ \case
+                '.' -> '/'
+                c -> c
+              fname = "out/java/" ++ toPath name ++ "/" ++ dataName d ++ ".java"
+              dir = takeDirectory fname
+          createDirectoryIfMissing True dir
+          either error (\x -> writeFile fname $ LText.unpack x) $ dataJava >>= (\t -> eitherRenderWith mylib t env)
         -- C#
         either error (\x -> writeFile ("out/" ++ name ++ ".cs") $ LText.unpack x) $ dataCs >>= (\t -> eitherRenderWith mylib t env)
-        -}
         -- Swift
         either error (\x -> writeFile ("out/" ++ name ++ ".swift") $ LText.unpack x) $ dataSwift >>= (\t -> eitherRenderWith mylib t env)
   mapM_ generate $ execWriter modules

@@ -1,4 +1,4 @@
-{-# LANGUAGE RankNTypes, OverloadedStrings, DeriveGeneric, LambdaCase #-}
+{-# LANGUAGE RankNTypes, OverloadedStrings, DeriveGeneric, LambdaCase, RecordWildCards #-}
 module Language where
 
 import GHC.Generics
@@ -8,6 +8,8 @@ import Data.String
 import Data.List
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Data.Set (Set)
+import qualified Data.Set as Set
 
 instance IsString Type where
   fromString a = Data a
@@ -67,17 +69,21 @@ data Type
   | Float
   | Bool
   | String
-  | V2 Type
-  | V3 Type
-  | V4 Type
   -- higher order types
-  | Array Type
-  | List Type
-  | Maybe Type
-  | Map Type Type
+  | V2 { type_ :: Type }
+  | V3 { type_ :: Type }
+  | V4 { type_ :: Type }
+  | Array { type_ :: Type }
+  | List { type_ :: Type }
+  | Maybe { type_ :: Type }
+  | Map { key_ :: Type, value_ :: Type }
   -- user defined
-  | Data String
-  deriving (Show,Generic)
+  | Data { name_ :: String }
+  deriving (Show,Generic,Eq,Ord)
+
+collectTypes :: AliasMap -> ModuleDef -> Set Type
+collectTypes aliasMap ModuleDef{..} = Set.fromList $ map (normalize aliasMap) $ concat
+  [Data dataName : [fieldType | ConstructorDef{..} <- constructors, Field{..} <- fields] | DataDef{..} <- definitions]
 
 parens :: String -> String
 parens a
@@ -88,6 +94,13 @@ type AliasMap = Map String Type
 
 normalize :: AliasMap -> Type -> Type
 normalize aliasMap t@(Data n) = Map.findWithDefault t n aliasMap
+normalize aliasMap (V2 t) = V2 $ normalize aliasMap t
+normalize aliasMap (V3 t) = V3 $ normalize aliasMap t
+normalize aliasMap (V4 t) = V4 $ normalize aliasMap t
+normalize aliasMap (Array t) = Array $ normalize aliasMap t
+normalize aliasMap (List t) = List $ normalize aliasMap t
+normalize aliasMap (Maybe t) = Maybe $ normalize aliasMap t
+normalize aliasMap (Map k v) = Map (normalize aliasMap k) (normalize aliasMap v)
 normalize _ t = t
 
 psType :: AliasMap -> Type -> String
@@ -222,21 +235,41 @@ swiftType aliasMap = \case
 javaType :: AliasMap -> Type -> String -- TODO
 javaType aliasMap a = case normalize aliasMap a of
   Data t        -> t
-  Int           -> "int"
-  Int32         -> "int"
-  Word          -> "int"
-  Word32        -> "int"
-  Float         -> "float"
-  Bool          -> "boolean"
+  Int           -> "Integer"
+  Int32         -> "Integer"
+  Word          -> "Integer"
+  Word32        -> "Integer"
+  Float         -> "Float"
+  Bool          -> "Boolean"
   String        -> "String"
   Array t       -> "ArrayList<" ++ javaType aliasMap t ++ ">"
   List t        -> "ArrayList<" ++ javaType aliasMap t ++ ">"
   Map k v       -> "HashMap<" ++ javaType aliasMap k ++ ", " ++ javaType aliasMap v ++ ">"
-  _ -> "int"
+  _ -> "Integer"
+  --x -> error $ "javaType: " ++ show x
 
-csType :: AliasMap -> Type -> String -- TODO
-csType aliasMap a = case normalize aliasMap a of
+csTypeEnum :: AliasMap -> Type -> String
+csTypeEnum aliasMap a = case normalize aliasMap a of
   Data t        -> t
+  Int           -> "Int"
+  Int32         -> "Int32"
+  Word          -> "Word"
+  Word32        -> "Word32"
+  Float         -> "Float"
+  Bool          -> "Bool"
+  String        -> "String"
+  Array t       -> "Array_" ++ csTypeEnum aliasMap t
+  List t        -> "List_" ++ csTypeEnum aliasMap t
+  Map k v       -> "Map_" ++ csTypeEnum aliasMap k ++ "_" ++ csTypeEnum aliasMap v
+  V2 t          -> "V2_" ++ csTypeEnum aliasMap t
+  V3 t          -> "V3_" ++ csTypeEnum aliasMap t
+  V4 t          -> "V4_" ++ csTypeEnum aliasMap t
+  Maybe t       -> "Maybe_" ++ csTypeEnum aliasMap t
+  x -> error $ "unknown type: " ++ show x
+
+csType :: String -> AliasMap -> Type -> String -- TODO
+csType moduleName aliasMap a = case normalize aliasMap a of
+  Data t        -> "global::" ++ moduleName ++ "." ++ t
   Int           -> "int"
   Int32         -> "int"
   Word          -> "uint"
@@ -244,10 +277,14 @@ csType aliasMap a = case normalize aliasMap a of
   Float         -> "float"
   Bool          -> "bool"
   String        -> "string"
-  Array t       -> "List<" ++ csType aliasMap t ++ ">"
-  List t        -> "List<" ++ csType aliasMap t ++ ">"
-  Map k v       -> "Dictionary<" ++ csType aliasMap k ++ ", " ++ csType aliasMap v ++ ">"
-  _ -> "int"
+  Array t       -> "List<" ++ csType moduleName aliasMap t ++ ">"
+  List t        -> "List<" ++ csType moduleName aliasMap t ++ ">"
+  Map k v       -> "Dictionary<" ++ csType moduleName aliasMap k ++ ", " ++ csType moduleName aliasMap v ++ ">"
+  V2 t          -> "V2<" ++ csType moduleName aliasMap t ++ ">"
+  V3 t          -> "V3<" ++ csType moduleName aliasMap t ++ ">"
+  V4 t          -> "V4<" ++ csType moduleName aliasMap t ++ ">"
+  Maybe t       -> "Maybe<" ++ parens (csType moduleName aliasMap t) ++ ">"
+  x -> error $ "unknown type: " ++ show x
 
 cppType :: AliasMap -> Type -> String
 cppType aliasMap = \case

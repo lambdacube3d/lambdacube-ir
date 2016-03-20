@@ -1,5 +1,9 @@
 // generated file, do not modify!
+<<<<<<< 3b50722f433ec5ecc515ea1441fd633d85118cb9
 // 2016-03-01T13:00:40.810157000000Z
+=======
+// 2016-03-20T21:42:12.996366000000Z
+>>>>>>> working c# backend
 
 #ifndef HEADER_LambdaCube.TypeInfo_H
 #define HEADER_LambdaCube.TypeInfo_H
