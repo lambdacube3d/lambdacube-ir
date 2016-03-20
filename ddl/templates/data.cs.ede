@@ -45,23 +45,23 @@ namespace {{ moduleName }} {
         {% when "V2" %}
         case Type.{{ t.value | csTypeEnum }}:
           return new {{ t.value | csType }}
-            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value | csTypeEnum }},obj["x"])
-            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value | csTypeEnum }},obj["y"])
+            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["x"])
+            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["y"])
             };
         {% when "V3" %}
         case Type.{{ t.value | csTypeEnum }}:
           return new {{ t.value | csType }}
-            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value | csTypeEnum }},obj["x"])
-            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value | csTypeEnum }},obj["y"])
-            , z = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value | csTypeEnum }},obj["z"])
+            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["x"])
+            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["y"])
+            , z = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["z"])
             };
         {% when "V4" %}
         case Type.{{ t.value | csTypeEnum }}:
           return new {{ t.value | csType }}
-            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value | csTypeEnum }},obj["x"])
-            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value | csTypeEnum }},obj["y"])
-            , z = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value | csTypeEnum }},obj["z"])
-            , w = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value | csTypeEnum }},obj["w"])
+            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["x"])
+            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["y"])
+            , z = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["z"])
+            , w = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["w"])
             };
         {% when "Map" %}
         case Type.{{ t.value | csTypeEnum }}: {

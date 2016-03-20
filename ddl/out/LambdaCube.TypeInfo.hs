@@ -1,9 +1,13 @@
 -- generated file, do not modify!
+<<<<<<< c5e063b3c9aeff65161e24445e9672daff980b45
 <<<<<<< 3b50722f433ec5ecc515ea1441fd633d85118cb9
 -- 2016-03-01T13:00:40.810157000000Z
 =======
 -- 2016-03-20T21:42:12.996366000000Z
 >>>>>>> working c# backend
+=======
+-- 2016-03-20T22:19:43.646837000000Z
+>>>>>>> fix c#
 
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
 module LambdaCube.TypeInfo where

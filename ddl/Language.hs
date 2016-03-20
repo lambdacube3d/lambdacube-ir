@@ -83,7 +83,17 @@ data Type
 
 collectTypes :: AliasMap -> ModuleDef -> Set Type
 collectTypes aliasMap ModuleDef{..} = Set.fromList $ map (normalize aliasMap) $ concat
-  [Data dataName : [fieldType | ConstructorDef{..} <- constructors, Field{..} <- fields] | DataDef{..} <- definitions]
+  [Data dataName : concatMap flatType [fieldType | ConstructorDef{..} <- constructors, Field{..} <- fields] | DataDef{..} <- definitions]
+ where
+  flatType t = case t of
+    V2 a    -> [t,a]
+    V3 a    -> [t,a]
+    V4 a    -> [t,a]
+    Array a -> [t,a]
+    List a  -> [t,a]
+    Maybe a -> [t,a]
+    Map k v -> [t,k,v]
+    _ -> [t]
 
 parens :: String -> String
 parens a
