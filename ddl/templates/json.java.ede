@@ -1,0 +1,114 @@
+// generated file, do not modify!
+// {{ dateTime }}
+
+package {{ moduleName }};
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import org.json.*;
+import RT.*;
+
+{% for m in imports %}
+import {{ m.value }}.*;
+{% endfor %}
+
+public class JSON {
+  // JSON deserializer
+  public enum Type { {% for t in usedTypes %}
+    {{ t.value | typeEnum }}{% if !t.last %},{% endif %}{% endfor %}
+  }
+
+  public static Object fromJSON(Type type, Object rawObj) throws JSONException, Exception {
+    switch (type) {
+      {% for t in usedTypes %}
+      {% case t.value.tag %}
+      {% when "Data" %}
+      {% when "V2" %}
+      case {{ t.value | typeEnum }}: {
+        JSONObject obj = (JSONObject)rawObj;
+        return new {{ t.value | javaType }}
+          ( ({{ t.value.type_ | javaType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj.get("x"))
+          , ({{ t.value.type_ | javaType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj.get("y"))
+          );
+      }
+      {% when "V3" %}
+      case {{ t.value | typeEnum }}: {
+        JSONObject obj = (JSONObject)rawObj;
+        return new {{ t.value | javaType }}
+          ( ({{ t.value.type_ | javaType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj.get("x"))
+          , ({{ t.value.type_ | javaType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj.get("y"))
+          , ({{ t.value.type_ | javaType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj.get("z"))
+          );
+      }
+      {% when "V4" %}
+      case {{ t.value | typeEnum }}: {
+        JSONObject obj = (JSONObject)rawObj;
+        return new {{ t.value | javaType }}
+          ( ({{ t.value.type_ | javaType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj.get("x"))
+          , ({{ t.value.type_ | javaType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj.get("y"))
+          , ({{ t.value.type_ | javaType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj.get("z"))
+          , ({{ t.value.type_ | javaType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj.get("w"))
+          );
+      }
+      {% when "Map" %}
+/*
+      case {{ t.value | typeEnum }}: {
+        var map = new {{ t.value | javaType }} ();
+        foreach(var i in (JSONObject)rawObj) {
+          map.Add( ({{ t.value.key_ | javaType }})fromJSON(Type.{{ t.value.key_ | typeEnum }},i.Key)
+                 , ({{ t.value.value_ | javaType }})fromJSON(Type.{{ t.value.value_ | typeEnum }},i.Value));
+        }
+        return map;
+      }
+*/
+      {% when "Array" %}
+//      case {{ t.value | typeEnum }}: return ((JArray)obj).Select(x => fromJSON (Type.{{ t.value.type_ | typeEnum }}, x)).ToList();
+      {% when "List" %}
+//      case {{ t.value | typeEnum }}: return ((JArray)obj).Select(x => fromJSON (Type.{{ t.value.type_ | typeEnum }}, x)).ToList();
+      {% when "Maybe" %}
+/*
+      case {{ t.value | typeEnum }}: {
+        var m = new {{ t.value | javaType }} ();
+        if (obj == null || obj.Type == JTokenType.Null) {
+          m.valid = false;
+        } else {
+          m.valid = true;
+          m.data = ({{ t.value.type_ | javaType }})fromJSON (Type.{{ t.value.type_ | typeEnum }},obj);
+        }
+        return m;
+      }
+*/
+      {% else %}
+      case {{ t.value | typeEnum }}: return ({{ t.value | javaType }})rawObj;
+      {% endcase %}
+      {% endfor %}
+
+      {% for t in definitions %}
+      case {{ t.value.dataName }}: {
+        JSONObject obj = (JSONObject)rawObj;
+        String tag = obj.getString("tag");
+        {{ t.value.dataName }}.Tag tagType;
+        switch (tag) {
+        {% for c in t.value.constructors %}
+          case "{{ c.value.name }}":{% if (c.value.fields | empty) %} tagType = {{ t.value.dataName }}.Tag.{{ c.value.name }}; break;
+{% else %} {
+            {{ t.value.dataName }}.{{ c.value.name }}_ tv = new {{ t.value.dataName }}().new {{ c.value.name }}_();{% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
+            tv.{{ f.value.fieldName }} = ({{ f.value.fieldType | javaType }})fromJSON(Type.{{ f.value.fieldType | typeEnum }},obj.get("{{ f.value.fieldName }}"));{% else %}
+            tv._{{ f.index0 }} = ({{ f.value.fieldType | javaType }})fromJSON(Type.{{ f.value.fieldType | typeEnum }},obj.get("arg{{ f.index0 }}"));{% endif %}{% endfor %}
+            return tv;
+          }
+          {% endif %}
+        {% endfor %}
+          default: throw new Exception("unknown constructor: " + tag);
+        }
+        {% if t.value | hasEnumConstructor %}
+        {{ t.value.dataName }} o = new {{ t.value.dataName }}();
+        o.tag = tagType;
+        return o;
+        {% endif %}
+      }
+      {% endfor %}
+    }
+    throw new Exception("unknown type");
+  }
+}

@@ -81,6 +81,10 @@ data Type
   | Data { name_ :: String }
   deriving (Show,Generic,Eq,Ord)
 
+hasEnumConstructor :: DataDef -> Bool
+hasEnumConstructor DataDef{..} = or [null fields | ConstructorDef{..} <- constructors]
+hasEnumConstructor _ = False
+
 collectTypes :: AliasMap -> ModuleDef -> Set Type
 collectTypes aliasMap ModuleDef{..} = Set.fromList $ map (normalize aliasMap) $ concat
   [Data dataName : concatMap flatType [fieldType | ConstructorDef{..} <- constructors, Field{..} <- fields] | DataDef{..} <- definitions]
@@ -255,11 +259,14 @@ javaType aliasMap a = case normalize aliasMap a of
   Array t       -> "ArrayList<" ++ javaType aliasMap t ++ ">"
   List t        -> "ArrayList<" ++ javaType aliasMap t ++ ">"
   Map k v       -> "HashMap<" ++ javaType aliasMap k ++ ", " ++ javaType aliasMap v ++ ">"
-  _ -> "Integer"
-  --x -> error $ "javaType: " ++ show x
+  V2 t          -> "V2<" ++ javaType aliasMap t ++ ">"
+  V3 t          -> "V3<" ++ javaType aliasMap t ++ ">"
+  V4 t          -> "V4<" ++ javaType aliasMap t ++ ">"
+  Maybe t       -> "Maybe<" ++ parens (javaType aliasMap t) ++ ">"
+  x -> error $ "javaType: " ++ show x
 
-csTypeEnum :: AliasMap -> Type -> String
-csTypeEnum aliasMap a = case normalize aliasMap a of
+typeEnum :: AliasMap -> Type -> String
+typeEnum aliasMap a = case normalize aliasMap a of
   Data t        -> t
   Int           -> "Int"
   Int32         -> "Int32"
@@ -268,13 +275,13 @@ csTypeEnum aliasMap a = case normalize aliasMap a of
   Float         -> "Float"
   Bool          -> "Bool"
   String        -> "String"
-  Array t       -> "Array_" ++ csTypeEnum aliasMap t
-  List t        -> "List_" ++ csTypeEnum aliasMap t
-  Map k v       -> "Map_" ++ csTypeEnum aliasMap k ++ "_" ++ csTypeEnum aliasMap v
-  V2 t          -> "V2_" ++ csTypeEnum aliasMap t
-  V3 t          -> "V3_" ++ csTypeEnum aliasMap t
-  V4 t          -> "V4_" ++ csTypeEnum aliasMap t
-  Maybe t       -> "Maybe_" ++ csTypeEnum aliasMap t
+  Array t       -> "Array_" ++ typeEnum aliasMap t
+  List t        -> "List_" ++ typeEnum aliasMap t
+  Map k v       -> "Map_" ++ typeEnum aliasMap k ++ "_" ++ typeEnum aliasMap v
+  V2 t          -> "V2_" ++ typeEnum aliasMap t
+  V3 t          -> "V3_" ++ typeEnum aliasMap t
+  V4 t          -> "V4_" ++ typeEnum aliasMap t
+  Maybe t       -> "Maybe_" ++ typeEnum aliasMap t
   x -> error $ "unknown type: " ++ show x
 
 csType :: String -> AliasMap -> Type -> String -- TODO

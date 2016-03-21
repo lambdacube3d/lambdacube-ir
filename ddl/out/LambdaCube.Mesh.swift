@@ -1,4 +1,5 @@
 // generated file, do not modify!
+<<<<<<< 4d40c4ee5ed15544d2ac7fb1ea7b61e89766d277
 <<<<<<< c5e063b3c9aeff65161e24445e9672daff980b45
 <<<<<<< 3b50722f433ec5ecc515ea1441fd633d85118cb9
 // 2016-03-01T13:00:40.781208000000Z
@@ -8,6 +9,9 @@
 =======
 // 2016-03-20T22:19:43.568791000000Z
 >>>>>>> fix c#
+=======
+// 2016-03-21T11:36:01.121658000000Z
+>>>>>>> work on java json loader
 
 enum MeshAttribute {
   case A_Float(Array<Float>)

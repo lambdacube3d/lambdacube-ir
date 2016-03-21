@@ -33,7 +33,7 @@ namespace {{ moduleName }} {
 
   // JSON deserializer
   enum Type { {% for t in usedTypes %}
-    {{ t.value | csTypeEnum }}{% if !t.last %},{% endif %}{% endfor %}
+    {{ t.value | typeEnum }}{% if !t.last %},{% endif %}{% endfor %}
   }
 
   class Loader {
@@ -43,52 +43,52 @@ namespace {{ moduleName }} {
         {% case t.value.tag %}
         {% when "Data" %}
         {% when "V2" %}
-        case Type.{{ t.value | csTypeEnum }}:
+        case Type.{{ t.value | typeEnum }}:
           return new {{ t.value | csType }}
-            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["x"])
-            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["y"])
+            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj["x"])
+            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj["y"])
             };
         {% when "V3" %}
-        case Type.{{ t.value | csTypeEnum }}:
+        case Type.{{ t.value | typeEnum }}:
           return new {{ t.value | csType }}
-            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["x"])
-            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["y"])
-            , z = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["z"])
+            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj["x"])
+            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj["y"])
+            , z = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj["z"])
             };
         {% when "V4" %}
-        case Type.{{ t.value | csTypeEnum }}:
+        case Type.{{ t.value | typeEnum }}:
           return new {{ t.value | csType }}
-            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["x"])
-            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["y"])
-            , z = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["z"])
-            , w = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | csTypeEnum }},obj["w"])
+            { x = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj["x"])
+            , y = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj["y"])
+            , z = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj["z"])
+            , w = ({{ t.value.type_ | csType }})fromJSON(Type.{{ t.value.type_ | typeEnum }},obj["w"])
             };
         {% when "Map" %}
-        case Type.{{ t.value | csTypeEnum }}: {
+        case Type.{{ t.value | typeEnum }}: {
           var map = new {{ t.value | csType }} ();
           foreach(var i in (JObject)obj) {
-            map.Add( ({{ t.value.key_ | csType }})fromJSON(Type.{{ t.value.key_ | csTypeEnum }},i.Key)
-                   , ({{ t.value.value_ | csType }})fromJSON(Type.{{ t.value.value_ | csTypeEnum }},i.Value));
+            map.Add( ({{ t.value.key_ | csType }})fromJSON(Type.{{ t.value.key_ | typeEnum }},i.Key)
+                   , ({{ t.value.value_ | csType }})fromJSON(Type.{{ t.value.value_ | typeEnum }},i.Value));
           }
           return map;
         }
         {% when "Array" %}
-        case Type.{{ t.value | csTypeEnum }}: return ((JArray)obj).Select(x => fromJSON (Type.{{ t.value.type_ | csTypeEnum }}, x)).ToList();
+        case Type.{{ t.value | typeEnum }}: return ((JArray)obj).Select(x => fromJSON (Type.{{ t.value.type_ | typeEnum }}, x)).ToList();
         {% when "List" %}
-        case Type.{{ t.value | csTypeEnum }}: return ((JArray)obj).Select(x => fromJSON (Type.{{ t.value.type_ | csTypeEnum }}, x)).ToList();
+        case Type.{{ t.value | typeEnum }}: return ((JArray)obj).Select(x => fromJSON (Type.{{ t.value.type_ | typeEnum }}, x)).ToList();
         {% when "Maybe" %}
-        case Type.{{ t.value | csTypeEnum }}: {
+        case Type.{{ t.value | typeEnum }}: {
           var m = new {{ t.value | csType }} ();
           if (obj == null || obj.Type == JTokenType.Null) {
             m.valid = false;
           } else {
             m.valid = true;
-            m.data = ({{ t.value.type_ | csType }})fromJSON (Type.{{ t.value.type_ | csTypeEnum }},obj);
+            m.data = ({{ t.value.type_ | csType }})fromJSON (Type.{{ t.value.type_ | typeEnum }},obj);
           }
           return m;
         }
         {% else %}
-        case Type.{{ t.value | csTypeEnum }}: return ({{ t.value | csType }})obj;
+        case Type.{{ t.value | typeEnum }}: return ({{ t.value | csType }})obj;
         {% endcase %}
         {% endfor %}
 
@@ -101,8 +101,8 @@ namespace {{ moduleName }} {
             tagType = {{ t.value.dataName }}.Tag.{{ c.value.name }};
             {% if !(c.value.fields | empty) %}
             data.{{ c.value.name }} tv = new data.{{ c.value.name }}();{% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
-            tv.{{ f.value.fieldName }} = ({{ f.value.fieldType | csType }})fromJSON(Type.{{ f.value.fieldType | csTypeEnum }},obj["{{ f.value.fieldName }}"]);{% else %}
-            tv._{{ f.index0 }} = ({{ f.value.fieldType | csType }})fromJSON(Type.{{ f.value.fieldType | csTypeEnum }},obj["arg{{ f.index0 }}"]);{% endif %}{% endfor %}
+            tv.{{ f.value.fieldName }} = ({{ f.value.fieldType | csType }})fromJSON(Type.{{ f.value.fieldType | typeEnum }},obj["{{ f.value.fieldName }}"]);{% else %}
+            tv._{{ f.index0 }} = ({{ f.value.fieldType | csType }})fromJSON(Type.{{ f.value.fieldType | typeEnum }},obj["arg{{ f.index0 }}"]);{% endif %}{% endfor %}
             return tv;
             {% endif %}
           }

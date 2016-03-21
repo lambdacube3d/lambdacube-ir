@@ -28,6 +28,7 @@ main :: IO ()
 main = do
   dataSwift <- eitherParseFile "templates/data.swift.ede"
   dataJava <- eitherParseFile "templates/data.java.ede"
+  jsonJava <- eitherParseFile "templates/json.java.ede"
   dataHpp <- eitherParseFile "templates/data.hpp.ede"
   dataHpp2 <- eitherParseFile "templates/data.hpp2.ede"
   dataCpp <- eitherParseFile "templates/data.cpp.ede"
@@ -55,9 +56,10 @@ main = do
                 , "psType"          @: psType aliasMap
                 , "cppType"         @: cppType aliasMap
                 , "csType"          @: csType name aliasMap
-                , "csTypeEnum"      @: csTypeEnum aliasMap
+                , "typeEnum"        @: typeEnum aliasMap
                 , "javaType"        @: javaType aliasMap
                 , "swiftType"       @: swiftType aliasMap
+                , "hasEnumConstructor" @: hasEnumConstructor
                 ]
 
         -- Haskell
@@ -69,6 +71,9 @@ main = do
         either error (\x -> writeFile ("out/" ++ name ++ ".hpp") $ LText.unpack x) $ dataHpp >>= (\t -> eitherRenderWith mylib t env)
         either error (\x -> writeFile ("out/" ++ name ++ ".cpp") $ LText.unpack x) $ dataCpp >>= (\t -> eitherRenderWith mylib t env)
         -- Java
+        let toPath a = flip map a $ \case
+              '.' -> '/'
+              c -> c
         forM_ [a | a@DataDef{} <- def {-TODO-}] $ \d -> do
           let env = fromPairs
                 [ "def"         .= d
@@ -76,13 +81,11 @@ main = do
                 , "dateTime"    .= dt
                 , "imports"     .= imports
                 ]
-              toPath a = flip map a $ \case
-                '.' -> '/'
-                c -> c
               fname = "out/java/" ++ toPath name ++ "/" ++ dataName d ++ ".java"
               dir = takeDirectory fname
           createDirectoryIfMissing True dir
           either error (\x -> writeFile fname $ LText.unpack x) $ dataJava >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFile ("out/java/" ++ toPath name ++ "/JSON.java") $ LText.unpack x) $ jsonJava >>= (\t -> eitherRenderWith mylib t env)
         -- C#
         either error (\x -> writeFile ("out/" ++ name ++ ".cs") $ LText.unpack x) $ dataCs >>= (\t -> eitherRenderWith mylib t env)
         -- Swift

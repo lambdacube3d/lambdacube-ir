@@ -5,6 +5,7 @@ package {{ moduleName }};
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import RT.*;
 
 {% for m in imports %}
 import {{ m.value }}.*;
@@ -21,6 +22,7 @@ public class {{ def.dataName }} {
   public class {{ c.value.name }}_ extends {{ def.dataName }} { {% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
     public {{ f.value.fieldType | javaType }} {{ f.value.fieldName }};{% else %}
     public {{ f.value.fieldType | javaType }} _{{ f.index0 }};{% endif %}{% endfor %}
+    public {{ c.value.name }}_() { tag = {{ def.dataName }}.Tag.{{ c.value.name }}; }
   }{% endif %}{% endfor %}
 }
 
