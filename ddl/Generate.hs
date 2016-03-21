@@ -44,7 +44,8 @@ main = do
               , "dateTime"    .= dt
               , "imports"     .= imports
               , "usedTypes"   .= collectTypes aliasMap mod
-              , "usedCSTypes" .= (Set.fromList $ Map.elems $ Map.fromList [ (csType name aliasMap t,t) | t <- Set.toList $ collectTypes aliasMap mod])
+              , "usedCSTypes"   .= (Set.fromList $ Map.elems $ Map.fromList [ (csType name aliasMap t,t) | t <- Set.toList $ collectTypes aliasMap mod])
+              , "usedJavaTypes" .= (Set.fromList $ Map.elems $ Map.fromList [ (javaType aliasMap t,t) | t <- Set.toList $ collectTypes aliasMap mod])
               ]
             aliasMap = Map.fromList [(n,t) | TypeAlias n t <- def]
             mylib :: HashMap Text Term

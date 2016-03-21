@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T14:06:55.479415000000Z
+// 2016-03-21T15:32:17.924228000000Z
 
 #ifndef HEADER_LambdaCube.TypeInfo_H
 #define HEADER_LambdaCube.TypeInfo_H

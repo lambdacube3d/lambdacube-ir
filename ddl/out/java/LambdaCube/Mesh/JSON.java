@@ -1,11 +1,12 @@
 // generated file, do not modify!
-// 2016-03-21T14:06:55.404479000000Z
+// 2016-03-21T15:32:17.804995000000Z
 
 package LambdaCube.Mesh;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import org.json.*;
 import RT.*;
 
@@ -266,5 +267,250 @@ public class JSON {
       }
     }
     throw new Exception("unknown type");
+  }
+
+  public static Object toJSON(Type type, Object rawObj) throws JSONException, Exception {
+    switch (type) {
+      case MeshAttribute: {
+        MeshAttribute v = (MeshAttribute)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case A_Float:
+            obj.put("tag", "A_Float");
+            {
+              MeshAttribute.A_Float_ tv = (MeshAttribute.A_Float_)v;
+              obj.put("arg0", toJSON(Type.Array_Float,tv._0));
+            }
+            break;
+          case A_V2F:
+            obj.put("tag", "A_V2F");
+            {
+              MeshAttribute.A_V2F_ tv = (MeshAttribute.A_V2F_)v;
+              obj.put("arg0", toJSON(Type.Array_V2_Float,tv._0));
+            }
+            break;
+          case A_V3F:
+            obj.put("tag", "A_V3F");
+            {
+              MeshAttribute.A_V3F_ tv = (MeshAttribute.A_V3F_)v;
+              obj.put("arg0", toJSON(Type.Array_V3_Float,tv._0));
+            }
+            break;
+          case A_V4F:
+            obj.put("tag", "A_V4F");
+            {
+              MeshAttribute.A_V4F_ tv = (MeshAttribute.A_V4F_)v;
+              obj.put("arg0", toJSON(Type.Array_V4_Float,tv._0));
+            }
+            break;
+          case A_M22F:
+            obj.put("tag", "A_M22F");
+            {
+              MeshAttribute.A_M22F_ tv = (MeshAttribute.A_M22F_)v;
+              obj.put("arg0", toJSON(Type.Array_V2_V2_Float,tv._0));
+            }
+            break;
+          case A_M33F:
+            obj.put("tag", "A_M33F");
+            {
+              MeshAttribute.A_M33F_ tv = (MeshAttribute.A_M33F_)v;
+              obj.put("arg0", toJSON(Type.Array_V3_V3_Float,tv._0));
+            }
+            break;
+          case A_M44F:
+            obj.put("tag", "A_M44F");
+            {
+              MeshAttribute.A_M44F_ tv = (MeshAttribute.A_M44F_)v;
+              obj.put("arg0", toJSON(Type.Array_V4_V4_Float,tv._0));
+            }
+            break;
+          case A_Int:
+            obj.put("tag", "A_Int");
+            {
+              MeshAttribute.A_Int_ tv = (MeshAttribute.A_Int_)v;
+              obj.put("arg0", toJSON(Type.Array_Int32,tv._0));
+            }
+            break;
+          case A_Word:
+            obj.put("tag", "A_Word");
+            {
+              MeshAttribute.A_Word_ tv = (MeshAttribute.A_Word_)v;
+              obj.put("arg0", toJSON(Type.Array_Word32,tv._0));
+            }
+            break;
+        }
+        return obj;
+      }
+      case MeshPrimitive: {
+        MeshPrimitive v = (MeshPrimitive)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case P_Points:
+            obj.put("tag", "P_Points");
+            break;
+          case P_TriangleStrip:
+            obj.put("tag", "P_TriangleStrip");
+            break;
+          case P_Triangles:
+            obj.put("tag", "P_Triangles");
+            break;
+          case P_TriangleStripI:
+            obj.put("tag", "P_TriangleStripI");
+            {
+              MeshPrimitive.P_TriangleStripI_ tv = (MeshPrimitive.P_TriangleStripI_)v;
+              obj.put("arg0", toJSON(Type.Array_Int32,tv._0));
+            }
+            break;
+          case P_TrianglesI:
+            obj.put("tag", "P_TrianglesI");
+            {
+              MeshPrimitive.P_TrianglesI_ tv = (MeshPrimitive.P_TrianglesI_)v;
+              obj.put("arg0", toJSON(Type.Array_Int32,tv._0));
+            }
+            break;
+        }
+        return obj;
+      }
+      case Mesh: {
+        Mesh v = (Mesh)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case Mesh:
+            obj.put("tag", "Mesh");
+            {
+              Mesh.Mesh_ tv = (Mesh.Mesh_)v;
+              obj.put("mAttributes", toJSON(Type.Map_String_MeshAttribute,tv.mAttributes));
+              obj.put("mPrimitive", toJSON(Type.MeshPrimitive,tv.mPrimitive));
+            }
+            break;
+        }
+        return obj;
+      }
+
+      case Word32: { return rawObj; }
+      case Float: { return rawObj; }
+      case String: { return rawObj; }
+      case V2_Float: {
+        V2<Float> v = (V2<Float>)rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.Float,v.x));
+        obj.put("y", toJSON(Type.Float,v.y));
+        return obj;
+      }
+      case V2_V2_Float: {
+        V2<V2<Float>> v = (V2<V2<Float>>)rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.V2_Float,v.x));
+        obj.put("y", toJSON(Type.V2_Float,v.y));
+        return obj;
+      }
+      case V3_Float: {
+        V3<Float> v = (V3<Float>)rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.Float,v.x));
+        obj.put("y", toJSON(Type.Float,v.y));
+        obj.put("z", toJSON(Type.Float,v.z));
+        return obj;
+      }
+      case V3_V3_Float: {
+        V3<V3<Float>> v = (V3<V3<Float>>)rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.V3_Float,v.x));
+        obj.put("y", toJSON(Type.V3_Float,v.y));
+        obj.put("z", toJSON(Type.V3_Float,v.z));
+        return obj;
+      }
+      case V4_Float: {
+        V4<Float> v = (V4<Float>)rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.Float,v.x));
+        obj.put("y", toJSON(Type.Float,v.y));
+        obj.put("z", toJSON(Type.Float,v.z));
+        obj.put("w", toJSON(Type.Float,v.w));
+        return obj;
+      }
+      case V4_V4_Float: {
+        V4<V4<Float>> v = (V4<V4<Float>>)rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.V4_Float,v.x));
+        obj.put("y", toJSON(Type.V4_Float,v.y));
+        obj.put("z", toJSON(Type.V4_Float,v.z));
+        obj.put("w", toJSON(Type.V4_Float,v.w));
+        return obj;
+      }
+      case Array_Word32: {
+        ArrayList<Integer> v = (ArrayList<Integer>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Integer i : v) {
+          obj.put(toJSON(Type.Word32,i));
+        }
+        return obj;
+      }
+      case Array_Float: {
+        ArrayList<Float> v = (ArrayList<Float>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Float i : v) {
+          obj.put(toJSON(Type.Float,i));
+        }
+        return obj;
+      }
+      case Array_V2_Float: {
+        ArrayList<V2<Float>> v = (ArrayList<V2<Float>>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(V2<Float> i : v) {
+          obj.put(toJSON(Type.V2_Float,i));
+        }
+        return obj;
+      }
+      case Array_V2_V2_Float: {
+        ArrayList<V2<V2<Float>>> v = (ArrayList<V2<V2<Float>>>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(V2<V2<Float>> i : v) {
+          obj.put(toJSON(Type.V2_V2_Float,i));
+        }
+        return obj;
+      }
+      case Array_V3_Float: {
+        ArrayList<V3<Float>> v = (ArrayList<V3<Float>>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(V3<Float> i : v) {
+          obj.put(toJSON(Type.V3_Float,i));
+        }
+        return obj;
+      }
+      case Array_V3_V3_Float: {
+        ArrayList<V3<V3<Float>>> v = (ArrayList<V3<V3<Float>>>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(V3<V3<Float>> i : v) {
+          obj.put(toJSON(Type.V3_V3_Float,i));
+        }
+        return obj;
+      }
+      case Array_V4_Float: {
+        ArrayList<V4<Float>> v = (ArrayList<V4<Float>>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(V4<Float> i : v) {
+          obj.put(toJSON(Type.V4_Float,i));
+        }
+        return obj;
+      }
+      case Array_V4_V4_Float: {
+        ArrayList<V4<V4<Float>>> v = (ArrayList<V4<V4<Float>>>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(V4<V4<Float>> i : v) {
+          obj.put(toJSON(Type.V4_V4_Float,i));
+        }
+        return obj;
+      }
+      case Map_String_MeshAttribute: {
+        HashMap<String, MeshAttribute> v = (HashMap<String, MeshAttribute>)rawObj;
+        JSONObject obj = new JSONObject();
+        for (Map.Entry<String,MeshAttribute> i : v.entrySet()) {
+          obj.put(i.getKey(), toJSON(Type.MeshAttribute,i.getValue()));
+        }
+        return obj;
+      }
+    }
+    return null;
   }
 }

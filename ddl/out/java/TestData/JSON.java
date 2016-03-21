@@ -1,11 +1,12 @@
 // generated file, do not modify!
-// 2016-03-21T14:06:55.528630000000Z
+// 2016-03-21T15:32:18.087397000000Z
 
 package TestData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import org.json.*;
 import RT.*;
 
@@ -239,5 +240,213 @@ public class JSON {
       }
     }
     throw new Exception("unknown type");
+  }
+
+  public static Object toJSON(Type type, Object rawObj) throws JSONException, Exception {
+    switch (type) {
+      case ClientInfo: {
+        ClientInfo v = (ClientInfo)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case ClientInfo:
+            obj.put("tag", "ClientInfo");
+            {
+              ClientInfo.ClientInfo_ tv = (ClientInfo.ClientInfo_)v;
+              obj.put("clientName", toJSON(Type.String,tv.clientName));
+              obj.put("clientBackend", toJSON(Type.Backend,tv.clientBackend));
+            }
+            break;
+        }
+        return obj;
+      }
+      case Frame: {
+        Frame v = (Frame)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case Frame:
+            obj.put("tag", "Frame");
+            {
+              Frame.Frame_ tv = (Frame.Frame_)v;
+              obj.put("renderCount", toJSON(Type.Int,tv.renderCount));
+              obj.put("frameUniforms", toJSON(Type.Map_String_Value,tv.frameUniforms));
+              obj.put("frameTextures", toJSON(Type.Map_String_Int,tv.frameTextures));
+            }
+            break;
+        }
+        return obj;
+      }
+      case Scene: {
+        Scene v = (Scene)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case Scene:
+            obj.put("tag", "Scene");
+            {
+              Scene.Scene_ tv = (Scene.Scene_)v;
+              obj.put("objectArrays", toJSON(Type.Map_String_Array_Int,tv.objectArrays));
+              obj.put("renderTargetWidth", toJSON(Type.Int,tv.renderTargetWidth));
+              obj.put("renderTargetHeight", toJSON(Type.Int,tv.renderTargetHeight));
+              obj.put("frames", toJSON(Type.Array_Frame,tv.frames));
+            }
+            break;
+        }
+        return obj;
+      }
+      case PipelineInfo: {
+        PipelineInfo v = (PipelineInfo)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case PipelineInfo:
+            obj.put("tag", "PipelineInfo");
+            {
+              PipelineInfo.PipelineInfo_ tv = (PipelineInfo.PipelineInfo_)v;
+              obj.put("pipelineName", toJSON(Type.String,tv.pipelineName));
+              obj.put("pipeline", toJSON(Type.Pipeline,tv.pipeline));
+            }
+            break;
+        }
+        return obj;
+      }
+      case RenderJob: {
+        RenderJob v = (RenderJob)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case RenderJob:
+            obj.put("tag", "RenderJob");
+            {
+              RenderJob.RenderJob_ tv = (RenderJob.RenderJob_)v;
+              obj.put("meshes", toJSON(Type.Array_Mesh,tv.meshes));
+              obj.put("textures", toJSON(Type.Array_String,tv.textures));
+              obj.put("schema", toJSON(Type.PipelineSchema,tv.schema));
+              obj.put("scenes", toJSON(Type.Array_Scene,tv.scenes));
+              obj.put("pipelines", toJSON(Type.Array_PipelineInfo,tv.pipelines));
+            }
+            break;
+        }
+        return obj;
+      }
+      case FrameResult: {
+        FrameResult v = (FrameResult)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case FrameResult:
+            obj.put("tag", "FrameResult");
+            {
+              FrameResult.FrameResult_ tv = (FrameResult.FrameResult_)v;
+              obj.put("frRenderTimes", toJSON(Type.Array_Float,tv.frRenderTimes));
+              obj.put("frImageWidth", toJSON(Type.Int,tv.frImageWidth));
+              obj.put("frImageHeight", toJSON(Type.Int,tv.frImageHeight));
+            }
+            break;
+        }
+        return obj;
+      }
+      case RenderJobResult: {
+        RenderJobResult v = (RenderJobResult)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case RenderJobResult:
+            obj.put("tag", "RenderJobResult");
+            {
+              RenderJobResult.RenderJobResult_ tv = (RenderJobResult.RenderJobResult_)v;
+              obj.put("arg0", toJSON(Type.FrameResult,tv._0));
+            }
+            break;
+          case RenderJobError:
+            obj.put("tag", "RenderJobError");
+            {
+              RenderJobResult.RenderJobError_ tv = (RenderJobResult.RenderJobError_)v;
+              obj.put("arg0", toJSON(Type.String,tv._0));
+            }
+            break;
+        }
+        return obj;
+      }
+
+      case Int: { return rawObj; }
+      case Float: { return rawObj; }
+      case String: { return rawObj; }
+      case Array_Int: {
+        ArrayList<Integer> v = (ArrayList<Integer>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Integer i : v) {
+          obj.put(toJSON(Type.Int,i));
+        }
+        return obj;
+      }
+      case Array_Float: {
+        ArrayList<Float> v = (ArrayList<Float>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Float i : v) {
+          obj.put(toJSON(Type.Float,i));
+        }
+        return obj;
+      }
+      case Array_String: {
+        ArrayList<String> v = (ArrayList<String>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(String i : v) {
+          obj.put(toJSON(Type.String,i));
+        }
+        return obj;
+      }
+      case Array_Frame: {
+        ArrayList<Frame> v = (ArrayList<Frame>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Frame i : v) {
+          obj.put(toJSON(Type.Frame,i));
+        }
+        return obj;
+      }
+      case Array_Mesh: {
+        ArrayList<Mesh> v = (ArrayList<Mesh>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Mesh i : v) {
+          obj.put(toJSON(Type.Mesh,i));
+        }
+        return obj;
+      }
+      case Array_PipelineInfo: {
+        ArrayList<PipelineInfo> v = (ArrayList<PipelineInfo>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(PipelineInfo i : v) {
+          obj.put(toJSON(Type.PipelineInfo,i));
+        }
+        return obj;
+      }
+      case Array_Scene: {
+        ArrayList<Scene> v = (ArrayList<Scene>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Scene i : v) {
+          obj.put(toJSON(Type.Scene,i));
+        }
+        return obj;
+      }
+      case Map_String_Int: {
+        HashMap<String, Integer> v = (HashMap<String, Integer>)rawObj;
+        JSONObject obj = new JSONObject();
+        for (Map.Entry<String,Integer> i : v.entrySet()) {
+          obj.put(i.getKey(), toJSON(Type.Int,i.getValue()));
+        }
+        return obj;
+      }
+      case Map_String_Array_Int: {
+        HashMap<String, ArrayList<Integer>> v = (HashMap<String, ArrayList<Integer>>)rawObj;
+        JSONObject obj = new JSONObject();
+        for (Map.Entry<String,ArrayList<Integer>> i : v.entrySet()) {
+          obj.put(i.getKey(), toJSON(Type.Array_Int,i.getValue()));
+        }
+        return obj;
+      }
+      case Map_String_Value: {
+        HashMap<String, Value> v = (HashMap<String, Value>)rawObj;
+        JSONObject obj = new JSONObject();
+        for (Map.Entry<String,Value> i : v.entrySet()) {
+          obj.put(i.getKey(), toJSON(Type.Value,i.getValue()));
+        }
+        return obj;
+      }
+    }
+    return null;
   }
 }

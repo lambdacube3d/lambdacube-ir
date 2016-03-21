@@ -1,11 +1,12 @@
 // generated file, do not modify!
-// 2016-03-21T14:06:55.479415000000Z
+// 2016-03-21T15:32:17.924228000000Z
 
 package LambdaCube.TypeInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import org.json.*;
 import RT.*;
 
@@ -97,5 +98,88 @@ public class JSON {
       }
     }
     throw new Exception("unknown type");
+  }
+
+  public static Object toJSON(Type type, Object rawObj) throws JSONException, Exception {
+    switch (type) {
+      case Range: {
+        Range v = (Range)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case Range:
+            obj.put("tag", "Range");
+            {
+              Range.Range_ tv = (Range.Range_)v;
+              obj.put("startLine", toJSON(Type.Int,tv.startLine));
+              obj.put("startColumn", toJSON(Type.Int,tv.startColumn));
+              obj.put("endLine", toJSON(Type.Int,tv.endLine));
+              obj.put("endColumn", toJSON(Type.Int,tv.endColumn));
+            }
+            break;
+        }
+        return obj;
+      }
+      case TypeInfo: {
+        TypeInfo v = (TypeInfo)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case TypeInfo:
+            obj.put("tag", "TypeInfo");
+            {
+              TypeInfo.TypeInfo_ tv = (TypeInfo.TypeInfo_)v;
+              obj.put("range", toJSON(Type.Range,tv.range));
+              obj.put("text", toJSON(Type.String,tv.text));
+            }
+            break;
+        }
+        return obj;
+      }
+      case CompileResult: {
+        CompileResult v = (CompileResult)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case CompileError:
+            obj.put("tag", "CompileError");
+            {
+              CompileResult.CompileError_ tv = (CompileResult.CompileError_)v;
+              obj.put("arg0", toJSON(Type.Array_Range,tv._0));
+              obj.put("arg1", toJSON(Type.String,tv._1));
+              obj.put("arg2", toJSON(Type.Array_TypeInfo,tv._2));
+            }
+            break;
+          case Compiled:
+            obj.put("tag", "Compiled");
+            {
+              CompileResult.Compiled_ tv = (CompileResult.Compiled_)v;
+              obj.put("arg0", toJSON(Type.String,tv._0));
+              obj.put("arg1", toJSON(Type.String,tv._1));
+              obj.put("arg2", toJSON(Type.Pipeline,tv._2));
+              obj.put("arg3", toJSON(Type.Array_TypeInfo,tv._3));
+            }
+            break;
+        }
+        return obj;
+      }
+
+      case Int: { return rawObj; }
+      case String: { return rawObj; }
+      case Array_Range: {
+        ArrayList<Range> v = (ArrayList<Range>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Range i : v) {
+          obj.put(toJSON(Type.Range,i));
+        }
+        return obj;
+      }
+      case Array_TypeInfo: {
+        ArrayList<TypeInfo> v = (ArrayList<TypeInfo>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(TypeInfo i : v) {
+          obj.put(toJSON(Type.TypeInfo,i));
+        }
+        return obj;
+      }
+    }
+    return null;
   }
 }

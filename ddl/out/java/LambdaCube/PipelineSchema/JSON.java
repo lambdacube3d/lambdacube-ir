@@ -1,11 +1,12 @@
 // generated file, do not modify!
-// 2016-03-21T14:06:55.360355000000Z
+// 2016-03-21T15:32:17.702608000000Z
 
 package LambdaCube.PipelineSchema;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import org.json.*;
 import RT.*;
 
@@ -119,5 +120,137 @@ public class JSON {
       }
     }
     throw new Exception("unknown type");
+  }
+
+  public static Object toJSON(Type type, Object rawObj) throws JSONException, Exception {
+    switch (type) {
+      case StreamType: {
+        StreamType v = (StreamType)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case Attribute_Word:
+            obj.put("tag", "Attribute_Word");
+            break;
+          case Attribute_V2U:
+            obj.put("tag", "Attribute_V2U");
+            break;
+          case Attribute_V3U:
+            obj.put("tag", "Attribute_V3U");
+            break;
+          case Attribute_V4U:
+            obj.put("tag", "Attribute_V4U");
+            break;
+          case Attribute_Int:
+            obj.put("tag", "Attribute_Int");
+            break;
+          case Attribute_V2I:
+            obj.put("tag", "Attribute_V2I");
+            break;
+          case Attribute_V3I:
+            obj.put("tag", "Attribute_V3I");
+            break;
+          case Attribute_V4I:
+            obj.put("tag", "Attribute_V4I");
+            break;
+          case Attribute_Float:
+            obj.put("tag", "Attribute_Float");
+            break;
+          case Attribute_V2F:
+            obj.put("tag", "Attribute_V2F");
+            break;
+          case Attribute_V3F:
+            obj.put("tag", "Attribute_V3F");
+            break;
+          case Attribute_V4F:
+            obj.put("tag", "Attribute_V4F");
+            break;
+          case Attribute_M22F:
+            obj.put("tag", "Attribute_M22F");
+            break;
+          case Attribute_M23F:
+            obj.put("tag", "Attribute_M23F");
+            break;
+          case Attribute_M24F:
+            obj.put("tag", "Attribute_M24F");
+            break;
+          case Attribute_M32F:
+            obj.put("tag", "Attribute_M32F");
+            break;
+          case Attribute_M33F:
+            obj.put("tag", "Attribute_M33F");
+            break;
+          case Attribute_M34F:
+            obj.put("tag", "Attribute_M34F");
+            break;
+          case Attribute_M42F:
+            obj.put("tag", "Attribute_M42F");
+            break;
+          case Attribute_M43F:
+            obj.put("tag", "Attribute_M43F");
+            break;
+          case Attribute_M44F:
+            obj.put("tag", "Attribute_M44F");
+            break;
+        }
+        return obj;
+      }
+      case ObjectArraySchema: {
+        ObjectArraySchema v = (ObjectArraySchema)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case ObjectArraySchema:
+            obj.put("tag", "ObjectArraySchema");
+            {
+              ObjectArraySchema.ObjectArraySchema_ tv = (ObjectArraySchema.ObjectArraySchema_)v;
+              obj.put("primitive", toJSON(Type.FetchPrimitive,tv.primitive));
+              obj.put("attributes", toJSON(Type.Map_String_StreamType,tv.attributes));
+            }
+            break;
+        }
+        return obj;
+      }
+      case PipelineSchema: {
+        PipelineSchema v = (PipelineSchema)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case PipelineSchema:
+            obj.put("tag", "PipelineSchema");
+            {
+              PipelineSchema.PipelineSchema_ tv = (PipelineSchema.PipelineSchema_)v;
+              obj.put("objectArrays", toJSON(Type.Map_String_ObjectArraySchema,tv.objectArrays));
+              obj.put("uniforms", toJSON(Type.Map_String_InputType,tv.uniforms));
+            }
+            break;
+        }
+        return obj;
+      }
+
+      case String: { return rawObj; }
+      case Map_String_InputType: {
+        HashMap<String, InputType> v = (HashMap<String, InputType>)rawObj;
+        JSONObject obj = new JSONObject();
+        for (Map.Entry<String,InputType> i : v.entrySet()) {
+          obj.put(i.getKey(), toJSON(Type.InputType,i.getValue()));
+        }
+        return obj;
+      }
+      case Map_String_ObjectArraySchema: {
+        HashMap<String, ObjectArraySchema> v = (HashMap<String, ObjectArraySchema>)rawObj;
+        JSONObject obj = new JSONObject();
+        for (Map.Entry<String,ObjectArraySchema> i : v.entrySet()) {
+          obj.put(i.getKey(), toJSON(Type.ObjectArraySchema,i.getValue()));
+        }
+        return obj;
+      }
+      case Map_String_StreamType: {
+        HashMap<String, StreamType> v = (HashMap<String, StreamType>)rawObj;
+        JSONObject obj = new JSONObject();
+        for (Map.Entry<String,StreamType> i : v.entrySet()) {
+          obj.put(i.getKey(), toJSON(Type.StreamType,i.getValue()));
+        }
+        return obj;
+      }
+    }
+    return null;
   }
 }

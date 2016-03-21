@@ -6,6 +6,7 @@ package {{ moduleName }};
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import org.json.*;
 import RT.*;
 
@@ -126,5 +127,98 @@ public class JSON {
       {% endfor %}
     }
     throw new Exception("unknown type");
+  }
+
+  public static Object toJSON(Type type, Object rawObj) throws JSONException, Exception {
+    switch (type) {
+  {% for t in definitions %}
+      case {{ t.value.dataName }}: {
+        {{ t.value.dataName }} v = ({{ t.value.dataName }})rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { {% for c in t.value.constructors %}
+          case {{ c.value.name }}:
+            obj.put("tag", "{{ c.value.name }}");{% if !(c.value.fields | empty) %}
+            {
+              {{ t.value.dataName }}.{{ c.value.name }}_ tv = ({{ t.value.dataName }}.{{ c.value.name }}_)v;{% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
+              obj.put("{{ f.value.fieldName }}", toJSON(Type.{{ f.value.fieldType | typeEnum }},tv.{{ f.value.fieldName }}));{% else %}
+              obj.put("arg{{ f.index0 }}", toJSON(Type.{{ f.value.fieldType | typeEnum }},tv._{{ f.index0 }}));{% endif %}{% endfor %}
+            }{% endif %}
+            break;{% endfor %}
+        }
+        return obj;
+      }
+  {% endfor %}
+
+  {% for t in usedJavaTypes %}
+    {% case t.value.tag %}
+    {% when "Data" %}
+    {% when "V2" %}
+      case {{ t.value | typeEnum }}: {
+        {{ t.value | javaType }} v = ({{ t.value | javaType }})rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.{{ t.value.type_ | typeEnum }},v.x));
+        obj.put("y", toJSON(Type.{{ t.value.type_ | typeEnum }},v.y));
+        return obj;
+      }
+    {% when "V3" %}
+      case {{ t.value | typeEnum }}: {
+        {{ t.value | javaType }} v = ({{ t.value | javaType }})rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.{{ t.value.type_ | typeEnum }},v.x));
+        obj.put("y", toJSON(Type.{{ t.value.type_ | typeEnum }},v.y));
+        obj.put("z", toJSON(Type.{{ t.value.type_ | typeEnum }},v.z));
+        return obj;
+      }
+    {% when "V4" %}
+      case {{ t.value | typeEnum }}: {
+        {{ t.value | javaType }} v = ({{ t.value | javaType }})rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.{{ t.value.type_ | typeEnum }},v.x));
+        obj.put("y", toJSON(Type.{{ t.value.type_ | typeEnum }},v.y));
+        obj.put("z", toJSON(Type.{{ t.value.type_ | typeEnum }},v.z));
+        obj.put("w", toJSON(Type.{{ t.value.type_ | typeEnum }},v.w));
+        return obj;
+      }
+    {% when "Maybe" %}
+      case {{ t.value | typeEnum }}: {
+        {{ t.value | javaType }} v = ({{ t.value | javaType }})rawObj;
+        if (v.valid) {
+          return toJSON(Type.{{ t.value.type_ | typeEnum }},v.data);
+        }
+        return JSONObject.NULL;
+      }
+    {% when "Map" %}
+      case {{ t.value | typeEnum }}: {
+        {{ t.value | javaType }} v = ({{ t.value | javaType }})rawObj;
+        JSONObject obj = new JSONObject();
+        for (Map.Entry<{{ t.value.key_ | javaType }},{{ t.value.value_ | javaType }}> i : v.entrySet()) {
+          obj.put(i.getKey(), toJSON(Type.{{ t.value.value_ | typeEnum }},i.getValue()));
+        }
+        return obj;
+      }
+    {% when "Array" %}
+      case {{ t.value | typeEnum }}: {
+        {{ t.value | javaType }} v = ({{ t.value | javaType }})rawObj;
+        JSONArray obj = new JSONArray();
+        for({{ t.value.type_ | javaType }} i : v) {
+          obj.put(toJSON(Type.{{ t.value.type_ | typeEnum }},i));
+        }
+        return obj;
+      }
+    {% when "List" %}
+      case {{ t.value | typeEnum }}: {
+        {{ t.value | javaType }} v = ({{ t.value | javaType }})rawObj;
+        JSONArray obj = new JSONArray();
+        for({{ t.value.type_ | javaType }} i : v) {
+          obj.put(toJSON(Type.{{ t.value.type_ | typeEnum }},i));
+        }
+        return obj;
+      }
+    {% else %}
+      case {{ t.value | typeEnum }}: { return rawObj; }
+    {% endcase %}
+  {% endfor %}
+    }
+    return null;
   }
 }
