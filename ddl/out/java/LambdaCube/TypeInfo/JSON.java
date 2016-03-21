@@ -1,10 +1,11 @@
 // generated file, do not modify!
-// 2016-03-21T13:31:10.409214000000Z
+// 2016-03-21T14:06:55.479415000000Z
 
 package LambdaCube.TypeInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import org.json.*;
 import RT.*;
 
@@ -27,8 +28,22 @@ public class JSON {
     switch (type) {
       case Int: return (Integer)rawObj;
       case String: return (String)rawObj;
-//      case Array_Range: return ((JArray)obj).Select(x => fromJSON (Type.Range, x)).ToList();
-//      case Array_TypeInfo: return ((JArray)obj).Select(x => fromJSON (Type.TypeInfo, x)).ToList();
+      case Array_Range: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Range> v = new ArrayList<Range> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Range)fromJSON (Type.Range, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_TypeInfo: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<TypeInfo> v = new ArrayList<TypeInfo> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((TypeInfo)fromJSON (Type.TypeInfo, obj.get(i)));
+        }
+        return v;
+      }
 
       case Range: {
         JSONObject obj = (JSONObject)rawObj;

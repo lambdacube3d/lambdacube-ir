@@ -1,10 +1,11 @@
 // generated file, do not modify!
-// 2016-03-21T13:31:10.293368000000Z
+// 2016-03-21T14:06:55.360355000000Z
 
 package LambdaCube.PipelineSchema;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import org.json.*;
 import RT.*;
 
@@ -27,36 +28,36 @@ public class JSON {
   public static Object fromJSON(Type type, Object rawObj) throws JSONException, Exception {
     switch (type) {
       case String: return (String)rawObj;
-/*
       case Map_String_InputType: {
-        var map = new HashMap<String, InputType> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (InputType)fromJSON(Type.InputType,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, InputType> map = new HashMap<String, InputType> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (InputType)fromJSON(Type.InputType,obj.get(key)));
         }
         return map;
       }
-*/
-/*
       case Map_String_ObjectArraySchema: {
-        var map = new HashMap<String, ObjectArraySchema> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (ObjectArraySchema)fromJSON(Type.ObjectArraySchema,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, ObjectArraySchema> map = new HashMap<String, ObjectArraySchema> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (ObjectArraySchema)fromJSON(Type.ObjectArraySchema,obj.get(key)));
         }
         return map;
       }
-*/
-/*
       case Map_String_StreamType: {
-        var map = new HashMap<String, StreamType> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (StreamType)fromJSON(Type.StreamType,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, StreamType> map = new HashMap<String, StreamType> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (StreamType)fromJSON(Type.StreamType,obj.get(key)));
         }
         return map;
       }
-*/
 
       case StreamType: {
         JSONObject obj = (JSONObject)rawObj;

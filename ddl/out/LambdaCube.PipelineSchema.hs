@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-03-21T13:31:10.293368000000Z
+-- 2016-03-21T14:06:55.360355000000Z
 
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
 module LambdaCube.PipelineSchema where

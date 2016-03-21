@@ -1,10 +1,11 @@
 // generated file, do not modify!
-// 2016-03-21T13:31:10.335329000000Z
+// 2016-03-21T14:06:55.404479000000Z
 
 package LambdaCube.Mesh;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import org.json.*;
 import RT.*;
 
@@ -91,25 +92,88 @@ public class JSON {
           , (V4<Float>)fromJSON(Type.V4_Float,obj.get("w"))
           );
       }
-//      case Array_Int32: return ((JArray)obj).Select(x => fromJSON (Type.Int32, x)).ToList();
-//      case Array_Word32: return ((JArray)obj).Select(x => fromJSON (Type.Word32, x)).ToList();
-//      case Array_Float: return ((JArray)obj).Select(x => fromJSON (Type.Float, x)).ToList();
-//      case Array_V2_Float: return ((JArray)obj).Select(x => fromJSON (Type.V2_Float, x)).ToList();
-//      case Array_V2_V2_Float: return ((JArray)obj).Select(x => fromJSON (Type.V2_V2_Float, x)).ToList();
-//      case Array_V3_Float: return ((JArray)obj).Select(x => fromJSON (Type.V3_Float, x)).ToList();
-//      case Array_V3_V3_Float: return ((JArray)obj).Select(x => fromJSON (Type.V3_V3_Float, x)).ToList();
-//      case Array_V4_Float: return ((JArray)obj).Select(x => fromJSON (Type.V4_Float, x)).ToList();
-//      case Array_V4_V4_Float: return ((JArray)obj).Select(x => fromJSON (Type.V4_V4_Float, x)).ToList();
-/*
+      case Array_Int32: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Integer> v = new ArrayList<Integer> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Integer)fromJSON (Type.Int32, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Word32: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Integer> v = new ArrayList<Integer> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Integer)fromJSON (Type.Word32, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Float: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Float> v = new ArrayList<Float> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Float)fromJSON (Type.Float, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_V2_Float: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<V2<Float>> v = new ArrayList<V2<Float>> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((V2<Float>)fromJSON (Type.V2_Float, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_V2_V2_Float: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<V2<V2<Float>>> v = new ArrayList<V2<V2<Float>>> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((V2<V2<Float>>)fromJSON (Type.V2_V2_Float, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_V3_Float: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<V3<Float>> v = new ArrayList<V3<Float>> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((V3<Float>)fromJSON (Type.V3_Float, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_V3_V3_Float: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<V3<V3<Float>>> v = new ArrayList<V3<V3<Float>>> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((V3<V3<Float>>)fromJSON (Type.V3_V3_Float, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_V4_Float: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<V4<Float>> v = new ArrayList<V4<Float>> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((V4<Float>)fromJSON (Type.V4_Float, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_V4_V4_Float: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<V4<V4<Float>>> v = new ArrayList<V4<V4<Float>>> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((V4<V4<Float>>)fromJSON (Type.V4_V4_Float, obj.get(i)));
+        }
+        return v;
+      }
       case Map_String_MeshAttribute: {
-        var map = new HashMap<String, MeshAttribute> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (MeshAttribute)fromJSON(Type.MeshAttribute,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, MeshAttribute> map = new HashMap<String, MeshAttribute> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (MeshAttribute)fromJSON(Type.MeshAttribute,obj.get(key)));
         }
         return map;
       }
-*/
 
       case MeshAttribute: {
         JSONObject obj = (JSONObject)rawObj;

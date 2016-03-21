@@ -1,10 +1,11 @@
 // generated file, do not modify!
-// 2016-03-21T13:31:10.455557000000Z
+// 2016-03-21T14:06:55.528630000000Z
 
 package TestData;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import org.json.*;
 import RT.*;
 
@@ -47,43 +48,92 @@ public class JSON {
       case Int: return (Integer)rawObj;
       case Float: return (Float)rawObj;
       case String: return (String)rawObj;
-//      case Array_Int: return ((JArray)obj).Select(x => fromJSON (Type.Int, x)).ToList();
-//      case Array_Float: return ((JArray)obj).Select(x => fromJSON (Type.Float, x)).ToList();
-//      case Array_String: return ((JArray)obj).Select(x => fromJSON (Type.String, x)).ToList();
-//      case Array_Frame: return ((JArray)obj).Select(x => fromJSON (Type.Frame, x)).ToList();
-//      case Array_Mesh: return ((JArray)obj).Select(x => fromJSON (Type.Mesh, x)).ToList();
-//      case Array_PipelineInfo: return ((JArray)obj).Select(x => fromJSON (Type.PipelineInfo, x)).ToList();
-//      case Array_Scene: return ((JArray)obj).Select(x => fromJSON (Type.Scene, x)).ToList();
-/*
+      case Array_Int: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Integer> v = new ArrayList<Integer> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Integer)fromJSON (Type.Int, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Float: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Float> v = new ArrayList<Float> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Float)fromJSON (Type.Float, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_String: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<String> v = new ArrayList<String> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((String)fromJSON (Type.String, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Frame: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Frame> v = new ArrayList<Frame> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Frame)fromJSON (Type.Frame, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Mesh: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Mesh> v = new ArrayList<Mesh> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Mesh)fromJSON (Type.Mesh, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_PipelineInfo: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<PipelineInfo> v = new ArrayList<PipelineInfo> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((PipelineInfo)fromJSON (Type.PipelineInfo, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Scene: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Scene> v = new ArrayList<Scene> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Scene)fromJSON (Type.Scene, obj.get(i)));
+        }
+        return v;
+      }
       case Map_String_Int: {
-        var map = new HashMap<String, Integer> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (Integer)fromJSON(Type.Int,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, Integer> map = new HashMap<String, Integer> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (Integer)fromJSON(Type.Int,obj.get(key)));
         }
         return map;
       }
-*/
-/*
       case Map_String_Array_Int: {
-        var map = new HashMap<String, ArrayList<Integer>> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (ArrayList<Integer>)fromJSON(Type.Array_Int,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, ArrayList<Integer>> map = new HashMap<String, ArrayList<Integer>> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (ArrayList<Integer>)fromJSON(Type.Array_Int,obj.get(key)));
         }
         return map;
       }
-*/
-/*
       case Map_String_Value: {
-        var map = new HashMap<String, Value> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (Value)fromJSON(Type.Value,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, Value> map = new HashMap<String, Value> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (Value)fromJSON(Type.Value,obj.get(key)));
         }
         return map;
       }
-*/
 
       case ClientInfo: {
         JSONObject obj = (JSONObject)rawObj;

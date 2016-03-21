@@ -1,10 +1,11 @@
 // generated file, do not modify!
-// 2016-03-21T13:31:09.634879000000Z
+// 2016-03-21T14:06:54.700322000000Z
 
 package LambdaCube.IR;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import org.json.*;
 import RT.*;
 
@@ -288,26 +289,138 @@ public class JSON {
           , (V4<Float>)fromJSON(Type.V4_Float,obj.get("w"))
           );
       }
-//      case Array_Int: return ((JArray)obj).Select(x => fromJSON (Type.Int, x)).ToList();
-//      case Array_Int32: return ((JArray)obj).Select(x => fromJSON (Type.Int32, x)).ToList();
-//      case Array_Word32: return ((JArray)obj).Select(x => fromJSON (Type.Word32, x)).ToList();
-//      case Array_Float: return ((JArray)obj).Select(x => fromJSON (Type.Float, x)).ToList();
-//      case Array_Bool: return ((JArray)obj).Select(x => fromJSON (Type.Bool, x)).ToList();
-//      case Array_ClearImage: return ((JArray)obj).Select(x => fromJSON (Type.ClearImage, x)).ToList();
-//      case Array_Command: return ((JArray)obj).Select(x => fromJSON (Type.Command, x)).ToList();
-//      case Array_Parameter: return ((JArray)obj).Select(x => fromJSON (Type.Parameter, x)).ToList();
-//      case Array_Program: return ((JArray)obj).Select(x => fromJSON (Type.Program, x)).ToList();
-//      case Array_RenderTarget: return ((JArray)obj).Select(x => fromJSON (Type.RenderTarget, x)).ToList();
-//      case Array_SamplerDescriptor: return ((JArray)obj).Select(x => fromJSON (Type.SamplerDescriptor, x)).ToList();
-//      case Array_Slot: return ((JArray)obj).Select(x => fromJSON (Type.Slot, x)).ToList();
-//      case Array_StreamData: return ((JArray)obj).Select(x => fromJSON (Type.StreamData, x)).ToList();
-//      case Array_TargetItem: return ((JArray)obj).Select(x => fromJSON (Type.TargetItem, x)).ToList();
-//      case Array_TextureDescriptor: return ((JArray)obj).Select(x => fromJSON (Type.TextureDescriptor, x)).ToList();
-//      case List_FragmentOperation: return ((JArray)obj).Select(x => fromJSON (Type.FragmentOperation, x)).ToList();
-/*
+      case Array_Int: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Integer> v = new ArrayList<Integer> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Integer)fromJSON (Type.Int, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Int32: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Integer> v = new ArrayList<Integer> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Integer)fromJSON (Type.Int32, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Word32: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Integer> v = new ArrayList<Integer> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Integer)fromJSON (Type.Word32, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Float: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Float> v = new ArrayList<Float> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Float)fromJSON (Type.Float, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Bool: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Boolean> v = new ArrayList<Boolean> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Boolean)fromJSON (Type.Bool, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_ClearImage: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<ClearImage> v = new ArrayList<ClearImage> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((ClearImage)fromJSON (Type.ClearImage, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Command: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Command> v = new ArrayList<Command> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Command)fromJSON (Type.Command, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Parameter: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Parameter> v = new ArrayList<Parameter> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Parameter)fromJSON (Type.Parameter, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Program: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Program> v = new ArrayList<Program> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Program)fromJSON (Type.Program, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_RenderTarget: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<RenderTarget> v = new ArrayList<RenderTarget> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((RenderTarget)fromJSON (Type.RenderTarget, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_SamplerDescriptor: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<SamplerDescriptor> v = new ArrayList<SamplerDescriptor> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((SamplerDescriptor)fromJSON (Type.SamplerDescriptor, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_Slot: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<Slot> v = new ArrayList<Slot> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((Slot)fromJSON (Type.Slot, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_StreamData: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<StreamData> v = new ArrayList<StreamData> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((StreamData)fromJSON (Type.StreamData, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_TargetItem: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<TargetItem> v = new ArrayList<TargetItem> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((TargetItem)fromJSON (Type.TargetItem, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_TextureDescriptor: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<TextureDescriptor> v = new ArrayList<TextureDescriptor> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((TextureDescriptor)fromJSON (Type.TextureDescriptor, obj.get(i)));
+        }
+        return v;
+      }
+      case List_FragmentOperation: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<FragmentOperation> v = new ArrayList<FragmentOperation> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((FragmentOperation)fromJSON (Type.FragmentOperation, obj.get(i)));
+        }
+        return v;
+      }
       case Maybe_Int: {
-        var m = new Maybe<Integer> ();
-        if (obj == null || obj.Type == JTokenType.Null) {
+        JSONObject obj = (JSONObject)rawObj;
+        Maybe<Integer> m = new Maybe<Integer> ();
+        if (obj == null || obj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
@@ -315,11 +428,10 @@ public class JSON {
         }
         return m;
       }
-*/
-/*
       case Maybe_Float: {
-        var m = new Maybe<Float> ();
-        if (obj == null || obj.Type == JTokenType.Null) {
+        JSONObject obj = (JSONObject)rawObj;
+        Maybe<Float> m = new Maybe<Float> ();
+        if (obj == null || obj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
@@ -327,11 +439,10 @@ public class JSON {
         }
         return m;
       }
-*/
-/*
       case Maybe_String: {
-        var m = new Maybe<String> ();
-        if (obj == null || obj.Type == JTokenType.Null) {
+        JSONObject obj = (JSONObject)rawObj;
+        Maybe<String> m = new Maybe<String> ();
+        if (obj == null || obj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
@@ -339,11 +450,10 @@ public class JSON {
         }
         return m;
       }
-*/
-/*
       case Maybe_ComparisonFunction: {
-        var m = new Maybe<ComparisonFunction> ();
-        if (obj == null || obj.Type == JTokenType.Null) {
+        JSONObject obj = (JSONObject)rawObj;
+        Maybe<ComparisonFunction> m = new Maybe<ComparisonFunction> ();
+        if (obj == null || obj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
@@ -351,11 +461,10 @@ public class JSON {
         }
         return m;
       }
-*/
-/*
       case Maybe_EdgeMode: {
-        var m = new Maybe<EdgeMode> ();
-        if (obj == null || obj.Type == JTokenType.Null) {
+        JSONObject obj = (JSONObject)rawObj;
+        Maybe<EdgeMode> m = new Maybe<EdgeMode> ();
+        if (obj == null || obj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
@@ -363,11 +472,10 @@ public class JSON {
         }
         return m;
       }
-*/
-/*
       case Maybe_ImageRef: {
-        var m = new Maybe<ImageRef> ();
-        if (obj == null || obj.Type == JTokenType.Null) {
+        JSONObject obj = (JSONObject)rawObj;
+        Maybe<ImageRef> m = new Maybe<ImageRef> ();
+        if (obj == null || obj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
@@ -375,37 +483,36 @@ public class JSON {
         }
         return m;
       }
-*/
-/*
       case Map_String_ArrayValue: {
-        var map = new HashMap<String, ArrayValue> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (ArrayValue)fromJSON(Type.ArrayValue,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, ArrayValue> map = new HashMap<String, ArrayValue> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (ArrayValue)fromJSON(Type.ArrayValue,obj.get(key)));
         }
         return map;
       }
-*/
-/*
       case Map_String_InputType: {
-        var map = new HashMap<String, InputType> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (InputType)fromJSON(Type.InputType,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, InputType> map = new HashMap<String, InputType> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (InputType)fromJSON(Type.InputType,obj.get(key)));
         }
         return map;
       }
-*/
-/*
       case Map_String_Parameter: {
-        var map = new HashMap<String, Parameter> ();
-        foreach(var i in (JSONObject)rawObj) {
-          map.Add( (String)fromJSON(Type.String,i.Key)
-                 , (Parameter)fromJSON(Type.Parameter,i.Value));
+        JSONObject obj = (JSONObject)rawObj;
+        HashMap<String, Parameter> map = new HashMap<String, Parameter> ();
+        Iterator<String> keyIt = obj.keys();
+        while(keyIt.hasNext()) {
+          String key = keyIt.next();
+          map.put(key, (Parameter)fromJSON(Type.Parameter,obj.get(key)));
         }
         return map;
       }
-*/
 
       case ArrayValue: {
         JSONObject obj = (JSONObject)rawObj;
