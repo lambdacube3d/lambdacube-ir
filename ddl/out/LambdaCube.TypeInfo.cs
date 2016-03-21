@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T11:41:52.460562000000Z
+// 2016-03-21T13:14:18.260874000000Z
 
 using System;
 using System.Linq;
@@ -56,8 +56,9 @@ namespace LambdaCube.TypeInfo {
     };
     class Compiled : LambdaCube.TypeInfo.CompileResult { 
       public string _0;
-      public global::LambdaCube.TypeInfo.Pipeline _1;
-      public List<global::LambdaCube.TypeInfo.TypeInfo> _2;
+      public string _1;
+      public global::LambdaCube.TypeInfo.Pipeline _2;
+      public List<global::LambdaCube.TypeInfo.TypeInfo> _3;
       public Compiled() { tag = LambdaCube.TypeInfo.CompileResult.Tag.Compiled; }
     };
   }
@@ -129,8 +130,9 @@ namespace LambdaCube.TypeInfo {
             tagType = CompileResult.Tag.Compiled;
             data.Compiled tv = new data.Compiled();
             tv._0 = (string)fromJSON(Type.String,obj["arg0"]);
-            tv._1 = (global::LambdaCube.TypeInfo.Pipeline)fromJSON(Type.Pipeline,obj["arg1"]);
-            tv._2 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg2"]);
+            tv._1 = (string)fromJSON(Type.String,obj["arg1"]);
+            tv._2 = (global::LambdaCube.TypeInfo.Pipeline)fromJSON(Type.Pipeline,obj["arg2"]);
+            tv._3 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg3"]);
             return tv;
           }
           else throw new Exception("unknown constructor: " + tag);
@@ -192,6 +194,7 @@ namespace LambdaCube.TypeInfo {
             obj["arg0"] = toJSON(tv._0);
             obj["arg1"] = toJSON(tv._1);
             obj["arg2"] = toJSON(tv._2);
+            obj["arg3"] = toJSON(tv._3);
           }
           break;
       }

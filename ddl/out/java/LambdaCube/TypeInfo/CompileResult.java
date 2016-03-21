@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T11:41:52.460562000000Z
+// 2016-03-21T13:14:18.260874000000Z
 
 package LambdaCube.TypeInfo;
 
@@ -24,8 +24,9 @@ public class CompileResult {
   }
   public class Compiled_ extends CompileResult { 
     public String _0;
-    public Pipeline _1;
-    public ArrayList<TypeInfo> _2;
+    public String _1;
+    public Pipeline _2;
+    public ArrayList<TypeInfo> _3;
     public Compiled_() { tag = CompileResult.Tag.Compiled; }
   }
 }

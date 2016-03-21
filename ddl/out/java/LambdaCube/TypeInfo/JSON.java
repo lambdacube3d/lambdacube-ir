@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T11:41:52.460562000000Z
+// 2016-03-21T13:14:18.260874000000Z
 
 package LambdaCube.TypeInfo;
 
@@ -72,8 +72,9 @@ public class JSON {
           case "Compiled": {
             CompileResult.Compiled_ tv = new CompileResult().new Compiled_();
             tv._0 = (String)fromJSON(Type.String,obj.get("arg0"));
-            tv._1 = (Pipeline)fromJSON(Type.Pipeline,obj.get("arg1"));
-            tv._2 = (ArrayList<TypeInfo>)fromJSON(Type.Array_TypeInfo,obj.get("arg2"));
+            tv._1 = (String)fromJSON(Type.String,obj.get("arg1"));
+            tv._2 = (Pipeline)fromJSON(Type.Pipeline,obj.get("arg2"));
+            tv._3 = (ArrayList<TypeInfo>)fromJSON(Type.Array_TypeInfo,obj.get("arg3"));
             return tv;
           }
           default: throw new Exception("unknown constructor: " + tag);
