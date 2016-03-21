@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T13:14:17.421561000000Z
+// 2016-03-21T13:31:09.634879000000Z
 
 using System;
 using System.Linq;
@@ -1348,381 +1348,228 @@ namespace LambdaCube.IR {
 
         case Type.ArrayValue: {
           string tag = (string)obj["tag"];
-          ArrayValue.Tag tagType;
-          if (tag == "VBoolArray") {
-            tagType = ArrayValue.Tag.VBoolArray;
-            data.VBoolArray tv = new data.VBoolArray();
-            tv._0 = (List<bool>)fromJSON(Type.Array_Bool,obj["arg0"]);
-            return tv;
+          switch (tag) {
+            case "VBoolArray": {
+              data.VBoolArray tv = new data.VBoolArray();
+              tv._0 = (List<bool>)fromJSON(Type.Array_Bool,obj["arg0"]);
+              return tv;
+            }
+            case "VIntArray": {
+              data.VIntArray tv = new data.VIntArray();
+              tv._0 = (List<int>)fromJSON(Type.Array_Int32,obj["arg0"]);
+              return tv;
+            }
+            case "VWordArray": {
+              data.VWordArray tv = new data.VWordArray();
+              tv._0 = (List<uint>)fromJSON(Type.Array_Word32,obj["arg0"]);
+              return tv;
+            }
+            case "VFloatArray": {
+              data.VFloatArray tv = new data.VFloatArray();
+              tv._0 = (List<float>)fromJSON(Type.Array_Float,obj["arg0"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "VIntArray") {
-            tagType = ArrayValue.Tag.VIntArray;
-            data.VIntArray tv = new data.VIntArray();
-            tv._0 = (List<int>)fromJSON(Type.Array_Int32,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VWordArray") {
-            tagType = ArrayValue.Tag.VWordArray;
-            data.VWordArray tv = new data.VWordArray();
-            tv._0 = (List<uint>)fromJSON(Type.Array_Word32,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VFloatArray") {
-            tagType = ArrayValue.Tag.VFloatArray;
-            data.VFloatArray tv = new data.VFloatArray();
-            tv._0 = (List<float>)fromJSON(Type.Array_Float,obj["arg0"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          ArrayValue o = new ArrayValue();
-          o.tag = tagType;
-          return o;
         }
         case Type.Value: {
           string tag = (string)obj["tag"];
-          Value.Tag tagType;
-          if (tag == "VBool") {
-            tagType = Value.Tag.VBool;
-            data.VBool tv = new data.VBool();
-            tv._0 = (bool)fromJSON(Type.Bool,obj["arg0"]);
-            return tv;
+          switch (tag) {
+            case "VBool": {
+              data.VBool tv = new data.VBool();
+              tv._0 = (bool)fromJSON(Type.Bool,obj["arg0"]);
+              return tv;
+            }
+            case "VV2B": {
+              data.VV2B tv = new data.VV2B();
+              tv._0 = (V2<bool>)fromJSON(Type.V2_Bool,obj["arg0"]);
+              return tv;
+            }
+            case "VV3B": {
+              data.VV3B tv = new data.VV3B();
+              tv._0 = (V3<bool>)fromJSON(Type.V3_Bool,obj["arg0"]);
+              return tv;
+            }
+            case "VV4B": {
+              data.VV4B tv = new data.VV4B();
+              tv._0 = (V4<bool>)fromJSON(Type.V4_Bool,obj["arg0"]);
+              return tv;
+            }
+            case "VWord": {
+              data.VWord tv = new data.VWord();
+              tv._0 = (uint)fromJSON(Type.Word32,obj["arg0"]);
+              return tv;
+            }
+            case "VV2U": {
+              data.VV2U tv = new data.VV2U();
+              tv._0 = (V2<uint>)fromJSON(Type.V2_Word,obj["arg0"]);
+              return tv;
+            }
+            case "VV3U": {
+              data.VV3U tv = new data.VV3U();
+              tv._0 = (V3<uint>)fromJSON(Type.V3_Word,obj["arg0"]);
+              return tv;
+            }
+            case "VV4U": {
+              data.VV4U tv = new data.VV4U();
+              tv._0 = (V4<uint>)fromJSON(Type.V4_Word,obj["arg0"]);
+              return tv;
+            }
+            case "VInt": {
+              data.VInt tv = new data.VInt();
+              tv._0 = (int)fromJSON(Type.Int32,obj["arg0"]);
+              return tv;
+            }
+            case "VV2I": {
+              data.VV2I tv = new data.VV2I();
+              tv._0 = (V2<int>)fromJSON(Type.V2_Int,obj["arg0"]);
+              return tv;
+            }
+            case "VV3I": {
+              data.VV3I tv = new data.VV3I();
+              tv._0 = (V3<int>)fromJSON(Type.V3_Int,obj["arg0"]);
+              return tv;
+            }
+            case "VV4I": {
+              data.VV4I tv = new data.VV4I();
+              tv._0 = (V4<int>)fromJSON(Type.V4_Int,obj["arg0"]);
+              return tv;
+            }
+            case "VFloat": {
+              data.VFloat tv = new data.VFloat();
+              tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
+              return tv;
+            }
+            case "VV2F": {
+              data.VV2F tv = new data.VV2F();
+              tv._0 = (V2<float>)fromJSON(Type.V2_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VV3F": {
+              data.VV3F tv = new data.VV3F();
+              tv._0 = (V3<float>)fromJSON(Type.V3_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VV4F": {
+              data.VV4F tv = new data.VV4F();
+              tv._0 = (V4<float>)fromJSON(Type.V4_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VM22F": {
+              data.VM22F tv = new data.VM22F();
+              tv._0 = (V2<V2<float>>)fromJSON(Type.V2_V2_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VM23F": {
+              data.VM23F tv = new data.VM23F();
+              tv._0 = (V3<V2<float>>)fromJSON(Type.V3_V2_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VM24F": {
+              data.VM24F tv = new data.VM24F();
+              tv._0 = (V4<V2<float>>)fromJSON(Type.V4_V2_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VM32F": {
+              data.VM32F tv = new data.VM32F();
+              tv._0 = (V2<V3<float>>)fromJSON(Type.V2_V3_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VM33F": {
+              data.VM33F tv = new data.VM33F();
+              tv._0 = (V3<V3<float>>)fromJSON(Type.V3_V3_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VM34F": {
+              data.VM34F tv = new data.VM34F();
+              tv._0 = (V4<V3<float>>)fromJSON(Type.V4_V3_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VM42F": {
+              data.VM42F tv = new data.VM42F();
+              tv._0 = (V2<V4<float>>)fromJSON(Type.V2_V4_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VM43F": {
+              data.VM43F tv = new data.VM43F();
+              tv._0 = (V3<V4<float>>)fromJSON(Type.V3_V4_Float,obj["arg0"]);
+              return tv;
+            }
+            case "VM44F": {
+              data.VM44F tv = new data.VM44F();
+              tv._0 = (V4<V4<float>>)fromJSON(Type.V4_V4_Float,obj["arg0"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "VV2B") {
-            tagType = Value.Tag.VV2B;
-            data.VV2B tv = new data.VV2B();
-            tv._0 = (V2<bool>)fromJSON(Type.V2_Bool,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV3B") {
-            tagType = Value.Tag.VV3B;
-            data.VV3B tv = new data.VV3B();
-            tv._0 = (V3<bool>)fromJSON(Type.V3_Bool,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV4B") {
-            tagType = Value.Tag.VV4B;
-            data.VV4B tv = new data.VV4B();
-            tv._0 = (V4<bool>)fromJSON(Type.V4_Bool,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VWord") {
-            tagType = Value.Tag.VWord;
-            data.VWord tv = new data.VWord();
-            tv._0 = (uint)fromJSON(Type.Word32,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV2U") {
-            tagType = Value.Tag.VV2U;
-            data.VV2U tv = new data.VV2U();
-            tv._0 = (V2<uint>)fromJSON(Type.V2_Word,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV3U") {
-            tagType = Value.Tag.VV3U;
-            data.VV3U tv = new data.VV3U();
-            tv._0 = (V3<uint>)fromJSON(Type.V3_Word,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV4U") {
-            tagType = Value.Tag.VV4U;
-            data.VV4U tv = new data.VV4U();
-            tv._0 = (V4<uint>)fromJSON(Type.V4_Word,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VInt") {
-            tagType = Value.Tag.VInt;
-            data.VInt tv = new data.VInt();
-            tv._0 = (int)fromJSON(Type.Int32,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV2I") {
-            tagType = Value.Tag.VV2I;
-            data.VV2I tv = new data.VV2I();
-            tv._0 = (V2<int>)fromJSON(Type.V2_Int,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV3I") {
-            tagType = Value.Tag.VV3I;
-            data.VV3I tv = new data.VV3I();
-            tv._0 = (V3<int>)fromJSON(Type.V3_Int,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV4I") {
-            tagType = Value.Tag.VV4I;
-            data.VV4I tv = new data.VV4I();
-            tv._0 = (V4<int>)fromJSON(Type.V4_Int,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VFloat") {
-            tagType = Value.Tag.VFloat;
-            data.VFloat tv = new data.VFloat();
-            tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV2F") {
-            tagType = Value.Tag.VV2F;
-            data.VV2F tv = new data.VV2F();
-            tv._0 = (V2<float>)fromJSON(Type.V2_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV3F") {
-            tagType = Value.Tag.VV3F;
-            data.VV3F tv = new data.VV3F();
-            tv._0 = (V3<float>)fromJSON(Type.V3_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VV4F") {
-            tagType = Value.Tag.VV4F;
-            data.VV4F tv = new data.VV4F();
-            tv._0 = (V4<float>)fromJSON(Type.V4_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VM22F") {
-            tagType = Value.Tag.VM22F;
-            data.VM22F tv = new data.VM22F();
-            tv._0 = (V2<V2<float>>)fromJSON(Type.V2_V2_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VM23F") {
-            tagType = Value.Tag.VM23F;
-            data.VM23F tv = new data.VM23F();
-            tv._0 = (V3<V2<float>>)fromJSON(Type.V3_V2_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VM24F") {
-            tagType = Value.Tag.VM24F;
-            data.VM24F tv = new data.VM24F();
-            tv._0 = (V4<V2<float>>)fromJSON(Type.V4_V2_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VM32F") {
-            tagType = Value.Tag.VM32F;
-            data.VM32F tv = new data.VM32F();
-            tv._0 = (V2<V3<float>>)fromJSON(Type.V2_V3_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VM33F") {
-            tagType = Value.Tag.VM33F;
-            data.VM33F tv = new data.VM33F();
-            tv._0 = (V3<V3<float>>)fromJSON(Type.V3_V3_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VM34F") {
-            tagType = Value.Tag.VM34F;
-            data.VM34F tv = new data.VM34F();
-            tv._0 = (V4<V3<float>>)fromJSON(Type.V4_V3_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VM42F") {
-            tagType = Value.Tag.VM42F;
-            data.VM42F tv = new data.VM42F();
-            tv._0 = (V2<V4<float>>)fromJSON(Type.V2_V4_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VM43F") {
-            tagType = Value.Tag.VM43F;
-            data.VM43F tv = new data.VM43F();
-            tv._0 = (V3<V4<float>>)fromJSON(Type.V3_V4_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "VM44F") {
-            tagType = Value.Tag.VM44F;
-            data.VM44F tv = new data.VM44F();
-            tv._0 = (V4<V4<float>>)fromJSON(Type.V4_V4_Float,obj["arg0"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          Value o = new Value();
-          o.tag = tagType;
-          return o;
         }
         case Type.InputType: {
           string tag = (string)obj["tag"];
           InputType.Tag tagType;
-          if (tag == "Bool") {
-            tagType = InputType.Tag.Bool;
+          switch (tag) {
+            case "Bool": tagType = InputType.Tag.Bool; break;
+            case "V2B": tagType = InputType.Tag.V2B; break;
+            case "V3B": tagType = InputType.Tag.V3B; break;
+            case "V4B": tagType = InputType.Tag.V4B; break;
+            case "Word": tagType = InputType.Tag.Word; break;
+            case "V2U": tagType = InputType.Tag.V2U; break;
+            case "V3U": tagType = InputType.Tag.V3U; break;
+            case "V4U": tagType = InputType.Tag.V4U; break;
+            case "Int": tagType = InputType.Tag.Int; break;
+            case "V2I": tagType = InputType.Tag.V2I; break;
+            case "V3I": tagType = InputType.Tag.V3I; break;
+            case "V4I": tagType = InputType.Tag.V4I; break;
+            case "Float": tagType = InputType.Tag.Float; break;
+            case "V2F": tagType = InputType.Tag.V2F; break;
+            case "V3F": tagType = InputType.Tag.V3F; break;
+            case "V4F": tagType = InputType.Tag.V4F; break;
+            case "M22F": tagType = InputType.Tag.M22F; break;
+            case "M23F": tagType = InputType.Tag.M23F; break;
+            case "M24F": tagType = InputType.Tag.M24F; break;
+            case "M32F": tagType = InputType.Tag.M32F; break;
+            case "M33F": tagType = InputType.Tag.M33F; break;
+            case "M34F": tagType = InputType.Tag.M34F; break;
+            case "M42F": tagType = InputType.Tag.M42F; break;
+            case "M43F": tagType = InputType.Tag.M43F; break;
+            case "M44F": tagType = InputType.Tag.M44F; break;
+            case "STexture1D": tagType = InputType.Tag.STexture1D; break;
+            case "STexture2D": tagType = InputType.Tag.STexture2D; break;
+            case "STextureCube": tagType = InputType.Tag.STextureCube; break;
+            case "STexture1DArray": tagType = InputType.Tag.STexture1DArray; break;
+            case "STexture2DArray": tagType = InputType.Tag.STexture2DArray; break;
+            case "STexture2DRect": tagType = InputType.Tag.STexture2DRect; break;
+            case "FTexture1D": tagType = InputType.Tag.FTexture1D; break;
+            case "FTexture2D": tagType = InputType.Tag.FTexture2D; break;
+            case "FTexture3D": tagType = InputType.Tag.FTexture3D; break;
+            case "FTextureCube": tagType = InputType.Tag.FTextureCube; break;
+            case "FTexture1DArray": tagType = InputType.Tag.FTexture1DArray; break;
+            case "FTexture2DArray": tagType = InputType.Tag.FTexture2DArray; break;
+            case "FTexture2DMS": tagType = InputType.Tag.FTexture2DMS; break;
+            case "FTexture2DMSArray": tagType = InputType.Tag.FTexture2DMSArray; break;
+            case "FTextureBuffer": tagType = InputType.Tag.FTextureBuffer; break;
+            case "FTexture2DRect": tagType = InputType.Tag.FTexture2DRect; break;
+            case "ITexture1D": tagType = InputType.Tag.ITexture1D; break;
+            case "ITexture2D": tagType = InputType.Tag.ITexture2D; break;
+            case "ITexture3D": tagType = InputType.Tag.ITexture3D; break;
+            case "ITextureCube": tagType = InputType.Tag.ITextureCube; break;
+            case "ITexture1DArray": tagType = InputType.Tag.ITexture1DArray; break;
+            case "ITexture2DArray": tagType = InputType.Tag.ITexture2DArray; break;
+            case "ITexture2DMS": tagType = InputType.Tag.ITexture2DMS; break;
+            case "ITexture2DMSArray": tagType = InputType.Tag.ITexture2DMSArray; break;
+            case "ITextureBuffer": tagType = InputType.Tag.ITextureBuffer; break;
+            case "ITexture2DRect": tagType = InputType.Tag.ITexture2DRect; break;
+            case "UTexture1D": tagType = InputType.Tag.UTexture1D; break;
+            case "UTexture2D": tagType = InputType.Tag.UTexture2D; break;
+            case "UTexture3D": tagType = InputType.Tag.UTexture3D; break;
+            case "UTextureCube": tagType = InputType.Tag.UTextureCube; break;
+            case "UTexture1DArray": tagType = InputType.Tag.UTexture1DArray; break;
+            case "UTexture2DArray": tagType = InputType.Tag.UTexture2DArray; break;
+            case "UTexture2DMS": tagType = InputType.Tag.UTexture2DMS; break;
+            case "UTexture2DMSArray": tagType = InputType.Tag.UTexture2DMSArray; break;
+            case "UTextureBuffer": tagType = InputType.Tag.UTextureBuffer; break;
+            case "UTexture2DRect": tagType = InputType.Tag.UTexture2DRect; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "V2B") {
-            tagType = InputType.Tag.V2B;
-          }
-          else if (tag == "V3B") {
-            tagType = InputType.Tag.V3B;
-          }
-          else if (tag == "V4B") {
-            tagType = InputType.Tag.V4B;
-          }
-          else if (tag == "Word") {
-            tagType = InputType.Tag.Word;
-          }
-          else if (tag == "V2U") {
-            tagType = InputType.Tag.V2U;
-          }
-          else if (tag == "V3U") {
-            tagType = InputType.Tag.V3U;
-          }
-          else if (tag == "V4U") {
-            tagType = InputType.Tag.V4U;
-          }
-          else if (tag == "Int") {
-            tagType = InputType.Tag.Int;
-          }
-          else if (tag == "V2I") {
-            tagType = InputType.Tag.V2I;
-          }
-          else if (tag == "V3I") {
-            tagType = InputType.Tag.V3I;
-          }
-          else if (tag == "V4I") {
-            tagType = InputType.Tag.V4I;
-          }
-          else if (tag == "Float") {
-            tagType = InputType.Tag.Float;
-          }
-          else if (tag == "V2F") {
-            tagType = InputType.Tag.V2F;
-          }
-          else if (tag == "V3F") {
-            tagType = InputType.Tag.V3F;
-          }
-          else if (tag == "V4F") {
-            tagType = InputType.Tag.V4F;
-          }
-          else if (tag == "M22F") {
-            tagType = InputType.Tag.M22F;
-          }
-          else if (tag == "M23F") {
-            tagType = InputType.Tag.M23F;
-          }
-          else if (tag == "M24F") {
-            tagType = InputType.Tag.M24F;
-          }
-          else if (tag == "M32F") {
-            tagType = InputType.Tag.M32F;
-          }
-          else if (tag == "M33F") {
-            tagType = InputType.Tag.M33F;
-          }
-          else if (tag == "M34F") {
-            tagType = InputType.Tag.M34F;
-          }
-          else if (tag == "M42F") {
-            tagType = InputType.Tag.M42F;
-          }
-          else if (tag == "M43F") {
-            tagType = InputType.Tag.M43F;
-          }
-          else if (tag == "M44F") {
-            tagType = InputType.Tag.M44F;
-          }
-          else if (tag == "STexture1D") {
-            tagType = InputType.Tag.STexture1D;
-          }
-          else if (tag == "STexture2D") {
-            tagType = InputType.Tag.STexture2D;
-          }
-          else if (tag == "STextureCube") {
-            tagType = InputType.Tag.STextureCube;
-          }
-          else if (tag == "STexture1DArray") {
-            tagType = InputType.Tag.STexture1DArray;
-          }
-          else if (tag == "STexture2DArray") {
-            tagType = InputType.Tag.STexture2DArray;
-          }
-          else if (tag == "STexture2DRect") {
-            tagType = InputType.Tag.STexture2DRect;
-          }
-          else if (tag == "FTexture1D") {
-            tagType = InputType.Tag.FTexture1D;
-          }
-          else if (tag == "FTexture2D") {
-            tagType = InputType.Tag.FTexture2D;
-          }
-          else if (tag == "FTexture3D") {
-            tagType = InputType.Tag.FTexture3D;
-          }
-          else if (tag == "FTextureCube") {
-            tagType = InputType.Tag.FTextureCube;
-          }
-          else if (tag == "FTexture1DArray") {
-            tagType = InputType.Tag.FTexture1DArray;
-          }
-          else if (tag == "FTexture2DArray") {
-            tagType = InputType.Tag.FTexture2DArray;
-          }
-          else if (tag == "FTexture2DMS") {
-            tagType = InputType.Tag.FTexture2DMS;
-          }
-          else if (tag == "FTexture2DMSArray") {
-            tagType = InputType.Tag.FTexture2DMSArray;
-          }
-          else if (tag == "FTextureBuffer") {
-            tagType = InputType.Tag.FTextureBuffer;
-          }
-          else if (tag == "FTexture2DRect") {
-            tagType = InputType.Tag.FTexture2DRect;
-          }
-          else if (tag == "ITexture1D") {
-            tagType = InputType.Tag.ITexture1D;
-          }
-          else if (tag == "ITexture2D") {
-            tagType = InputType.Tag.ITexture2D;
-          }
-          else if (tag == "ITexture3D") {
-            tagType = InputType.Tag.ITexture3D;
-          }
-          else if (tag == "ITextureCube") {
-            tagType = InputType.Tag.ITextureCube;
-          }
-          else if (tag == "ITexture1DArray") {
-            tagType = InputType.Tag.ITexture1DArray;
-          }
-          else if (tag == "ITexture2DArray") {
-            tagType = InputType.Tag.ITexture2DArray;
-          }
-          else if (tag == "ITexture2DMS") {
-            tagType = InputType.Tag.ITexture2DMS;
-          }
-          else if (tag == "ITexture2DMSArray") {
-            tagType = InputType.Tag.ITexture2DMSArray;
-          }
-          else if (tag == "ITextureBuffer") {
-            tagType = InputType.Tag.ITextureBuffer;
-          }
-          else if (tag == "ITexture2DRect") {
-            tagType = InputType.Tag.ITexture2DRect;
-          }
-          else if (tag == "UTexture1D") {
-            tagType = InputType.Tag.UTexture1D;
-          }
-          else if (tag == "UTexture2D") {
-            tagType = InputType.Tag.UTexture2D;
-          }
-          else if (tag == "UTexture3D") {
-            tagType = InputType.Tag.UTexture3D;
-          }
-          else if (tag == "UTextureCube") {
-            tagType = InputType.Tag.UTextureCube;
-          }
-          else if (tag == "UTexture1DArray") {
-            tagType = InputType.Tag.UTexture1DArray;
-          }
-          else if (tag == "UTexture2DArray") {
-            tagType = InputType.Tag.UTexture2DArray;
-          }
-          else if (tag == "UTexture2DMS") {
-            tagType = InputType.Tag.UTexture2DMS;
-          }
-          else if (tag == "UTexture2DMSArray") {
-            tagType = InputType.Tag.UTexture2DMSArray;
-          }
-          else if (tag == "UTextureBuffer") {
-            tagType = InputType.Tag.UTextureBuffer;
-          }
-          else if (tag == "UTexture2DRect") {
-            tagType = InputType.Tag.UTexture2DRect;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           InputType o = new InputType();
           o.tag = tagType;
           return o;
@@ -1730,13 +1577,11 @@ namespace LambdaCube.IR {
         case Type.PointSpriteCoordOrigin: {
           string tag = (string)obj["tag"];
           PointSpriteCoordOrigin.Tag tagType;
-          if (tag == "LowerLeft") {
-            tagType = PointSpriteCoordOrigin.Tag.LowerLeft;
+          switch (tag) {
+            case "LowerLeft": tagType = PointSpriteCoordOrigin.Tag.LowerLeft; break;
+            case "UpperLeft": tagType = PointSpriteCoordOrigin.Tag.UpperLeft; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "UpperLeft") {
-            tagType = PointSpriteCoordOrigin.Tag.UpperLeft;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           PointSpriteCoordOrigin o = new PointSpriteCoordOrigin();
           o.tag = tagType;
           return o;
@@ -1744,16 +1589,15 @@ namespace LambdaCube.IR {
         case Type.PointSize: {
           string tag = (string)obj["tag"];
           PointSize.Tag tagType;
-          if (tag == "PointSize") {
-            tagType = PointSize.Tag.PointSize;
-            data.PointSize tv = new data.PointSize();
-            tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
-            return tv;
+          switch (tag) {
+            case "PointSize": {
+              data.PointSize tv = new data.PointSize();
+              tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
+              return tv;
+            }
+            case "ProgramPointSize": tagType = PointSize.Tag.ProgramPointSize; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "ProgramPointSize") {
-            tagType = PointSize.Tag.ProgramPointSize;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           PointSize o = new PointSize();
           o.tag = tagType;
           return o;
@@ -1761,17 +1605,16 @@ namespace LambdaCube.IR {
         case Type.PolygonOffset: {
           string tag = (string)obj["tag"];
           PolygonOffset.Tag tagType;
-          if (tag == "NoOffset") {
-            tagType = PolygonOffset.Tag.NoOffset;
+          switch (tag) {
+            case "NoOffset": tagType = PolygonOffset.Tag.NoOffset; break;
+            case "Offset": {
+              data.Offset tv = new data.Offset();
+              tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
+              tv._1 = (float)fromJSON(Type.Float,obj["arg1"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "Offset") {
-            tagType = PolygonOffset.Tag.Offset;
-            data.Offset tv = new data.Offset();
-            tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
-            tv._1 = (float)fromJSON(Type.Float,obj["arg1"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           PolygonOffset o = new PolygonOffset();
           o.tag = tagType;
           return o;
@@ -1779,13 +1622,11 @@ namespace LambdaCube.IR {
         case Type.FrontFace: {
           string tag = (string)obj["tag"];
           FrontFace.Tag tagType;
-          if (tag == "CCW") {
-            tagType = FrontFace.Tag.CCW;
+          switch (tag) {
+            case "CCW": tagType = FrontFace.Tag.CCW; break;
+            case "CW": tagType = FrontFace.Tag.CW; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "CW") {
-            tagType = FrontFace.Tag.CW;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           FrontFace o = new FrontFace();
           o.tag = tagType;
           return o;
@@ -1793,22 +1634,20 @@ namespace LambdaCube.IR {
         case Type.PolygonMode: {
           string tag = (string)obj["tag"];
           PolygonMode.Tag tagType;
-          if (tag == "PolygonPoint") {
-            tagType = PolygonMode.Tag.PolygonPoint;
-            data.PolygonPoint tv = new data.PolygonPoint();
-            tv._0 = (global::LambdaCube.IR.PointSize)fromJSON(Type.PointSize,obj["arg0"]);
-            return tv;
+          switch (tag) {
+            case "PolygonPoint": {
+              data.PolygonPoint tv = new data.PolygonPoint();
+              tv._0 = (global::LambdaCube.IR.PointSize)fromJSON(Type.PointSize,obj["arg0"]);
+              return tv;
+            }
+            case "PolygonLine": {
+              data.PolygonLine tv = new data.PolygonLine();
+              tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
+              return tv;
+            }
+            case "PolygonFill": tagType = PolygonMode.Tag.PolygonFill; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "PolygonLine") {
-            tagType = PolygonMode.Tag.PolygonLine;
-            data.PolygonLine tv = new data.PolygonLine();
-            tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "PolygonFill") {
-            tagType = PolygonMode.Tag.PolygonFill;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           PolygonMode o = new PolygonMode();
           o.tag = tagType;
           return o;
@@ -1816,13 +1655,11 @@ namespace LambdaCube.IR {
         case Type.ProvokingVertex: {
           string tag = (string)obj["tag"];
           ProvokingVertex.Tag tagType;
-          if (tag == "FirstVertex") {
-            tagType = ProvokingVertex.Tag.FirstVertex;
+          switch (tag) {
+            case "FirstVertex": tagType = ProvokingVertex.Tag.FirstVertex; break;
+            case "LastVertex": tagType = ProvokingVertex.Tag.LastVertex; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "LastVertex") {
-            tagType = ProvokingVertex.Tag.LastVertex;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           ProvokingVertex o = new ProvokingVertex();
           o.tag = tagType;
           return o;
@@ -1830,22 +1667,20 @@ namespace LambdaCube.IR {
         case Type.CullMode: {
           string tag = (string)obj["tag"];
           CullMode.Tag tagType;
-          if (tag == "CullNone") {
-            tagType = CullMode.Tag.CullNone;
+          switch (tag) {
+            case "CullNone": tagType = CullMode.Tag.CullNone; break;
+            case "CullFront": {
+              data.CullFront tv = new data.CullFront();
+              tv._0 = (global::LambdaCube.IR.FrontFace)fromJSON(Type.FrontFace,obj["arg0"]);
+              return tv;
+            }
+            case "CullBack": {
+              data.CullBack tv = new data.CullBack();
+              tv._0 = (global::LambdaCube.IR.FrontFace)fromJSON(Type.FrontFace,obj["arg0"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "CullFront") {
-            tagType = CullMode.Tag.CullFront;
-            data.CullFront tv = new data.CullFront();
-            tv._0 = (global::LambdaCube.IR.FrontFace)fromJSON(Type.FrontFace,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "CullBack") {
-            tagType = CullMode.Tag.CullBack;
-            data.CullBack tv = new data.CullBack();
-            tv._0 = (global::LambdaCube.IR.FrontFace)fromJSON(Type.FrontFace,obj["arg0"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           CullMode o = new CullMode();
           o.tag = tagType;
           return o;
@@ -1853,31 +1688,17 @@ namespace LambdaCube.IR {
         case Type.ComparisonFunction: {
           string tag = (string)obj["tag"];
           ComparisonFunction.Tag tagType;
-          if (tag == "Never") {
-            tagType = ComparisonFunction.Tag.Never;
+          switch (tag) {
+            case "Never": tagType = ComparisonFunction.Tag.Never; break;
+            case "Less": tagType = ComparisonFunction.Tag.Less; break;
+            case "Equal": tagType = ComparisonFunction.Tag.Equal; break;
+            case "Lequal": tagType = ComparisonFunction.Tag.Lequal; break;
+            case "Greater": tagType = ComparisonFunction.Tag.Greater; break;
+            case "Notequal": tagType = ComparisonFunction.Tag.Notequal; break;
+            case "Gequal": tagType = ComparisonFunction.Tag.Gequal; break;
+            case "Always": tagType = ComparisonFunction.Tag.Always; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "Less") {
-            tagType = ComparisonFunction.Tag.Less;
-          }
-          else if (tag == "Equal") {
-            tagType = ComparisonFunction.Tag.Equal;
-          }
-          else if (tag == "Lequal") {
-            tagType = ComparisonFunction.Tag.Lequal;
-          }
-          else if (tag == "Greater") {
-            tagType = ComparisonFunction.Tag.Greater;
-          }
-          else if (tag == "Notequal") {
-            tagType = ComparisonFunction.Tag.Notequal;
-          }
-          else if (tag == "Gequal") {
-            tagType = ComparisonFunction.Tag.Gequal;
-          }
-          else if (tag == "Always") {
-            tagType = ComparisonFunction.Tag.Always;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           ComparisonFunction o = new ComparisonFunction();
           o.tag = tagType;
           return o;
@@ -1885,31 +1706,17 @@ namespace LambdaCube.IR {
         case Type.StencilOperation: {
           string tag = (string)obj["tag"];
           StencilOperation.Tag tagType;
-          if (tag == "OpZero") {
-            tagType = StencilOperation.Tag.OpZero;
+          switch (tag) {
+            case "OpZero": tagType = StencilOperation.Tag.OpZero; break;
+            case "OpKeep": tagType = StencilOperation.Tag.OpKeep; break;
+            case "OpReplace": tagType = StencilOperation.Tag.OpReplace; break;
+            case "OpIncr": tagType = StencilOperation.Tag.OpIncr; break;
+            case "OpIncrWrap": tagType = StencilOperation.Tag.OpIncrWrap; break;
+            case "OpDecr": tagType = StencilOperation.Tag.OpDecr; break;
+            case "OpDecrWrap": tagType = StencilOperation.Tag.OpDecrWrap; break;
+            case "OpInvert": tagType = StencilOperation.Tag.OpInvert; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "OpKeep") {
-            tagType = StencilOperation.Tag.OpKeep;
-          }
-          else if (tag == "OpReplace") {
-            tagType = StencilOperation.Tag.OpReplace;
-          }
-          else if (tag == "OpIncr") {
-            tagType = StencilOperation.Tag.OpIncr;
-          }
-          else if (tag == "OpIncrWrap") {
-            tagType = StencilOperation.Tag.OpIncrWrap;
-          }
-          else if (tag == "OpDecr") {
-            tagType = StencilOperation.Tag.OpDecr;
-          }
-          else if (tag == "OpDecrWrap") {
-            tagType = StencilOperation.Tag.OpDecrWrap;
-          }
-          else if (tag == "OpInvert") {
-            tagType = StencilOperation.Tag.OpInvert;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           StencilOperation o = new StencilOperation();
           o.tag = tagType;
           return o;
@@ -1917,22 +1724,14 @@ namespace LambdaCube.IR {
         case Type.BlendEquation: {
           string tag = (string)obj["tag"];
           BlendEquation.Tag tagType;
-          if (tag == "FuncAdd") {
-            tagType = BlendEquation.Tag.FuncAdd;
+          switch (tag) {
+            case "FuncAdd": tagType = BlendEquation.Tag.FuncAdd; break;
+            case "FuncSubtract": tagType = BlendEquation.Tag.FuncSubtract; break;
+            case "FuncReverseSubtract": tagType = BlendEquation.Tag.FuncReverseSubtract; break;
+            case "Min": tagType = BlendEquation.Tag.Min; break;
+            case "Max": tagType = BlendEquation.Tag.Max; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "FuncSubtract") {
-            tagType = BlendEquation.Tag.FuncSubtract;
-          }
-          else if (tag == "FuncReverseSubtract") {
-            tagType = BlendEquation.Tag.FuncReverseSubtract;
-          }
-          else if (tag == "Min") {
-            tagType = BlendEquation.Tag.Min;
-          }
-          else if (tag == "Max") {
-            tagType = BlendEquation.Tag.Max;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           BlendEquation o = new BlendEquation();
           o.tag = tagType;
           return o;
@@ -1940,52 +1739,24 @@ namespace LambdaCube.IR {
         case Type.BlendingFactor: {
           string tag = (string)obj["tag"];
           BlendingFactor.Tag tagType;
-          if (tag == "Zero") {
-            tagType = BlendingFactor.Tag.Zero;
+          switch (tag) {
+            case "Zero": tagType = BlendingFactor.Tag.Zero; break;
+            case "One": tagType = BlendingFactor.Tag.One; break;
+            case "SrcColor": tagType = BlendingFactor.Tag.SrcColor; break;
+            case "OneMinusSrcColor": tagType = BlendingFactor.Tag.OneMinusSrcColor; break;
+            case "DstColor": tagType = BlendingFactor.Tag.DstColor; break;
+            case "OneMinusDstColor": tagType = BlendingFactor.Tag.OneMinusDstColor; break;
+            case "SrcAlpha": tagType = BlendingFactor.Tag.SrcAlpha; break;
+            case "OneMinusSrcAlpha": tagType = BlendingFactor.Tag.OneMinusSrcAlpha; break;
+            case "DstAlpha": tagType = BlendingFactor.Tag.DstAlpha; break;
+            case "OneMinusDstAlpha": tagType = BlendingFactor.Tag.OneMinusDstAlpha; break;
+            case "ConstantColor": tagType = BlendingFactor.Tag.ConstantColor; break;
+            case "OneMinusConstantColor": tagType = BlendingFactor.Tag.OneMinusConstantColor; break;
+            case "ConstantAlpha": tagType = BlendingFactor.Tag.ConstantAlpha; break;
+            case "OneMinusConstantAlpha": tagType = BlendingFactor.Tag.OneMinusConstantAlpha; break;
+            case "SrcAlphaSaturate": tagType = BlendingFactor.Tag.SrcAlphaSaturate; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "One") {
-            tagType = BlendingFactor.Tag.One;
-          }
-          else if (tag == "SrcColor") {
-            tagType = BlendingFactor.Tag.SrcColor;
-          }
-          else if (tag == "OneMinusSrcColor") {
-            tagType = BlendingFactor.Tag.OneMinusSrcColor;
-          }
-          else if (tag == "DstColor") {
-            tagType = BlendingFactor.Tag.DstColor;
-          }
-          else if (tag == "OneMinusDstColor") {
-            tagType = BlendingFactor.Tag.OneMinusDstColor;
-          }
-          else if (tag == "SrcAlpha") {
-            tagType = BlendingFactor.Tag.SrcAlpha;
-          }
-          else if (tag == "OneMinusSrcAlpha") {
-            tagType = BlendingFactor.Tag.OneMinusSrcAlpha;
-          }
-          else if (tag == "DstAlpha") {
-            tagType = BlendingFactor.Tag.DstAlpha;
-          }
-          else if (tag == "OneMinusDstAlpha") {
-            tagType = BlendingFactor.Tag.OneMinusDstAlpha;
-          }
-          else if (tag == "ConstantColor") {
-            tagType = BlendingFactor.Tag.ConstantColor;
-          }
-          else if (tag == "OneMinusConstantColor") {
-            tagType = BlendingFactor.Tag.OneMinusConstantColor;
-          }
-          else if (tag == "ConstantAlpha") {
-            tagType = BlendingFactor.Tag.ConstantAlpha;
-          }
-          else if (tag == "OneMinusConstantAlpha") {
-            tagType = BlendingFactor.Tag.OneMinusConstantAlpha;
-          }
-          else if (tag == "SrcAlphaSaturate") {
-            tagType = BlendingFactor.Tag.SrcAlphaSaturate;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           BlendingFactor o = new BlendingFactor();
           o.tag = tagType;
           return o;
@@ -1993,124 +1764,77 @@ namespace LambdaCube.IR {
         case Type.LogicOperation: {
           string tag = (string)obj["tag"];
           LogicOperation.Tag tagType;
-          if (tag == "Clear") {
-            tagType = LogicOperation.Tag.Clear;
+          switch (tag) {
+            case "Clear": tagType = LogicOperation.Tag.Clear; break;
+            case "And": tagType = LogicOperation.Tag.And; break;
+            case "AndReverse": tagType = LogicOperation.Tag.AndReverse; break;
+            case "Copy": tagType = LogicOperation.Tag.Copy; break;
+            case "AndInverted": tagType = LogicOperation.Tag.AndInverted; break;
+            case "Noop": tagType = LogicOperation.Tag.Noop; break;
+            case "Xor": tagType = LogicOperation.Tag.Xor; break;
+            case "Or": tagType = LogicOperation.Tag.Or; break;
+            case "Nor": tagType = LogicOperation.Tag.Nor; break;
+            case "Equiv": tagType = LogicOperation.Tag.Equiv; break;
+            case "Invert": tagType = LogicOperation.Tag.Invert; break;
+            case "OrReverse": tagType = LogicOperation.Tag.OrReverse; break;
+            case "CopyInverted": tagType = LogicOperation.Tag.CopyInverted; break;
+            case "OrInverted": tagType = LogicOperation.Tag.OrInverted; break;
+            case "Nand": tagType = LogicOperation.Tag.Nand; break;
+            case "Set": tagType = LogicOperation.Tag.Set; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "And") {
-            tagType = LogicOperation.Tag.And;
-          }
-          else if (tag == "AndReverse") {
-            tagType = LogicOperation.Tag.AndReverse;
-          }
-          else if (tag == "Copy") {
-            tagType = LogicOperation.Tag.Copy;
-          }
-          else if (tag == "AndInverted") {
-            tagType = LogicOperation.Tag.AndInverted;
-          }
-          else if (tag == "Noop") {
-            tagType = LogicOperation.Tag.Noop;
-          }
-          else if (tag == "Xor") {
-            tagType = LogicOperation.Tag.Xor;
-          }
-          else if (tag == "Or") {
-            tagType = LogicOperation.Tag.Or;
-          }
-          else if (tag == "Nor") {
-            tagType = LogicOperation.Tag.Nor;
-          }
-          else if (tag == "Equiv") {
-            tagType = LogicOperation.Tag.Equiv;
-          }
-          else if (tag == "Invert") {
-            tagType = LogicOperation.Tag.Invert;
-          }
-          else if (tag == "OrReverse") {
-            tagType = LogicOperation.Tag.OrReverse;
-          }
-          else if (tag == "CopyInverted") {
-            tagType = LogicOperation.Tag.CopyInverted;
-          }
-          else if (tag == "OrInverted") {
-            tagType = LogicOperation.Tag.OrInverted;
-          }
-          else if (tag == "Nand") {
-            tagType = LogicOperation.Tag.Nand;
-          }
-          else if (tag == "Set") {
-            tagType = LogicOperation.Tag.Set;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           LogicOperation o = new LogicOperation();
           o.tag = tagType;
           return o;
         }
         case Type.StencilOps: {
           string tag = (string)obj["tag"];
-          StencilOps.Tag tagType;
-          if (tag == "StencilOps") {
-            tagType = StencilOps.Tag.StencilOps;
-            data.StencilOps tv = new data.StencilOps();
-            tv.frontStencilOp = (global::LambdaCube.IR.StencilOperation)fromJSON(Type.StencilOperation,obj["frontStencilOp"]);
-            tv.backStencilOp = (global::LambdaCube.IR.StencilOperation)fromJSON(Type.StencilOperation,obj["backStencilOp"]);
-            return tv;
+          switch (tag) {
+            case "StencilOps": {
+              data.StencilOps tv = new data.StencilOps();
+              tv.frontStencilOp = (global::LambdaCube.IR.StencilOperation)fromJSON(Type.StencilOperation,obj["frontStencilOp"]);
+              tv.backStencilOp = (global::LambdaCube.IR.StencilOperation)fromJSON(Type.StencilOperation,obj["backStencilOp"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          StencilOps o = new StencilOps();
-          o.tag = tagType;
-          return o;
         }
         case Type.StencilTest: {
           string tag = (string)obj["tag"];
-          StencilTest.Tag tagType;
-          if (tag == "StencilTest") {
-            tagType = StencilTest.Tag.StencilTest;
-            data.StencilTest tv = new data.StencilTest();
-            tv.stencilComparision = (global::LambdaCube.IR.ComparisonFunction)fromJSON(Type.ComparisonFunction,obj["stencilComparision"]);
-            tv.stencilReference = (int)fromJSON(Type.Int32,obj["stencilReference"]);
-            tv.stencilMask = (uint)fromJSON(Type.Word32,obj["stencilMask"]);
-            return tv;
+          switch (tag) {
+            case "StencilTest": {
+              data.StencilTest tv = new data.StencilTest();
+              tv.stencilComparision = (global::LambdaCube.IR.ComparisonFunction)fromJSON(Type.ComparisonFunction,obj["stencilComparision"]);
+              tv.stencilReference = (int)fromJSON(Type.Int32,obj["stencilReference"]);
+              tv.stencilMask = (uint)fromJSON(Type.Word32,obj["stencilMask"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          StencilTest o = new StencilTest();
-          o.tag = tagType;
-          return o;
         }
         case Type.StencilTests: {
           string tag = (string)obj["tag"];
-          StencilTests.Tag tagType;
-          if (tag == "StencilTests") {
-            tagType = StencilTests.Tag.StencilTests;
-            data.StencilTests tv = new data.StencilTests();
-            tv._0 = (global::LambdaCube.IR.StencilTest)fromJSON(Type.StencilTest,obj["arg0"]);
-            tv._1 = (global::LambdaCube.IR.StencilTest)fromJSON(Type.StencilTest,obj["arg1"]);
-            return tv;
+          switch (tag) {
+            case "StencilTests": {
+              data.StencilTests tv = new data.StencilTests();
+              tv._0 = (global::LambdaCube.IR.StencilTest)fromJSON(Type.StencilTest,obj["arg0"]);
+              tv._1 = (global::LambdaCube.IR.StencilTest)fromJSON(Type.StencilTest,obj["arg1"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          StencilTests o = new StencilTests();
-          o.tag = tagType;
-          return o;
         }
         case Type.FetchPrimitive: {
           string tag = (string)obj["tag"];
           FetchPrimitive.Tag tagType;
-          if (tag == "Points") {
-            tagType = FetchPrimitive.Tag.Points;
+          switch (tag) {
+            case "Points": tagType = FetchPrimitive.Tag.Points; break;
+            case "Lines": tagType = FetchPrimitive.Tag.Lines; break;
+            case "Triangles": tagType = FetchPrimitive.Tag.Triangles; break;
+            case "LinesAdjacency": tagType = FetchPrimitive.Tag.LinesAdjacency; break;
+            case "TrianglesAdjacency": tagType = FetchPrimitive.Tag.TrianglesAdjacency; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "Lines") {
-            tagType = FetchPrimitive.Tag.Lines;
-          }
-          else if (tag == "Triangles") {
-            tagType = FetchPrimitive.Tag.Triangles;
-          }
-          else if (tag == "LinesAdjacency") {
-            tagType = FetchPrimitive.Tag.LinesAdjacency;
-          }
-          else if (tag == "TrianglesAdjacency") {
-            tagType = FetchPrimitive.Tag.TrianglesAdjacency;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           FetchPrimitive o = new FetchPrimitive();
           o.tag = tagType;
           return o;
@@ -2118,16 +1842,12 @@ namespace LambdaCube.IR {
         case Type.OutputPrimitive: {
           string tag = (string)obj["tag"];
           OutputPrimitive.Tag tagType;
-          if (tag == "TrianglesOutput") {
-            tagType = OutputPrimitive.Tag.TrianglesOutput;
+          switch (tag) {
+            case "TrianglesOutput": tagType = OutputPrimitive.Tag.TrianglesOutput; break;
+            case "LinesOutput": tagType = OutputPrimitive.Tag.LinesOutput; break;
+            case "PointsOutput": tagType = OutputPrimitive.Tag.PointsOutput; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "LinesOutput") {
-            tagType = OutputPrimitive.Tag.LinesOutput;
-          }
-          else if (tag == "PointsOutput") {
-            tagType = OutputPrimitive.Tag.PointsOutput;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           OutputPrimitive o = new OutputPrimitive();
           o.tag = tagType;
           return o;
@@ -2135,19 +1855,13 @@ namespace LambdaCube.IR {
         case Type.ColorArity: {
           string tag = (string)obj["tag"];
           ColorArity.Tag tagType;
-          if (tag == "Red") {
-            tagType = ColorArity.Tag.Red;
+          switch (tag) {
+            case "Red": tagType = ColorArity.Tag.Red; break;
+            case "RG": tagType = ColorArity.Tag.RG; break;
+            case "RGB": tagType = ColorArity.Tag.RGB; break;
+            case "RGBA": tagType = ColorArity.Tag.RGBA; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "RG") {
-            tagType = ColorArity.Tag.RG;
-          }
-          else if (tag == "RGB") {
-            tagType = ColorArity.Tag.RGB;
-          }
-          else if (tag == "RGBA") {
-            tagType = ColorArity.Tag.RGBA;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           ColorArity o = new ColorArity();
           o.tag = tagType;
           return o;
@@ -2155,214 +1869,185 @@ namespace LambdaCube.IR {
         case Type.Blending: {
           string tag = (string)obj["tag"];
           Blending.Tag tagType;
-          if (tag == "NoBlending") {
-            tagType = Blending.Tag.NoBlending;
+          switch (tag) {
+            case "NoBlending": tagType = Blending.Tag.NoBlending; break;
+            case "BlendLogicOp": {
+              data.BlendLogicOp tv = new data.BlendLogicOp();
+              tv._0 = (global::LambdaCube.IR.LogicOperation)fromJSON(Type.LogicOperation,obj["arg0"]);
+              return tv;
+            }
+            case "Blend": {
+              data.Blend tv = new data.Blend();
+              tv.colorEqSrc = (global::LambdaCube.IR.BlendEquation)fromJSON(Type.BlendEquation,obj["colorEqSrc"]);
+              tv.alphaEqSrc = (global::LambdaCube.IR.BlendEquation)fromJSON(Type.BlendEquation,obj["alphaEqSrc"]);
+              tv.colorFSrc = (global::LambdaCube.IR.BlendingFactor)fromJSON(Type.BlendingFactor,obj["colorFSrc"]);
+              tv.colorFDst = (global::LambdaCube.IR.BlendingFactor)fromJSON(Type.BlendingFactor,obj["colorFDst"]);
+              tv.alphaFSrc = (global::LambdaCube.IR.BlendingFactor)fromJSON(Type.BlendingFactor,obj["alphaFSrc"]);
+              tv.alphaFDst = (global::LambdaCube.IR.BlendingFactor)fromJSON(Type.BlendingFactor,obj["alphaFDst"]);
+              tv.color = (V4<float>)fromJSON(Type.V4_Float,obj["color"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "BlendLogicOp") {
-            tagType = Blending.Tag.BlendLogicOp;
-            data.BlendLogicOp tv = new data.BlendLogicOp();
-            tv._0 = (global::LambdaCube.IR.LogicOperation)fromJSON(Type.LogicOperation,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "Blend") {
-            tagType = Blending.Tag.Blend;
-            data.Blend tv = new data.Blend();
-            tv.colorEqSrc = (global::LambdaCube.IR.BlendEquation)fromJSON(Type.BlendEquation,obj["colorEqSrc"]);
-            tv.alphaEqSrc = (global::LambdaCube.IR.BlendEquation)fromJSON(Type.BlendEquation,obj["alphaEqSrc"]);
-            tv.colorFSrc = (global::LambdaCube.IR.BlendingFactor)fromJSON(Type.BlendingFactor,obj["colorFSrc"]);
-            tv.colorFDst = (global::LambdaCube.IR.BlendingFactor)fromJSON(Type.BlendingFactor,obj["colorFDst"]);
-            tv.alphaFSrc = (global::LambdaCube.IR.BlendingFactor)fromJSON(Type.BlendingFactor,obj["alphaFSrc"]);
-            tv.alphaFDst = (global::LambdaCube.IR.BlendingFactor)fromJSON(Type.BlendingFactor,obj["alphaFDst"]);
-            tv.color = (V4<float>)fromJSON(Type.V4_Float,obj["color"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           Blending o = new Blending();
           o.tag = tagType;
           return o;
         }
         case Type.RasterContext: {
           string tag = (string)obj["tag"];
-          RasterContext.Tag tagType;
-          if (tag == "PointCtx") {
-            tagType = RasterContext.Tag.PointCtx;
-            data.PointCtx tv = new data.PointCtx();
-            tv._0 = (global::LambdaCube.IR.PointSize)fromJSON(Type.PointSize,obj["arg0"]);
-            tv._1 = (float)fromJSON(Type.Float,obj["arg1"]);
-            tv._2 = (global::LambdaCube.IR.PointSpriteCoordOrigin)fromJSON(Type.PointSpriteCoordOrigin,obj["arg2"]);
-            return tv;
+          switch (tag) {
+            case "PointCtx": {
+              data.PointCtx tv = new data.PointCtx();
+              tv._0 = (global::LambdaCube.IR.PointSize)fromJSON(Type.PointSize,obj["arg0"]);
+              tv._1 = (float)fromJSON(Type.Float,obj["arg1"]);
+              tv._2 = (global::LambdaCube.IR.PointSpriteCoordOrigin)fromJSON(Type.PointSpriteCoordOrigin,obj["arg2"]);
+              return tv;
+            }
+            case "LineCtx": {
+              data.LineCtx tv = new data.LineCtx();
+              tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
+              tv._1 = (global::LambdaCube.IR.ProvokingVertex)fromJSON(Type.ProvokingVertex,obj["arg1"]);
+              return tv;
+            }
+            case "TriangleCtx": {
+              data.TriangleCtx tv = new data.TriangleCtx();
+              tv._0 = (global::LambdaCube.IR.CullMode)fromJSON(Type.CullMode,obj["arg0"]);
+              tv._1 = (global::LambdaCube.IR.PolygonMode)fromJSON(Type.PolygonMode,obj["arg1"]);
+              tv._2 = (global::LambdaCube.IR.PolygonOffset)fromJSON(Type.PolygonOffset,obj["arg2"]);
+              tv._3 = (global::LambdaCube.IR.ProvokingVertex)fromJSON(Type.ProvokingVertex,obj["arg3"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "LineCtx") {
-            tagType = RasterContext.Tag.LineCtx;
-            data.LineCtx tv = new data.LineCtx();
-            tv._0 = (float)fromJSON(Type.Float,obj["arg0"]);
-            tv._1 = (global::LambdaCube.IR.ProvokingVertex)fromJSON(Type.ProvokingVertex,obj["arg1"]);
-            return tv;
-          }
-          else if (tag == "TriangleCtx") {
-            tagType = RasterContext.Tag.TriangleCtx;
-            data.TriangleCtx tv = new data.TriangleCtx();
-            tv._0 = (global::LambdaCube.IR.CullMode)fromJSON(Type.CullMode,obj["arg0"]);
-            tv._1 = (global::LambdaCube.IR.PolygonMode)fromJSON(Type.PolygonMode,obj["arg1"]);
-            tv._2 = (global::LambdaCube.IR.PolygonOffset)fromJSON(Type.PolygonOffset,obj["arg2"]);
-            tv._3 = (global::LambdaCube.IR.ProvokingVertex)fromJSON(Type.ProvokingVertex,obj["arg3"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          RasterContext o = new RasterContext();
-          o.tag = tagType;
-          return o;
         }
         case Type.FragmentOperation: {
           string tag = (string)obj["tag"];
-          FragmentOperation.Tag tagType;
-          if (tag == "DepthOp") {
-            tagType = FragmentOperation.Tag.DepthOp;
-            data.DepthOp tv = new data.DepthOp();
-            tv._0 = (global::LambdaCube.IR.ComparisonFunction)fromJSON(Type.ComparisonFunction,obj["arg0"]);
-            tv._1 = (bool)fromJSON(Type.Bool,obj["arg1"]);
-            return tv;
+          switch (tag) {
+            case "DepthOp": {
+              data.DepthOp tv = new data.DepthOp();
+              tv._0 = (global::LambdaCube.IR.ComparisonFunction)fromJSON(Type.ComparisonFunction,obj["arg0"]);
+              tv._1 = (bool)fromJSON(Type.Bool,obj["arg1"]);
+              return tv;
+            }
+            case "StencilOp": {
+              data.StencilOp tv = new data.StencilOp();
+              tv._0 = (global::LambdaCube.IR.StencilTests)fromJSON(Type.StencilTests,obj["arg0"]);
+              tv._1 = (global::LambdaCube.IR.StencilOps)fromJSON(Type.StencilOps,obj["arg1"]);
+              tv._2 = (global::LambdaCube.IR.StencilOps)fromJSON(Type.StencilOps,obj["arg2"]);
+              return tv;
+            }
+            case "ColorOp": {
+              data.ColorOp tv = new data.ColorOp();
+              tv._0 = (global::LambdaCube.IR.Blending)fromJSON(Type.Blending,obj["arg0"]);
+              tv._1 = (global::LambdaCube.IR.Value)fromJSON(Type.Value,obj["arg1"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "StencilOp") {
-            tagType = FragmentOperation.Tag.StencilOp;
-            data.StencilOp tv = new data.StencilOp();
-            tv._0 = (global::LambdaCube.IR.StencilTests)fromJSON(Type.StencilTests,obj["arg0"]);
-            tv._1 = (global::LambdaCube.IR.StencilOps)fromJSON(Type.StencilOps,obj["arg1"]);
-            tv._2 = (global::LambdaCube.IR.StencilOps)fromJSON(Type.StencilOps,obj["arg2"]);
-            return tv;
-          }
-          else if (tag == "ColorOp") {
-            tagType = FragmentOperation.Tag.ColorOp;
-            data.ColorOp tv = new data.ColorOp();
-            tv._0 = (global::LambdaCube.IR.Blending)fromJSON(Type.Blending,obj["arg0"]);
-            tv._1 = (global::LambdaCube.IR.Value)fromJSON(Type.Value,obj["arg1"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          FragmentOperation o = new FragmentOperation();
-          o.tag = tagType;
-          return o;
         }
         case Type.AccumulationContext: {
           string tag = (string)obj["tag"];
-          AccumulationContext.Tag tagType;
-          if (tag == "AccumulationContext") {
-            tagType = AccumulationContext.Tag.AccumulationContext;
-            data.AccumulationContext tv = new data.AccumulationContext();
-            tv.accViewportName = (Maybe<string>)fromJSON(Type.Maybe_String,obj["accViewportName"]);
-            tv.accOperations = (List<global::LambdaCube.IR.FragmentOperation>)fromJSON(Type.List_FragmentOperation,obj["accOperations"]);
-            return tv;
+          switch (tag) {
+            case "AccumulationContext": {
+              data.AccumulationContext tv = new data.AccumulationContext();
+              tv.accViewportName = (Maybe<string>)fromJSON(Type.Maybe_String,obj["accViewportName"]);
+              tv.accOperations = (List<global::LambdaCube.IR.FragmentOperation>)fromJSON(Type.List_FragmentOperation,obj["accOperations"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          AccumulationContext o = new AccumulationContext();
-          o.tag = tagType;
-          return o;
         }
         case Type.TextureDataType: {
           string tag = (string)obj["tag"];
           TextureDataType.Tag tagType;
-          if (tag == "FloatT") {
-            tagType = TextureDataType.Tag.FloatT;
-            data.FloatT tv = new data.FloatT();
-            tv._0 = (global::LambdaCube.IR.ColorArity)fromJSON(Type.ColorArity,obj["arg0"]);
-            return tv;
+          switch (tag) {
+            case "FloatT": {
+              data.FloatT tv = new data.FloatT();
+              tv._0 = (global::LambdaCube.IR.ColorArity)fromJSON(Type.ColorArity,obj["arg0"]);
+              return tv;
+            }
+            case "IntT": {
+              data.IntT tv = new data.IntT();
+              tv._0 = (global::LambdaCube.IR.ColorArity)fromJSON(Type.ColorArity,obj["arg0"]);
+              return tv;
+            }
+            case "WordT": {
+              data.WordT tv = new data.WordT();
+              tv._0 = (global::LambdaCube.IR.ColorArity)fromJSON(Type.ColorArity,obj["arg0"]);
+              return tv;
+            }
+            case "ShadowT": tagType = TextureDataType.Tag.ShadowT; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "IntT") {
-            tagType = TextureDataType.Tag.IntT;
-            data.IntT tv = new data.IntT();
-            tv._0 = (global::LambdaCube.IR.ColorArity)fromJSON(Type.ColorArity,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "WordT") {
-            tagType = TextureDataType.Tag.WordT;
-            data.WordT tv = new data.WordT();
-            tv._0 = (global::LambdaCube.IR.ColorArity)fromJSON(Type.ColorArity,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "ShadowT") {
-            tagType = TextureDataType.Tag.ShadowT;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           TextureDataType o = new TextureDataType();
           o.tag = tagType;
           return o;
         }
         case Type.TextureType: {
           string tag = (string)obj["tag"];
-          TextureType.Tag tagType;
-          if (tag == "Texture1D") {
-            tagType = TextureType.Tag.Texture1D;
-            data.Texture1D tv = new data.Texture1D();
-            tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
-            tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
-            return tv;
+          switch (tag) {
+            case "Texture1D": {
+              data.Texture1D tv = new data.Texture1D();
+              tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
+              tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
+              return tv;
+            }
+            case "Texture2D": {
+              data.Texture2D tv = new data.Texture2D();
+              tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
+              tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
+              return tv;
+            }
+            case "Texture3D": {
+              data.Texture3D tv = new data.Texture3D();
+              tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
+              return tv;
+            }
+            case "TextureCube": {
+              data.TextureCube tv = new data.TextureCube();
+              tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
+              return tv;
+            }
+            case "TextureRect": {
+              data.TextureRect tv = new data.TextureRect();
+              tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
+              return tv;
+            }
+            case "Texture2DMS": {
+              data.Texture2DMS tv = new data.Texture2DMS();
+              tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
+              tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
+              tv._2 = (int)fromJSON(Type.Int,obj["arg2"]);
+              tv._3 = (bool)fromJSON(Type.Bool,obj["arg3"]);
+              return tv;
+            }
+            case "TextureBuffer": {
+              data.TextureBuffer tv = new data.TextureBuffer();
+              tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "Texture2D") {
-            tagType = TextureType.Tag.Texture2D;
-            data.Texture2D tv = new data.Texture2D();
-            tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
-            tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
-            return tv;
-          }
-          else if (tag == "Texture3D") {
-            tagType = TextureType.Tag.Texture3D;
-            data.Texture3D tv = new data.Texture3D();
-            tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "TextureCube") {
-            tagType = TextureType.Tag.TextureCube;
-            data.TextureCube tv = new data.TextureCube();
-            tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "TextureRect") {
-            tagType = TextureType.Tag.TextureRect;
-            data.TextureRect tv = new data.TextureRect();
-            tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "Texture2DMS") {
-            tagType = TextureType.Tag.Texture2DMS;
-            data.Texture2DMS tv = new data.Texture2DMS();
-            tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
-            tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
-            tv._2 = (int)fromJSON(Type.Int,obj["arg2"]);
-            tv._3 = (bool)fromJSON(Type.Bool,obj["arg3"]);
-            return tv;
-          }
-          else if (tag == "TextureBuffer") {
-            tagType = TextureType.Tag.TextureBuffer;
-            data.TextureBuffer tv = new data.TextureBuffer();
-            tv._0 = (global::LambdaCube.IR.TextureDataType)fromJSON(Type.TextureDataType,obj["arg0"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          TextureType o = new TextureType();
-          o.tag = tagType;
-          return o;
         }
         case Type.MipMap: {
           string tag = (string)obj["tag"];
           MipMap.Tag tagType;
-          if (tag == "Mip") {
-            tagType = MipMap.Tag.Mip;
-            data.Mip tv = new data.Mip();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
-            return tv;
+          switch (tag) {
+            case "Mip": {
+              data.Mip tv = new data.Mip();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
+              return tv;
+            }
+            case "NoMip": tagType = MipMap.Tag.NoMip; break;
+            case "AutoMip": {
+              data.AutoMip tv = new data.AutoMip();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "NoMip") {
-            tagType = MipMap.Tag.NoMip;
-          }
-          else if (tag == "AutoMip") {
-            tagType = MipMap.Tag.AutoMip;
-            data.AutoMip tv = new data.AutoMip();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           MipMap o = new MipMap();
           o.tag = tagType;
           return o;
@@ -2370,25 +2055,15 @@ namespace LambdaCube.IR {
         case Type.Filter: {
           string tag = (string)obj["tag"];
           Filter.Tag tagType;
-          if (tag == "Nearest") {
-            tagType = Filter.Tag.Nearest;
+          switch (tag) {
+            case "Nearest": tagType = Filter.Tag.Nearest; break;
+            case "Linear": tagType = Filter.Tag.Linear; break;
+            case "NearestMipmapNearest": tagType = Filter.Tag.NearestMipmapNearest; break;
+            case "NearestMipmapLinear": tagType = Filter.Tag.NearestMipmapLinear; break;
+            case "LinearMipmapNearest": tagType = Filter.Tag.LinearMipmapNearest; break;
+            case "LinearMipmapLinear": tagType = Filter.Tag.LinearMipmapLinear; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "Linear") {
-            tagType = Filter.Tag.Linear;
-          }
-          else if (tag == "NearestMipmapNearest") {
-            tagType = Filter.Tag.NearestMipmapNearest;
-          }
-          else if (tag == "NearestMipmapLinear") {
-            tagType = Filter.Tag.NearestMipmapLinear;
-          }
-          else if (tag == "LinearMipmapNearest") {
-            tagType = Filter.Tag.LinearMipmapNearest;
-          }
-          else if (tag == "LinearMipmapLinear") {
-            tagType = Filter.Tag.LinearMipmapLinear;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           Filter o = new Filter();
           o.tag = tagType;
           return o;
@@ -2396,19 +2071,13 @@ namespace LambdaCube.IR {
         case Type.EdgeMode: {
           string tag = (string)obj["tag"];
           EdgeMode.Tag tagType;
-          if (tag == "Repeat") {
-            tagType = EdgeMode.Tag.Repeat;
+          switch (tag) {
+            case "Repeat": tagType = EdgeMode.Tag.Repeat; break;
+            case "MirroredRepeat": tagType = EdgeMode.Tag.MirroredRepeat; break;
+            case "ClampToEdge": tagType = EdgeMode.Tag.ClampToEdge; break;
+            case "ClampToBorder": tagType = EdgeMode.Tag.ClampToBorder; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "MirroredRepeat") {
-            tagType = EdgeMode.Tag.MirroredRepeat;
-          }
-          else if (tag == "ClampToEdge") {
-            tagType = EdgeMode.Tag.ClampToEdge;
-          }
-          else if (tag == "ClampToBorder") {
-            tagType = EdgeMode.Tag.ClampToBorder;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           EdgeMode o = new EdgeMode();
           o.tag = tagType;
           return o;
@@ -2416,324 +2085,269 @@ namespace LambdaCube.IR {
         case Type.ImageSemantic: {
           string tag = (string)obj["tag"];
           ImageSemantic.Tag tagType;
-          if (tag == "Depth") {
-            tagType = ImageSemantic.Tag.Depth;
+          switch (tag) {
+            case "Depth": tagType = ImageSemantic.Tag.Depth; break;
+            case "Stencil": tagType = ImageSemantic.Tag.Stencil; break;
+            case "Color": tagType = ImageSemantic.Tag.Color; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "Stencil") {
-            tagType = ImageSemantic.Tag.Stencil;
-          }
-          else if (tag == "Color") {
-            tagType = ImageSemantic.Tag.Color;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           ImageSemantic o = new ImageSemantic();
           o.tag = tagType;
           return o;
         }
         case Type.ImageRef: {
           string tag = (string)obj["tag"];
-          ImageRef.Tag tagType;
-          if (tag == "TextureImage") {
-            tagType = ImageRef.Tag.TextureImage;
-            data.TextureImage tv = new data.TextureImage();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
-            tv._2 = (Maybe<int>)fromJSON(Type.Maybe_Int,obj["arg2"]);
-            return tv;
+          switch (tag) {
+            case "TextureImage": {
+              data.TextureImage tv = new data.TextureImage();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
+              tv._2 = (Maybe<int>)fromJSON(Type.Maybe_Int,obj["arg2"]);
+              return tv;
+            }
+            case "Framebuffer": {
+              data.Framebuffer tv = new data.Framebuffer();
+              tv._0 = (global::LambdaCube.IR.ImageSemantic)fromJSON(Type.ImageSemantic,obj["arg0"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "Framebuffer") {
-            tagType = ImageRef.Tag.Framebuffer;
-            data.Framebuffer tv = new data.Framebuffer();
-            tv._0 = (global::LambdaCube.IR.ImageSemantic)fromJSON(Type.ImageSemantic,obj["arg0"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          ImageRef o = new ImageRef();
-          o.tag = tagType;
-          return o;
         }
         case Type.ClearImage: {
           string tag = (string)obj["tag"];
-          ClearImage.Tag tagType;
-          if (tag == "ClearImage") {
-            tagType = ClearImage.Tag.ClearImage;
-            data.ClearImage tv = new data.ClearImage();
-            tv.imageSemantic = (global::LambdaCube.IR.ImageSemantic)fromJSON(Type.ImageSemantic,obj["imageSemantic"]);
-            tv.clearValue = (global::LambdaCube.IR.Value)fromJSON(Type.Value,obj["clearValue"]);
-            return tv;
+          switch (tag) {
+            case "ClearImage": {
+              data.ClearImage tv = new data.ClearImage();
+              tv.imageSemantic = (global::LambdaCube.IR.ImageSemantic)fromJSON(Type.ImageSemantic,obj["imageSemantic"]);
+              tv.clearValue = (global::LambdaCube.IR.Value)fromJSON(Type.Value,obj["clearValue"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          ClearImage o = new ClearImage();
-          o.tag = tagType;
-          return o;
         }
         case Type.Command: {
           string tag = (string)obj["tag"];
-          Command.Tag tagType;
-          if (tag == "SetRasterContext") {
-            tagType = Command.Tag.SetRasterContext;
-            data.SetRasterContext tv = new data.SetRasterContext();
-            tv._0 = (global::LambdaCube.IR.RasterContext)fromJSON(Type.RasterContext,obj["arg0"]);
-            return tv;
+          switch (tag) {
+            case "SetRasterContext": {
+              data.SetRasterContext tv = new data.SetRasterContext();
+              tv._0 = (global::LambdaCube.IR.RasterContext)fromJSON(Type.RasterContext,obj["arg0"]);
+              return tv;
+            }
+            case "SetAccumulationContext": {
+              data.SetAccumulationContext tv = new data.SetAccumulationContext();
+              tv._0 = (global::LambdaCube.IR.AccumulationContext)fromJSON(Type.AccumulationContext,obj["arg0"]);
+              return tv;
+            }
+            case "SetRenderTarget": {
+              data.SetRenderTarget tv = new data.SetRenderTarget();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              return tv;
+            }
+            case "SetProgram": {
+              data.SetProgram tv = new data.SetProgram();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              return tv;
+            }
+            case "SetSamplerUniform": {
+              data.SetSamplerUniform tv = new data.SetSamplerUniform();
+              tv._0 = (string)fromJSON(Type.String,obj["arg0"]);
+              tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
+              return tv;
+            }
+            case "SetTexture": {
+              data.SetTexture tv = new data.SetTexture();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
+              return tv;
+            }
+            case "SetSampler": {
+              data.SetSampler tv = new data.SetSampler();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              tv._1 = (Maybe<int>)fromJSON(Type.Maybe_Int,obj["arg1"]);
+              return tv;
+            }
+            case "RenderSlot": {
+              data.RenderSlot tv = new data.RenderSlot();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              return tv;
+            }
+            case "RenderStream": {
+              data.RenderStream tv = new data.RenderStream();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              return tv;
+            }
+            case "ClearRenderTarget": {
+              data.ClearRenderTarget tv = new data.ClearRenderTarget();
+              tv._0 = (List<global::LambdaCube.IR.ClearImage>)fromJSON(Type.Array_ClearImage,obj["arg0"]);
+              return tv;
+            }
+            case "GenerateMipMap": {
+              data.GenerateMipMap tv = new data.GenerateMipMap();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              return tv;
+            }
+            case "SaveImage": {
+              data.SaveImage tv = new data.SaveImage();
+              tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
+              tv._1 = (global::LambdaCube.IR.ImageRef)fromJSON(Type.ImageRef,obj["arg1"]);
+              return tv;
+            }
+            case "LoadImage": {
+              data.LoadImage tv = new data.LoadImage();
+              tv._0 = (global::LambdaCube.IR.ImageRef)fromJSON(Type.ImageRef,obj["arg0"]);
+              tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "SetAccumulationContext") {
-            tagType = Command.Tag.SetAccumulationContext;
-            data.SetAccumulationContext tv = new data.SetAccumulationContext();
-            tv._0 = (global::LambdaCube.IR.AccumulationContext)fromJSON(Type.AccumulationContext,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "SetRenderTarget") {
-            tagType = Command.Tag.SetRenderTarget;
-            data.SetRenderTarget tv = new data.SetRenderTarget();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "SetProgram") {
-            tagType = Command.Tag.SetProgram;
-            data.SetProgram tv = new data.SetProgram();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "SetSamplerUniform") {
-            tagType = Command.Tag.SetSamplerUniform;
-            data.SetSamplerUniform tv = new data.SetSamplerUniform();
-            tv._0 = (string)fromJSON(Type.String,obj["arg0"]);
-            tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
-            return tv;
-          }
-          else if (tag == "SetTexture") {
-            tagType = Command.Tag.SetTexture;
-            data.SetTexture tv = new data.SetTexture();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
-            return tv;
-          }
-          else if (tag == "SetSampler") {
-            tagType = Command.Tag.SetSampler;
-            data.SetSampler tv = new data.SetSampler();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            tv._1 = (Maybe<int>)fromJSON(Type.Maybe_Int,obj["arg1"]);
-            return tv;
-          }
-          else if (tag == "RenderSlot") {
-            tagType = Command.Tag.RenderSlot;
-            data.RenderSlot tv = new data.RenderSlot();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "RenderStream") {
-            tagType = Command.Tag.RenderStream;
-            data.RenderStream tv = new data.RenderStream();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "ClearRenderTarget") {
-            tagType = Command.Tag.ClearRenderTarget;
-            data.ClearRenderTarget tv = new data.ClearRenderTarget();
-            tv._0 = (List<global::LambdaCube.IR.ClearImage>)fromJSON(Type.Array_ClearImage,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "GenerateMipMap") {
-            tagType = Command.Tag.GenerateMipMap;
-            data.GenerateMipMap tv = new data.GenerateMipMap();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "SaveImage") {
-            tagType = Command.Tag.SaveImage;
-            data.SaveImage tv = new data.SaveImage();
-            tv._0 = (int)fromJSON(Type.Int,obj["arg0"]);
-            tv._1 = (global::LambdaCube.IR.ImageRef)fromJSON(Type.ImageRef,obj["arg1"]);
-            return tv;
-          }
-          else if (tag == "LoadImage") {
-            tagType = Command.Tag.LoadImage;
-            data.LoadImage tv = new data.LoadImage();
-            tv._0 = (global::LambdaCube.IR.ImageRef)fromJSON(Type.ImageRef,obj["arg0"]);
-            tv._1 = (int)fromJSON(Type.Int,obj["arg1"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          Command o = new Command();
-          o.tag = tagType;
-          return o;
         }
         case Type.SamplerDescriptor: {
           string tag = (string)obj["tag"];
-          SamplerDescriptor.Tag tagType;
-          if (tag == "SamplerDescriptor") {
-            tagType = SamplerDescriptor.Tag.SamplerDescriptor;
-            data.SamplerDescriptor tv = new data.SamplerDescriptor();
-            tv.samplerWrapS = (global::LambdaCube.IR.EdgeMode)fromJSON(Type.EdgeMode,obj["samplerWrapS"]);
-            tv.samplerWrapT = (Maybe<global::LambdaCube.IR.EdgeMode>)fromJSON(Type.Maybe_EdgeMode,obj["samplerWrapT"]);
-            tv.samplerWrapR = (Maybe<global::LambdaCube.IR.EdgeMode>)fromJSON(Type.Maybe_EdgeMode,obj["samplerWrapR"]);
-            tv.samplerMinFilter = (global::LambdaCube.IR.Filter)fromJSON(Type.Filter,obj["samplerMinFilter"]);
-            tv.samplerMagFilter = (global::LambdaCube.IR.Filter)fromJSON(Type.Filter,obj["samplerMagFilter"]);
-            tv.samplerBorderColor = (global::LambdaCube.IR.Value)fromJSON(Type.Value,obj["samplerBorderColor"]);
-            tv.samplerMinLod = (Maybe<float>)fromJSON(Type.Maybe_Float,obj["samplerMinLod"]);
-            tv.samplerMaxLod = (Maybe<float>)fromJSON(Type.Maybe_Float,obj["samplerMaxLod"]);
-            tv.samplerLodBias = (float)fromJSON(Type.Float,obj["samplerLodBias"]);
-            tv.samplerCompareFunc = (Maybe<global::LambdaCube.IR.ComparisonFunction>)fromJSON(Type.Maybe_ComparisonFunction,obj["samplerCompareFunc"]);
-            return tv;
+          switch (tag) {
+            case "SamplerDescriptor": {
+              data.SamplerDescriptor tv = new data.SamplerDescriptor();
+              tv.samplerWrapS = (global::LambdaCube.IR.EdgeMode)fromJSON(Type.EdgeMode,obj["samplerWrapS"]);
+              tv.samplerWrapT = (Maybe<global::LambdaCube.IR.EdgeMode>)fromJSON(Type.Maybe_EdgeMode,obj["samplerWrapT"]);
+              tv.samplerWrapR = (Maybe<global::LambdaCube.IR.EdgeMode>)fromJSON(Type.Maybe_EdgeMode,obj["samplerWrapR"]);
+              tv.samplerMinFilter = (global::LambdaCube.IR.Filter)fromJSON(Type.Filter,obj["samplerMinFilter"]);
+              tv.samplerMagFilter = (global::LambdaCube.IR.Filter)fromJSON(Type.Filter,obj["samplerMagFilter"]);
+              tv.samplerBorderColor = (global::LambdaCube.IR.Value)fromJSON(Type.Value,obj["samplerBorderColor"]);
+              tv.samplerMinLod = (Maybe<float>)fromJSON(Type.Maybe_Float,obj["samplerMinLod"]);
+              tv.samplerMaxLod = (Maybe<float>)fromJSON(Type.Maybe_Float,obj["samplerMaxLod"]);
+              tv.samplerLodBias = (float)fromJSON(Type.Float,obj["samplerLodBias"]);
+              tv.samplerCompareFunc = (Maybe<global::LambdaCube.IR.ComparisonFunction>)fromJSON(Type.Maybe_ComparisonFunction,obj["samplerCompareFunc"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          SamplerDescriptor o = new SamplerDescriptor();
-          o.tag = tagType;
-          return o;
         }
         case Type.TextureDescriptor: {
           string tag = (string)obj["tag"];
-          TextureDescriptor.Tag tagType;
-          if (tag == "TextureDescriptor") {
-            tagType = TextureDescriptor.Tag.TextureDescriptor;
-            data.TextureDescriptor tv = new data.TextureDescriptor();
-            tv.textureType = (global::LambdaCube.IR.TextureType)fromJSON(Type.TextureType,obj["textureType"]);
-            tv.textureSize = (global::LambdaCube.IR.Value)fromJSON(Type.Value,obj["textureSize"]);
-            tv.textureSemantic = (global::LambdaCube.IR.ImageSemantic)fromJSON(Type.ImageSemantic,obj["textureSemantic"]);
-            tv.textureSampler = (global::LambdaCube.IR.SamplerDescriptor)fromJSON(Type.SamplerDescriptor,obj["textureSampler"]);
-            tv.textureBaseLevel = (int)fromJSON(Type.Int,obj["textureBaseLevel"]);
-            tv.textureMaxLevel = (int)fromJSON(Type.Int,obj["textureMaxLevel"]);
-            return tv;
+          switch (tag) {
+            case "TextureDescriptor": {
+              data.TextureDescriptor tv = new data.TextureDescriptor();
+              tv.textureType = (global::LambdaCube.IR.TextureType)fromJSON(Type.TextureType,obj["textureType"]);
+              tv.textureSize = (global::LambdaCube.IR.Value)fromJSON(Type.Value,obj["textureSize"]);
+              tv.textureSemantic = (global::LambdaCube.IR.ImageSemantic)fromJSON(Type.ImageSemantic,obj["textureSemantic"]);
+              tv.textureSampler = (global::LambdaCube.IR.SamplerDescriptor)fromJSON(Type.SamplerDescriptor,obj["textureSampler"]);
+              tv.textureBaseLevel = (int)fromJSON(Type.Int,obj["textureBaseLevel"]);
+              tv.textureMaxLevel = (int)fromJSON(Type.Int,obj["textureMaxLevel"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          TextureDescriptor o = new TextureDescriptor();
-          o.tag = tagType;
-          return o;
         }
         case Type.Parameter: {
           string tag = (string)obj["tag"];
-          Parameter.Tag tagType;
-          if (tag == "Parameter") {
-            tagType = Parameter.Tag.Parameter;
-            data.Parameter tv = new data.Parameter();
-            tv.name = (string)fromJSON(Type.String,obj["name"]);
-            tv.ty = (global::LambdaCube.IR.InputType)fromJSON(Type.InputType,obj["ty"]);
-            return tv;
+          switch (tag) {
+            case "Parameter": {
+              data.Parameter tv = new data.Parameter();
+              tv.name = (string)fromJSON(Type.String,obj["name"]);
+              tv.ty = (global::LambdaCube.IR.InputType)fromJSON(Type.InputType,obj["ty"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          Parameter o = new Parameter();
-          o.tag = tagType;
-          return o;
         }
         case Type.Program: {
           string tag = (string)obj["tag"];
-          Program.Tag tagType;
-          if (tag == "Program") {
-            tagType = Program.Tag.Program;
-            data.Program tv = new data.Program();
-            tv.programUniforms = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["programUniforms"]);
-            tv.programStreams = (Dictionary<string, global::LambdaCube.IR.Parameter>)fromJSON(Type.Map_String_Parameter,obj["programStreams"]);
-            tv.programInTextures = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["programInTextures"]);
-            tv.programOutput = (List<global::LambdaCube.IR.Parameter>)fromJSON(Type.Array_Parameter,obj["programOutput"]);
-            tv.vertexShader = (string)fromJSON(Type.String,obj["vertexShader"]);
-            tv.geometryShader = (Maybe<string>)fromJSON(Type.Maybe_String,obj["geometryShader"]);
-            tv.fragmentShader = (string)fromJSON(Type.String,obj["fragmentShader"]);
-            return tv;
+          switch (tag) {
+            case "Program": {
+              data.Program tv = new data.Program();
+              tv.programUniforms = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["programUniforms"]);
+              tv.programStreams = (Dictionary<string, global::LambdaCube.IR.Parameter>)fromJSON(Type.Map_String_Parameter,obj["programStreams"]);
+              tv.programInTextures = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["programInTextures"]);
+              tv.programOutput = (List<global::LambdaCube.IR.Parameter>)fromJSON(Type.Array_Parameter,obj["programOutput"]);
+              tv.vertexShader = (string)fromJSON(Type.String,obj["vertexShader"]);
+              tv.geometryShader = (Maybe<string>)fromJSON(Type.Maybe_String,obj["geometryShader"]);
+              tv.fragmentShader = (string)fromJSON(Type.String,obj["fragmentShader"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          Program o = new Program();
-          o.tag = tagType;
-          return o;
         }
         case Type.Slot: {
           string tag = (string)obj["tag"];
-          Slot.Tag tagType;
-          if (tag == "Slot") {
-            tagType = Slot.Tag.Slot;
-            data.Slot tv = new data.Slot();
-            tv.slotName = (string)fromJSON(Type.String,obj["slotName"]);
-            tv.slotStreams = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["slotStreams"]);
-            tv.slotUniforms = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["slotUniforms"]);
-            tv.slotPrimitive = (global::LambdaCube.IR.FetchPrimitive)fromJSON(Type.FetchPrimitive,obj["slotPrimitive"]);
-            tv.slotPrograms = (List<int>)fromJSON(Type.Array_Int,obj["slotPrograms"]);
-            return tv;
+          switch (tag) {
+            case "Slot": {
+              data.Slot tv = new data.Slot();
+              tv.slotName = (string)fromJSON(Type.String,obj["slotName"]);
+              tv.slotStreams = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["slotStreams"]);
+              tv.slotUniforms = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["slotUniforms"]);
+              tv.slotPrimitive = (global::LambdaCube.IR.FetchPrimitive)fromJSON(Type.FetchPrimitive,obj["slotPrimitive"]);
+              tv.slotPrograms = (List<int>)fromJSON(Type.Array_Int,obj["slotPrograms"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          Slot o = new Slot();
-          o.tag = tagType;
-          return o;
         }
         case Type.StreamData: {
           string tag = (string)obj["tag"];
-          StreamData.Tag tagType;
-          if (tag == "StreamData") {
-            tagType = StreamData.Tag.StreamData;
-            data.StreamData tv = new data.StreamData();
-            tv.streamData = (Dictionary<string, global::LambdaCube.IR.ArrayValue>)fromJSON(Type.Map_String_ArrayValue,obj["streamData"]);
-            tv.streamType = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["streamType"]);
-            tv.streamPrimitive = (global::LambdaCube.IR.FetchPrimitive)fromJSON(Type.FetchPrimitive,obj["streamPrimitive"]);
-            tv.streamPrograms = (List<int>)fromJSON(Type.Array_Int,obj["streamPrograms"]);
-            return tv;
+          switch (tag) {
+            case "StreamData": {
+              data.StreamData tv = new data.StreamData();
+              tv.streamData = (Dictionary<string, global::LambdaCube.IR.ArrayValue>)fromJSON(Type.Map_String_ArrayValue,obj["streamData"]);
+              tv.streamType = (Dictionary<string, global::LambdaCube.IR.InputType>)fromJSON(Type.Map_String_InputType,obj["streamType"]);
+              tv.streamPrimitive = (global::LambdaCube.IR.FetchPrimitive)fromJSON(Type.FetchPrimitive,obj["streamPrimitive"]);
+              tv.streamPrograms = (List<int>)fromJSON(Type.Array_Int,obj["streamPrograms"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          StreamData o = new StreamData();
-          o.tag = tagType;
-          return o;
         }
         case Type.TargetItem: {
           string tag = (string)obj["tag"];
-          TargetItem.Tag tagType;
-          if (tag == "TargetItem") {
-            tagType = TargetItem.Tag.TargetItem;
-            data.TargetItem tv = new data.TargetItem();
-            tv.targetSemantic = (global::LambdaCube.IR.ImageSemantic)fromJSON(Type.ImageSemantic,obj["targetSemantic"]);
-            tv.targetRef = (Maybe<global::LambdaCube.IR.ImageRef>)fromJSON(Type.Maybe_ImageRef,obj["targetRef"]);
-            return tv;
+          switch (tag) {
+            case "TargetItem": {
+              data.TargetItem tv = new data.TargetItem();
+              tv.targetSemantic = (global::LambdaCube.IR.ImageSemantic)fromJSON(Type.ImageSemantic,obj["targetSemantic"]);
+              tv.targetRef = (Maybe<global::LambdaCube.IR.ImageRef>)fromJSON(Type.Maybe_ImageRef,obj["targetRef"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          TargetItem o = new TargetItem();
-          o.tag = tagType;
-          return o;
         }
         case Type.RenderTarget: {
           string tag = (string)obj["tag"];
-          RenderTarget.Tag tagType;
-          if (tag == "RenderTarget") {
-            tagType = RenderTarget.Tag.RenderTarget;
-            data.RenderTarget tv = new data.RenderTarget();
-            tv.renderTargets = (List<global::LambdaCube.IR.TargetItem>)fromJSON(Type.Array_TargetItem,obj["renderTargets"]);
-            return tv;
+          switch (tag) {
+            case "RenderTarget": {
+              data.RenderTarget tv = new data.RenderTarget();
+              tv.renderTargets = (List<global::LambdaCube.IR.TargetItem>)fromJSON(Type.Array_TargetItem,obj["renderTargets"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          RenderTarget o = new RenderTarget();
-          o.tag = tagType;
-          return o;
         }
         case Type.Backend: {
           string tag = (string)obj["tag"];
           Backend.Tag tagType;
-          if (tag == "WebGL1") {
-            tagType = Backend.Tag.WebGL1;
+          switch (tag) {
+            case "WebGL1": tagType = Backend.Tag.WebGL1; break;
+            case "OpenGL33": tagType = Backend.Tag.OpenGL33; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "OpenGL33") {
-            tagType = Backend.Tag.OpenGL33;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           Backend o = new Backend();
           o.tag = tagType;
           return o;
         }
         case Type.Pipeline: {
           string tag = (string)obj["tag"];
-          Pipeline.Tag tagType;
-          if (tag == "Pipeline") {
-            tagType = Pipeline.Tag.Pipeline;
-            data.Pipeline tv = new data.Pipeline();
-            tv.info = (string)fromJSON(Type.String,obj["info"]);
-            tv.backend = (global::LambdaCube.IR.Backend)fromJSON(Type.Backend,obj["backend"]);
-            tv.textures = (List<global::LambdaCube.IR.TextureDescriptor>)fromJSON(Type.Array_TextureDescriptor,obj["textures"]);
-            tv.samplers = (List<global::LambdaCube.IR.SamplerDescriptor>)fromJSON(Type.Array_SamplerDescriptor,obj["samplers"]);
-            tv.targets = (List<global::LambdaCube.IR.RenderTarget>)fromJSON(Type.Array_RenderTarget,obj["targets"]);
-            tv.programs = (List<global::LambdaCube.IR.Program>)fromJSON(Type.Array_Program,obj["programs"]);
-            tv.slots = (List<global::LambdaCube.IR.Slot>)fromJSON(Type.Array_Slot,obj["slots"]);
-            tv.streams = (List<global::LambdaCube.IR.StreamData>)fromJSON(Type.Array_StreamData,obj["streams"]);
-            tv.commands = (List<global::LambdaCube.IR.Command>)fromJSON(Type.Array_Command,obj["commands"]);
-            return tv;
+          switch (tag) {
+            case "Pipeline": {
+              data.Pipeline tv = new data.Pipeline();
+              tv.info = (string)fromJSON(Type.String,obj["info"]);
+              tv.backend = (global::LambdaCube.IR.Backend)fromJSON(Type.Backend,obj["backend"]);
+              tv.textures = (List<global::LambdaCube.IR.TextureDescriptor>)fromJSON(Type.Array_TextureDescriptor,obj["textures"]);
+              tv.samplers = (List<global::LambdaCube.IR.SamplerDescriptor>)fromJSON(Type.Array_SamplerDescriptor,obj["samplers"]);
+              tv.targets = (List<global::LambdaCube.IR.RenderTarget>)fromJSON(Type.Array_RenderTarget,obj["targets"]);
+              tv.programs = (List<global::LambdaCube.IR.Program>)fromJSON(Type.Array_Program,obj["programs"]);
+              tv.slots = (List<global::LambdaCube.IR.Slot>)fromJSON(Type.Array_Slot,obj["slots"]);
+              tv.streams = (List<global::LambdaCube.IR.StreamData>)fromJSON(Type.Array_StreamData,obj["streams"]);
+              tv.commands = (List<global::LambdaCube.IR.Command>)fromJSON(Type.Array_Command,obj["commands"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          Pipeline o = new Pipeline();
-          o.tag = tagType;
-          return o;
         }
       }
       throw new Exception("unknown type");

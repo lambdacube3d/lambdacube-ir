@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T13:14:18.341517000000Z
+// 2016-03-21T13:31:10.455557000000Z
 
 #include "TestData.hpp"
 template<> json toJSON<std::shared_ptr<ClientInfo>>(std::shared_ptr<ClientInfo> &v) {

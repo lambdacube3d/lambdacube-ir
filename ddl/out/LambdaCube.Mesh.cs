@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T13:14:18.184851000000Z
+// 2016-03-21T13:31:10.335329000000Z
 
 using System;
 using System.Linq;
@@ -187,109 +187,89 @@ namespace LambdaCube.Mesh {
 
         case Type.MeshAttribute: {
           string tag = (string)obj["tag"];
-          MeshAttribute.Tag tagType;
-          if (tag == "A_Float") {
-            tagType = MeshAttribute.Tag.A_Float;
-            data.A_Float tv = new data.A_Float();
-            tv._0 = (List<float>)fromJSON(Type.Array_Float,obj["arg0"]);
-            return tv;
+          switch (tag) {
+            case "A_Float": {
+              data.A_Float tv = new data.A_Float();
+              tv._0 = (List<float>)fromJSON(Type.Array_Float,obj["arg0"]);
+              return tv;
+            }
+            case "A_V2F": {
+              data.A_V2F tv = new data.A_V2F();
+              tv._0 = (List<V2<float>>)fromJSON(Type.Array_V2_Float,obj["arg0"]);
+              return tv;
+            }
+            case "A_V3F": {
+              data.A_V3F tv = new data.A_V3F();
+              tv._0 = (List<V3<float>>)fromJSON(Type.Array_V3_Float,obj["arg0"]);
+              return tv;
+            }
+            case "A_V4F": {
+              data.A_V4F tv = new data.A_V4F();
+              tv._0 = (List<V4<float>>)fromJSON(Type.Array_V4_Float,obj["arg0"]);
+              return tv;
+            }
+            case "A_M22F": {
+              data.A_M22F tv = new data.A_M22F();
+              tv._0 = (List<V2<V2<float>>>)fromJSON(Type.Array_V2_V2_Float,obj["arg0"]);
+              return tv;
+            }
+            case "A_M33F": {
+              data.A_M33F tv = new data.A_M33F();
+              tv._0 = (List<V3<V3<float>>>)fromJSON(Type.Array_V3_V3_Float,obj["arg0"]);
+              return tv;
+            }
+            case "A_M44F": {
+              data.A_M44F tv = new data.A_M44F();
+              tv._0 = (List<V4<V4<float>>>)fromJSON(Type.Array_V4_V4_Float,obj["arg0"]);
+              return tv;
+            }
+            case "A_Int": {
+              data.A_Int tv = new data.A_Int();
+              tv._0 = (List<int>)fromJSON(Type.Array_Int32,obj["arg0"]);
+              return tv;
+            }
+            case "A_Word": {
+              data.A_Word tv = new data.A_Word();
+              tv._0 = (List<uint>)fromJSON(Type.Array_Word32,obj["arg0"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "A_V2F") {
-            tagType = MeshAttribute.Tag.A_V2F;
-            data.A_V2F tv = new data.A_V2F();
-            tv._0 = (List<V2<float>>)fromJSON(Type.Array_V2_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "A_V3F") {
-            tagType = MeshAttribute.Tag.A_V3F;
-            data.A_V3F tv = new data.A_V3F();
-            tv._0 = (List<V3<float>>)fromJSON(Type.Array_V3_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "A_V4F") {
-            tagType = MeshAttribute.Tag.A_V4F;
-            data.A_V4F tv = new data.A_V4F();
-            tv._0 = (List<V4<float>>)fromJSON(Type.Array_V4_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "A_M22F") {
-            tagType = MeshAttribute.Tag.A_M22F;
-            data.A_M22F tv = new data.A_M22F();
-            tv._0 = (List<V2<V2<float>>>)fromJSON(Type.Array_V2_V2_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "A_M33F") {
-            tagType = MeshAttribute.Tag.A_M33F;
-            data.A_M33F tv = new data.A_M33F();
-            tv._0 = (List<V3<V3<float>>>)fromJSON(Type.Array_V3_V3_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "A_M44F") {
-            tagType = MeshAttribute.Tag.A_M44F;
-            data.A_M44F tv = new data.A_M44F();
-            tv._0 = (List<V4<V4<float>>>)fromJSON(Type.Array_V4_V4_Float,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "A_Int") {
-            tagType = MeshAttribute.Tag.A_Int;
-            data.A_Int tv = new data.A_Int();
-            tv._0 = (List<int>)fromJSON(Type.Array_Int32,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "A_Word") {
-            tagType = MeshAttribute.Tag.A_Word;
-            data.A_Word tv = new data.A_Word();
-            tv._0 = (List<uint>)fromJSON(Type.Array_Word32,obj["arg0"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          MeshAttribute o = new MeshAttribute();
-          o.tag = tagType;
-          return o;
         }
         case Type.MeshPrimitive: {
           string tag = (string)obj["tag"];
           MeshPrimitive.Tag tagType;
-          if (tag == "P_Points") {
-            tagType = MeshPrimitive.Tag.P_Points;
+          switch (tag) {
+            case "P_Points": tagType = MeshPrimitive.Tag.P_Points; break;
+            case "P_TriangleStrip": tagType = MeshPrimitive.Tag.P_TriangleStrip; break;
+            case "P_Triangles": tagType = MeshPrimitive.Tag.P_Triangles; break;
+            case "P_TriangleStripI": {
+              data.P_TriangleStripI tv = new data.P_TriangleStripI();
+              tv._0 = (List<int>)fromJSON(Type.Array_Int32,obj["arg0"]);
+              return tv;
+            }
+            case "P_TrianglesI": {
+              data.P_TrianglesI tv = new data.P_TrianglesI();
+              tv._0 = (List<int>)fromJSON(Type.Array_Int32,obj["arg0"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "P_TriangleStrip") {
-            tagType = MeshPrimitive.Tag.P_TriangleStrip;
-          }
-          else if (tag == "P_Triangles") {
-            tagType = MeshPrimitive.Tag.P_Triangles;
-          }
-          else if (tag == "P_TriangleStripI") {
-            tagType = MeshPrimitive.Tag.P_TriangleStripI;
-            data.P_TriangleStripI tv = new data.P_TriangleStripI();
-            tv._0 = (List<int>)fromJSON(Type.Array_Int32,obj["arg0"]);
-            return tv;
-          }
-          else if (tag == "P_TrianglesI") {
-            tagType = MeshPrimitive.Tag.P_TrianglesI;
-            data.P_TrianglesI tv = new data.P_TrianglesI();
-            tv._0 = (List<int>)fromJSON(Type.Array_Int32,obj["arg0"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           MeshPrimitive o = new MeshPrimitive();
           o.tag = tagType;
           return o;
         }
         case Type.Mesh: {
           string tag = (string)obj["tag"];
-          Mesh.Tag tagType;
-          if (tag == "Mesh") {
-            tagType = Mesh.Tag.Mesh;
-            data.Mesh tv = new data.Mesh();
-            tv.mAttributes = (Dictionary<string, global::LambdaCube.Mesh.MeshAttribute>)fromJSON(Type.Map_String_MeshAttribute,obj["mAttributes"]);
-            tv.mPrimitive = (global::LambdaCube.Mesh.MeshPrimitive)fromJSON(Type.MeshPrimitive,obj["mPrimitive"]);
-            return tv;
+          switch (tag) {
+            case "Mesh": {
+              data.Mesh tv = new data.Mesh();
+              tv.mAttributes = (Dictionary<string, global::LambdaCube.Mesh.MeshAttribute>)fromJSON(Type.Map_String_MeshAttribute,obj["mAttributes"]);
+              tv.mPrimitive = (global::LambdaCube.Mesh.MeshPrimitive)fromJSON(Type.MeshPrimitive,obj["mPrimitive"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          Mesh o = new Mesh();
-          o.tag = tagType;
-          return o;
         }
       }
       throw new Exception("unknown type");

@@ -95,22 +95,27 @@ namespace {{ moduleName }} {
         {% for t in definitions %}
         case Type.{{ t.value.dataName }}: {
           string tag = (string)obj["tag"];
+          {% if t.value | hasEnumConstructor %}
           {{ t.value.dataName }}.Tag tagType;
+          {% endif %}
+          switch (tag) {
           {% for c in t.value.constructors %}
-          {% if !c.first %}else {% endif %}if (tag == "{{ c.value.name }}") {
-            tagType = {{ t.value.dataName }}.Tag.{{ c.value.name }};
-            {% if !(c.value.fields | empty) %}
-            data.{{ c.value.name }} tv = new data.{{ c.value.name }}();{% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
-            tv.{{ f.value.fieldName }} = ({{ f.value.fieldType | csType }})fromJSON(Type.{{ f.value.fieldType | typeEnum }},obj["{{ f.value.fieldName }}"]);{% else %}
-            tv._{{ f.index0 }} = ({{ f.value.fieldType | csType }})fromJSON(Type.{{ f.value.fieldType | typeEnum }},obj["arg{{ f.index0 }}"]);{% endif %}{% endfor %}
-            return tv;
+            case "{{ c.value.name }}":{% if (c.value.fields | empty) %} tagType = {{ t.value.dataName }}.Tag.{{ c.value.name }}; break;
+{% else %} {
+              data.{{ c.value.name }} tv = new data.{{ c.value.name }}();{% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
+              tv.{{ f.value.fieldName }} = ({{ f.value.fieldType | csType }})fromJSON(Type.{{ f.value.fieldType | typeEnum }},obj["{{ f.value.fieldName }}"]);{% else %}
+              tv._{{ f.index0 }} = ({{ f.value.fieldType | csType }})fromJSON(Type.{{ f.value.fieldType | typeEnum }},obj["arg{{ f.index0 }}"]);{% endif %}{% endfor %}
+              return tv;
+            }
             {% endif %}
-          }
           {% endfor %}
-          else throw new Exception("unknown constructor: " + tag);
+            default: throw new Exception("unknown constructor: " + tag);
+          }
+          {% if t.value | hasEnumConstructor %}
           {{ t.value.dataName }} o = new {{ t.value.dataName }}();
           o.tag = tagType;
           return o;
+          {% endif %}
         }
         {% endfor %}
       }

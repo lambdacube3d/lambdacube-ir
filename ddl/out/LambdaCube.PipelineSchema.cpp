@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T13:14:18.137981000000Z
+// 2016-03-21T13:31:10.293368000000Z
 
 #include "LambdaCube.PipelineSchema.hpp"
 template<> json toJSON<std::shared_ptr<StreamType>>(std::shared_ptr<StreamType> &v) {

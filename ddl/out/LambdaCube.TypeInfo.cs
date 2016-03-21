@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T13:14:18.260874000000Z
+// 2016-03-21T13:31:10.409214000000Z
 
 using System;
 using System.Linq;
@@ -85,60 +85,50 @@ namespace LambdaCube.TypeInfo {
 
         case Type.Range: {
           string tag = (string)obj["tag"];
-          Range.Tag tagType;
-          if (tag == "Range") {
-            tagType = Range.Tag.Range;
-            data.Range tv = new data.Range();
-            tv.startLine = (int)fromJSON(Type.Int,obj["startLine"]);
-            tv.startColumn = (int)fromJSON(Type.Int,obj["startColumn"]);
-            tv.endLine = (int)fromJSON(Type.Int,obj["endLine"]);
-            tv.endColumn = (int)fromJSON(Type.Int,obj["endColumn"]);
-            return tv;
+          switch (tag) {
+            case "Range": {
+              data.Range tv = new data.Range();
+              tv.startLine = (int)fromJSON(Type.Int,obj["startLine"]);
+              tv.startColumn = (int)fromJSON(Type.Int,obj["startColumn"]);
+              tv.endLine = (int)fromJSON(Type.Int,obj["endLine"]);
+              tv.endColumn = (int)fromJSON(Type.Int,obj["endColumn"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          Range o = new Range();
-          o.tag = tagType;
-          return o;
         }
         case Type.TypeInfo: {
           string tag = (string)obj["tag"];
-          TypeInfo.Tag tagType;
-          if (tag == "TypeInfo") {
-            tagType = TypeInfo.Tag.TypeInfo;
-            data.TypeInfo tv = new data.TypeInfo();
-            tv.range = (global::LambdaCube.TypeInfo.Range)fromJSON(Type.Range,obj["range"]);
-            tv.text = (string)fromJSON(Type.String,obj["text"]);
-            return tv;
+          switch (tag) {
+            case "TypeInfo": {
+              data.TypeInfo tv = new data.TypeInfo();
+              tv.range = (global::LambdaCube.TypeInfo.Range)fromJSON(Type.Range,obj["range"]);
+              tv.text = (string)fromJSON(Type.String,obj["text"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          TypeInfo o = new TypeInfo();
-          o.tag = tagType;
-          return o;
         }
         case Type.CompileResult: {
           string tag = (string)obj["tag"];
-          CompileResult.Tag tagType;
-          if (tag == "CompileError") {
-            tagType = CompileResult.Tag.CompileError;
-            data.CompileError tv = new data.CompileError();
-            tv._0 = (List<global::LambdaCube.TypeInfo.Range>)fromJSON(Type.Array_Range,obj["arg0"]);
-            tv._1 = (string)fromJSON(Type.String,obj["arg1"]);
-            tv._2 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg2"]);
-            return tv;
+          switch (tag) {
+            case "CompileError": {
+              data.CompileError tv = new data.CompileError();
+              tv._0 = (List<global::LambdaCube.TypeInfo.Range>)fromJSON(Type.Array_Range,obj["arg0"]);
+              tv._1 = (string)fromJSON(Type.String,obj["arg1"]);
+              tv._2 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg2"]);
+              return tv;
+            }
+            case "Compiled": {
+              data.Compiled tv = new data.Compiled();
+              tv._0 = (string)fromJSON(Type.String,obj["arg0"]);
+              tv._1 = (string)fromJSON(Type.String,obj["arg1"]);
+              tv._2 = (global::LambdaCube.TypeInfo.Pipeline)fromJSON(Type.Pipeline,obj["arg2"]);
+              tv._3 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg3"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "Compiled") {
-            tagType = CompileResult.Tag.Compiled;
-            data.Compiled tv = new data.Compiled();
-            tv._0 = (string)fromJSON(Type.String,obj["arg0"]);
-            tv._1 = (string)fromJSON(Type.String,obj["arg1"]);
-            tv._2 = (global::LambdaCube.TypeInfo.Pipeline)fromJSON(Type.Pipeline,obj["arg2"]);
-            tv._3 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg3"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          CompileResult o = new CompileResult();
-          o.tag = tagType;
-          return o;
         }
       }
       throw new Exception("unknown type");

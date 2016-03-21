@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T13:14:18.137981000000Z
+// 2016-03-21T13:31:10.293368000000Z
 
 using System;
 using System.Linq;
@@ -112,103 +112,57 @@ namespace LambdaCube.PipelineSchema {
         case Type.StreamType: {
           string tag = (string)obj["tag"];
           StreamType.Tag tagType;
-          if (tag == "Attribute_Word") {
-            tagType = StreamType.Tag.Attribute_Word;
+          switch (tag) {
+            case "Attribute_Word": tagType = StreamType.Tag.Attribute_Word; break;
+            case "Attribute_V2U": tagType = StreamType.Tag.Attribute_V2U; break;
+            case "Attribute_V3U": tagType = StreamType.Tag.Attribute_V3U; break;
+            case "Attribute_V4U": tagType = StreamType.Tag.Attribute_V4U; break;
+            case "Attribute_Int": tagType = StreamType.Tag.Attribute_Int; break;
+            case "Attribute_V2I": tagType = StreamType.Tag.Attribute_V2I; break;
+            case "Attribute_V3I": tagType = StreamType.Tag.Attribute_V3I; break;
+            case "Attribute_V4I": tagType = StreamType.Tag.Attribute_V4I; break;
+            case "Attribute_Float": tagType = StreamType.Tag.Attribute_Float; break;
+            case "Attribute_V2F": tagType = StreamType.Tag.Attribute_V2F; break;
+            case "Attribute_V3F": tagType = StreamType.Tag.Attribute_V3F; break;
+            case "Attribute_V4F": tagType = StreamType.Tag.Attribute_V4F; break;
+            case "Attribute_M22F": tagType = StreamType.Tag.Attribute_M22F; break;
+            case "Attribute_M23F": tagType = StreamType.Tag.Attribute_M23F; break;
+            case "Attribute_M24F": tagType = StreamType.Tag.Attribute_M24F; break;
+            case "Attribute_M32F": tagType = StreamType.Tag.Attribute_M32F; break;
+            case "Attribute_M33F": tagType = StreamType.Tag.Attribute_M33F; break;
+            case "Attribute_M34F": tagType = StreamType.Tag.Attribute_M34F; break;
+            case "Attribute_M42F": tagType = StreamType.Tag.Attribute_M42F; break;
+            case "Attribute_M43F": tagType = StreamType.Tag.Attribute_M43F; break;
+            case "Attribute_M44F": tagType = StreamType.Tag.Attribute_M44F; break;
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "Attribute_V2U") {
-            tagType = StreamType.Tag.Attribute_V2U;
-          }
-          else if (tag == "Attribute_V3U") {
-            tagType = StreamType.Tag.Attribute_V3U;
-          }
-          else if (tag == "Attribute_V4U") {
-            tagType = StreamType.Tag.Attribute_V4U;
-          }
-          else if (tag == "Attribute_Int") {
-            tagType = StreamType.Tag.Attribute_Int;
-          }
-          else if (tag == "Attribute_V2I") {
-            tagType = StreamType.Tag.Attribute_V2I;
-          }
-          else if (tag == "Attribute_V3I") {
-            tagType = StreamType.Tag.Attribute_V3I;
-          }
-          else if (tag == "Attribute_V4I") {
-            tagType = StreamType.Tag.Attribute_V4I;
-          }
-          else if (tag == "Attribute_Float") {
-            tagType = StreamType.Tag.Attribute_Float;
-          }
-          else if (tag == "Attribute_V2F") {
-            tagType = StreamType.Tag.Attribute_V2F;
-          }
-          else if (tag == "Attribute_V3F") {
-            tagType = StreamType.Tag.Attribute_V3F;
-          }
-          else if (tag == "Attribute_V4F") {
-            tagType = StreamType.Tag.Attribute_V4F;
-          }
-          else if (tag == "Attribute_M22F") {
-            tagType = StreamType.Tag.Attribute_M22F;
-          }
-          else if (tag == "Attribute_M23F") {
-            tagType = StreamType.Tag.Attribute_M23F;
-          }
-          else if (tag == "Attribute_M24F") {
-            tagType = StreamType.Tag.Attribute_M24F;
-          }
-          else if (tag == "Attribute_M32F") {
-            tagType = StreamType.Tag.Attribute_M32F;
-          }
-          else if (tag == "Attribute_M33F") {
-            tagType = StreamType.Tag.Attribute_M33F;
-          }
-          else if (tag == "Attribute_M34F") {
-            tagType = StreamType.Tag.Attribute_M34F;
-          }
-          else if (tag == "Attribute_M42F") {
-            tagType = StreamType.Tag.Attribute_M42F;
-          }
-          else if (tag == "Attribute_M43F") {
-            tagType = StreamType.Tag.Attribute_M43F;
-          }
-          else if (tag == "Attribute_M44F") {
-            tagType = StreamType.Tag.Attribute_M44F;
-          }
-          else throw new Exception("unknown constructor: " + tag);
           StreamType o = new StreamType();
           o.tag = tagType;
           return o;
         }
         case Type.ObjectArraySchema: {
           string tag = (string)obj["tag"];
-          ObjectArraySchema.Tag tagType;
-          if (tag == "ObjectArraySchema") {
-            tagType = ObjectArraySchema.Tag.ObjectArraySchema;
-            data.ObjectArraySchema tv = new data.ObjectArraySchema();
-            tv.primitive = (global::LambdaCube.PipelineSchema.FetchPrimitive)fromJSON(Type.FetchPrimitive,obj["primitive"]);
-            tv.attributes = (Dictionary<string, global::LambdaCube.PipelineSchema.StreamType>)fromJSON(Type.Map_String_StreamType,obj["attributes"]);
-            return tv;
+          switch (tag) {
+            case "ObjectArraySchema": {
+              data.ObjectArraySchema tv = new data.ObjectArraySchema();
+              tv.primitive = (global::LambdaCube.PipelineSchema.FetchPrimitive)fromJSON(Type.FetchPrimitive,obj["primitive"]);
+              tv.attributes = (Dictionary<string, global::LambdaCube.PipelineSchema.StreamType>)fromJSON(Type.Map_String_StreamType,obj["attributes"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          ObjectArraySchema o = new ObjectArraySchema();
-          o.tag = tagType;
-          return o;
         }
         case Type.PipelineSchema: {
           string tag = (string)obj["tag"];
-          PipelineSchema.Tag tagType;
-          if (tag == "PipelineSchema") {
-            tagType = PipelineSchema.Tag.PipelineSchema;
-            data.PipelineSchema tv = new data.PipelineSchema();
-            tv.objectArrays = (Dictionary<string, global::LambdaCube.PipelineSchema.ObjectArraySchema>)fromJSON(Type.Map_String_ObjectArraySchema,obj["objectArrays"]);
-            tv.uniforms = (Dictionary<string, global::LambdaCube.PipelineSchema.InputType>)fromJSON(Type.Map_String_InputType,obj["uniforms"]);
-            return tv;
+          switch (tag) {
+            case "PipelineSchema": {
+              data.PipelineSchema tv = new data.PipelineSchema();
+              tv.objectArrays = (Dictionary<string, global::LambdaCube.PipelineSchema.ObjectArraySchema>)fromJSON(Type.Map_String_ObjectArraySchema,obj["objectArrays"]);
+              tv.uniforms = (Dictionary<string, global::LambdaCube.PipelineSchema.InputType>)fromJSON(Type.Map_String_InputType,obj["uniforms"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          PipelineSchema o = new PipelineSchema();
-          o.tag = tagType;
-          return o;
         }
       }
       throw new Exception("unknown type");

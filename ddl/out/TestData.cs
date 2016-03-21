@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T13:14:18.341517000000Z
+// 2016-03-21T13:31:10.455557000000Z
 
 using System;
 using System.Linq;
@@ -190,120 +190,98 @@ namespace TestData {
 
         case Type.ClientInfo: {
           string tag = (string)obj["tag"];
-          ClientInfo.Tag tagType;
-          if (tag == "ClientInfo") {
-            tagType = ClientInfo.Tag.ClientInfo;
-            data.ClientInfo tv = new data.ClientInfo();
-            tv.clientName = (string)fromJSON(Type.String,obj["clientName"]);
-            tv.clientBackend = (global::TestData.Backend)fromJSON(Type.Backend,obj["clientBackend"]);
-            return tv;
+          switch (tag) {
+            case "ClientInfo": {
+              data.ClientInfo tv = new data.ClientInfo();
+              tv.clientName = (string)fromJSON(Type.String,obj["clientName"]);
+              tv.clientBackend = (global::TestData.Backend)fromJSON(Type.Backend,obj["clientBackend"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          ClientInfo o = new ClientInfo();
-          o.tag = tagType;
-          return o;
         }
         case Type.Frame: {
           string tag = (string)obj["tag"];
-          Frame.Tag tagType;
-          if (tag == "Frame") {
-            tagType = Frame.Tag.Frame;
-            data.Frame tv = new data.Frame();
-            tv.renderCount = (int)fromJSON(Type.Int,obj["renderCount"]);
-            tv.frameUniforms = (Dictionary<string, global::TestData.Value>)fromJSON(Type.Map_String_Value,obj["frameUniforms"]);
-            tv.frameTextures = (Dictionary<string, int>)fromJSON(Type.Map_String_Int,obj["frameTextures"]);
-            return tv;
+          switch (tag) {
+            case "Frame": {
+              data.Frame tv = new data.Frame();
+              tv.renderCount = (int)fromJSON(Type.Int,obj["renderCount"]);
+              tv.frameUniforms = (Dictionary<string, global::TestData.Value>)fromJSON(Type.Map_String_Value,obj["frameUniforms"]);
+              tv.frameTextures = (Dictionary<string, int>)fromJSON(Type.Map_String_Int,obj["frameTextures"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          Frame o = new Frame();
-          o.tag = tagType;
-          return o;
         }
         case Type.Scene: {
           string tag = (string)obj["tag"];
-          Scene.Tag tagType;
-          if (tag == "Scene") {
-            tagType = Scene.Tag.Scene;
-            data.Scene tv = new data.Scene();
-            tv.objectArrays = (Dictionary<string, List<int>>)fromJSON(Type.Map_String_Array_Int,obj["objectArrays"]);
-            tv.renderTargetWidth = (int)fromJSON(Type.Int,obj["renderTargetWidth"]);
-            tv.renderTargetHeight = (int)fromJSON(Type.Int,obj["renderTargetHeight"]);
-            tv.frames = (List<global::TestData.Frame>)fromJSON(Type.Array_Frame,obj["frames"]);
-            return tv;
+          switch (tag) {
+            case "Scene": {
+              data.Scene tv = new data.Scene();
+              tv.objectArrays = (Dictionary<string, List<int>>)fromJSON(Type.Map_String_Array_Int,obj["objectArrays"]);
+              tv.renderTargetWidth = (int)fromJSON(Type.Int,obj["renderTargetWidth"]);
+              tv.renderTargetHeight = (int)fromJSON(Type.Int,obj["renderTargetHeight"]);
+              tv.frames = (List<global::TestData.Frame>)fromJSON(Type.Array_Frame,obj["frames"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          Scene o = new Scene();
-          o.tag = tagType;
-          return o;
         }
         case Type.PipelineInfo: {
           string tag = (string)obj["tag"];
-          PipelineInfo.Tag tagType;
-          if (tag == "PipelineInfo") {
-            tagType = PipelineInfo.Tag.PipelineInfo;
-            data.PipelineInfo tv = new data.PipelineInfo();
-            tv.pipelineName = (string)fromJSON(Type.String,obj["pipelineName"]);
-            tv.pipeline = (global::TestData.Pipeline)fromJSON(Type.Pipeline,obj["pipeline"]);
-            return tv;
+          switch (tag) {
+            case "PipelineInfo": {
+              data.PipelineInfo tv = new data.PipelineInfo();
+              tv.pipelineName = (string)fromJSON(Type.String,obj["pipelineName"]);
+              tv.pipeline = (global::TestData.Pipeline)fromJSON(Type.Pipeline,obj["pipeline"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          PipelineInfo o = new PipelineInfo();
-          o.tag = tagType;
-          return o;
         }
         case Type.RenderJob: {
           string tag = (string)obj["tag"];
-          RenderJob.Tag tagType;
-          if (tag == "RenderJob") {
-            tagType = RenderJob.Tag.RenderJob;
-            data.RenderJob tv = new data.RenderJob();
-            tv.meshes = (List<global::TestData.Mesh>)fromJSON(Type.Array_Mesh,obj["meshes"]);
-            tv.textures = (List<string>)fromJSON(Type.Array_String,obj["textures"]);
-            tv.schema = (global::TestData.PipelineSchema)fromJSON(Type.PipelineSchema,obj["schema"]);
-            tv.scenes = (List<global::TestData.Scene>)fromJSON(Type.Array_Scene,obj["scenes"]);
-            tv.pipelines = (List<global::TestData.PipelineInfo>)fromJSON(Type.Array_PipelineInfo,obj["pipelines"]);
-            return tv;
+          switch (tag) {
+            case "RenderJob": {
+              data.RenderJob tv = new data.RenderJob();
+              tv.meshes = (List<global::TestData.Mesh>)fromJSON(Type.Array_Mesh,obj["meshes"]);
+              tv.textures = (List<string>)fromJSON(Type.Array_String,obj["textures"]);
+              tv.schema = (global::TestData.PipelineSchema)fromJSON(Type.PipelineSchema,obj["schema"]);
+              tv.scenes = (List<global::TestData.Scene>)fromJSON(Type.Array_Scene,obj["scenes"]);
+              tv.pipelines = (List<global::TestData.PipelineInfo>)fromJSON(Type.Array_PipelineInfo,obj["pipelines"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          RenderJob o = new RenderJob();
-          o.tag = tagType;
-          return o;
         }
         case Type.FrameResult: {
           string tag = (string)obj["tag"];
-          FrameResult.Tag tagType;
-          if (tag == "FrameResult") {
-            tagType = FrameResult.Tag.FrameResult;
-            data.FrameResult tv = new data.FrameResult();
-            tv.frRenderTimes = (List<float>)fromJSON(Type.Array_Float,obj["frRenderTimes"]);
-            tv.frImageWidth = (int)fromJSON(Type.Int,obj["frImageWidth"]);
-            tv.frImageHeight = (int)fromJSON(Type.Int,obj["frImageHeight"]);
-            return tv;
+          switch (tag) {
+            case "FrameResult": {
+              data.FrameResult tv = new data.FrameResult();
+              tv.frRenderTimes = (List<float>)fromJSON(Type.Array_Float,obj["frRenderTimes"]);
+              tv.frImageWidth = (int)fromJSON(Type.Int,obj["frImageWidth"]);
+              tv.frImageHeight = (int)fromJSON(Type.Int,obj["frImageHeight"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else throw new Exception("unknown constructor: " + tag);
-          FrameResult o = new FrameResult();
-          o.tag = tagType;
-          return o;
         }
         case Type.RenderJobResult: {
           string tag = (string)obj["tag"];
-          RenderJobResult.Tag tagType;
-          if (tag == "RenderJobResult") {
-            tagType = RenderJobResult.Tag.RenderJobResult;
-            data.RenderJobResult tv = new data.RenderJobResult();
-            tv._0 = (global::TestData.FrameResult)fromJSON(Type.FrameResult,obj["arg0"]);
-            return tv;
+          switch (tag) {
+            case "RenderJobResult": {
+              data.RenderJobResult tv = new data.RenderJobResult();
+              tv._0 = (global::TestData.FrameResult)fromJSON(Type.FrameResult,obj["arg0"]);
+              return tv;
+            }
+            case "RenderJobError": {
+              data.RenderJobError tv = new data.RenderJobError();
+              tv._0 = (string)fromJSON(Type.String,obj["arg0"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
           }
-          else if (tag == "RenderJobError") {
-            tagType = RenderJobResult.Tag.RenderJobError;
-            data.RenderJobError tv = new data.RenderJobError();
-            tv._0 = (string)fromJSON(Type.String,obj["arg0"]);
-            return tv;
-          }
-          else throw new Exception("unknown constructor: " + tag);
-          RenderJobResult o = new RenderJobResult();
-          o.tag = tagType;
-          return o;
         }
       }
       throw new Exception("unknown type");
