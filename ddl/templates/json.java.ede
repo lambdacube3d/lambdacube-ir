@@ -87,7 +87,9 @@ public class JSON {
       case {{ t.value.dataName }}: {
         JSONObject obj = (JSONObject)rawObj;
         String tag = obj.getString("tag");
+        {% if t.value | hasEnumConstructor %}
         {{ t.value.dataName }}.Tag tagType;
+        {% endif %}
         switch (tag) {
         {% for c in t.value.constructors %}
           case "{{ c.value.name }}":{% if (c.value.fields | empty) %} tagType = {{ t.value.dataName }}.Tag.{{ c.value.name }}; break;
