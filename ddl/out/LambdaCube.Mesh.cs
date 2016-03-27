@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:17.804995000000Z
+// 2016-03-27T21:14:12.377390000000Z
 
 using System;
 using System.Linq;
@@ -167,15 +167,15 @@ namespace LambdaCube.Mesh {
             , z = (V4<float>)fromJSON(Type.V4_Float,obj["z"])
             , w = (V4<float>)fromJSON(Type.V4_Float,obj["w"])
             };
-        case Type.Array_Int32: return ((JArray)obj).Select(x => fromJSON (Type.Int32, x)).ToList();
-        case Type.Array_Word32: return ((JArray)obj).Select(x => fromJSON (Type.Word32, x)).ToList();
-        case Type.Array_Float: return ((JArray)obj).Select(x => fromJSON (Type.Float, x)).ToList();
-        case Type.Array_V2_Float: return ((JArray)obj).Select(x => fromJSON (Type.V2_Float, x)).ToList();
-        case Type.Array_V2_V2_Float: return ((JArray)obj).Select(x => fromJSON (Type.V2_V2_Float, x)).ToList();
-        case Type.Array_V3_Float: return ((JArray)obj).Select(x => fromJSON (Type.V3_Float, x)).ToList();
-        case Type.Array_V3_V3_Float: return ((JArray)obj).Select(x => fromJSON (Type.V3_V3_Float, x)).ToList();
-        case Type.Array_V4_Float: return ((JArray)obj).Select(x => fromJSON (Type.V4_Float, x)).ToList();
-        case Type.Array_V4_V4_Float: return ((JArray)obj).Select(x => fromJSON (Type.V4_V4_Float, x)).ToList();
+        case Type.Array_Int32: return ((JArray)obj).Select(x => (int)fromJSON (Type.Int32, x)).ToList();
+        case Type.Array_Word32: return ((JArray)obj).Select(x => (uint)fromJSON (Type.Word32, x)).ToList();
+        case Type.Array_Float: return ((JArray)obj).Select(x => (float)fromJSON (Type.Float, x)).ToList();
+        case Type.Array_V2_Float: return ((JArray)obj).Select(x => (V2<float>)fromJSON (Type.V2_Float, x)).ToList();
+        case Type.Array_V2_V2_Float: return ((JArray)obj).Select(x => (V2<V2<float>>)fromJSON (Type.V2_V2_Float, x)).ToList();
+        case Type.Array_V3_Float: return ((JArray)obj).Select(x => (V3<float>)fromJSON (Type.V3_Float, x)).ToList();
+        case Type.Array_V3_V3_Float: return ((JArray)obj).Select(x => (V3<V3<float>>)fromJSON (Type.V3_V3_Float, x)).ToList();
+        case Type.Array_V4_Float: return ((JArray)obj).Select(x => (V4<float>)fromJSON (Type.V4_Float, x)).ToList();
+        case Type.Array_V4_V4_Float: return ((JArray)obj).Select(x => (V4<V4<float>>)fromJSON (Type.V4_V4_Float, x)).ToList();
         case Type.Map_String_MeshAttribute: {
           var map = new Dictionary<string, global::LambdaCube.Mesh.MeshAttribute> ();
           foreach(var i in (JObject)obj) {
@@ -276,7 +276,7 @@ namespace LambdaCube.Mesh {
       return null;
     }
 
-    JToken toJSON(MeshAttribute v) {
+    public static JToken toJSON(MeshAttribute v) {
       var obj = new JObject();
       switch (v.tag) { 
         case MeshAttribute.Tag.A_Float:
@@ -345,7 +345,7 @@ namespace LambdaCube.Mesh {
       }
       return obj;
     }
-    JToken toJSON(MeshPrimitive v) {
+    public static JToken toJSON(MeshPrimitive v) {
       var obj = new JObject();
       switch (v.tag) { 
         case MeshPrimitive.Tag.P_Points:
@@ -374,7 +374,7 @@ namespace LambdaCube.Mesh {
       }
       return obj;
     }
-    JToken toJSON(Mesh v) {
+    public static JToken toJSON(Mesh v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Mesh.Tag.Mesh:
@@ -389,45 +389,37 @@ namespace LambdaCube.Mesh {
       return obj;
     }
 
-    JToken toJSON(int v) { return new JValue(v); }
-    JToken toJSON(uint v) { return new JValue(v); }
-    JToken toJSON(float v) { return new JValue(v); }
-    JToken toJSON(string v) { return new JValue(v); }
-    JToken toJSON(V2<float> v) {
+    public static JToken toJSON(int v) { return new JValue(v); }
+    public static JToken toJSON(uint v) { return new JValue(v); }
+    public static JToken toJSON(float v) { return new JValue(v); }
+    public static JToken toJSON(string v) { return new JValue(v); }
+    public static JToken toJSON(V2<float> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       return obj;
     }
-    JToken toJSON(V2<V2<float>> v) {
+    public static JToken toJSON(V2<V2<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       return obj;
     }
-    JToken toJSON(V3<float> v) {
-      var obj = new JObject();
-      obj["x"] = toJSON(v.x);
-      obj["y"] = toJSON(v.y);
-      obj["z"] = toJSON(v.z);
-      return obj;
-    }
-    JToken toJSON(V3<V3<float>> v) {
+    public static JToken toJSON(V3<float> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       obj["z"] = toJSON(v.z);
       return obj;
     }
-    JToken toJSON(V4<float> v) {
+    public static JToken toJSON(V3<V3<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       obj["z"] = toJSON(v.z);
-      obj["w"] = toJSON(v.w);
       return obj;
     }
-    JToken toJSON(V4<V4<float>> v) {
+    public static JToken toJSON(V4<float> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
@@ -435,70 +427,78 @@ namespace LambdaCube.Mesh {
       obj["w"] = toJSON(v.w);
       return obj;
     }
-    JToken toJSON(List<int> v) {
+    public static JToken toJSON(V4<V4<float>> v) {
+      var obj = new JObject();
+      obj["x"] = toJSON(v.x);
+      obj["y"] = toJSON(v.y);
+      obj["z"] = toJSON(v.z);
+      obj["w"] = toJSON(v.w);
+      return obj;
+    }
+    public static JToken toJSON(List<int> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<uint> v) {
+    public static JToken toJSON(List<uint> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<float> v) {
+    public static JToken toJSON(List<float> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<V2<float>> v) {
+    public static JToken toJSON(List<V2<float>> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<V2<V2<float>>> v) {
+    public static JToken toJSON(List<V2<V2<float>>> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<V3<float>> v) {
+    public static JToken toJSON(List<V3<float>> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<V3<V3<float>>> v) {
+    public static JToken toJSON(List<V3<V3<float>>> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<V4<float>> v) {
+    public static JToken toJSON(List<V4<float>> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<V4<V4<float>>> v) {
+    public static JToken toJSON(List<V4<V4<float>>> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(Dictionary<string, global::LambdaCube.Mesh.MeshAttribute> v) {
+    public static JToken toJSON(Dictionary<string, global::LambdaCube.Mesh.MeshAttribute> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);

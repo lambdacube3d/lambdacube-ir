@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:16.153401000000Z
+// 2016-03-27T21:14:11.531713000000Z
 
 package LambdaCube.IR;
 
@@ -11,7 +11,8 @@ import RT.*;
 public class Backend {
   public enum Tag { 
     WebGL1,
-    OpenGL33
+    OpenGL33,
+    DirectX11
   }
   public Tag tag;
 

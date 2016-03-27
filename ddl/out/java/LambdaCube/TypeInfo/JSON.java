@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:17.924228000000Z
+// 2016-03-27T21:14:12.510273000000Z
 
 package LambdaCube.TypeInfo;
 
@@ -180,6 +180,6 @@ public class JSON {
         return obj;
       }
     }
-    return null;
+    throw new Exception("unknown type");
   }
 }

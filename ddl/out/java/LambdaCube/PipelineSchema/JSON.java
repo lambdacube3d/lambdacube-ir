@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:17.702608000000Z
+// 2016-03-27T21:14:12.321500000000Z
 
 package LambdaCube.PipelineSchema;
 
@@ -251,6 +251,6 @@ public class JSON {
         return obj;
       }
     }
-    return null;
+    throw new Exception("unknown type");
   }
 }

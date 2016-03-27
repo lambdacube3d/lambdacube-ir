@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:17.702608000000Z
+// 2016-03-27T21:14:12.321500000000Z
 
 using System;
 using System.Linq;
@@ -169,7 +169,7 @@ namespace LambdaCube.PipelineSchema {
       return null;
     }
 
-    JToken toJSON(StreamType v) {
+    public static JToken toJSON(StreamType v) {
       var obj = new JObject();
       switch (v.tag) { 
         case StreamType.Tag.Attribute_Word:
@@ -238,7 +238,7 @@ namespace LambdaCube.PipelineSchema {
       }
       return obj;
     }
-    JToken toJSON(ObjectArraySchema v) {
+    public static JToken toJSON(ObjectArraySchema v) {
       var obj = new JObject();
       switch (v.tag) { 
         case ObjectArraySchema.Tag.ObjectArraySchema:
@@ -252,7 +252,7 @@ namespace LambdaCube.PipelineSchema {
       }
       return obj;
     }
-    JToken toJSON(PipelineSchema v) {
+    public static JToken toJSON(PipelineSchema v) {
       var obj = new JObject();
       switch (v.tag) { 
         case PipelineSchema.Tag.PipelineSchema:
@@ -267,22 +267,22 @@ namespace LambdaCube.PipelineSchema {
       return obj;
     }
 
-    JToken toJSON(string v) { return new JValue(v); }
-    JToken toJSON(Dictionary<string, global::LambdaCube.PipelineSchema.InputType> v) {
+    public static JToken toJSON(string v) { return new JValue(v); }
+    public static JToken toJSON(Dictionary<string, global::LambdaCube.PipelineSchema.InputType> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);
       }
       return obj;
     }
-    JToken toJSON(Dictionary<string, global::LambdaCube.PipelineSchema.ObjectArraySchema> v) {
+    public static JToken toJSON(Dictionary<string, global::LambdaCube.PipelineSchema.ObjectArraySchema> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);
       }
       return obj;
     }
-    JToken toJSON(Dictionary<string, global::LambdaCube.PipelineSchema.StreamType> v) {
+    public static JToken toJSON(Dictionary<string, global::LambdaCube.PipelineSchema.StreamType> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);

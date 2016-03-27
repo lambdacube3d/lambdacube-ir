@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:16.153401000000Z
+// 2016-03-27T21:14:11.531713000000Z
 
 using System;
 using System.Linq;
@@ -979,7 +979,8 @@ namespace LambdaCube.IR {
   class Backend {
       public enum Tag { 
         WebGL1,
-        OpenGL33
+        OpenGL33,
+        DirectX11
       };
       public Tag tag;
   };
@@ -1245,22 +1246,22 @@ namespace LambdaCube.IR {
             , z = (V4<float>)fromJSON(Type.V4_Float,obj["z"])
             , w = (V4<float>)fromJSON(Type.V4_Float,obj["w"])
             };
-        case Type.Array_Int: return ((JArray)obj).Select(x => fromJSON (Type.Int, x)).ToList();
-        case Type.Array_Int32: return ((JArray)obj).Select(x => fromJSON (Type.Int32, x)).ToList();
-        case Type.Array_Word32: return ((JArray)obj).Select(x => fromJSON (Type.Word32, x)).ToList();
-        case Type.Array_Float: return ((JArray)obj).Select(x => fromJSON (Type.Float, x)).ToList();
-        case Type.Array_Bool: return ((JArray)obj).Select(x => fromJSON (Type.Bool, x)).ToList();
-        case Type.Array_ClearImage: return ((JArray)obj).Select(x => fromJSON (Type.ClearImage, x)).ToList();
-        case Type.Array_Command: return ((JArray)obj).Select(x => fromJSON (Type.Command, x)).ToList();
-        case Type.Array_Parameter: return ((JArray)obj).Select(x => fromJSON (Type.Parameter, x)).ToList();
-        case Type.Array_Program: return ((JArray)obj).Select(x => fromJSON (Type.Program, x)).ToList();
-        case Type.Array_RenderTarget: return ((JArray)obj).Select(x => fromJSON (Type.RenderTarget, x)).ToList();
-        case Type.Array_SamplerDescriptor: return ((JArray)obj).Select(x => fromJSON (Type.SamplerDescriptor, x)).ToList();
-        case Type.Array_Slot: return ((JArray)obj).Select(x => fromJSON (Type.Slot, x)).ToList();
-        case Type.Array_StreamData: return ((JArray)obj).Select(x => fromJSON (Type.StreamData, x)).ToList();
-        case Type.Array_TargetItem: return ((JArray)obj).Select(x => fromJSON (Type.TargetItem, x)).ToList();
-        case Type.Array_TextureDescriptor: return ((JArray)obj).Select(x => fromJSON (Type.TextureDescriptor, x)).ToList();
-        case Type.List_FragmentOperation: return ((JArray)obj).Select(x => fromJSON (Type.FragmentOperation, x)).ToList();
+        case Type.Array_Int: return ((JArray)obj).Select(x => (int)fromJSON (Type.Int, x)).ToList();
+        case Type.Array_Int32: return ((JArray)obj).Select(x => (int)fromJSON (Type.Int32, x)).ToList();
+        case Type.Array_Word32: return ((JArray)obj).Select(x => (uint)fromJSON (Type.Word32, x)).ToList();
+        case Type.Array_Float: return ((JArray)obj).Select(x => (float)fromJSON (Type.Float, x)).ToList();
+        case Type.Array_Bool: return ((JArray)obj).Select(x => (bool)fromJSON (Type.Bool, x)).ToList();
+        case Type.Array_ClearImage: return ((JArray)obj).Select(x => (global::LambdaCube.IR.ClearImage)fromJSON (Type.ClearImage, x)).ToList();
+        case Type.Array_Command: return ((JArray)obj).Select(x => (global::LambdaCube.IR.Command)fromJSON (Type.Command, x)).ToList();
+        case Type.Array_Parameter: return ((JArray)obj).Select(x => (global::LambdaCube.IR.Parameter)fromJSON (Type.Parameter, x)).ToList();
+        case Type.Array_Program: return ((JArray)obj).Select(x => (global::LambdaCube.IR.Program)fromJSON (Type.Program, x)).ToList();
+        case Type.Array_RenderTarget: return ((JArray)obj).Select(x => (global::LambdaCube.IR.RenderTarget)fromJSON (Type.RenderTarget, x)).ToList();
+        case Type.Array_SamplerDescriptor: return ((JArray)obj).Select(x => (global::LambdaCube.IR.SamplerDescriptor)fromJSON (Type.SamplerDescriptor, x)).ToList();
+        case Type.Array_Slot: return ((JArray)obj).Select(x => (global::LambdaCube.IR.Slot)fromJSON (Type.Slot, x)).ToList();
+        case Type.Array_StreamData: return ((JArray)obj).Select(x => (global::LambdaCube.IR.StreamData)fromJSON (Type.StreamData, x)).ToList();
+        case Type.Array_TargetItem: return ((JArray)obj).Select(x => (global::LambdaCube.IR.TargetItem)fromJSON (Type.TargetItem, x)).ToList();
+        case Type.Array_TextureDescriptor: return ((JArray)obj).Select(x => (global::LambdaCube.IR.TextureDescriptor)fromJSON (Type.TextureDescriptor, x)).ToList();
+        case Type.List_FragmentOperation: return ((JArray)obj).Select(x => (global::LambdaCube.IR.FragmentOperation)fromJSON (Type.FragmentOperation, x)).ToList();
         case Type.Maybe_Int: {
           var m = new Maybe<int> ();
           if (obj == null || obj.Type == JTokenType.Null) {
@@ -2324,6 +2325,7 @@ namespace LambdaCube.IR {
           switch (tag) {
             case "WebGL1": tagType = Backend.Tag.WebGL1; break;
             case "OpenGL33": tagType = Backend.Tag.OpenGL33; break;
+            case "DirectX11": tagType = Backend.Tag.DirectX11; break;
             default: throw new Exception("unknown constructor: " + tag);
           }
           Backend o = new Backend();
@@ -2354,7 +2356,7 @@ namespace LambdaCube.IR {
       return null;
     }
 
-    JToken toJSON(ArrayValue v) {
+    public static JToken toJSON(ArrayValue v) {
       var obj = new JObject();
       switch (v.tag) { 
         case ArrayValue.Tag.VBoolArray:
@@ -2388,7 +2390,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(Value v) {
+    public static JToken toJSON(Value v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Value.Tag.VBool:
@@ -2569,7 +2571,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(InputType v) {
+    public static JToken toJSON(InputType v) {
       var obj = new JObject();
       switch (v.tag) { 
         case InputType.Tag.Bool:
@@ -2758,7 +2760,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(PointSpriteCoordOrigin v) {
+    public static JToken toJSON(PointSpriteCoordOrigin v) {
       var obj = new JObject();
       switch (v.tag) { 
         case PointSpriteCoordOrigin.Tag.LowerLeft:
@@ -2770,7 +2772,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(PointSize v) {
+    public static JToken toJSON(PointSize v) {
       var obj = new JObject();
       switch (v.tag) { 
         case PointSize.Tag.PointSize:
@@ -2786,7 +2788,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(PolygonOffset v) {
+    public static JToken toJSON(PolygonOffset v) {
       var obj = new JObject();
       switch (v.tag) { 
         case PolygonOffset.Tag.NoOffset:
@@ -2803,7 +2805,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(FrontFace v) {
+    public static JToken toJSON(FrontFace v) {
       var obj = new JObject();
       switch (v.tag) { 
         case FrontFace.Tag.CCW:
@@ -2815,7 +2817,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(PolygonMode v) {
+    public static JToken toJSON(PolygonMode v) {
       var obj = new JObject();
       switch (v.tag) { 
         case PolygonMode.Tag.PolygonPoint:
@@ -2838,7 +2840,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(ProvokingVertex v) {
+    public static JToken toJSON(ProvokingVertex v) {
       var obj = new JObject();
       switch (v.tag) { 
         case ProvokingVertex.Tag.FirstVertex:
@@ -2850,7 +2852,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(CullMode v) {
+    public static JToken toJSON(CullMode v) {
       var obj = new JObject();
       switch (v.tag) { 
         case CullMode.Tag.CullNone:
@@ -2873,7 +2875,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(ComparisonFunction v) {
+    public static JToken toJSON(ComparisonFunction v) {
       var obj = new JObject();
       switch (v.tag) { 
         case ComparisonFunction.Tag.Never:
@@ -2903,7 +2905,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(StencilOperation v) {
+    public static JToken toJSON(StencilOperation v) {
       var obj = new JObject();
       switch (v.tag) { 
         case StencilOperation.Tag.OpZero:
@@ -2933,7 +2935,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(BlendEquation v) {
+    public static JToken toJSON(BlendEquation v) {
       var obj = new JObject();
       switch (v.tag) { 
         case BlendEquation.Tag.FuncAdd:
@@ -2954,7 +2956,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(BlendingFactor v) {
+    public static JToken toJSON(BlendingFactor v) {
       var obj = new JObject();
       switch (v.tag) { 
         case BlendingFactor.Tag.Zero:
@@ -3005,7 +3007,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(LogicOperation v) {
+    public static JToken toJSON(LogicOperation v) {
       var obj = new JObject();
       switch (v.tag) { 
         case LogicOperation.Tag.Clear:
@@ -3059,7 +3061,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(StencilOps v) {
+    public static JToken toJSON(StencilOps v) {
       var obj = new JObject();
       switch (v.tag) { 
         case StencilOps.Tag.StencilOps:
@@ -3073,7 +3075,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(StencilTest v) {
+    public static JToken toJSON(StencilTest v) {
       var obj = new JObject();
       switch (v.tag) { 
         case StencilTest.Tag.StencilTest:
@@ -3088,7 +3090,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(StencilTests v) {
+    public static JToken toJSON(StencilTests v) {
       var obj = new JObject();
       switch (v.tag) { 
         case StencilTests.Tag.StencilTests:
@@ -3102,7 +3104,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(FetchPrimitive v) {
+    public static JToken toJSON(FetchPrimitive v) {
       var obj = new JObject();
       switch (v.tag) { 
         case FetchPrimitive.Tag.Points:
@@ -3123,7 +3125,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(OutputPrimitive v) {
+    public static JToken toJSON(OutputPrimitive v) {
       var obj = new JObject();
       switch (v.tag) { 
         case OutputPrimitive.Tag.TrianglesOutput:
@@ -3138,7 +3140,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(ColorArity v) {
+    public static JToken toJSON(ColorArity v) {
       var obj = new JObject();
       switch (v.tag) { 
         case ColorArity.Tag.Red:
@@ -3156,7 +3158,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(Blending v) {
+    public static JToken toJSON(Blending v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Blending.Tag.NoBlending:
@@ -3185,7 +3187,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(RasterContext v) {
+    public static JToken toJSON(RasterContext v) {
       var obj = new JObject();
       switch (v.tag) { 
         case RasterContext.Tag.PointCtx:
@@ -3218,7 +3220,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(FragmentOperation v) {
+    public static JToken toJSON(FragmentOperation v) {
       var obj = new JObject();
       switch (v.tag) { 
         case FragmentOperation.Tag.DepthOp:
@@ -3249,7 +3251,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(AccumulationContext v) {
+    public static JToken toJSON(AccumulationContext v) {
       var obj = new JObject();
       switch (v.tag) { 
         case AccumulationContext.Tag.AccumulationContext:
@@ -3263,7 +3265,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(TextureDataType v) {
+    public static JToken toJSON(TextureDataType v) {
       var obj = new JObject();
       switch (v.tag) { 
         case TextureDataType.Tag.FloatT:
@@ -3293,7 +3295,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(TextureType v) {
+    public static JToken toJSON(TextureType v) {
       var obj = new JObject();
       switch (v.tag) { 
         case TextureType.Tag.Texture1D:
@@ -3353,7 +3355,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(MipMap v) {
+    public static JToken toJSON(MipMap v) {
       var obj = new JObject();
       switch (v.tag) { 
         case MipMap.Tag.Mip:
@@ -3378,7 +3380,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(Filter v) {
+    public static JToken toJSON(Filter v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Filter.Tag.Nearest:
@@ -3402,7 +3404,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(EdgeMode v) {
+    public static JToken toJSON(EdgeMode v) {
       var obj = new JObject();
       switch (v.tag) { 
         case EdgeMode.Tag.Repeat:
@@ -3420,7 +3422,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(ImageSemantic v) {
+    public static JToken toJSON(ImageSemantic v) {
       var obj = new JObject();
       switch (v.tag) { 
         case ImageSemantic.Tag.Depth:
@@ -3435,7 +3437,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(ImageRef v) {
+    public static JToken toJSON(ImageRef v) {
       var obj = new JObject();
       switch (v.tag) { 
         case ImageRef.Tag.TextureImage:
@@ -3457,7 +3459,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(ClearImage v) {
+    public static JToken toJSON(ClearImage v) {
       var obj = new JObject();
       switch (v.tag) { 
         case ClearImage.Tag.ClearImage:
@@ -3471,7 +3473,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(Command v) {
+    public static JToken toJSON(Command v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Command.Tag.SetRasterContext:
@@ -3573,7 +3575,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(SamplerDescriptor v) {
+    public static JToken toJSON(SamplerDescriptor v) {
       var obj = new JObject();
       switch (v.tag) { 
         case SamplerDescriptor.Tag.SamplerDescriptor:
@@ -3595,7 +3597,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(TextureDescriptor v) {
+    public static JToken toJSON(TextureDescriptor v) {
       var obj = new JObject();
       switch (v.tag) { 
         case TextureDescriptor.Tag.TextureDescriptor:
@@ -3613,7 +3615,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(Parameter v) {
+    public static JToken toJSON(Parameter v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Parameter.Tag.Parameter:
@@ -3627,7 +3629,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(Program v) {
+    public static JToken toJSON(Program v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Program.Tag.Program:
@@ -3646,7 +3648,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(Slot v) {
+    public static JToken toJSON(Slot v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Slot.Tag.Slot:
@@ -3663,7 +3665,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(StreamData v) {
+    public static JToken toJSON(StreamData v) {
       var obj = new JObject();
       switch (v.tag) { 
         case StreamData.Tag.StreamData:
@@ -3679,7 +3681,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(TargetItem v) {
+    public static JToken toJSON(TargetItem v) {
       var obj = new JObject();
       switch (v.tag) { 
         case TargetItem.Tag.TargetItem:
@@ -3693,7 +3695,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(RenderTarget v) {
+    public static JToken toJSON(RenderTarget v) {
       var obj = new JObject();
       switch (v.tag) { 
         case RenderTarget.Tag.RenderTarget:
@@ -3706,7 +3708,7 @@ namespace LambdaCube.IR {
       }
       return obj;
     }
-    JToken toJSON(Backend v) {
+    public static JToken toJSON(Backend v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Backend.Tag.WebGL1:
@@ -3715,10 +3717,13 @@ namespace LambdaCube.IR {
         case Backend.Tag.OpenGL33:
           obj["tag"] = "OpenGL33";
           break;
+        case Backend.Tag.DirectX11:
+          obj["tag"] = "DirectX11";
+          break;
       }
       return obj;
     }
-    JToken toJSON(Pipeline v) {
+    public static JToken toJSON(Pipeline v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Pipeline.Tag.Pipeline:
@@ -3740,111 +3745,103 @@ namespace LambdaCube.IR {
       return obj;
     }
 
-    JToken toJSON(int v) { return new JValue(v); }
-    JToken toJSON(uint v) { return new JValue(v); }
-    JToken toJSON(float v) { return new JValue(v); }
-    JToken toJSON(bool v) { return new JValue(v); }
-    JToken toJSON(string v) { return new JValue(v); }
-    JToken toJSON(V2<int> v) {
+    public static JToken toJSON(int v) { return new JValue(v); }
+    public static JToken toJSON(uint v) { return new JValue(v); }
+    public static JToken toJSON(float v) { return new JValue(v); }
+    public static JToken toJSON(bool v) { return new JValue(v); }
+    public static JToken toJSON(string v) { return new JValue(v); }
+    public static JToken toJSON(V2<int> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       return obj;
     }
-    JToken toJSON(V2<uint> v) {
+    public static JToken toJSON(V2<uint> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       return obj;
     }
-    JToken toJSON(V2<float> v) {
+    public static JToken toJSON(V2<float> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       return obj;
     }
-    JToken toJSON(V2<bool> v) {
+    public static JToken toJSON(V2<bool> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       return obj;
     }
-    JToken toJSON(V2<V2<float>> v) {
+    public static JToken toJSON(V2<V2<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       return obj;
     }
-    JToken toJSON(V2<V3<float>> v) {
+    public static JToken toJSON(V2<V3<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       return obj;
     }
-    JToken toJSON(V2<V4<float>> v) {
+    public static JToken toJSON(V2<V4<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       return obj;
     }
-    JToken toJSON(V3<int> v) {
-      var obj = new JObject();
-      obj["x"] = toJSON(v.x);
-      obj["y"] = toJSON(v.y);
-      obj["z"] = toJSON(v.z);
-      return obj;
-    }
-    JToken toJSON(V3<uint> v) {
+    public static JToken toJSON(V3<int> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       obj["z"] = toJSON(v.z);
       return obj;
     }
-    JToken toJSON(V3<float> v) {
+    public static JToken toJSON(V3<uint> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       obj["z"] = toJSON(v.z);
       return obj;
     }
-    JToken toJSON(V3<bool> v) {
+    public static JToken toJSON(V3<float> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       obj["z"] = toJSON(v.z);
       return obj;
     }
-    JToken toJSON(V3<V2<float>> v) {
+    public static JToken toJSON(V3<bool> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       obj["z"] = toJSON(v.z);
       return obj;
     }
-    JToken toJSON(V3<V3<float>> v) {
+    public static JToken toJSON(V3<V2<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       obj["z"] = toJSON(v.z);
       return obj;
     }
-    JToken toJSON(V3<V4<float>> v) {
+    public static JToken toJSON(V3<V3<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       obj["z"] = toJSON(v.z);
       return obj;
     }
-    JToken toJSON(V4<int> v) {
+    public static JToken toJSON(V3<V4<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
       obj["z"] = toJSON(v.z);
-      obj["w"] = toJSON(v.w);
       return obj;
     }
-    JToken toJSON(V4<uint> v) {
+    public static JToken toJSON(V4<int> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
@@ -3852,7 +3849,7 @@ namespace LambdaCube.IR {
       obj["w"] = toJSON(v.w);
       return obj;
     }
-    JToken toJSON(V4<float> v) {
+    public static JToken toJSON(V4<uint> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
@@ -3860,7 +3857,7 @@ namespace LambdaCube.IR {
       obj["w"] = toJSON(v.w);
       return obj;
     }
-    JToken toJSON(V4<bool> v) {
+    public static JToken toJSON(V4<float> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
@@ -3868,7 +3865,7 @@ namespace LambdaCube.IR {
       obj["w"] = toJSON(v.w);
       return obj;
     }
-    JToken toJSON(V4<V2<float>> v) {
+    public static JToken toJSON(V4<bool> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
@@ -3876,7 +3873,7 @@ namespace LambdaCube.IR {
       obj["w"] = toJSON(v.w);
       return obj;
     }
-    JToken toJSON(V4<V3<float>> v) {
+    public static JToken toJSON(V4<V2<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
@@ -3884,7 +3881,7 @@ namespace LambdaCube.IR {
       obj["w"] = toJSON(v.w);
       return obj;
     }
-    JToken toJSON(V4<V4<float>> v) {
+    public static JToken toJSON(V4<V3<float>> v) {
       var obj = new JObject();
       obj["x"] = toJSON(v.x);
       obj["y"] = toJSON(v.y);
@@ -3892,162 +3889,170 @@ namespace LambdaCube.IR {
       obj["w"] = toJSON(v.w);
       return obj;
     }
-    JToken toJSON(List<int> v) {
+    public static JToken toJSON(V4<V4<float>> v) {
+      var obj = new JObject();
+      obj["x"] = toJSON(v.x);
+      obj["y"] = toJSON(v.y);
+      obj["z"] = toJSON(v.z);
+      obj["w"] = toJSON(v.w);
+      return obj;
+    }
+    public static JToken toJSON(List<int> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<uint> v) {
+    public static JToken toJSON(List<uint> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<float> v) {
+    public static JToken toJSON(List<float> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<bool> v) {
+    public static JToken toJSON(List<bool> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.ClearImage> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.ClearImage> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.Command> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.Command> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.Parameter> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.Parameter> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.Program> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.Program> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.RenderTarget> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.RenderTarget> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.SamplerDescriptor> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.SamplerDescriptor> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.Slot> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.Slot> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.StreamData> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.StreamData> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.TargetItem> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.TargetItem> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.TextureDescriptor> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.TextureDescriptor> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.IR.FragmentOperation> v) {
+    public static JToken toJSON(List<global::LambdaCube.IR.FragmentOperation> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(Maybe<int> v) {
+    public static JToken toJSON(Maybe<int> v) {
       if (v.valid) {
         return toJSON(v.data);
       }
       return new JValue((string)null);
     }
-    JToken toJSON(Maybe<float> v) {
+    public static JToken toJSON(Maybe<float> v) {
       if (v.valid) {
         return toJSON(v.data);
       }
       return new JValue((string)null);
     }
-    JToken toJSON(Maybe<string> v) {
+    public static JToken toJSON(Maybe<string> v) {
       if (v.valid) {
         return toJSON(v.data);
       }
       return new JValue((string)null);
     }
-    JToken toJSON(Maybe<global::LambdaCube.IR.ComparisonFunction> v) {
+    public static JToken toJSON(Maybe<global::LambdaCube.IR.ComparisonFunction> v) {
       if (v.valid) {
         return toJSON(v.data);
       }
       return new JValue((string)null);
     }
-    JToken toJSON(Maybe<global::LambdaCube.IR.EdgeMode> v) {
+    public static JToken toJSON(Maybe<global::LambdaCube.IR.EdgeMode> v) {
       if (v.valid) {
         return toJSON(v.data);
       }
       return new JValue((string)null);
     }
-    JToken toJSON(Maybe<global::LambdaCube.IR.ImageRef> v) {
+    public static JToken toJSON(Maybe<global::LambdaCube.IR.ImageRef> v) {
       if (v.valid) {
         return toJSON(v.data);
       }
       return new JValue((string)null);
     }
-    JToken toJSON(Dictionary<string, global::LambdaCube.IR.ArrayValue> v) {
+    public static JToken toJSON(Dictionary<string, global::LambdaCube.IR.ArrayValue> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);
       }
       return obj;
     }
-    JToken toJSON(Dictionary<string, global::LambdaCube.IR.InputType> v) {
+    public static JToken toJSON(Dictionary<string, global::LambdaCube.IR.InputType> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);
       }
       return obj;
     }
-    JToken toJSON(Dictionary<string, global::LambdaCube.IR.Parameter> v) {
+    public static JToken toJSON(Dictionary<string, global::LambdaCube.IR.Parameter> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);

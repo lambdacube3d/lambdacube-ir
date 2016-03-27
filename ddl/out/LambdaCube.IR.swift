@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:16.153401000000Z
+// 2016-03-27T21:14:11.531713000000Z
 
 typealias StreamName = Int
 
@@ -465,6 +465,7 @@ enum RenderTarget {
 enum Backend {
   case WebGL1
   case OpenGL33
+  case DirectX11
 }
 
 enum Pipeline {
@@ -1329,6 +1330,8 @@ extension Backend {
         return [ "tag" : "WebGL1"]
       case .OpenGL33:
         return [ "tag" : "OpenGL33"]
+      case .DirectX11:
+        return [ "tag" : "DirectX11"]
     }
   }
 }

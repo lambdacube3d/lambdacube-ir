@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:16.153401000000Z
+// 2016-03-27T21:14:11.531713000000Z
 
 #include "LambdaCube.IR.hpp"
 template<> json toJSON<std::shared_ptr<ArrayValue>>(std::shared_ptr<ArrayValue> &v) {
@@ -2800,6 +2800,9 @@ template<> json toJSON<std::shared_ptr<Backend>>(std::shared_ptr<Backend> &v) {
     case ::Backend::tag::OpenGL33:
       obj["tag"] = "OpenGL33";
       break;
+    case ::Backend::tag::DirectX11:
+      obj["tag"] = "DirectX11";
+      break;
   }
   return obj;
 }
@@ -2812,6 +2815,9 @@ template<> std::shared_ptr<Backend> fromJSON<std::shared_ptr<Backend>>(W<std::sh
   }
   else if (tag == "OpenGL33") {
     tagType = ::Backend::tag::OpenGL33;
+  }
+  else if (tag == "DirectX11") {
+    tagType = ::Backend::tag::DirectX11;
   }
   else throw "unknown constructor: " + tag;
   std::shared_ptr<::Backend> o(new ::Backend());

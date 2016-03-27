@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:17.924228000000Z
+// 2016-03-27T21:14:12.510273000000Z
 
 using System;
 using System.Linq;
@@ -80,8 +80,8 @@ namespace LambdaCube.TypeInfo {
       switch (type) {
         case Type.Int: return (int)obj;
         case Type.String: return (string)obj;
-        case Type.Array_Range: return ((JArray)obj).Select(x => fromJSON (Type.Range, x)).ToList();
-        case Type.Array_TypeInfo: return ((JArray)obj).Select(x => fromJSON (Type.TypeInfo, x)).ToList();
+        case Type.Array_Range: return ((JArray)obj).Select(x => (global::LambdaCube.TypeInfo.Range)fromJSON (Type.Range, x)).ToList();
+        case Type.Array_TypeInfo: return ((JArray)obj).Select(x => (global::LambdaCube.TypeInfo.TypeInfo)fromJSON (Type.TypeInfo, x)).ToList();
 
         case Type.Range: {
           string tag = (string)obj["tag"];
@@ -135,7 +135,7 @@ namespace LambdaCube.TypeInfo {
       return null;
     }
 
-    JToken toJSON(Range v) {
+    public static JToken toJSON(Range v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Range.Tag.Range:
@@ -151,7 +151,7 @@ namespace LambdaCube.TypeInfo {
       }
       return obj;
     }
-    JToken toJSON(TypeInfo v) {
+    public static JToken toJSON(TypeInfo v) {
       var obj = new JObject();
       switch (v.tag) { 
         case TypeInfo.Tag.TypeInfo:
@@ -165,7 +165,7 @@ namespace LambdaCube.TypeInfo {
       }
       return obj;
     }
-    JToken toJSON(CompileResult v) {
+    public static JToken toJSON(CompileResult v) {
       var obj = new JObject();
       switch (v.tag) { 
         case CompileResult.Tag.CompileError:
@@ -191,16 +191,16 @@ namespace LambdaCube.TypeInfo {
       return obj;
     }
 
-    JToken toJSON(int v) { return new JValue(v); }
-    JToken toJSON(string v) { return new JValue(v); }
-    JToken toJSON(List<global::LambdaCube.TypeInfo.Range> v) {
+    public static JToken toJSON(int v) { return new JValue(v); }
+    public static JToken toJSON(string v) { return new JValue(v); }
+    public static JToken toJSON(List<global::LambdaCube.TypeInfo.Range> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::LambdaCube.TypeInfo.TypeInfo> v) {
+    public static JToken toJSON(List<global::LambdaCube.TypeInfo.TypeInfo> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));

@@ -418,6 +418,7 @@ ir = do
   data_ "Backend" $ do
     enum_ "WebGL1"
     enum_ "OpenGL33"
+    enum_ "DirectX11"
 
   data_ "Pipeline" $ do
     constR_ "Pipeline"

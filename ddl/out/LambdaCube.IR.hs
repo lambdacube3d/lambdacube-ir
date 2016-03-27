@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-03-21T15:32:16.153401000000Z
+-- 2016-03-27T21:14:11.531713000000Z
 
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
 module LambdaCube.IR where
@@ -480,6 +480,7 @@ data RenderTarget
 data Backend
   = WebGL1
   | OpenGL33
+  | DirectX11
   deriving (Show, Eq, Ord)
 
 data Pipeline
@@ -1559,6 +1560,7 @@ instance ToJSON Backend where
   toJSON v = case v of
     WebGL1 -> object [ "tag" .= ("WebGL1" :: Text)]
     OpenGL33 -> object [ "tag" .= ("OpenGL33" :: Text)]
+    DirectX11 -> object [ "tag" .= ("DirectX11" :: Text)]
 
 instance FromJSON Backend where
   parseJSON (Object obj) = do
@@ -1566,6 +1568,7 @@ instance FromJSON Backend where
     case tag :: Text of
       "WebGL1" -> pure WebGL1
       "OpenGL33" -> pure OpenGL33
+      "DirectX11" -> pure DirectX11
   parseJSON _ = mzero
 
 instance ToJSON Pipeline where

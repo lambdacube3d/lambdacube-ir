@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-21T15:32:18.087397000000Z
+// 2016-03-27T21:14:12.566976000000Z
 
 using System;
 using System.Linq;
@@ -156,13 +156,13 @@ namespace TestData {
         case Type.Int: return (int)obj;
         case Type.Float: return (float)obj;
         case Type.String: return (string)obj;
-        case Type.Array_Int: return ((JArray)obj).Select(x => fromJSON (Type.Int, x)).ToList();
-        case Type.Array_Float: return ((JArray)obj).Select(x => fromJSON (Type.Float, x)).ToList();
-        case Type.Array_String: return ((JArray)obj).Select(x => fromJSON (Type.String, x)).ToList();
-        case Type.Array_Frame: return ((JArray)obj).Select(x => fromJSON (Type.Frame, x)).ToList();
-        case Type.Array_Mesh: return ((JArray)obj).Select(x => fromJSON (Type.Mesh, x)).ToList();
-        case Type.Array_PipelineInfo: return ((JArray)obj).Select(x => fromJSON (Type.PipelineInfo, x)).ToList();
-        case Type.Array_Scene: return ((JArray)obj).Select(x => fromJSON (Type.Scene, x)).ToList();
+        case Type.Array_Int: return ((JArray)obj).Select(x => (int)fromJSON (Type.Int, x)).ToList();
+        case Type.Array_Float: return ((JArray)obj).Select(x => (float)fromJSON (Type.Float, x)).ToList();
+        case Type.Array_String: return ((JArray)obj).Select(x => (string)fromJSON (Type.String, x)).ToList();
+        case Type.Array_Frame: return ((JArray)obj).Select(x => (global::TestData.Frame)fromJSON (Type.Frame, x)).ToList();
+        case Type.Array_Mesh: return ((JArray)obj).Select(x => (global::TestData.Mesh)fromJSON (Type.Mesh, x)).ToList();
+        case Type.Array_PipelineInfo: return ((JArray)obj).Select(x => (global::TestData.PipelineInfo)fromJSON (Type.PipelineInfo, x)).ToList();
+        case Type.Array_Scene: return ((JArray)obj).Select(x => (global::TestData.Scene)fromJSON (Type.Scene, x)).ToList();
         case Type.Map_String_Int: {
           var map = new Dictionary<string, int> ();
           foreach(var i in (JObject)obj) {
@@ -288,7 +288,7 @@ namespace TestData {
       return null;
     }
 
-    JToken toJSON(ClientInfo v) {
+    public static JToken toJSON(ClientInfo v) {
       var obj = new JObject();
       switch (v.tag) { 
         case ClientInfo.Tag.ClientInfo:
@@ -302,7 +302,7 @@ namespace TestData {
       }
       return obj;
     }
-    JToken toJSON(Frame v) {
+    public static JToken toJSON(Frame v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Frame.Tag.Frame:
@@ -317,7 +317,7 @@ namespace TestData {
       }
       return obj;
     }
-    JToken toJSON(Scene v) {
+    public static JToken toJSON(Scene v) {
       var obj = new JObject();
       switch (v.tag) { 
         case Scene.Tag.Scene:
@@ -333,7 +333,7 @@ namespace TestData {
       }
       return obj;
     }
-    JToken toJSON(PipelineInfo v) {
+    public static JToken toJSON(PipelineInfo v) {
       var obj = new JObject();
       switch (v.tag) { 
         case PipelineInfo.Tag.PipelineInfo:
@@ -347,7 +347,7 @@ namespace TestData {
       }
       return obj;
     }
-    JToken toJSON(RenderJob v) {
+    public static JToken toJSON(RenderJob v) {
       var obj = new JObject();
       switch (v.tag) { 
         case RenderJob.Tag.RenderJob:
@@ -364,7 +364,7 @@ namespace TestData {
       }
       return obj;
     }
-    JToken toJSON(FrameResult v) {
+    public static JToken toJSON(FrameResult v) {
       var obj = new JObject();
       switch (v.tag) { 
         case FrameResult.Tag.FrameResult:
@@ -379,7 +379,7 @@ namespace TestData {
       }
       return obj;
     }
-    JToken toJSON(RenderJobResult v) {
+    public static JToken toJSON(RenderJobResult v) {
       var obj = new JObject();
       switch (v.tag) { 
         case RenderJobResult.Tag.RenderJobResult:
@@ -400,73 +400,73 @@ namespace TestData {
       return obj;
     }
 
-    JToken toJSON(int v) { return new JValue(v); }
-    JToken toJSON(float v) { return new JValue(v); }
-    JToken toJSON(string v) { return new JValue(v); }
-    JToken toJSON(List<int> v) {
+    public static JToken toJSON(int v) { return new JValue(v); }
+    public static JToken toJSON(float v) { return new JValue(v); }
+    public static JToken toJSON(string v) { return new JValue(v); }
+    public static JToken toJSON(List<int> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<float> v) {
+    public static JToken toJSON(List<float> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<string> v) {
+    public static JToken toJSON(List<string> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::TestData.Frame> v) {
+    public static JToken toJSON(List<global::TestData.Frame> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::TestData.Mesh> v) {
+    public static JToken toJSON(List<global::TestData.Mesh> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::TestData.PipelineInfo> v) {
+    public static JToken toJSON(List<global::TestData.PipelineInfo> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(List<global::TestData.Scene> v) {
+    public static JToken toJSON(List<global::TestData.Scene> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
       }
       return obj;
     }
-    JToken toJSON(Dictionary<string, int> v) {
+    public static JToken toJSON(Dictionary<string, int> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);
       }
       return obj;
     }
-    JToken toJSON(Dictionary<string, List<int>> v) {
+    public static JToken toJSON(Dictionary<string, List<int>> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);
       }
       return obj;
     }
-    JToken toJSON(Dictionary<string, global::TestData.Value> v) {
+    public static JToken toJSON(Dictionary<string, global::TestData.Value> v) {
       var obj = new JObject();
       foreach (var i in v) {
         obj[i.Key] = toJSON(i.Value);

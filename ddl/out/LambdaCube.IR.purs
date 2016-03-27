@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-03-21T15:32:16.153401000000Z
+-- 2016-03-27T21:14:11.531713000000Z
 
 module LambdaCube.IR where
 import Prelude
@@ -439,6 +439,7 @@ data RenderTarget
 data Backend
   = WebGL1
   | OpenGL33
+  | DirectX11
 
 data Pipeline
   = Pipeline
@@ -1541,6 +1542,7 @@ instance encodeJsonBackend :: EncodeJson Backend where
   encodeJson v = case v of
     WebGL1 -> "tag" := "WebGL1" ~> jsonEmptyObject
     OpenGL33 -> "tag" := "OpenGL33" ~> jsonEmptyObject
+    DirectX11 -> "tag" := "DirectX11" ~> jsonEmptyObject
 
 instance decodeJsonBackend :: DecodeJson Backend where
   decodeJson json = do
@@ -1549,6 +1551,7 @@ instance decodeJsonBackend :: DecodeJson Backend where
     case tag of
       "WebGL1" -> pure WebGL1
       "OpenGL33" -> pure OpenGL33
+      "DirectX11" -> pure DirectX11
 
 instance encodeJsonPipeline :: EncodeJson Pipeline where
   encodeJson v = case v of

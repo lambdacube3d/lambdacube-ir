@@ -219,6 +219,6 @@ public class JSON {
     {% endcase %}
   {% endfor %}
     }
-    return null;
+    throw new Exception("unknown type");
   }
 }
