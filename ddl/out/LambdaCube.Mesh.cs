@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-27T21:14:12.377390000000Z
+// 2016-03-29T11:30:13.232726000000Z
 
 using System;
 using System.Linq;
@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 
 namespace LambdaCube.Mesh {
-  class MeshAttribute {
+  public class MeshAttribute {
       public enum Tag { 
         A_Float,
         A_V2F,
@@ -24,44 +24,44 @@ namespace LambdaCube.Mesh {
   };
 
   namespace data { 
-    class A_Float : LambdaCube.Mesh.MeshAttribute { 
+    public class A_Float : LambdaCube.Mesh.MeshAttribute { 
       public List<float> _0;
       public A_Float() { tag = LambdaCube.Mesh.MeshAttribute.Tag.A_Float; }
     };
-    class A_V2F : LambdaCube.Mesh.MeshAttribute { 
+    public class A_V2F : LambdaCube.Mesh.MeshAttribute { 
       public List<V2<float>> _0;
       public A_V2F() { tag = LambdaCube.Mesh.MeshAttribute.Tag.A_V2F; }
     };
-    class A_V3F : LambdaCube.Mesh.MeshAttribute { 
+    public class A_V3F : LambdaCube.Mesh.MeshAttribute { 
       public List<V3<float>> _0;
       public A_V3F() { tag = LambdaCube.Mesh.MeshAttribute.Tag.A_V3F; }
     };
-    class A_V4F : LambdaCube.Mesh.MeshAttribute { 
+    public class A_V4F : LambdaCube.Mesh.MeshAttribute { 
       public List<V4<float>> _0;
       public A_V4F() { tag = LambdaCube.Mesh.MeshAttribute.Tag.A_V4F; }
     };
-    class A_M22F : LambdaCube.Mesh.MeshAttribute { 
+    public class A_M22F : LambdaCube.Mesh.MeshAttribute { 
       public List<V2<V2<float>>> _0;
       public A_M22F() { tag = LambdaCube.Mesh.MeshAttribute.Tag.A_M22F; }
     };
-    class A_M33F : LambdaCube.Mesh.MeshAttribute { 
+    public class A_M33F : LambdaCube.Mesh.MeshAttribute { 
       public List<V3<V3<float>>> _0;
       public A_M33F() { tag = LambdaCube.Mesh.MeshAttribute.Tag.A_M33F; }
     };
-    class A_M44F : LambdaCube.Mesh.MeshAttribute { 
+    public class A_M44F : LambdaCube.Mesh.MeshAttribute { 
       public List<V4<V4<float>>> _0;
       public A_M44F() { tag = LambdaCube.Mesh.MeshAttribute.Tag.A_M44F; }
     };
-    class A_Int : LambdaCube.Mesh.MeshAttribute { 
+    public class A_Int : LambdaCube.Mesh.MeshAttribute { 
       public List<int> _0;
       public A_Int() { tag = LambdaCube.Mesh.MeshAttribute.Tag.A_Int; }
     };
-    class A_Word : LambdaCube.Mesh.MeshAttribute { 
+    public class A_Word : LambdaCube.Mesh.MeshAttribute { 
       public List<uint> _0;
       public A_Word() { tag = LambdaCube.Mesh.MeshAttribute.Tag.A_Word; }
     };
   }
-  class MeshPrimitive {
+  public class MeshPrimitive {
       public enum Tag { 
         P_Points,
         P_TriangleStrip,
@@ -73,16 +73,16 @@ namespace LambdaCube.Mesh {
   };
 
   namespace data { 
-    class P_TriangleStripI : LambdaCube.Mesh.MeshPrimitive { 
+    public class P_TriangleStripI : LambdaCube.Mesh.MeshPrimitive { 
       public List<int> _0;
       public P_TriangleStripI() { tag = LambdaCube.Mesh.MeshPrimitive.Tag.P_TriangleStripI; }
     };
-    class P_TrianglesI : LambdaCube.Mesh.MeshPrimitive { 
+    public class P_TrianglesI : LambdaCube.Mesh.MeshPrimitive { 
       public List<int> _0;
       public P_TrianglesI() { tag = LambdaCube.Mesh.MeshPrimitive.Tag.P_TrianglesI; }
     };
   }
-  class Mesh {
+  public class Mesh {
       public enum Tag { 
         Mesh
       };
@@ -90,7 +90,7 @@ namespace LambdaCube.Mesh {
   };
 
   namespace data { 
-    class Mesh : LambdaCube.Mesh.Mesh { 
+    public class Mesh : LambdaCube.Mesh.Mesh { 
       public Dictionary<string, global::LambdaCube.Mesh.MeshAttribute> mAttributes;
       public global::LambdaCube.Mesh.MeshPrimitive mPrimitive;
       public Mesh() { tag = LambdaCube.Mesh.Mesh.Tag.Mesh; }
@@ -98,7 +98,7 @@ namespace LambdaCube.Mesh {
   }
 
   // JSON deserializer
-  enum Type { 
+  public enum Type { 
     Int32,
     Word32,
     Float,
@@ -124,7 +124,7 @@ namespace LambdaCube.Mesh {
     MeshPrimitive
   }
 
-  class Loader {
+  public class Loader {
     public static object fromJSON(Type type, JToken obj) {
       switch (type) {
         case Type.Int32: return (int)obj;

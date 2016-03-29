@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-27T21:14:12.566976000000Z
+// 2016-03-29T11:30:13.376022000000Z
 
 using System;
 using System.Linq;
@@ -11,7 +11,7 @@ using LambdaCube.Mesh;
 using LambdaCube.PipelineSchema;
 
 namespace TestData {
-  class ClientInfo {
+  public class ClientInfo {
       public enum Tag { 
         ClientInfo
       };
@@ -19,13 +19,13 @@ namespace TestData {
   };
 
   namespace data { 
-    class ClientInfo : TestData.ClientInfo { 
+    public class ClientInfo : TestData.ClientInfo { 
       public string clientName;
       public global::TestData.Backend clientBackend;
       public ClientInfo() { tag = TestData.ClientInfo.Tag.ClientInfo; }
     };
   }
-  class Frame {
+  public class Frame {
       public enum Tag { 
         Frame
       };
@@ -33,14 +33,14 @@ namespace TestData {
   };
 
   namespace data { 
-    class Frame : TestData.Frame { 
+    public class Frame : TestData.Frame { 
       public int renderCount;
       public Dictionary<string, global::TestData.Value> frameUniforms;
       public Dictionary<string, int> frameTextures;
       public Frame() { tag = TestData.Frame.Tag.Frame; }
     };
   }
-  class Scene {
+  public class Scene {
       public enum Tag { 
         Scene
       };
@@ -48,7 +48,7 @@ namespace TestData {
   };
 
   namespace data { 
-    class Scene : TestData.Scene { 
+    public class Scene : TestData.Scene { 
       public Dictionary<string, List<int>> objectArrays;
       public int renderTargetWidth;
       public int renderTargetHeight;
@@ -56,7 +56,7 @@ namespace TestData {
       public Scene() { tag = TestData.Scene.Tag.Scene; }
     };
   }
-  class PipelineInfo {
+  public class PipelineInfo {
       public enum Tag { 
         PipelineInfo
       };
@@ -64,13 +64,13 @@ namespace TestData {
   };
 
   namespace data { 
-    class PipelineInfo : TestData.PipelineInfo { 
+    public class PipelineInfo : TestData.PipelineInfo { 
       public string pipelineName;
       public global::TestData.Pipeline pipeline;
       public PipelineInfo() { tag = TestData.PipelineInfo.Tag.PipelineInfo; }
     };
   }
-  class RenderJob {
+  public class RenderJob {
       public enum Tag { 
         RenderJob
       };
@@ -78,7 +78,7 @@ namespace TestData {
   };
 
   namespace data { 
-    class RenderJob : TestData.RenderJob { 
+    public class RenderJob : TestData.RenderJob { 
       public List<global::TestData.Mesh> meshes;
       public List<string> textures;
       public global::TestData.PipelineSchema schema;
@@ -87,7 +87,7 @@ namespace TestData {
       public RenderJob() { tag = TestData.RenderJob.Tag.RenderJob; }
     };
   }
-  class FrameResult {
+  public class FrameResult {
       public enum Tag { 
         FrameResult
       };
@@ -95,14 +95,14 @@ namespace TestData {
   };
 
   namespace data { 
-    class FrameResult : TestData.FrameResult { 
+    public class FrameResult : TestData.FrameResult { 
       public List<float> frRenderTimes;
       public int frImageWidth;
       public int frImageHeight;
       public FrameResult() { tag = TestData.FrameResult.Tag.FrameResult; }
     };
   }
-  class RenderJobResult {
+  public class RenderJobResult {
       public enum Tag { 
         RenderJobResult,
         RenderJobError
@@ -111,18 +111,18 @@ namespace TestData {
   };
 
   namespace data { 
-    class RenderJobResult : TestData.RenderJobResult { 
+    public class RenderJobResult : TestData.RenderJobResult { 
       public global::TestData.FrameResult _0;
       public RenderJobResult() { tag = TestData.RenderJobResult.Tag.RenderJobResult; }
     };
-    class RenderJobError : TestData.RenderJobResult { 
+    public class RenderJobError : TestData.RenderJobResult { 
       public string _0;
       public RenderJobError() { tag = TestData.RenderJobResult.Tag.RenderJobError; }
     };
   }
 
   // JSON deserializer
-  enum Type { 
+  public enum Type { 
     Int,
     Float,
     String,
@@ -150,7 +150,7 @@ namespace TestData {
     Value
   }
 
-  class Loader {
+  public class Loader {
     public static object fromJSON(Type type, JToken obj) {
       switch (type) {
         case Type.Int: return (int)obj;

@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-27T21:14:12.321500000000Z
+// 2016-03-29T11:30:13.180467000000Z
 
 using System;
 using System.Linq;
@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 using LambdaCube.IR;
 
 namespace LambdaCube.PipelineSchema {
-  class StreamType {
+  public class StreamType {
       public enum Tag { 
         Attribute_Word,
         Attribute_V2U,
@@ -38,7 +38,7 @@ namespace LambdaCube.PipelineSchema {
 
   namespace data { 
   }
-  class ObjectArraySchema {
+  public class ObjectArraySchema {
       public enum Tag { 
         ObjectArraySchema
       };
@@ -46,13 +46,13 @@ namespace LambdaCube.PipelineSchema {
   };
 
   namespace data { 
-    class ObjectArraySchema : LambdaCube.PipelineSchema.ObjectArraySchema { 
+    public class ObjectArraySchema : LambdaCube.PipelineSchema.ObjectArraySchema { 
       public global::LambdaCube.PipelineSchema.FetchPrimitive primitive;
       public Dictionary<string, global::LambdaCube.PipelineSchema.StreamType> attributes;
       public ObjectArraySchema() { tag = LambdaCube.PipelineSchema.ObjectArraySchema.Tag.ObjectArraySchema; }
     };
   }
-  class PipelineSchema {
+  public class PipelineSchema {
       public enum Tag { 
         PipelineSchema
       };
@@ -60,7 +60,7 @@ namespace LambdaCube.PipelineSchema {
   };
 
   namespace data { 
-    class PipelineSchema : LambdaCube.PipelineSchema.PipelineSchema { 
+    public class PipelineSchema : LambdaCube.PipelineSchema.PipelineSchema { 
       public Dictionary<string, global::LambdaCube.PipelineSchema.ObjectArraySchema> objectArrays;
       public Dictionary<string, global::LambdaCube.PipelineSchema.InputType> uniforms;
       public PipelineSchema() { tag = LambdaCube.PipelineSchema.PipelineSchema.Tag.PipelineSchema; }
@@ -68,7 +68,7 @@ namespace LambdaCube.PipelineSchema {
   }
 
   // JSON deserializer
-  enum Type { 
+  public enum Type { 
     String,
     Map_String_InputType,
     Map_String_ObjectArraySchema,
@@ -80,7 +80,7 @@ namespace LambdaCube.PipelineSchema {
     StreamType
   }
 
-  class Loader {
+  public class Loader {
     public static object fromJSON(Type type, JToken obj) {
       switch (type) {
         case Type.String: return (string)obj;

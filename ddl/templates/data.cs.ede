@@ -14,7 +14,7 @@ namespace {{ moduleName }} {
   {% for t in dataAndType %}
   {% case t.value | constType %}
   {% when "DataDef" %}
-  class {{ t.value.dataName }} {
+  public class {{ t.value.dataName }} {
       public enum Tag { {% for c in t.value.constructors %}
         {{ c.value.name }}{% if !c.last %},{% endif %}{% endfor %}
       };
@@ -22,7 +22,7 @@ namespace {{ moduleName }} {
   };
 
   namespace data { {% for c in t.value.constructors %}{% if !(c.value.fields | empty) %}
-    class {{ c.value.name }} : {{ moduleName }}.{{ t.value.dataName }} { {% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
+    public class {{ c.value.name }} : {{ moduleName }}.{{ t.value.dataName }} { {% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
       public {{ f.value.fieldType | csType }} {{ f.value.fieldName }};{% else %}
       public {{ f.value.fieldType | csType | parens }} _{{ f.index0 }};{% endif %}{% endfor %}
       public {{ c.value.name }}() { tag = {{ moduleName }}.{{ t.value.dataName }}.Tag.{{ c.value.name }}; }
@@ -32,11 +32,11 @@ namespace {{ moduleName }} {
   {% endfor %}
 
   // JSON deserializer
-  enum Type { {% for t in usedTypes %}
+  public enum Type { {% for t in usedTypes %}
     {{ t.value | typeEnum }}{% if !t.last %},{% endif %}{% endfor %}
   }
 
-  class Loader {
+  public class Loader {
     public static object fromJSON(Type type, JToken obj) {
       switch (type) {
         {% for t in usedTypes %}

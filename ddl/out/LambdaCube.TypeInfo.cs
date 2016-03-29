@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-27T21:14:12.510273000000Z
+// 2016-03-29T11:30:13.322407000000Z
 
 using System;
 using System.Linq;
@@ -9,7 +9,7 @@ using Newtonsoft.Json.Linq;
 using LambdaCube.IR;
 
 namespace LambdaCube.TypeInfo {
-  class Range {
+  public class Range {
       public enum Tag { 
         Range
       };
@@ -17,7 +17,7 @@ namespace LambdaCube.TypeInfo {
   };
 
   namespace data { 
-    class Range : LambdaCube.TypeInfo.Range { 
+    public class Range : LambdaCube.TypeInfo.Range { 
       public int startLine;
       public int startColumn;
       public int endLine;
@@ -25,7 +25,7 @@ namespace LambdaCube.TypeInfo {
       public Range() { tag = LambdaCube.TypeInfo.Range.Tag.Range; }
     };
   }
-  class TypeInfo {
+  public class TypeInfo {
       public enum Tag { 
         TypeInfo
       };
@@ -33,13 +33,13 @@ namespace LambdaCube.TypeInfo {
   };
 
   namespace data { 
-    class TypeInfo : LambdaCube.TypeInfo.TypeInfo { 
+    public class TypeInfo : LambdaCube.TypeInfo.TypeInfo { 
       public global::LambdaCube.TypeInfo.Range range;
       public string text;
       public TypeInfo() { tag = LambdaCube.TypeInfo.TypeInfo.Tag.TypeInfo; }
     };
   }
-  class CompileResult {
+  public class CompileResult {
       public enum Tag { 
         CompileError,
         Compiled
@@ -48,13 +48,13 @@ namespace LambdaCube.TypeInfo {
   };
 
   namespace data { 
-    class CompileError : LambdaCube.TypeInfo.CompileResult { 
+    public class CompileError : LambdaCube.TypeInfo.CompileResult { 
       public List<global::LambdaCube.TypeInfo.Range> _0;
       public string _1;
       public List<global::LambdaCube.TypeInfo.TypeInfo> _2;
       public CompileError() { tag = LambdaCube.TypeInfo.CompileResult.Tag.CompileError; }
     };
-    class Compiled : LambdaCube.TypeInfo.CompileResult { 
+    public class Compiled : LambdaCube.TypeInfo.CompileResult { 
       public string _0;
       public string _1;
       public global::LambdaCube.TypeInfo.Pipeline _2;
@@ -64,7 +64,7 @@ namespace LambdaCube.TypeInfo {
   }
 
   // JSON deserializer
-  enum Type { 
+  public enum Type { 
     Int,
     String,
     Array_Range,
@@ -75,7 +75,7 @@ namespace LambdaCube.TypeInfo {
     TypeInfo
   }
 
-  class Loader {
+  public class Loader {
     public static object fromJSON(Type type, JToken obj) {
       switch (type) {
         case Type.Int: return (int)obj;

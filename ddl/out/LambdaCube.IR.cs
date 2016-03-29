@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-27T21:14:11.531713000000Z
+// 2016-03-29T11:30:12.412728000000Z
 
 using System;
 using System.Linq;
@@ -8,7 +8,7 @@ using Newtonsoft.Json.Linq;
 
 
 namespace LambdaCube.IR {
-  class ArrayValue {
+  public class ArrayValue {
       public enum Tag { 
         VBoolArray,
         VIntArray,
@@ -19,24 +19,24 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class VBoolArray : LambdaCube.IR.ArrayValue { 
+    public class VBoolArray : LambdaCube.IR.ArrayValue { 
       public List<bool> _0;
       public VBoolArray() { tag = LambdaCube.IR.ArrayValue.Tag.VBoolArray; }
     };
-    class VIntArray : LambdaCube.IR.ArrayValue { 
+    public class VIntArray : LambdaCube.IR.ArrayValue { 
       public List<int> _0;
       public VIntArray() { tag = LambdaCube.IR.ArrayValue.Tag.VIntArray; }
     };
-    class VWordArray : LambdaCube.IR.ArrayValue { 
+    public class VWordArray : LambdaCube.IR.ArrayValue { 
       public List<uint> _0;
       public VWordArray() { tag = LambdaCube.IR.ArrayValue.Tag.VWordArray; }
     };
-    class VFloatArray : LambdaCube.IR.ArrayValue { 
+    public class VFloatArray : LambdaCube.IR.ArrayValue { 
       public List<float> _0;
       public VFloatArray() { tag = LambdaCube.IR.ArrayValue.Tag.VFloatArray; }
     };
   }
-  class Value {
+  public class Value {
       public enum Tag { 
         VBool,
         VV2B,
@@ -68,108 +68,108 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class VBool : LambdaCube.IR.Value { 
+    public class VBool : LambdaCube.IR.Value { 
       public bool _0;
       public VBool() { tag = LambdaCube.IR.Value.Tag.VBool; }
     };
-    class VV2B : LambdaCube.IR.Value { 
+    public class VV2B : LambdaCube.IR.Value { 
       public V2<bool> _0;
       public VV2B() { tag = LambdaCube.IR.Value.Tag.VV2B; }
     };
-    class VV3B : LambdaCube.IR.Value { 
+    public class VV3B : LambdaCube.IR.Value { 
       public V3<bool> _0;
       public VV3B() { tag = LambdaCube.IR.Value.Tag.VV3B; }
     };
-    class VV4B : LambdaCube.IR.Value { 
+    public class VV4B : LambdaCube.IR.Value { 
       public V4<bool> _0;
       public VV4B() { tag = LambdaCube.IR.Value.Tag.VV4B; }
     };
-    class VWord : LambdaCube.IR.Value { 
+    public class VWord : LambdaCube.IR.Value { 
       public uint _0;
       public VWord() { tag = LambdaCube.IR.Value.Tag.VWord; }
     };
-    class VV2U : LambdaCube.IR.Value { 
+    public class VV2U : LambdaCube.IR.Value { 
       public V2<uint> _0;
       public VV2U() { tag = LambdaCube.IR.Value.Tag.VV2U; }
     };
-    class VV3U : LambdaCube.IR.Value { 
+    public class VV3U : LambdaCube.IR.Value { 
       public V3<uint> _0;
       public VV3U() { tag = LambdaCube.IR.Value.Tag.VV3U; }
     };
-    class VV4U : LambdaCube.IR.Value { 
+    public class VV4U : LambdaCube.IR.Value { 
       public V4<uint> _0;
       public VV4U() { tag = LambdaCube.IR.Value.Tag.VV4U; }
     };
-    class VInt : LambdaCube.IR.Value { 
+    public class VInt : LambdaCube.IR.Value { 
       public int _0;
       public VInt() { tag = LambdaCube.IR.Value.Tag.VInt; }
     };
-    class VV2I : LambdaCube.IR.Value { 
+    public class VV2I : LambdaCube.IR.Value { 
       public V2<int> _0;
       public VV2I() { tag = LambdaCube.IR.Value.Tag.VV2I; }
     };
-    class VV3I : LambdaCube.IR.Value { 
+    public class VV3I : LambdaCube.IR.Value { 
       public V3<int> _0;
       public VV3I() { tag = LambdaCube.IR.Value.Tag.VV3I; }
     };
-    class VV4I : LambdaCube.IR.Value { 
+    public class VV4I : LambdaCube.IR.Value { 
       public V4<int> _0;
       public VV4I() { tag = LambdaCube.IR.Value.Tag.VV4I; }
     };
-    class VFloat : LambdaCube.IR.Value { 
+    public class VFloat : LambdaCube.IR.Value { 
       public float _0;
       public VFloat() { tag = LambdaCube.IR.Value.Tag.VFloat; }
     };
-    class VV2F : LambdaCube.IR.Value { 
+    public class VV2F : LambdaCube.IR.Value { 
       public V2<float> _0;
       public VV2F() { tag = LambdaCube.IR.Value.Tag.VV2F; }
     };
-    class VV3F : LambdaCube.IR.Value { 
+    public class VV3F : LambdaCube.IR.Value { 
       public V3<float> _0;
       public VV3F() { tag = LambdaCube.IR.Value.Tag.VV3F; }
     };
-    class VV4F : LambdaCube.IR.Value { 
+    public class VV4F : LambdaCube.IR.Value { 
       public V4<float> _0;
       public VV4F() { tag = LambdaCube.IR.Value.Tag.VV4F; }
     };
-    class VM22F : LambdaCube.IR.Value { 
+    public class VM22F : LambdaCube.IR.Value { 
       public V2<V2<float>> _0;
       public VM22F() { tag = LambdaCube.IR.Value.Tag.VM22F; }
     };
-    class VM23F : LambdaCube.IR.Value { 
+    public class VM23F : LambdaCube.IR.Value { 
       public V3<V2<float>> _0;
       public VM23F() { tag = LambdaCube.IR.Value.Tag.VM23F; }
     };
-    class VM24F : LambdaCube.IR.Value { 
+    public class VM24F : LambdaCube.IR.Value { 
       public V4<V2<float>> _0;
       public VM24F() { tag = LambdaCube.IR.Value.Tag.VM24F; }
     };
-    class VM32F : LambdaCube.IR.Value { 
+    public class VM32F : LambdaCube.IR.Value { 
       public V2<V3<float>> _0;
       public VM32F() { tag = LambdaCube.IR.Value.Tag.VM32F; }
     };
-    class VM33F : LambdaCube.IR.Value { 
+    public class VM33F : LambdaCube.IR.Value { 
       public V3<V3<float>> _0;
       public VM33F() { tag = LambdaCube.IR.Value.Tag.VM33F; }
     };
-    class VM34F : LambdaCube.IR.Value { 
+    public class VM34F : LambdaCube.IR.Value { 
       public V4<V3<float>> _0;
       public VM34F() { tag = LambdaCube.IR.Value.Tag.VM34F; }
     };
-    class VM42F : LambdaCube.IR.Value { 
+    public class VM42F : LambdaCube.IR.Value { 
       public V2<V4<float>> _0;
       public VM42F() { tag = LambdaCube.IR.Value.Tag.VM42F; }
     };
-    class VM43F : LambdaCube.IR.Value { 
+    public class VM43F : LambdaCube.IR.Value { 
       public V3<V4<float>> _0;
       public VM43F() { tag = LambdaCube.IR.Value.Tag.VM43F; }
     };
-    class VM44F : LambdaCube.IR.Value { 
+    public class VM44F : LambdaCube.IR.Value { 
       public V4<V4<float>> _0;
       public VM44F() { tag = LambdaCube.IR.Value.Tag.VM44F; }
     };
   }
-  class InputType {
+  public class InputType {
       public enum Tag { 
         Bool,
         V2B,
@@ -238,7 +238,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class PointSpriteCoordOrigin {
+  public class PointSpriteCoordOrigin {
       public enum Tag { 
         LowerLeft,
         UpperLeft
@@ -248,7 +248,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class PointSize {
+  public class PointSize {
       public enum Tag { 
         PointSize,
         ProgramPointSize
@@ -257,12 +257,12 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class PointSize : LambdaCube.IR.PointSize { 
+    public class PointSize : LambdaCube.IR.PointSize { 
       public float _0;
       public PointSize() { tag = LambdaCube.IR.PointSize.Tag.PointSize; }
     };
   }
-  class PolygonOffset {
+  public class PolygonOffset {
       public enum Tag { 
         NoOffset,
         Offset
@@ -271,13 +271,13 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class Offset : LambdaCube.IR.PolygonOffset { 
+    public class Offset : LambdaCube.IR.PolygonOffset { 
       public float _0;
       public float _1;
       public Offset() { tag = LambdaCube.IR.PolygonOffset.Tag.Offset; }
     };
   }
-  class FrontFace {
+  public class FrontFace {
       public enum Tag { 
         CCW,
         CW
@@ -287,7 +287,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class PolygonMode {
+  public class PolygonMode {
       public enum Tag { 
         PolygonPoint,
         PolygonLine,
@@ -297,16 +297,16 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class PolygonPoint : LambdaCube.IR.PolygonMode { 
+    public class PolygonPoint : LambdaCube.IR.PolygonMode { 
       public global::LambdaCube.IR.PointSize _0;
       public PolygonPoint() { tag = LambdaCube.IR.PolygonMode.Tag.PolygonPoint; }
     };
-    class PolygonLine : LambdaCube.IR.PolygonMode { 
+    public class PolygonLine : LambdaCube.IR.PolygonMode { 
       public float _0;
       public PolygonLine() { tag = LambdaCube.IR.PolygonMode.Tag.PolygonLine; }
     };
   }
-  class ProvokingVertex {
+  public class ProvokingVertex {
       public enum Tag { 
         FirstVertex,
         LastVertex
@@ -316,7 +316,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class CullMode {
+  public class CullMode {
       public enum Tag { 
         CullNone,
         CullFront,
@@ -326,16 +326,16 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class CullFront : LambdaCube.IR.CullMode { 
+    public class CullFront : LambdaCube.IR.CullMode { 
       public global::LambdaCube.IR.FrontFace _0;
       public CullFront() { tag = LambdaCube.IR.CullMode.Tag.CullFront; }
     };
-    class CullBack : LambdaCube.IR.CullMode { 
+    public class CullBack : LambdaCube.IR.CullMode { 
       public global::LambdaCube.IR.FrontFace _0;
       public CullBack() { tag = LambdaCube.IR.CullMode.Tag.CullBack; }
     };
   }
-  class ComparisonFunction {
+  public class ComparisonFunction {
       public enum Tag { 
         Never,
         Less,
@@ -351,7 +351,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class StencilOperation {
+  public class StencilOperation {
       public enum Tag { 
         OpZero,
         OpKeep,
@@ -367,7 +367,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class BlendEquation {
+  public class BlendEquation {
       public enum Tag { 
         FuncAdd,
         FuncSubtract,
@@ -380,7 +380,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class BlendingFactor {
+  public class BlendingFactor {
       public enum Tag { 
         Zero,
         One,
@@ -403,7 +403,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class LogicOperation {
+  public class LogicOperation {
       public enum Tag { 
         Clear,
         And,
@@ -427,7 +427,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class StencilOps {
+  public class StencilOps {
       public enum Tag { 
         StencilOps
       };
@@ -435,13 +435,13 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class StencilOps : LambdaCube.IR.StencilOps { 
+    public class StencilOps : LambdaCube.IR.StencilOps { 
       public global::LambdaCube.IR.StencilOperation frontStencilOp;
       public global::LambdaCube.IR.StencilOperation backStencilOp;
       public StencilOps() { tag = LambdaCube.IR.StencilOps.Tag.StencilOps; }
     };
   }
-  class StencilTest {
+  public class StencilTest {
       public enum Tag { 
         StencilTest
       };
@@ -449,14 +449,14 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class StencilTest : LambdaCube.IR.StencilTest { 
+    public class StencilTest : LambdaCube.IR.StencilTest { 
       public global::LambdaCube.IR.ComparisonFunction stencilComparision;
       public int stencilReference;
       public uint stencilMask;
       public StencilTest() { tag = LambdaCube.IR.StencilTest.Tag.StencilTest; }
     };
   }
-  class StencilTests {
+  public class StencilTests {
       public enum Tag { 
         StencilTests
       };
@@ -464,13 +464,13 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class StencilTests : LambdaCube.IR.StencilTests { 
+    public class StencilTests : LambdaCube.IR.StencilTests { 
       public global::LambdaCube.IR.StencilTest _0;
       public global::LambdaCube.IR.StencilTest _1;
       public StencilTests() { tag = LambdaCube.IR.StencilTests.Tag.StencilTests; }
     };
   }
-  class FetchPrimitive {
+  public class FetchPrimitive {
       public enum Tag { 
         Points,
         Lines,
@@ -483,7 +483,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class OutputPrimitive {
+  public class OutputPrimitive {
       public enum Tag { 
         TrianglesOutput,
         LinesOutput,
@@ -494,7 +494,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class ColorArity {
+  public class ColorArity {
       public enum Tag { 
         Red,
         RG,
@@ -506,7 +506,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class Blending {
+  public class Blending {
       public enum Tag { 
         NoBlending,
         BlendLogicOp,
@@ -516,11 +516,11 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class BlendLogicOp : LambdaCube.IR.Blending { 
+    public class BlendLogicOp : LambdaCube.IR.Blending { 
       public global::LambdaCube.IR.LogicOperation _0;
       public BlendLogicOp() { tag = LambdaCube.IR.Blending.Tag.BlendLogicOp; }
     };
-    class Blend : LambdaCube.IR.Blending { 
+    public class Blend : LambdaCube.IR.Blending { 
       public global::LambdaCube.IR.BlendEquation colorEqSrc;
       public global::LambdaCube.IR.BlendEquation alphaEqSrc;
       public global::LambdaCube.IR.BlendingFactor colorFSrc;
@@ -531,7 +531,7 @@ namespace LambdaCube.IR {
       public Blend() { tag = LambdaCube.IR.Blending.Tag.Blend; }
     };
   }
-  class RasterContext {
+  public class RasterContext {
       public enum Tag { 
         PointCtx,
         LineCtx,
@@ -541,18 +541,18 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class PointCtx : LambdaCube.IR.RasterContext { 
+    public class PointCtx : LambdaCube.IR.RasterContext { 
       public global::LambdaCube.IR.PointSize _0;
       public float _1;
       public global::LambdaCube.IR.PointSpriteCoordOrigin _2;
       public PointCtx() { tag = LambdaCube.IR.RasterContext.Tag.PointCtx; }
     };
-    class LineCtx : LambdaCube.IR.RasterContext { 
+    public class LineCtx : LambdaCube.IR.RasterContext { 
       public float _0;
       public global::LambdaCube.IR.ProvokingVertex _1;
       public LineCtx() { tag = LambdaCube.IR.RasterContext.Tag.LineCtx; }
     };
-    class TriangleCtx : LambdaCube.IR.RasterContext { 
+    public class TriangleCtx : LambdaCube.IR.RasterContext { 
       public global::LambdaCube.IR.CullMode _0;
       public global::LambdaCube.IR.PolygonMode _1;
       public global::LambdaCube.IR.PolygonOffset _2;
@@ -560,7 +560,7 @@ namespace LambdaCube.IR {
       public TriangleCtx() { tag = LambdaCube.IR.RasterContext.Tag.TriangleCtx; }
     };
   }
-  class FragmentOperation {
+  public class FragmentOperation {
       public enum Tag { 
         DepthOp,
         StencilOp,
@@ -570,24 +570,24 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class DepthOp : LambdaCube.IR.FragmentOperation { 
+    public class DepthOp : LambdaCube.IR.FragmentOperation { 
       public global::LambdaCube.IR.ComparisonFunction _0;
       public bool _1;
       public DepthOp() { tag = LambdaCube.IR.FragmentOperation.Tag.DepthOp; }
     };
-    class StencilOp : LambdaCube.IR.FragmentOperation { 
+    public class StencilOp : LambdaCube.IR.FragmentOperation { 
       public global::LambdaCube.IR.StencilTests _0;
       public global::LambdaCube.IR.StencilOps _1;
       public global::LambdaCube.IR.StencilOps _2;
       public StencilOp() { tag = LambdaCube.IR.FragmentOperation.Tag.StencilOp; }
     };
-    class ColorOp : LambdaCube.IR.FragmentOperation { 
+    public class ColorOp : LambdaCube.IR.FragmentOperation { 
       public global::LambdaCube.IR.Blending _0;
       public global::LambdaCube.IR.Value _1;
       public ColorOp() { tag = LambdaCube.IR.FragmentOperation.Tag.ColorOp; }
     };
   }
-  class AccumulationContext {
+  public class AccumulationContext {
       public enum Tag { 
         AccumulationContext
       };
@@ -595,13 +595,13 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class AccumulationContext : LambdaCube.IR.AccumulationContext { 
+    public class AccumulationContext : LambdaCube.IR.AccumulationContext { 
       public Maybe<string> accViewportName;
       public List<global::LambdaCube.IR.FragmentOperation> accOperations;
       public AccumulationContext() { tag = LambdaCube.IR.AccumulationContext.Tag.AccumulationContext; }
     };
   }
-  class TextureDataType {
+  public class TextureDataType {
       public enum Tag { 
         FloatT,
         IntT,
@@ -612,20 +612,20 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class FloatT : LambdaCube.IR.TextureDataType { 
+    public class FloatT : LambdaCube.IR.TextureDataType { 
       public global::LambdaCube.IR.ColorArity _0;
       public FloatT() { tag = LambdaCube.IR.TextureDataType.Tag.FloatT; }
     };
-    class IntT : LambdaCube.IR.TextureDataType { 
+    public class IntT : LambdaCube.IR.TextureDataType { 
       public global::LambdaCube.IR.ColorArity _0;
       public IntT() { tag = LambdaCube.IR.TextureDataType.Tag.IntT; }
     };
-    class WordT : LambdaCube.IR.TextureDataType { 
+    public class WordT : LambdaCube.IR.TextureDataType { 
       public global::LambdaCube.IR.ColorArity _0;
       public WordT() { tag = LambdaCube.IR.TextureDataType.Tag.WordT; }
     };
   }
-  class TextureType {
+  public class TextureType {
       public enum Tag { 
         Texture1D,
         Texture2D,
@@ -639,41 +639,41 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class Texture1D : LambdaCube.IR.TextureType { 
+    public class Texture1D : LambdaCube.IR.TextureType { 
       public global::LambdaCube.IR.TextureDataType _0;
       public int _1;
       public Texture1D() { tag = LambdaCube.IR.TextureType.Tag.Texture1D; }
     };
-    class Texture2D : LambdaCube.IR.TextureType { 
+    public class Texture2D : LambdaCube.IR.TextureType { 
       public global::LambdaCube.IR.TextureDataType _0;
       public int _1;
       public Texture2D() { tag = LambdaCube.IR.TextureType.Tag.Texture2D; }
     };
-    class Texture3D : LambdaCube.IR.TextureType { 
+    public class Texture3D : LambdaCube.IR.TextureType { 
       public global::LambdaCube.IR.TextureDataType _0;
       public Texture3D() { tag = LambdaCube.IR.TextureType.Tag.Texture3D; }
     };
-    class TextureCube : LambdaCube.IR.TextureType { 
+    public class TextureCube : LambdaCube.IR.TextureType { 
       public global::LambdaCube.IR.TextureDataType _0;
       public TextureCube() { tag = LambdaCube.IR.TextureType.Tag.TextureCube; }
     };
-    class TextureRect : LambdaCube.IR.TextureType { 
+    public class TextureRect : LambdaCube.IR.TextureType { 
       public global::LambdaCube.IR.TextureDataType _0;
       public TextureRect() { tag = LambdaCube.IR.TextureType.Tag.TextureRect; }
     };
-    class Texture2DMS : LambdaCube.IR.TextureType { 
+    public class Texture2DMS : LambdaCube.IR.TextureType { 
       public global::LambdaCube.IR.TextureDataType _0;
       public int _1;
       public int _2;
       public bool _3;
       public Texture2DMS() { tag = LambdaCube.IR.TextureType.Tag.Texture2DMS; }
     };
-    class TextureBuffer : LambdaCube.IR.TextureType { 
+    public class TextureBuffer : LambdaCube.IR.TextureType { 
       public global::LambdaCube.IR.TextureDataType _0;
       public TextureBuffer() { tag = LambdaCube.IR.TextureType.Tag.TextureBuffer; }
     };
   }
-  class MipMap {
+  public class MipMap {
       public enum Tag { 
         Mip,
         NoMip,
@@ -683,18 +683,18 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class Mip : LambdaCube.IR.MipMap { 
+    public class Mip : LambdaCube.IR.MipMap { 
       public int _0;
       public int _1;
       public Mip() { tag = LambdaCube.IR.MipMap.Tag.Mip; }
     };
-    class AutoMip : LambdaCube.IR.MipMap { 
+    public class AutoMip : LambdaCube.IR.MipMap { 
       public int _0;
       public int _1;
       public AutoMip() { tag = LambdaCube.IR.MipMap.Tag.AutoMip; }
     };
   }
-  class Filter {
+  public class Filter {
       public enum Tag { 
         Nearest,
         Linear,
@@ -708,7 +708,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class EdgeMode {
+  public class EdgeMode {
       public enum Tag { 
         Repeat,
         MirroredRepeat,
@@ -720,7 +720,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class ImageSemantic {
+  public class ImageSemantic {
       public enum Tag { 
         Depth,
         Stencil,
@@ -731,7 +731,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class ImageRef {
+  public class ImageRef {
       public enum Tag { 
         TextureImage,
         Framebuffer
@@ -740,18 +740,18 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class TextureImage : LambdaCube.IR.ImageRef { 
+    public class TextureImage : LambdaCube.IR.ImageRef { 
       public int _0;
       public int _1;
       public Maybe<int> _2;
       public TextureImage() { tag = LambdaCube.IR.ImageRef.Tag.TextureImage; }
     };
-    class Framebuffer : LambdaCube.IR.ImageRef { 
+    public class Framebuffer : LambdaCube.IR.ImageRef { 
       public global::LambdaCube.IR.ImageSemantic _0;
       public Framebuffer() { tag = LambdaCube.IR.ImageRef.Tag.Framebuffer; }
     };
   }
-  class ClearImage {
+  public class ClearImage {
       public enum Tag { 
         ClearImage
       };
@@ -759,13 +759,13 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class ClearImage : LambdaCube.IR.ClearImage { 
+    public class ClearImage : LambdaCube.IR.ClearImage { 
       public global::LambdaCube.IR.ImageSemantic imageSemantic;
       public global::LambdaCube.IR.Value clearValue;
       public ClearImage() { tag = LambdaCube.IR.ClearImage.Tag.ClearImage; }
     };
   }
-  class Command {
+  public class Command {
       public enum Tag { 
         SetRasterContext,
         SetAccumulationContext,
@@ -785,65 +785,65 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class SetRasterContext : LambdaCube.IR.Command { 
+    public class SetRasterContext : LambdaCube.IR.Command { 
       public global::LambdaCube.IR.RasterContext _0;
       public SetRasterContext() { tag = LambdaCube.IR.Command.Tag.SetRasterContext; }
     };
-    class SetAccumulationContext : LambdaCube.IR.Command { 
+    public class SetAccumulationContext : LambdaCube.IR.Command { 
       public global::LambdaCube.IR.AccumulationContext _0;
       public SetAccumulationContext() { tag = LambdaCube.IR.Command.Tag.SetAccumulationContext; }
     };
-    class SetRenderTarget : LambdaCube.IR.Command { 
+    public class SetRenderTarget : LambdaCube.IR.Command { 
       public int _0;
       public SetRenderTarget() { tag = LambdaCube.IR.Command.Tag.SetRenderTarget; }
     };
-    class SetProgram : LambdaCube.IR.Command { 
+    public class SetProgram : LambdaCube.IR.Command { 
       public int _0;
       public SetProgram() { tag = LambdaCube.IR.Command.Tag.SetProgram; }
     };
-    class SetSamplerUniform : LambdaCube.IR.Command { 
+    public class SetSamplerUniform : LambdaCube.IR.Command { 
       public string _0;
       public int _1;
       public SetSamplerUniform() { tag = LambdaCube.IR.Command.Tag.SetSamplerUniform; }
     };
-    class SetTexture : LambdaCube.IR.Command { 
+    public class SetTexture : LambdaCube.IR.Command { 
       public int _0;
       public int _1;
       public SetTexture() { tag = LambdaCube.IR.Command.Tag.SetTexture; }
     };
-    class SetSampler : LambdaCube.IR.Command { 
+    public class SetSampler : LambdaCube.IR.Command { 
       public int _0;
       public Maybe<int> _1;
       public SetSampler() { tag = LambdaCube.IR.Command.Tag.SetSampler; }
     };
-    class RenderSlot : LambdaCube.IR.Command { 
+    public class RenderSlot : LambdaCube.IR.Command { 
       public int _0;
       public RenderSlot() { tag = LambdaCube.IR.Command.Tag.RenderSlot; }
     };
-    class RenderStream : LambdaCube.IR.Command { 
+    public class RenderStream : LambdaCube.IR.Command { 
       public int _0;
       public RenderStream() { tag = LambdaCube.IR.Command.Tag.RenderStream; }
     };
-    class ClearRenderTarget : LambdaCube.IR.Command { 
+    public class ClearRenderTarget : LambdaCube.IR.Command { 
       public List<global::LambdaCube.IR.ClearImage> _0;
       public ClearRenderTarget() { tag = LambdaCube.IR.Command.Tag.ClearRenderTarget; }
     };
-    class GenerateMipMap : LambdaCube.IR.Command { 
+    public class GenerateMipMap : LambdaCube.IR.Command { 
       public int _0;
       public GenerateMipMap() { tag = LambdaCube.IR.Command.Tag.GenerateMipMap; }
     };
-    class SaveImage : LambdaCube.IR.Command { 
+    public class SaveImage : LambdaCube.IR.Command { 
       public int _0;
       public global::LambdaCube.IR.ImageRef _1;
       public SaveImage() { tag = LambdaCube.IR.Command.Tag.SaveImage; }
     };
-    class LoadImage : LambdaCube.IR.Command { 
+    public class LoadImage : LambdaCube.IR.Command { 
       public global::LambdaCube.IR.ImageRef _0;
       public int _1;
       public LoadImage() { tag = LambdaCube.IR.Command.Tag.LoadImage; }
     };
   }
-  class SamplerDescriptor {
+  public class SamplerDescriptor {
       public enum Tag { 
         SamplerDescriptor
       };
@@ -851,7 +851,7 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class SamplerDescriptor : LambdaCube.IR.SamplerDescriptor { 
+    public class SamplerDescriptor : LambdaCube.IR.SamplerDescriptor { 
       public global::LambdaCube.IR.EdgeMode samplerWrapS;
       public Maybe<global::LambdaCube.IR.EdgeMode> samplerWrapT;
       public Maybe<global::LambdaCube.IR.EdgeMode> samplerWrapR;
@@ -865,7 +865,7 @@ namespace LambdaCube.IR {
       public SamplerDescriptor() { tag = LambdaCube.IR.SamplerDescriptor.Tag.SamplerDescriptor; }
     };
   }
-  class TextureDescriptor {
+  public class TextureDescriptor {
       public enum Tag { 
         TextureDescriptor
       };
@@ -873,7 +873,7 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class TextureDescriptor : LambdaCube.IR.TextureDescriptor { 
+    public class TextureDescriptor : LambdaCube.IR.TextureDescriptor { 
       public global::LambdaCube.IR.TextureType textureType;
       public global::LambdaCube.IR.Value textureSize;
       public global::LambdaCube.IR.ImageSemantic textureSemantic;
@@ -883,7 +883,7 @@ namespace LambdaCube.IR {
       public TextureDescriptor() { tag = LambdaCube.IR.TextureDescriptor.Tag.TextureDescriptor; }
     };
   }
-  class Parameter {
+  public class Parameter {
       public enum Tag { 
         Parameter
       };
@@ -891,13 +891,13 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class Parameter : LambdaCube.IR.Parameter { 
+    public class Parameter : LambdaCube.IR.Parameter { 
       public string name;
       public global::LambdaCube.IR.InputType ty;
       public Parameter() { tag = LambdaCube.IR.Parameter.Tag.Parameter; }
     };
   }
-  class Program {
+  public class Program {
       public enum Tag { 
         Program
       };
@@ -905,7 +905,7 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class Program : LambdaCube.IR.Program { 
+    public class Program : LambdaCube.IR.Program { 
       public Dictionary<string, global::LambdaCube.IR.InputType> programUniforms;
       public Dictionary<string, global::LambdaCube.IR.Parameter> programStreams;
       public Dictionary<string, global::LambdaCube.IR.InputType> programInTextures;
@@ -916,7 +916,7 @@ namespace LambdaCube.IR {
       public Program() { tag = LambdaCube.IR.Program.Tag.Program; }
     };
   }
-  class Slot {
+  public class Slot {
       public enum Tag { 
         Slot
       };
@@ -924,7 +924,7 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class Slot : LambdaCube.IR.Slot { 
+    public class Slot : LambdaCube.IR.Slot { 
       public string slotName;
       public Dictionary<string, global::LambdaCube.IR.InputType> slotStreams;
       public Dictionary<string, global::LambdaCube.IR.InputType> slotUniforms;
@@ -933,7 +933,7 @@ namespace LambdaCube.IR {
       public Slot() { tag = LambdaCube.IR.Slot.Tag.Slot; }
     };
   }
-  class StreamData {
+  public class StreamData {
       public enum Tag { 
         StreamData
       };
@@ -941,7 +941,7 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class StreamData : LambdaCube.IR.StreamData { 
+    public class StreamData : LambdaCube.IR.StreamData { 
       public Dictionary<string, global::LambdaCube.IR.ArrayValue> streamData;
       public Dictionary<string, global::LambdaCube.IR.InputType> streamType;
       public global::LambdaCube.IR.FetchPrimitive streamPrimitive;
@@ -949,7 +949,7 @@ namespace LambdaCube.IR {
       public StreamData() { tag = LambdaCube.IR.StreamData.Tag.StreamData; }
     };
   }
-  class TargetItem {
+  public class TargetItem {
       public enum Tag { 
         TargetItem
       };
@@ -957,13 +957,13 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class TargetItem : LambdaCube.IR.TargetItem { 
+    public class TargetItem : LambdaCube.IR.TargetItem { 
       public global::LambdaCube.IR.ImageSemantic targetSemantic;
       public Maybe<global::LambdaCube.IR.ImageRef> targetRef;
       public TargetItem() { tag = LambdaCube.IR.TargetItem.Tag.TargetItem; }
     };
   }
-  class RenderTarget {
+  public class RenderTarget {
       public enum Tag { 
         RenderTarget
       };
@@ -971,12 +971,12 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class RenderTarget : LambdaCube.IR.RenderTarget { 
+    public class RenderTarget : LambdaCube.IR.RenderTarget { 
       public List<global::LambdaCube.IR.TargetItem> renderTargets;
       public RenderTarget() { tag = LambdaCube.IR.RenderTarget.Tag.RenderTarget; }
     };
   }
-  class Backend {
+  public class Backend {
       public enum Tag { 
         WebGL1,
         OpenGL33,
@@ -987,7 +987,7 @@ namespace LambdaCube.IR {
 
   namespace data { 
   }
-  class Pipeline {
+  public class Pipeline {
       public enum Tag { 
         Pipeline
       };
@@ -995,7 +995,7 @@ namespace LambdaCube.IR {
   };
 
   namespace data { 
-    class Pipeline : LambdaCube.IR.Pipeline { 
+    public class Pipeline : LambdaCube.IR.Pipeline { 
       public string info;
       public global::LambdaCube.IR.Backend backend;
       public List<global::LambdaCube.IR.TextureDescriptor> textures;
@@ -1010,7 +1010,7 @@ namespace LambdaCube.IR {
   }
 
   // JSON deserializer
-  enum Type { 
+  public enum Type { 
     Int,
     Int32,
     Word,
@@ -1110,7 +1110,7 @@ namespace LambdaCube.IR {
     Value
   }
 
-  class Loader {
+  public class Loader {
     public static object fromJSON(Type type, JToken obj) {
       switch (type) {
         case Type.Int: return (int)obj;
