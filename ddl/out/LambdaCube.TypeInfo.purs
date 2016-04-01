@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-03-29T11:30:13.322407000000Z
+-- 2016-04-01T16:25:35.327304000000Z
 
 module LambdaCube.TypeInfo where
 import Prelude

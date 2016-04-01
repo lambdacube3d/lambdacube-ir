@@ -83,16 +83,25 @@ public class JSON {
       }
       {% when "Maybe" %}
       case {{ t.value | typeEnum }}: {
-        JSONObject obj = (JSONObject)rawObj;
         {{ t.value | javaType }} m = new {{ t.value | javaType }} ();
-        if (obj == null || obj == JSONObject.NULL) {
+        if (rawObj == null || rawObj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
-          m.data = ({{ t.value.type_ | javaType }})fromJSON (Type.{{ t.value.type_ | typeEnum }},obj);
+          m.data = ({{ t.value.type_ | javaType }})fromJSON (Type.{{ t.value.type_ | typeEnum }},(JSONObject)rawObj);
         }
         return m;
       }
+      {% when "Int" %}
+      case {{ t.value | typeEnum }}: return ((Number)rawObj).intValue();
+      {% when "Int32" %}
+      case {{ t.value | typeEnum }}: return ((Number)rawObj).intValue();
+      {% when "Word" %}
+      case {{ t.value | typeEnum }}: return ((Number)rawObj).intValue();
+      {% when "Word32" %}
+      case {{ t.value | typeEnum }}: return ((Number)rawObj).intValue();
+      {% when "Float" %}
+      case Float: return ((Number)rawObj).floatValue();
       {% else %}
       case {{ t.value | typeEnum }}: return ({{ t.value | javaType }})rawObj;
       {% endcase %}
@@ -149,7 +158,7 @@ public class JSON {
       }
   {% endfor %}
 
-  {% for t in usedJavaTypes %}
+  {% for t in usedTypes %}
     {% case t.value.tag %}
     {% when "Data" %}
     {% when "V2" %}

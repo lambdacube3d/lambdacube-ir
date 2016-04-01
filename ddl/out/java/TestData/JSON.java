@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-29T11:30:13.376022000000Z
+// 2016-04-01T16:25:35.381981000000Z
 
 package TestData;
 
@@ -46,8 +46,8 @@ public class JSON {
 
   public static Object fromJSON(Type type, Object rawObj) throws JSONException, Exception {
     switch (type) {
-      case Int: return (Integer)rawObj;
-      case Float: return (Float)rawObj;
+      case Int: return ((Number)rawObj).intValue();
+      case Float: return ((Number)rawObj).floatValue();
       case String: return (String)rawObj;
       case Array_Int: {
         JSONArray obj = (JSONArray)rawObj;

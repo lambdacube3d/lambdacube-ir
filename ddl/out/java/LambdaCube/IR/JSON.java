@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-29T11:30:12.412728000000Z
+// 2016-04-01T16:25:34.381854000000Z
 
 package LambdaCube.IR;
 
@@ -115,11 +115,11 @@ public class JSON {
 
   public static Object fromJSON(Type type, Object rawObj) throws JSONException, Exception {
     switch (type) {
-      case Int: return (Integer)rawObj;
-      case Int32: return (Integer)rawObj;
-      case Word: return (Integer)rawObj;
-      case Word32: return (Integer)rawObj;
-      case Float: return (Float)rawObj;
+      case Int: return ((Number)rawObj).intValue();
+      case Int32: return ((Number)rawObj).intValue();
+      case Word: return ((Number)rawObj).intValue();
+      case Word32: return ((Number)rawObj).intValue();
+      case Float: return ((Number)rawObj).floatValue();
       case Bool: return (Boolean)rawObj;
       case String: return (String)rawObj;
       case V2_Int: {
@@ -419,68 +419,62 @@ public class JSON {
         return v;
       }
       case Maybe_Int: {
-        JSONObject obj = (JSONObject)rawObj;
         Maybe<Integer> m = new Maybe<Integer> ();
-        if (obj == null || obj == JSONObject.NULL) {
+        if (rawObj == null || rawObj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
-          m.data = (Integer)fromJSON (Type.Int,obj);
+          m.data = (Integer)fromJSON (Type.Int,(JSONObject)rawObj);
         }
         return m;
       }
       case Maybe_Float: {
-        JSONObject obj = (JSONObject)rawObj;
         Maybe<Float> m = new Maybe<Float> ();
-        if (obj == null || obj == JSONObject.NULL) {
+        if (rawObj == null || rawObj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
-          m.data = (Float)fromJSON (Type.Float,obj);
+          m.data = (Float)fromJSON (Type.Float,(JSONObject)rawObj);
         }
         return m;
       }
       case Maybe_String: {
-        JSONObject obj = (JSONObject)rawObj;
         Maybe<String> m = new Maybe<String> ();
-        if (obj == null || obj == JSONObject.NULL) {
+        if (rawObj == null || rawObj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
-          m.data = (String)fromJSON (Type.String,obj);
+          m.data = (String)fromJSON (Type.String,(JSONObject)rawObj);
         }
         return m;
       }
       case Maybe_ComparisonFunction: {
-        JSONObject obj = (JSONObject)rawObj;
         Maybe<ComparisonFunction> m = new Maybe<ComparisonFunction> ();
-        if (obj == null || obj == JSONObject.NULL) {
+        if (rawObj == null || rawObj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
-          m.data = (ComparisonFunction)fromJSON (Type.ComparisonFunction,obj);
+          m.data = (ComparisonFunction)fromJSON (Type.ComparisonFunction,(JSONObject)rawObj);
         }
         return m;
       }
       case Maybe_EdgeMode: {
-        JSONObject obj = (JSONObject)rawObj;
         Maybe<EdgeMode> m = new Maybe<EdgeMode> ();
-        if (obj == null || obj == JSONObject.NULL) {
+        if (rawObj == null || rawObj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
-          m.data = (EdgeMode)fromJSON (Type.EdgeMode,obj);
+          m.data = (EdgeMode)fromJSON (Type.EdgeMode,(JSONObject)rawObj);
         }
         return m;
       }
       case Maybe_ImageRef: {
-        JSONObject obj = (JSONObject)rawObj;
         Maybe<ImageRef> m = new Maybe<ImageRef> ();
-        if (obj == null || obj == JSONObject.NULL) {
+        if (rawObj == null || rawObj == JSONObject.NULL) {
           m.valid = false;
         } else {
           m.valid = true;
-          m.data = (ImageRef)fromJSON (Type.ImageRef,obj);
+          m.data = (ImageRef)fromJSON (Type.ImageRef,(JSONObject)rawObj);
         }
         return m;
       }
@@ -3002,10 +2996,20 @@ public class JSON {
         return obj;
       }
 
+      case Int: { return rawObj; }
+      case Int32: { return rawObj; }
+      case Word: { return rawObj; }
       case Word32: { return rawObj; }
       case Float: { return rawObj; }
       case Bool: { return rawObj; }
       case String: { return rawObj; }
+      case V2_Int: {
+        V2<Integer> v = (V2<Integer>)rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.Int,v.x));
+        obj.put("y", toJSON(Type.Int,v.y));
+        return obj;
+      }
       case V2_Word: {
         V2<Integer> v = (V2<Integer>)rawObj;
         JSONObject obj = new JSONObject();
@@ -3046,6 +3050,14 @@ public class JSON {
         JSONObject obj = new JSONObject();
         obj.put("x", toJSON(Type.V4_Float,v.x));
         obj.put("y", toJSON(Type.V4_Float,v.y));
+        return obj;
+      }
+      case V3_Int: {
+        V3<Integer> v = (V3<Integer>)rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.Int,v.x));
+        obj.put("y", toJSON(Type.Int,v.y));
+        obj.put("z", toJSON(Type.Int,v.z));
         return obj;
       }
       case V3_Word: {
@@ -3094,6 +3106,15 @@ public class JSON {
         obj.put("x", toJSON(Type.V4_Float,v.x));
         obj.put("y", toJSON(Type.V4_Float,v.y));
         obj.put("z", toJSON(Type.V4_Float,v.z));
+        return obj;
+      }
+      case V4_Int: {
+        V4<Integer> v = (V4<Integer>)rawObj;
+        JSONObject obj = new JSONObject();
+        obj.put("x", toJSON(Type.Int,v.x));
+        obj.put("y", toJSON(Type.Int,v.y));
+        obj.put("z", toJSON(Type.Int,v.z));
+        obj.put("w", toJSON(Type.Int,v.w));
         return obj;
       }
       case V4_Word: {
@@ -3148,6 +3169,22 @@ public class JSON {
         obj.put("y", toJSON(Type.V4_Float,v.y));
         obj.put("z", toJSON(Type.V4_Float,v.z));
         obj.put("w", toJSON(Type.V4_Float,v.w));
+        return obj;
+      }
+      case Array_Int: {
+        ArrayList<Integer> v = (ArrayList<Integer>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Integer i : v) {
+          obj.put(toJSON(Type.Int,i));
+        }
+        return obj;
+      }
+      case Array_Int32: {
+        ArrayList<Integer> v = (ArrayList<Integer>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Integer i : v) {
+          obj.put(toJSON(Type.Int32,i));
+        }
         return obj;
       }
       case Array_Word32: {

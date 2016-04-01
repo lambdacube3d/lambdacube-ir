@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-29T11:30:13.232726000000Z
+// 2016-04-01T16:25:35.222504000000Z
 
 package LambdaCube.Mesh;
 
@@ -41,9 +41,9 @@ public class JSON {
 
   public static Object fromJSON(Type type, Object rawObj) throws JSONException, Exception {
     switch (type) {
-      case Int32: return (Integer)rawObj;
-      case Word32: return (Integer)rawObj;
-      case Float: return (Float)rawObj;
+      case Int32: return ((Number)rawObj).intValue();
+      case Word32: return ((Number)rawObj).intValue();
+      case Float: return ((Number)rawObj).floatValue();
       case String: return (String)rawObj;
       case V2_Float: {
         JSONObject obj = (JSONObject)rawObj;
@@ -387,6 +387,7 @@ public class JSON {
         return obj;
       }
 
+      case Int32: { return rawObj; }
       case Word32: { return rawObj; }
       case Float: { return rawObj; }
       case String: { return rawObj; }
@@ -436,6 +437,14 @@ public class JSON {
         obj.put("y", toJSON(Type.V4_Float,v.y));
         obj.put("z", toJSON(Type.V4_Float,v.z));
         obj.put("w", toJSON(Type.V4_Float,v.w));
+        return obj;
+      }
+      case Array_Int32: {
+        ArrayList<Integer> v = (ArrayList<Integer>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(Integer i : v) {
+          obj.put(toJSON(Type.Int32,i));
+        }
         return obj;
       }
       case Array_Word32: {

@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-03-29T11:30:13.322407000000Z
+// 2016-04-01T16:25:35.327304000000Z
 
 package LambdaCube.TypeInfo;
 
@@ -27,7 +27,7 @@ public class JSON {
 
   public static Object fromJSON(Type type, Object rawObj) throws JSONException, Exception {
     switch (type) {
-      case Int: return (Integer)rawObj;
+      case Int: return ((Number)rawObj).intValue();
       case String: return (String)rawObj;
       case Array_Range: {
         JSONArray obj = (JSONArray)rawObj;
