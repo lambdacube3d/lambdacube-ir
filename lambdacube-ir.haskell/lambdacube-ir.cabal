@@ -24,7 +24,7 @@ library
   -- other-modules:       
   other-extensions:    OverloadedStrings, RecordWildCards, DeriveFunctor
   -- CAUTION: When the build-depends change, please bump the git submodule in lambdacube-docker repository
-  build-depends:       base >=4.8 && <4.9,
+  build-depends:       base >=4.8 && <4.10,
                        containers >=0.5 && <0.6,
                        vector >=0.11 && <0.12,
                        text >=1.2 && <1.3,
