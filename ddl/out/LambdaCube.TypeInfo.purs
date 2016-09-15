@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-04-01T16:25:35.327304000000Z
+-- 2016-09-15T19:44:48.120020034Z
 
 module LambdaCube.TypeInfo where
 import Prelude
@@ -10,11 +10,13 @@ import Data.Map (Map(..))
 import Data.List (List(..))
 import Linear
 
-import Data.Argonaut.Combinators ((~>), (:=), (.?))
+import Data.Argonaut.Encode.Combinators ((~>), (:=))
+import Data.Argonaut.Decode.Combinators ((.?))
 import Data.Argonaut.Core (jsonEmptyObject)
 import Data.Argonaut.Printer (printJson)
-import Data.Argonaut.Encode (EncodeJson, encodeJson)
-import Data.Argonaut.Decode (DecodeJson, decodeJson)
+import Data.Argonaut.Encode (class EncodeJson, encodeJson)
+import Data.Argonaut.Decode (class DecodeJson, decodeJson)
+import Partial.Unsafe (unsafeCrashWith)
 
 import LambdaCube.IR
 
@@ -66,6 +68,7 @@ instance decodeJsonRange :: DecodeJson Range where
           , endLine:endLine
           , endColumn:endColumn
           } 
+      _ -> unsafeCrashWith "decodeJson @ Range"
 
 instance encodeJsonTypeInfo :: EncodeJson TypeInfo where
   encodeJson v = case v of
@@ -87,6 +90,7 @@ instance decodeJsonTypeInfo :: DecodeJson TypeInfo where
           { range:range
           , text:text
           } 
+      _ -> unsafeCrashWith "decodeJson @ TypeInfo"
 
 instance encodeJsonCompileResult :: EncodeJson CompileResult where
   encodeJson v = case v of
@@ -100,4 +104,5 @@ instance decodeJsonCompileResult :: DecodeJson CompileResult where
     case tag of
       "CompileError" -> CompileError <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2"
       "Compiled" -> Compiled <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2" <*> obj .? "arg3"
+      _ -> unsafeCrashWith "decodeJson @ CompileResult"
 

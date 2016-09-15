@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-04-01T16:25:35.381981000000Z
+-- 2016-09-15T19:44:48.147167874Z
 
 module TestData where
 import Prelude
@@ -10,11 +10,13 @@ import Data.Map (Map(..))
 import Data.List (List(..))
 import Linear
 
-import Data.Argonaut.Combinators ((~>), (:=), (.?))
+import Data.Argonaut.Encode.Combinators ((~>), (:=))
+import Data.Argonaut.Decode.Combinators ((.?))
 import Data.Argonaut.Core (jsonEmptyObject)
 import Data.Argonaut.Printer (printJson)
-import Data.Argonaut.Encode (EncodeJson, encodeJson)
-import Data.Argonaut.Decode (DecodeJson, decodeJson)
+import Data.Argonaut.Encode (class EncodeJson, encodeJson)
+import Data.Argonaut.Decode (class DecodeJson, decodeJson)
+import Partial.Unsafe (unsafeCrashWith)
 
 import LambdaCube.IR
 import LambdaCube.Mesh
@@ -95,6 +97,7 @@ instance decodeJsonClientInfo :: DecodeJson ClientInfo where
           { clientName:clientName
           , clientBackend:clientBackend
           } 
+      _ -> unsafeCrashWith "decodeJson @ ClientInfo"
 
 instance encodeJsonFrame :: EncodeJson Frame where
   encodeJson v = case v of
@@ -119,6 +122,7 @@ instance decodeJsonFrame :: DecodeJson Frame where
           , frameUniforms:frameUniforms
           , frameTextures:frameTextures
           } 
+      _ -> unsafeCrashWith "decodeJson @ Frame"
 
 instance encodeJsonScene :: EncodeJson Scene where
   encodeJson v = case v of
@@ -146,6 +150,7 @@ instance decodeJsonScene :: DecodeJson Scene where
           , renderTargetHeight:renderTargetHeight
           , frames:frames
           } 
+      _ -> unsafeCrashWith "decodeJson @ Scene"
 
 instance encodeJsonPipelineInfo :: EncodeJson PipelineInfo where
   encodeJson v = case v of
@@ -167,6 +172,7 @@ instance decodeJsonPipelineInfo :: DecodeJson PipelineInfo where
           { pipelineName:pipelineName
           , pipeline:pipeline
           } 
+      _ -> unsafeCrashWith "decodeJson @ PipelineInfo"
 
 instance encodeJsonRenderJob :: EncodeJson RenderJob where
   encodeJson v = case v of
@@ -197,6 +203,7 @@ instance decodeJsonRenderJob :: DecodeJson RenderJob where
           , scenes:scenes
           , pipelines:pipelines
           } 
+      _ -> unsafeCrashWith "decodeJson @ RenderJob"
 
 instance encodeJsonFrameResult :: EncodeJson FrameResult where
   encodeJson v = case v of
@@ -221,6 +228,7 @@ instance decodeJsonFrameResult :: DecodeJson FrameResult where
           , frImageWidth:frImageWidth
           , frImageHeight:frImageHeight
           } 
+      _ -> unsafeCrashWith "decodeJson @ FrameResult"
 
 instance encodeJsonRenderJobResult :: EncodeJson RenderJobResult where
   encodeJson v = case v of
@@ -234,4 +242,5 @@ instance decodeJsonRenderJobResult :: DecodeJson RenderJobResult where
     case tag of
       "RenderJobResult" -> RenderJobResult <$> obj .? "arg0"
       "RenderJobError" -> RenderJobError <$> obj .? "arg0"
+      _ -> unsafeCrashWith "decodeJson @ RenderJobResult"
 

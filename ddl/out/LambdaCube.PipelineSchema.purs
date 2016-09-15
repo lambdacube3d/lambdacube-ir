@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-04-01T16:25:35.172905000000Z
+-- 2016-09-15T19:44:48.052942639Z
 
 module LambdaCube.PipelineSchema where
 import Prelude
@@ -10,11 +10,13 @@ import Data.Map (Map(..))
 import Data.List (List(..))
 import Linear
 
-import Data.Argonaut.Combinators ((~>), (:=), (.?))
+import Data.Argonaut.Encode.Combinators ((~>), (:=))
+import Data.Argonaut.Decode.Combinators ((.?))
 import Data.Argonaut.Core (jsonEmptyObject)
 import Data.Argonaut.Printer (printJson)
-import Data.Argonaut.Encode (EncodeJson, encodeJson)
-import Data.Argonaut.Decode (DecodeJson, decodeJson)
+import Data.Argonaut.Encode (class EncodeJson, encodeJson)
+import Data.Argonaut.Decode (class DecodeJson, decodeJson)
+import Partial.Unsafe (unsafeCrashWith)
 
 import LambdaCube.IR
 
@@ -107,6 +109,7 @@ instance decodeJsonStreamType :: DecodeJson StreamType where
       "Attribute_M42F" -> pure Attribute_M42F
       "Attribute_M43F" -> pure Attribute_M43F
       "Attribute_M44F" -> pure Attribute_M44F
+      _ -> unsafeCrashWith "decodeJson @ StreamType"
 
 instance encodeJsonObjectArraySchema :: EncodeJson ObjectArraySchema where
   encodeJson v = case v of
@@ -128,6 +131,7 @@ instance decodeJsonObjectArraySchema :: DecodeJson ObjectArraySchema where
           { primitive:primitive
           , attributes:attributes
           } 
+      _ -> unsafeCrashWith "decodeJson @ ObjectArraySchema"
 
 instance encodeJsonPipelineSchema :: EncodeJson PipelineSchema where
   encodeJson v = case v of
@@ -149,4 +153,5 @@ instance decodeJsonPipelineSchema :: DecodeJson PipelineSchema where
           { objectArrays:objectArrays
           , uniforms:uniforms
           } 
+      _ -> unsafeCrashWith "decodeJson @ PipelineSchema"
 

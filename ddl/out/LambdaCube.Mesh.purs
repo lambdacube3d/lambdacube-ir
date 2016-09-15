@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-04-01T16:25:35.222504000000Z
+-- 2016-09-15T19:44:48.078244539Z
 
 module LambdaCube.Mesh where
 import Prelude
@@ -10,11 +10,13 @@ import Data.Map (Map(..))
 import Data.List (List(..))
 import Linear
 
-import Data.Argonaut.Combinators ((~>), (:=), (.?))
+import Data.Argonaut.Encode.Combinators ((~>), (:=))
+import Data.Argonaut.Decode.Combinators ((.?))
 import Data.Argonaut.Core (jsonEmptyObject)
 import Data.Argonaut.Printer (printJson)
-import Data.Argonaut.Encode (EncodeJson, encodeJson)
-import Data.Argonaut.Decode (DecodeJson, decodeJson)
+import Data.Argonaut.Encode (class EncodeJson, encodeJson)
+import Data.Argonaut.Decode (class DecodeJson, decodeJson)
+import Partial.Unsafe (unsafeCrashWith)
 
 
 data MeshAttribute
@@ -70,6 +72,7 @@ instance decodeJsonMeshAttribute :: DecodeJson MeshAttribute where
       "A_M44F" -> A_M44F <$> obj .? "arg0"
       "A_Int" -> A_Int <$> obj .? "arg0"
       "A_Word" -> A_Word <$> obj .? "arg0"
+      _ -> unsafeCrashWith "decodeJson @ MeshAttribute"
 
 instance encodeJsonMeshPrimitive :: EncodeJson MeshPrimitive where
   encodeJson v = case v of
@@ -89,6 +92,7 @@ instance decodeJsonMeshPrimitive :: DecodeJson MeshPrimitive where
       "P_Triangles" -> pure P_Triangles
       "P_TriangleStripI" -> P_TriangleStripI <$> obj .? "arg0"
       "P_TrianglesI" -> P_TrianglesI <$> obj .? "arg0"
+      _ -> unsafeCrashWith "decodeJson @ MeshPrimitive"
 
 instance encodeJsonMesh :: EncodeJson Mesh where
   encodeJson v = case v of
@@ -110,4 +114,5 @@ instance decodeJsonMesh :: DecodeJson Mesh where
           { mAttributes:mAttributes
           , mPrimitive:mPrimitive
           } 
+      _ -> unsafeCrashWith "decodeJson @ Mesh"
 
