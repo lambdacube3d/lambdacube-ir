@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-09-15T19:44:48.120020034Z
+// 2016-11-10T15:07:11.972496000000Z
 
 enum Range {
   case Range(Range_Data)
@@ -19,9 +19,25 @@ enum TypeInfo {
     }
 }
 
+enum WarningInfo {
+  case WarningInfo(WarningInfo_Data)
+    struct WarningInfo_Data {
+      var wRange : Range
+      var wText : String
+    }
+}
+
+enum ErrorInfo {
+  case ErrorInfo(ErrorInfo_Data)
+    struct ErrorInfo_Data {
+      var eRange : Range
+      var eText : String
+    }
+}
+
 enum CompileResult {
-  case CompileError(Array<Range>,String,Array<TypeInfo>)
-  case Compiled(String,String,Pipeline,Array<TypeInfo>)
+  case CompileError(Array<TypeInfo>,Array<WarningInfo>,Array<ErrorInfo>)
+  case Compiled(String,String,Pipeline,Array<TypeInfo>,Array<WarningInfo>)
 }
 
 
@@ -102,13 +118,35 @@ extension TypeInfo {
     }
   }
 }
+extension WarningInfo {
+  var toJSON : [String: AnyObject] {
+    switch self {
+      case .WarningInfo(let v):
+        return [ "tag" : "WarningInfo"
+               , "wRange" : v.wRange.toJSON
+               , "wText" : v.wText.toJSON
+               ]
+    }
+  }
+}
+extension ErrorInfo {
+  var toJSON : [String: AnyObject] {
+    switch self {
+      case .ErrorInfo(let v):
+        return [ "tag" : "ErrorInfo"
+               , "eRange" : v.eRange.toJSON
+               , "eText" : v.eText.toJSON
+               ]
+    }
+  }
+}
 extension CompileResult {
   var toJSON : [String: AnyObject] {
     switch self {
       case .CompileError(let arg0, let arg1, let arg2):
         return [ "tag" : "CompileError", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON, "arg2" : arg2.toJSON]
-      case .Compiled(let arg0, let arg1, let arg2, let arg3):
-        return [ "tag" : "Compiled", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON, "arg2" : arg2.toJSON, "arg3" : arg3.toJSON]
+      case .Compiled(let arg0, let arg1, let arg2, let arg3, let arg4):
+        return [ "tag" : "Compiled", "arg0" : arg0.toJSON, "arg1" : arg1.toJSON, "arg2" : arg2.toJSON, "arg3" : arg3.toJSON, "arg4" : arg4.toJSON]
     }
   }
 }
@@ -132,6 +170,8 @@ enum Type {
   case Map(Type,Type)
   case Range
   case TypeInfo
+  case WarningInfo
+  case ErrorInfo
   case CompileResult
 }
 

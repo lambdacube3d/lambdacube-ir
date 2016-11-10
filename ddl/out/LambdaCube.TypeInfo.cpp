@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-09-15T19:44:48.120020034Z
+// 2016-11-10T15:07:11.972496000000Z
 
 #include "LambdaCube.TypeInfo.hpp"
 template<> json toJSON<std::shared_ptr<Range>>(std::shared_ptr<Range> &v) {
@@ -68,6 +68,68 @@ template<> std::shared_ptr<TypeInfo> fromJSON<std::shared_ptr<TypeInfo>>(W<std::
   return o;
 }
 
+template<> json toJSON<std::shared_ptr<WarningInfo>>(std::shared_ptr<WarningInfo> &v) {
+  json obj({});
+  switch (v->tag) { 
+    case ::WarningInfo::tag::WarningInfo:
+      obj["tag"] = "WarningInfo";
+      {
+        std::shared_ptr<data::WarningInfo> tv = std::static_pointer_cast<data::WarningInfo>(v);
+        obj["wRange"] = toJSON(tv->wRange);
+        obj["wText"] = toJSON(tv->wText);
+      }
+      break;
+  }
+  return obj;
+}
+
+template<> std::shared_ptr<WarningInfo> fromJSON<std::shared_ptr<WarningInfo>>(W<std::shared_ptr<WarningInfo>> v, json &obj) {
+  enum ::WarningInfo::tag tagType;
+  std::string tag = obj["tag"];
+  if (tag == "WarningInfo") {
+    tagType = ::WarningInfo::tag::WarningInfo;
+    std::shared_ptr<data::WarningInfo> tv(new data::WarningInfo());
+    tv->wRange = fromJSON(W<std::shared_ptr<::Range>>(), obj["wRange"]);
+    tv->wText = fromJSON(W<String>(), obj["wText"]);
+    return tv;
+  }
+  else throw "unknown constructor: " + tag;
+  std::shared_ptr<::WarningInfo> o(new ::WarningInfo());
+  o->tag = tagType;
+  return o;
+}
+
+template<> json toJSON<std::shared_ptr<ErrorInfo>>(std::shared_ptr<ErrorInfo> &v) {
+  json obj({});
+  switch (v->tag) { 
+    case ::ErrorInfo::tag::ErrorInfo:
+      obj["tag"] = "ErrorInfo";
+      {
+        std::shared_ptr<data::ErrorInfo> tv = std::static_pointer_cast<data::ErrorInfo>(v);
+        obj["eRange"] = toJSON(tv->eRange);
+        obj["eText"] = toJSON(tv->eText);
+      }
+      break;
+  }
+  return obj;
+}
+
+template<> std::shared_ptr<ErrorInfo> fromJSON<std::shared_ptr<ErrorInfo>>(W<std::shared_ptr<ErrorInfo>> v, json &obj) {
+  enum ::ErrorInfo::tag tagType;
+  std::string tag = obj["tag"];
+  if (tag == "ErrorInfo") {
+    tagType = ::ErrorInfo::tag::ErrorInfo;
+    std::shared_ptr<data::ErrorInfo> tv(new data::ErrorInfo());
+    tv->eRange = fromJSON(W<std::shared_ptr<::Range>>(), obj["eRange"]);
+    tv->eText = fromJSON(W<String>(), obj["eText"]);
+    return tv;
+  }
+  else throw "unknown constructor: " + tag;
+  std::shared_ptr<::ErrorInfo> o(new ::ErrorInfo());
+  o->tag = tagType;
+  return o;
+}
+
 template<> json toJSON<std::shared_ptr<CompileResult>>(std::shared_ptr<CompileResult> &v) {
   json obj({});
   switch (v->tag) { 
@@ -88,6 +150,7 @@ template<> json toJSON<std::shared_ptr<CompileResult>>(std::shared_ptr<CompileRe
         obj["arg1"] = toJSON(tv->_1);
         obj["arg2"] = toJSON(tv->_2);
         obj["arg3"] = toJSON(tv->_3);
+        obj["arg4"] = toJSON(tv->_4);
       }
       break;
   }
@@ -100,9 +163,9 @@ template<> std::shared_ptr<CompileResult> fromJSON<std::shared_ptr<CompileResult
   if (tag == "CompileError") {
     tagType = ::CompileResult::tag::CompileError;
     std::shared_ptr<data::CompileError> tv(new data::CompileError());
-    tv->_0 = fromJSON(W<std::vector<std::shared_ptr<::Range>>>(), obj["arg0"]);
-    tv->_1 = fromJSON(W<String>(), obj["arg1"]);
-    tv->_2 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg2"]);
+    tv->_0 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg0"]);
+    tv->_1 = fromJSON(W<std::vector<std::shared_ptr<::WarningInfo>>>(), obj["arg1"]);
+    tv->_2 = fromJSON(W<std::vector<std::shared_ptr<::ErrorInfo>>>(), obj["arg2"]);
     return tv;
   }
   else if (tag == "Compiled") {
@@ -112,6 +175,7 @@ template<> std::shared_ptr<CompileResult> fromJSON<std::shared_ptr<CompileResult
     tv->_1 = fromJSON(W<String>(), obj["arg1"]);
     tv->_2 = fromJSON(W<std::shared_ptr<::Pipeline>>(), obj["arg2"]);
     tv->_3 = fromJSON(W<std::vector<std::shared_ptr<::TypeInfo>>>(), obj["arg3"]);
+    tv->_4 = fromJSON(W<std::vector<std::shared_ptr<::WarningInfo>>>(), obj["arg4"]);
     return tv;
   }
   else throw "unknown constructor: " + tag;

@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-09-15T19:44:48.120020034Z
+-- 2016-11-10T15:07:11.972496000000Z
 
 module LambdaCube.TypeInfo where
 import Prelude
@@ -36,9 +36,23 @@ data TypeInfo
   }
 
 
+data WarningInfo
+  = WarningInfo
+  { wRange :: Range
+  , wText :: String
+  }
+
+
+data ErrorInfo
+  = ErrorInfo
+  { eRange :: Range
+  , eText :: String
+  }
+
+
 data CompileResult
-  = CompileError (Array Range) String (Array TypeInfo)
-  | Compiled String String Pipeline (Array TypeInfo)
+  = CompileError (Array TypeInfo) (Array WarningInfo) (Array ErrorInfo)
+  | Compiled String String Pipeline (Array TypeInfo) (Array WarningInfo)
 
 
 
@@ -92,10 +106,52 @@ instance decodeJsonTypeInfo :: DecodeJson TypeInfo where
           } 
       _ -> unsafeCrashWith "decodeJson @ TypeInfo"
 
+instance encodeJsonWarningInfo :: EncodeJson WarningInfo where
+  encodeJson v = case v of
+    WarningInfo r ->
+      "tag" := "WarningInfo" ~>
+      "wRange" := r.wRange ~>
+      "wText" := r.wText ~>
+      jsonEmptyObject
+
+instance decodeJsonWarningInfo :: DecodeJson WarningInfo where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "WarningInfo" -> do
+        wRange <- obj .? "wRange"
+        wText <- obj .? "wText"
+        pure $ WarningInfo
+          { wRange:wRange
+          , wText:wText
+          } 
+
+instance encodeJsonErrorInfo :: EncodeJson ErrorInfo where
+  encodeJson v = case v of
+    ErrorInfo r ->
+      "tag" := "ErrorInfo" ~>
+      "eRange" := r.eRange ~>
+      "eText" := r.eText ~>
+      jsonEmptyObject
+
+instance decodeJsonErrorInfo :: DecodeJson ErrorInfo where
+  decodeJson json = do
+    obj <- decodeJson json
+    tag <- obj .? "tag"
+    case tag of
+      "ErrorInfo" -> do
+        eRange <- obj .? "eRange"
+        eText <- obj .? "eText"
+        pure $ ErrorInfo
+          { eRange:eRange
+          , eText:eText
+          } 
+
 instance encodeJsonCompileResult :: EncodeJson CompileResult where
   encodeJson v = case v of
     CompileError arg0 arg1 arg2 -> "tag" := "CompileError" ~> "arg0" := arg0 ~> "arg1" := arg1 ~> "arg2" := arg2 ~> jsonEmptyObject
-    Compiled arg0 arg1 arg2 arg3 -> "tag" := "Compiled" ~> "arg0" := arg0 ~> "arg1" := arg1 ~> "arg2" := arg2 ~> "arg3" := arg3 ~> jsonEmptyObject
+    Compiled arg0 arg1 arg2 arg3 arg4 -> "tag" := "Compiled" ~> "arg0" := arg0 ~> "arg1" := arg1 ~> "arg2" := arg2 ~> "arg3" := arg3 ~> "arg4" := arg4 ~> jsonEmptyObject
 
 instance decodeJsonCompileResult :: DecodeJson CompileResult where
   decodeJson json = do
@@ -103,6 +159,10 @@ instance decodeJsonCompileResult :: DecodeJson CompileResult where
     tag <- obj .? "tag"
     case tag of
       "CompileError" -> CompileError <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2"
+<<<<<<< f4af737a0d4a1fd3b3c6babc2c119129df34f77d
       "Compiled" -> Compiled <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2" <*> obj .? "arg3"
       _ -> unsafeCrashWith "decodeJson @ CompileResult"
+=======
+      "Compiled" -> Compiled <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2" <*> obj .? "arg3" <*> obj .? "arg4"
+>>>>>>> update type info to include warnings
 

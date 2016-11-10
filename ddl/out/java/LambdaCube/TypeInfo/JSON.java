@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-09-15T19:44:48.120020034Z
+// 2016-11-10T15:07:11.972496000000Z
 
 package LambdaCube.TypeInfo;
 
@@ -17,23 +17,26 @@ public class JSON {
   public enum Type { 
     Int,
     String,
-    Array_Range,
+    Array_ErrorInfo,
     Array_TypeInfo,
+    Array_WarningInfo,
     CompileResult,
+    ErrorInfo,
     Pipeline,
     Range,
-    TypeInfo
+    TypeInfo,
+    WarningInfo
   }
 
   public static Object fromJSON(Type type, Object rawObj) throws JSONException, Exception {
     switch (type) {
       case Int: return ((Number)rawObj).intValue();
       case String: return (String)rawObj;
-      case Array_Range: {
+      case Array_ErrorInfo: {
         JSONArray obj = (JSONArray)rawObj;
-        ArrayList<Range> v = new ArrayList<Range> ();
+        ArrayList<ErrorInfo> v = new ArrayList<ErrorInfo> ();
         for (int i = 0; i < obj.length(); i++) {
-          v.add((Range)fromJSON (Type.Range, obj.get(i)));
+          v.add((ErrorInfo)fromJSON (Type.ErrorInfo, obj.get(i)));
         }
         return v;
       }
@@ -42,6 +45,14 @@ public class JSON {
         ArrayList<TypeInfo> v = new ArrayList<TypeInfo> ();
         for (int i = 0; i < obj.length(); i++) {
           v.add((TypeInfo)fromJSON (Type.TypeInfo, obj.get(i)));
+        }
+        return v;
+      }
+      case Array_WarningInfo: {
+        JSONArray obj = (JSONArray)rawObj;
+        ArrayList<WarningInfo> v = new ArrayList<WarningInfo> ();
+        for (int i = 0; i < obj.length(); i++) {
+          v.add((WarningInfo)fromJSON (Type.WarningInfo, obj.get(i)));
         }
         return v;
       }
@@ -74,15 +85,41 @@ public class JSON {
           default: throw new Exception("unknown constructor: " + tag);
         }
       }
+      case WarningInfo: {
+        JSONObject obj = (JSONObject)rawObj;
+        String tag = obj.getString("tag");
+        switch (tag) {
+          case "WarningInfo": {
+            WarningInfo.WarningInfo_ tv = new WarningInfo().new WarningInfo_();
+            tv.wRange = (Range)fromJSON(Type.Range,obj.get("wRange"));
+            tv.wText = (String)fromJSON(Type.String,obj.get("wText"));
+            return tv;
+          }
+          default: throw new Exception("unknown constructor: " + tag);
+        }
+      }
+      case ErrorInfo: {
+        JSONObject obj = (JSONObject)rawObj;
+        String tag = obj.getString("tag");
+        switch (tag) {
+          case "ErrorInfo": {
+            ErrorInfo.ErrorInfo_ tv = new ErrorInfo().new ErrorInfo_();
+            tv.eRange = (Range)fromJSON(Type.Range,obj.get("eRange"));
+            tv.eText = (String)fromJSON(Type.String,obj.get("eText"));
+            return tv;
+          }
+          default: throw new Exception("unknown constructor: " + tag);
+        }
+      }
       case CompileResult: {
         JSONObject obj = (JSONObject)rawObj;
         String tag = obj.getString("tag");
         switch (tag) {
           case "CompileError": {
             CompileResult.CompileError_ tv = new CompileResult().new CompileError_();
-            tv._0 = (ArrayList<Range>)fromJSON(Type.Array_Range,obj.get("arg0"));
-            tv._1 = (String)fromJSON(Type.String,obj.get("arg1"));
-            tv._2 = (ArrayList<TypeInfo>)fromJSON(Type.Array_TypeInfo,obj.get("arg2"));
+            tv._0 = (ArrayList<TypeInfo>)fromJSON(Type.Array_TypeInfo,obj.get("arg0"));
+            tv._1 = (ArrayList<WarningInfo>)fromJSON(Type.Array_WarningInfo,obj.get("arg1"));
+            tv._2 = (ArrayList<ErrorInfo>)fromJSON(Type.Array_ErrorInfo,obj.get("arg2"));
             return tv;
           }
           case "Compiled": {
@@ -91,6 +128,7 @@ public class JSON {
             tv._1 = (String)fromJSON(Type.String,obj.get("arg1"));
             tv._2 = (Pipeline)fromJSON(Type.Pipeline,obj.get("arg2"));
             tv._3 = (ArrayList<TypeInfo>)fromJSON(Type.Array_TypeInfo,obj.get("arg3"));
+            tv._4 = (ArrayList<WarningInfo>)fromJSON(Type.Array_WarningInfo,obj.get("arg4"));
             return tv;
           }
           default: throw new Exception("unknown constructor: " + tag);
@@ -134,6 +172,36 @@ public class JSON {
         }
         return obj;
       }
+      case WarningInfo: {
+        WarningInfo v = (WarningInfo)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case WarningInfo:
+            obj.put("tag", "WarningInfo");
+            {
+              WarningInfo.WarningInfo_ tv = (WarningInfo.WarningInfo_)v;
+              obj.put("wRange", toJSON(Type.Range,tv.wRange));
+              obj.put("wText", toJSON(Type.String,tv.wText));
+            }
+            break;
+        }
+        return obj;
+      }
+      case ErrorInfo: {
+        ErrorInfo v = (ErrorInfo)rawObj;
+        JSONObject obj = new JSONObject();
+        switch (v.tag) { 
+          case ErrorInfo:
+            obj.put("tag", "ErrorInfo");
+            {
+              ErrorInfo.ErrorInfo_ tv = (ErrorInfo.ErrorInfo_)v;
+              obj.put("eRange", toJSON(Type.Range,tv.eRange));
+              obj.put("eText", toJSON(Type.String,tv.eText));
+            }
+            break;
+        }
+        return obj;
+      }
       case CompileResult: {
         CompileResult v = (CompileResult)rawObj;
         JSONObject obj = new JSONObject();
@@ -142,9 +210,9 @@ public class JSON {
             obj.put("tag", "CompileError");
             {
               CompileResult.CompileError_ tv = (CompileResult.CompileError_)v;
-              obj.put("arg0", toJSON(Type.Array_Range,tv._0));
-              obj.put("arg1", toJSON(Type.String,tv._1));
-              obj.put("arg2", toJSON(Type.Array_TypeInfo,tv._2));
+              obj.put("arg0", toJSON(Type.Array_TypeInfo,tv._0));
+              obj.put("arg1", toJSON(Type.Array_WarningInfo,tv._1));
+              obj.put("arg2", toJSON(Type.Array_ErrorInfo,tv._2));
             }
             break;
           case Compiled:
@@ -155,6 +223,7 @@ public class JSON {
               obj.put("arg1", toJSON(Type.String,tv._1));
               obj.put("arg2", toJSON(Type.Pipeline,tv._2));
               obj.put("arg3", toJSON(Type.Array_TypeInfo,tv._3));
+              obj.put("arg4", toJSON(Type.Array_WarningInfo,tv._4));
             }
             break;
         }
@@ -163,11 +232,11 @@ public class JSON {
 
       case Int: { return rawObj; }
       case String: { return rawObj; }
-      case Array_Range: {
-        ArrayList<Range> v = (ArrayList<Range>)rawObj;
+      case Array_ErrorInfo: {
+        ArrayList<ErrorInfo> v = (ArrayList<ErrorInfo>)rawObj;
         JSONArray obj = new JSONArray();
-        for(Range i : v) {
-          obj.put(toJSON(Type.Range,i));
+        for(ErrorInfo i : v) {
+          obj.put(toJSON(Type.ErrorInfo,i));
         }
         return obj;
       }
@@ -176,6 +245,14 @@ public class JSON {
         JSONArray obj = new JSONArray();
         for(TypeInfo i : v) {
           obj.put(toJSON(Type.TypeInfo,i));
+        }
+        return obj;
+      }
+      case Array_WarningInfo: {
+        ArrayList<WarningInfo> v = (ArrayList<WarningInfo>)rawObj;
+        JSONArray obj = new JSONArray();
+        for(WarningInfo i : v) {
+          obj.put(toJSON(Type.WarningInfo,i));
         }
         return obj;
       }

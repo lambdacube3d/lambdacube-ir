@@ -9,16 +9,16 @@ import RT.*;
 
 import LambdaCube.IR.*;
 
-public class TypeInfo {
+public class ErrorInfo {
   public enum Tag { 
-    TypeInfo
+    ErrorInfo
   }
   public Tag tag;
 
-  public class TypeInfo_ extends TypeInfo { 
-    public Range range;
-    public String text;
-    public TypeInfo_() { tag = TypeInfo.Tag.TypeInfo; }
+  public class ErrorInfo_ extends ErrorInfo { 
+    public Range eRange;
+    public String eText;
+    public ErrorInfo_() { tag = ErrorInfo.Tag.ErrorInfo; }
   }
 }
 

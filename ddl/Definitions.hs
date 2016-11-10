@@ -474,9 +474,21 @@ typeInfo = do
       , "text"        #:: String
       ]
 
+  data_ "WarningInfo" $ do
+    constR_ "WarningInfo"
+      [ "wRange"      #:: "Range"
+      , "wText"       #:: String
+      ]
+
+  data_ "ErrorInfo" $ do
+    constR_ "ErrorInfo"
+      [ "eRange"      #:: "Range"
+      , "eText"       #:: String
+      ]
+
   data_ "CompileResult" $ do
-    const_ "CompileError" [Array "Range", String, Array "TypeInfo"]
-    const_ "Compiled"     [String, String, "Pipeline", Array "TypeInfo"]
+    const_ "CompileError" [Array "TypeInfo", Array "WarningInfo", Array "ErrorInfo"]
+    const_ "Compiled"     [String, String, "Pipeline", Array "TypeInfo", Array "WarningInfo"]
 
 pipelineSchema = do
   data_ "StreamType" $ do

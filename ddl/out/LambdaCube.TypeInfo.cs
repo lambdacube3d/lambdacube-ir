@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-09-15T19:44:48.120020034Z
+// 2016-11-10T15:07:11.972496000000Z
 
 using System;
 using System.Linq;
@@ -39,6 +39,34 @@ namespace LambdaCube.TypeInfo {
       public TypeInfo() { tag = LambdaCube.TypeInfo.TypeInfo.Tag.TypeInfo; }
     };
   }
+  public class WarningInfo {
+      public enum Tag { 
+        WarningInfo
+      };
+      public Tag tag;
+  };
+
+  namespace data { 
+    public class WarningInfo : LambdaCube.TypeInfo.WarningInfo { 
+      public global::LambdaCube.TypeInfo.Range wRange;
+      public string wText;
+      public WarningInfo() { tag = LambdaCube.TypeInfo.WarningInfo.Tag.WarningInfo; }
+    };
+  }
+  public class ErrorInfo {
+      public enum Tag { 
+        ErrorInfo
+      };
+      public Tag tag;
+  };
+
+  namespace data { 
+    public class ErrorInfo : LambdaCube.TypeInfo.ErrorInfo { 
+      public global::LambdaCube.TypeInfo.Range eRange;
+      public string eText;
+      public ErrorInfo() { tag = LambdaCube.TypeInfo.ErrorInfo.Tag.ErrorInfo; }
+    };
+  }
   public class CompileResult {
       public enum Tag { 
         CompileError,
@@ -49,9 +77,9 @@ namespace LambdaCube.TypeInfo {
 
   namespace data { 
     public class CompileError : LambdaCube.TypeInfo.CompileResult { 
-      public List<global::LambdaCube.TypeInfo.Range> _0;
-      public string _1;
-      public List<global::LambdaCube.TypeInfo.TypeInfo> _2;
+      public List<global::LambdaCube.TypeInfo.TypeInfo> _0;
+      public List<global::LambdaCube.TypeInfo.WarningInfo> _1;
+      public List<global::LambdaCube.TypeInfo.ErrorInfo> _2;
       public CompileError() { tag = LambdaCube.TypeInfo.CompileResult.Tag.CompileError; }
     };
     public class Compiled : LambdaCube.TypeInfo.CompileResult { 
@@ -59,6 +87,7 @@ namespace LambdaCube.TypeInfo {
       public string _1;
       public global::LambdaCube.TypeInfo.Pipeline _2;
       public List<global::LambdaCube.TypeInfo.TypeInfo> _3;
+      public List<global::LambdaCube.TypeInfo.WarningInfo> _4;
       public Compiled() { tag = LambdaCube.TypeInfo.CompileResult.Tag.Compiled; }
     };
   }
@@ -67,12 +96,15 @@ namespace LambdaCube.TypeInfo {
   public enum Type { 
     Int,
     String,
-    Array_Range,
+    Array_ErrorInfo,
     Array_TypeInfo,
+    Array_WarningInfo,
     CompileResult,
+    ErrorInfo,
     Pipeline,
     Range,
-    TypeInfo
+    TypeInfo,
+    WarningInfo
   }
 
   public class Loader {
@@ -80,8 +112,9 @@ namespace LambdaCube.TypeInfo {
       switch (type) {
         case Type.Int: return (int)obj;
         case Type.String: return (string)obj;
-        case Type.Array_Range: return ((JArray)obj).Select(x => (global::LambdaCube.TypeInfo.Range)fromJSON (Type.Range, x)).ToList();
+        case Type.Array_ErrorInfo: return ((JArray)obj).Select(x => (global::LambdaCube.TypeInfo.ErrorInfo)fromJSON (Type.ErrorInfo, x)).ToList();
         case Type.Array_TypeInfo: return ((JArray)obj).Select(x => (global::LambdaCube.TypeInfo.TypeInfo)fromJSON (Type.TypeInfo, x)).ToList();
+        case Type.Array_WarningInfo: return ((JArray)obj).Select(x => (global::LambdaCube.TypeInfo.WarningInfo)fromJSON (Type.WarningInfo, x)).ToList();
 
         case Type.Range: {
           string tag = (string)obj["tag"];
@@ -109,14 +142,38 @@ namespace LambdaCube.TypeInfo {
             default: throw new Exception("unknown constructor: " + tag);
           }
         }
+        case Type.WarningInfo: {
+          string tag = (string)obj["tag"];
+          switch (tag) {
+            case "WarningInfo": {
+              data.WarningInfo tv = new data.WarningInfo();
+              tv.wRange = (global::LambdaCube.TypeInfo.Range)fromJSON(Type.Range,obj["wRange"]);
+              tv.wText = (string)fromJSON(Type.String,obj["wText"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
+          }
+        }
+        case Type.ErrorInfo: {
+          string tag = (string)obj["tag"];
+          switch (tag) {
+            case "ErrorInfo": {
+              data.ErrorInfo tv = new data.ErrorInfo();
+              tv.eRange = (global::LambdaCube.TypeInfo.Range)fromJSON(Type.Range,obj["eRange"]);
+              tv.eText = (string)fromJSON(Type.String,obj["eText"]);
+              return tv;
+            }
+            default: throw new Exception("unknown constructor: " + tag);
+          }
+        }
         case Type.CompileResult: {
           string tag = (string)obj["tag"];
           switch (tag) {
             case "CompileError": {
               data.CompileError tv = new data.CompileError();
-              tv._0 = (List<global::LambdaCube.TypeInfo.Range>)fromJSON(Type.Array_Range,obj["arg0"]);
-              tv._1 = (string)fromJSON(Type.String,obj["arg1"]);
-              tv._2 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg2"]);
+              tv._0 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg0"]);
+              tv._1 = (List<global::LambdaCube.TypeInfo.WarningInfo>)fromJSON(Type.Array_WarningInfo,obj["arg1"]);
+              tv._2 = (List<global::LambdaCube.TypeInfo.ErrorInfo>)fromJSON(Type.Array_ErrorInfo,obj["arg2"]);
               return tv;
             }
             case "Compiled": {
@@ -125,6 +182,7 @@ namespace LambdaCube.TypeInfo {
               tv._1 = (string)fromJSON(Type.String,obj["arg1"]);
               tv._2 = (global::LambdaCube.TypeInfo.Pipeline)fromJSON(Type.Pipeline,obj["arg2"]);
               tv._3 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg3"]);
+              tv._4 = (List<global::LambdaCube.TypeInfo.WarningInfo>)fromJSON(Type.Array_WarningInfo,obj["arg4"]);
               return tv;
             }
             default: throw new Exception("unknown constructor: " + tag);
@@ -165,6 +223,34 @@ namespace LambdaCube.TypeInfo {
       }
       return obj;
     }
+    public static JToken toJSON(WarningInfo v) {
+      var obj = new JObject();
+      switch (v.tag) { 
+        case WarningInfo.Tag.WarningInfo:
+          obj["tag"] = "WarningInfo";
+          {
+            var tv = (data.WarningInfo)v;
+            obj["wRange"] = toJSON(tv.wRange);
+            obj["wText"] = toJSON(tv.wText);
+          }
+          break;
+      }
+      return obj;
+    }
+    public static JToken toJSON(ErrorInfo v) {
+      var obj = new JObject();
+      switch (v.tag) { 
+        case ErrorInfo.Tag.ErrorInfo:
+          obj["tag"] = "ErrorInfo";
+          {
+            var tv = (data.ErrorInfo)v;
+            obj["eRange"] = toJSON(tv.eRange);
+            obj["eText"] = toJSON(tv.eText);
+          }
+          break;
+      }
+      return obj;
+    }
     public static JToken toJSON(CompileResult v) {
       var obj = new JObject();
       switch (v.tag) { 
@@ -185,6 +271,7 @@ namespace LambdaCube.TypeInfo {
             obj["arg1"] = toJSON(tv._1);
             obj["arg2"] = toJSON(tv._2);
             obj["arg3"] = toJSON(tv._3);
+            obj["arg4"] = toJSON(tv._4);
           }
           break;
       }
@@ -193,7 +280,7 @@ namespace LambdaCube.TypeInfo {
 
     public static JToken toJSON(int v) { return new JValue(v); }
     public static JToken toJSON(string v) { return new JValue(v); }
-    public static JToken toJSON(List<global::LambdaCube.TypeInfo.Range> v) {
+    public static JToken toJSON(List<global::LambdaCube.TypeInfo.ErrorInfo> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
@@ -201,6 +288,13 @@ namespace LambdaCube.TypeInfo {
       return obj;
     }
     public static JToken toJSON(List<global::LambdaCube.TypeInfo.TypeInfo> v) {
+      var obj = new JArray();
+      foreach (var i in v) {
+        obj.Add(toJSON(i));
+      }
+      return obj;
+    }
+    public static JToken toJSON(List<global::LambdaCube.TypeInfo.WarningInfo> v) {
       var obj = new JArray();
       foreach (var i in v) {
         obj.Add(toJSON(i));
