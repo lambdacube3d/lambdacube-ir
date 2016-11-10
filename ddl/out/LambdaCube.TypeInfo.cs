@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-10T15:07:11.972496000000Z
+// 2016-11-10T16:02:38.361054000000Z
 
 using System;
 using System.Linq;
@@ -77,9 +77,10 @@ namespace LambdaCube.TypeInfo {
 
   namespace data { 
     public class CompileError : LambdaCube.TypeInfo.CompileResult { 
-      public List<global::LambdaCube.TypeInfo.TypeInfo> _0;
-      public List<global::LambdaCube.TypeInfo.WarningInfo> _1;
-      public List<global::LambdaCube.TypeInfo.ErrorInfo> _2;
+      public string _0;
+      public List<global::LambdaCube.TypeInfo.TypeInfo> _1;
+      public List<global::LambdaCube.TypeInfo.WarningInfo> _2;
+      public List<global::LambdaCube.TypeInfo.ErrorInfo> _3;
       public CompileError() { tag = LambdaCube.TypeInfo.CompileResult.Tag.CompileError; }
     };
     public class Compiled : LambdaCube.TypeInfo.CompileResult { 
@@ -171,9 +172,10 @@ namespace LambdaCube.TypeInfo {
           switch (tag) {
             case "CompileError": {
               data.CompileError tv = new data.CompileError();
-              tv._0 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg0"]);
-              tv._1 = (List<global::LambdaCube.TypeInfo.WarningInfo>)fromJSON(Type.Array_WarningInfo,obj["arg1"]);
-              tv._2 = (List<global::LambdaCube.TypeInfo.ErrorInfo>)fromJSON(Type.Array_ErrorInfo,obj["arg2"]);
+              tv._0 = (string)fromJSON(Type.String,obj["arg0"]);
+              tv._1 = (List<global::LambdaCube.TypeInfo.TypeInfo>)fromJSON(Type.Array_TypeInfo,obj["arg1"]);
+              tv._2 = (List<global::LambdaCube.TypeInfo.WarningInfo>)fromJSON(Type.Array_WarningInfo,obj["arg2"]);
+              tv._3 = (List<global::LambdaCube.TypeInfo.ErrorInfo>)fromJSON(Type.Array_ErrorInfo,obj["arg3"]);
               return tv;
             }
             case "Compiled": {
@@ -261,6 +263,7 @@ namespace LambdaCube.TypeInfo {
             obj["arg0"] = toJSON(tv._0);
             obj["arg1"] = toJSON(tv._1);
             obj["arg2"] = toJSON(tv._2);
+            obj["arg3"] = toJSON(tv._3);
           }
           break;
         case CompileResult.Tag.Compiled:

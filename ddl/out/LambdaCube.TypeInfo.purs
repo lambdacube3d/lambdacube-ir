@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-11-10T15:07:11.972496000000Z
+-- 2016-11-10T16:02:38.361054000000Z
 
 module LambdaCube.TypeInfo where
 import Prelude
@@ -51,7 +51,7 @@ data ErrorInfo
 
 
 data CompileResult
-  = CompileError (Array TypeInfo) (Array WarningInfo) (Array ErrorInfo)
+  = CompileError String (Array TypeInfo) (Array WarningInfo) (Array ErrorInfo)
   | Compiled String String Pipeline (Array TypeInfo) (Array WarningInfo)
 
 
@@ -126,6 +126,7 @@ instance decodeJsonWarningInfo :: DecodeJson WarningInfo where
           { wRange:wRange
           , wText:wText
           } 
+      _ -> unsafeCrashWith "decodeJson @ WarningInfo"
 
 instance encodeJsonErrorInfo :: EncodeJson ErrorInfo where
   encodeJson v = case v of
@@ -147,10 +148,11 @@ instance decodeJsonErrorInfo :: DecodeJson ErrorInfo where
           { eRange:eRange
           , eText:eText
           } 
+      _ -> unsafeCrashWith "decodeJson @ ErrorInfo"
 
 instance encodeJsonCompileResult :: EncodeJson CompileResult where
   encodeJson v = case v of
-    CompileError arg0 arg1 arg2 -> "tag" := "CompileError" ~> "arg0" := arg0 ~> "arg1" := arg1 ~> "arg2" := arg2 ~> jsonEmptyObject
+    CompileError arg0 arg1 arg2 arg3 -> "tag" := "CompileError" ~> "arg0" := arg0 ~> "arg1" := arg1 ~> "arg2" := arg2 ~> "arg3" := arg3 ~> jsonEmptyObject
     Compiled arg0 arg1 arg2 arg3 arg4 -> "tag" := "Compiled" ~> "arg0" := arg0 ~> "arg1" := arg1 ~> "arg2" := arg2 ~> "arg3" := arg3 ~> "arg4" := arg4 ~> jsonEmptyObject
 
 instance decodeJsonCompileResult :: DecodeJson CompileResult where
@@ -158,11 +160,7 @@ instance decodeJsonCompileResult :: DecodeJson CompileResult where
     obj <- decodeJson json
     tag <- obj .? "tag"
     case tag of
-      "CompileError" -> CompileError <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2"
-<<<<<<< f4af737a0d4a1fd3b3c6babc2c119129df34f77d
-      "Compiled" -> Compiled <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2" <*> obj .? "arg3"
-      _ -> unsafeCrashWith "decodeJson @ CompileResult"
-=======
+      "CompileError" -> CompileError <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2" <*> obj .? "arg3"
       "Compiled" -> Compiled <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2" <*> obj .? "arg3" <*> obj .? "arg4"
->>>>>>> update type info to include warnings
+      _ -> unsafeCrashWith "decodeJson @ CompileResult"
 

@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-10T15:07:11.866163000000Z
+// 2016-11-10T16:02:38.260630000000Z
 
 #include "LambdaCube.Mesh.hpp"
 template<> json toJSON<std::shared_ptr<MeshAttribute>>(std::shared_ptr<MeshAttribute> &v) {

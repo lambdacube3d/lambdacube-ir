@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-10T15:07:11.972496000000Z
+// 2016-11-10T16:02:38.361054000000Z
 
 package LambdaCube.TypeInfo;
 
@@ -17,9 +17,10 @@ public class CompileResult {
   public Tag tag;
 
   public class CompileError_ extends CompileResult { 
-    public ArrayList<TypeInfo> _0;
-    public ArrayList<WarningInfo> _1;
-    public ArrayList<ErrorInfo> _2;
+    public String _0;
+    public ArrayList<TypeInfo> _1;
+    public ArrayList<WarningInfo> _2;
+    public ArrayList<ErrorInfo> _3;
     public CompileError_() { tag = CompileResult.Tag.CompileError; }
   }
   public class Compiled_ extends CompileResult { 

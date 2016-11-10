@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-10T15:07:11.972496000000Z
+// 2016-11-10T16:02:38.361054000000Z
 
 #ifndef HEADER_LambdaCube.TypeInfo_H
 #define HEADER_LambdaCube.TypeInfo_H
@@ -69,9 +69,10 @@ public:
 namespace data { 
   class CompileError {
   public: 
-    std::vector<std::shared_ptr<::TypeInfo>> _0;
-    std::vector<std::shared_ptr<::WarningInfo>> _1;
-    std::vector<std::shared_ptr<::ErrorInfo>> _2;
+    String _0;
+    std::vector<std::shared_ptr<::TypeInfo>> _1;
+    std::vector<std::shared_ptr<::WarningInfo>> _2;
+    std::vector<std::shared_ptr<::ErrorInfo>> _3;
   };
   class Compiled {
   public: 

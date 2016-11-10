@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-10T15:07:11.972496000000Z
+// 2016-11-10T16:02:38.361054000000Z
 
 package LambdaCube.TypeInfo;
 

@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-10T15:07:11.972496000000Z
+// 2016-11-10T16:02:38.361054000000Z
 
 package LambdaCube.TypeInfo;
 
@@ -117,9 +117,10 @@ public class JSON {
         switch (tag) {
           case "CompileError": {
             CompileResult.CompileError_ tv = new CompileResult().new CompileError_();
-            tv._0 = (ArrayList<TypeInfo>)fromJSON(Type.Array_TypeInfo,obj.get("arg0"));
-            tv._1 = (ArrayList<WarningInfo>)fromJSON(Type.Array_WarningInfo,obj.get("arg1"));
-            tv._2 = (ArrayList<ErrorInfo>)fromJSON(Type.Array_ErrorInfo,obj.get("arg2"));
+            tv._0 = (String)fromJSON(Type.String,obj.get("arg0"));
+            tv._1 = (ArrayList<TypeInfo>)fromJSON(Type.Array_TypeInfo,obj.get("arg1"));
+            tv._2 = (ArrayList<WarningInfo>)fromJSON(Type.Array_WarningInfo,obj.get("arg2"));
+            tv._3 = (ArrayList<ErrorInfo>)fromJSON(Type.Array_ErrorInfo,obj.get("arg3"));
             return tv;
           }
           case "Compiled": {
@@ -210,9 +211,10 @@ public class JSON {
             obj.put("tag", "CompileError");
             {
               CompileResult.CompileError_ tv = (CompileResult.CompileError_)v;
-              obj.put("arg0", toJSON(Type.Array_TypeInfo,tv._0));
-              obj.put("arg1", toJSON(Type.Array_WarningInfo,tv._1));
-              obj.put("arg2", toJSON(Type.Array_ErrorInfo,tv._2));
+              obj.put("arg0", toJSON(Type.String,tv._0));
+              obj.put("arg1", toJSON(Type.Array_TypeInfo,tv._1));
+              obj.put("arg2", toJSON(Type.Array_WarningInfo,tv._2));
+              obj.put("arg3", toJSON(Type.Array_ErrorInfo,tv._3));
             }
             break;
           case Compiled:
