@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-10T16:02:37.496440000000Z
+// 2016-11-11T11:17:02.701527000000Z
 
 #ifndef HEADER_LambdaCube.IR_H
 #define HEADER_LambdaCube.IR_H
@@ -1042,8 +1042,7 @@ class Backend {
   public:
     enum class tag { 
       WebGL1,
-      OpenGL33,
-      DirectX11
+      OpenGL33
     } tag;
 };
 namespace data { 

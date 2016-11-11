@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-10T16:02:37.496440000000Z
+// 2016-11-11T11:17:02.701527000000Z
 
 using System;
 using System.Linq;
@@ -979,8 +979,7 @@ namespace LambdaCube.IR {
   public class Backend {
       public enum Tag { 
         WebGL1,
-        OpenGL33,
-        DirectX11
+        OpenGL33
       };
       public Tag tag;
   };
@@ -2325,7 +2324,6 @@ namespace LambdaCube.IR {
           switch (tag) {
             case "WebGL1": tagType = Backend.Tag.WebGL1; break;
             case "OpenGL33": tagType = Backend.Tag.OpenGL33; break;
-            case "DirectX11": tagType = Backend.Tag.DirectX11; break;
             default: throw new Exception("unknown constructor: " + tag);
           }
           Backend o = new Backend();
@@ -3716,9 +3714,6 @@ namespace LambdaCube.IR {
           break;
         case Backend.Tag.OpenGL33:
           obj["tag"] = "OpenGL33";
-          break;
-        case Backend.Tag.DirectX11:
-          obj["tag"] = "DirectX11";
           break;
       }
       return obj;
