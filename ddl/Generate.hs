@@ -67,7 +67,7 @@ main = do
                         oldTxt <- readFile fname
                         case (lines oldTxt, lines txt) of
                           (_ : oldTime : old, _ : newTime : new) | old == new -> return () -- NOTE: timestamp is always in the second line
-                          _ -> writeFile fname txt
+                          _ -> removeFile fname >> writeFile fname txt
 
         -- Haskell
         either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".hs") $ LText.unpack x) $ dataHs >>= (\t -> eitherRenderWith mylib t env)
