@@ -61,6 +61,13 @@ main = do
                 , "swiftType"       @: swiftType aliasMap
                 , "hasEnumConstructor" @: hasEnumConstructor
                 ]
+            writeFileIfDiffer fname txt = doesFileExist fname >>= \case
+              False -> writeFile fname txt
+              True  -> do
+                        oldTxt <- readFile fname
+                        case (lines oldTxt, lines txt) of
+                          (_ : oldTime : old, _ : newTime : new) | old == new -> return () -- NOTE: timestamp is always in the second line
+                          _ -> writeFile fname txt
 
         -- Haskell
         either error (\x -> writeFile ("out/" ++ name ++ ".hs") $ LText.unpack x) $ dataHs >>= (\t -> eitherRenderWith mylib t env)
