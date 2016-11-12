@@ -70,13 +70,13 @@ main = do
                           _ -> writeFile fname txt
 
         -- Haskell
-        either error (\x -> writeFile ("out/" ++ name ++ ".hs") $ LText.unpack x) $ dataHs >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".hs") $ LText.unpack x) $ dataHs >>= (\t -> eitherRenderWith mylib t env)
         -- Purescript
-        either error (\x -> writeFile ("out/" ++ name ++ ".purs") $ LText.unpack x) $ dataPs >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".purs") $ LText.unpack x) $ dataPs >>= (\t -> eitherRenderWith mylib t env)
         -- C++
-        either error (\x -> writeFile ("out/" ++ name ++ "2.hpp") $ LText.unpack x) $ dataHpp2 >>= (\t -> eitherRenderWith mylib t env)
-        either error (\x -> writeFile ("out/" ++ name ++ ".hpp") $ LText.unpack x) $ dataHpp >>= (\t -> eitherRenderWith mylib t env)
-        either error (\x -> writeFile ("out/" ++ name ++ ".cpp") $ LText.unpack x) $ dataCpp >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ "2.hpp") $ LText.unpack x) $ dataHpp2 >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".hpp") $ LText.unpack x) $ dataHpp >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".cpp") $ LText.unpack x) $ dataCpp >>= (\t -> eitherRenderWith mylib t env)
         -- Java
         let toPath a = flip map a $ \case
               '.' -> '/'
@@ -91,10 +91,10 @@ main = do
               fname = "out/java/" ++ toPath name ++ "/" ++ dataName d ++ ".java"
               dir = takeDirectory fname
           createDirectoryIfMissing True dir
-          either error (\x -> writeFile fname $ LText.unpack x) $ dataJava >>= (\t -> eitherRenderWith mylib t env)
-        either error (\x -> writeFile ("out/java/" ++ toPath name ++ "/JSON.java") $ LText.unpack x) $ jsonJava >>= (\t -> eitherRenderWith mylib t env)
+          either error (\x -> writeFileIfDiffer fname $ LText.unpack x) $ dataJava >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/java/" ++ toPath name ++ "/JSON.java") $ LText.unpack x) $ jsonJava >>= (\t -> eitherRenderWith mylib t env)
         -- C#
-        either error (\x -> writeFile ("out/" ++ name ++ ".cs") $ LText.unpack x) $ dataCs >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".cs") $ LText.unpack x) $ dataCs >>= (\t -> eitherRenderWith mylib t env)
         -- Swift
-        either error (\x -> writeFile ("out/" ++ name ++ ".swift") $ LText.unpack x) $ dataSwift >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".swift") $ LText.unpack x) $ dataSwift >>= (\t -> eitherRenderWith mylib t env)
   mapM_ generate $ execWriter modules
