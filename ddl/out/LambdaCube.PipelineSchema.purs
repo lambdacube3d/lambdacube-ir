@@ -1,14 +1,15 @@
 -- generated file, do not modify!
--- 2016-11-11T11:17:03.470118000000Z
+-- 2016-11-12T12:48:59.849829000000Z
 
 module LambdaCube.PipelineSchema where
 import Prelude
 import Data.Generic
+import Data.Either (Either(..))
 import Data.Maybe (Maybe(..))
 import Data.StrMap (StrMap(..))
 import Data.Map (Map(..))
 import Data.List (List(..))
-import Linear
+import LinearBase
 
 import Data.Argonaut.Encode.Combinators ((~>), (:=))
 import Data.Argonaut.Decode.Combinators ((.?))
@@ -16,7 +17,6 @@ import Data.Argonaut.Core (jsonEmptyObject)
 import Data.Argonaut.Printer (printJson)
 import Data.Argonaut.Encode (class EncodeJson, encodeJson)
 import Data.Argonaut.Decode (class DecodeJson, decodeJson)
-import Partial.Unsafe (unsafeCrashWith)
 
 import LambdaCube.IR
 
@@ -109,7 +109,7 @@ instance decodeJsonStreamType :: DecodeJson StreamType where
       "Attribute_M42F" -> pure Attribute_M42F
       "Attribute_M43F" -> pure Attribute_M43F
       "Attribute_M44F" -> pure Attribute_M44F
-      _ -> unsafeCrashWith "decodeJson @ StreamType"
+      _ -> Left ("decodeJsonStreamType - unknown tag: " <> tag)
 
 instance encodeJsonObjectArraySchema :: EncodeJson ObjectArraySchema where
   encodeJson v = case v of
@@ -131,7 +131,7 @@ instance decodeJsonObjectArraySchema :: DecodeJson ObjectArraySchema where
           { primitive:primitive
           , attributes:attributes
           } 
-      _ -> unsafeCrashWith "decodeJson @ ObjectArraySchema"
+      _ -> Left ("decodeJsonObjectArraySchema - unknown tag: " <> tag)
 
 instance encodeJsonPipelineSchema :: EncodeJson PipelineSchema where
   encodeJson v = case v of
@@ -153,5 +153,5 @@ instance decodeJsonPipelineSchema :: DecodeJson PipelineSchema where
           { objectArrays:objectArrays
           , uniforms:uniforms
           } 
-      _ -> unsafeCrashWith "decodeJson @ PipelineSchema"
+      _ -> Left ("decodeJsonPipelineSchema - unknown tag: " <> tag)
 

@@ -39,7 +39,7 @@ type {{ t.value.aliasName }} = {{ t.value.aliasType | psType }}
 
 {% endcase %}
 {% endfor %}
-{% for t in definitions %}{% let l = t.value.instances | length %}{% if l < 0 %}{# FIXME!!! #}
+{% for t in definitions %}{% let l = t.value.instances | length %}{% if l > 0 %}{# FIXME!!! #}
 derive instance generic{{ t.value.dataName }} :: Generic {{ t.value.dataName }}
 instance show{{ t.value.dataName }} :: Show {{ t.value.dataName }} where show = gShow
 instance eq{{ t.value.dataName }}   :: Eq {{ t.value.dataName }}   where eq = gEq

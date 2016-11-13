@@ -1,14 +1,15 @@
 -- generated file, do not modify!
--- 2016-11-11T11:17:03.605012000000Z
+-- 2016-11-12T12:48:59.998839000000Z
 
 module LambdaCube.TypeInfo where
 import Prelude
 import Data.Generic
+import Data.Either (Either(..))
 import Data.Maybe (Maybe(..))
 import Data.StrMap (StrMap(..))
 import Data.Map (Map(..))
 import Data.List (List(..))
-import Linear
+import LinearBase
 
 import Data.Argonaut.Encode.Combinators ((~>), (:=))
 import Data.Argonaut.Decode.Combinators ((.?))
@@ -16,7 +17,6 @@ import Data.Argonaut.Core (jsonEmptyObject)
 import Data.Argonaut.Printer (printJson)
 import Data.Argonaut.Encode (class EncodeJson, encodeJson)
 import Data.Argonaut.Decode (class DecodeJson, decodeJson)
-import Partial.Unsafe (unsafeCrashWith)
 
 import LambdaCube.IR
 
@@ -82,7 +82,7 @@ instance decodeJsonRange :: DecodeJson Range where
           , endLine:endLine
           , endColumn:endColumn
           } 
-      _ -> unsafeCrashWith "decodeJson @ Range"
+      _ -> Left ("decodeJsonRange - unknown tag: " <> tag)
 
 instance encodeJsonTypeInfo :: EncodeJson TypeInfo where
   encodeJson v = case v of
@@ -104,7 +104,7 @@ instance decodeJsonTypeInfo :: DecodeJson TypeInfo where
           { range:range
           , text:text
           } 
-      _ -> unsafeCrashWith "decodeJson @ TypeInfo"
+      _ -> Left ("decodeJsonTypeInfo - unknown tag: " <> tag)
 
 instance encodeJsonWarningInfo :: EncodeJson WarningInfo where
   encodeJson v = case v of
@@ -126,7 +126,7 @@ instance decodeJsonWarningInfo :: DecodeJson WarningInfo where
           { wRange:wRange
           , wText:wText
           } 
-      _ -> unsafeCrashWith "decodeJson @ WarningInfo"
+      _ -> Left ("decodeJsonWarningInfo - unknown tag: " <> tag)
 
 instance encodeJsonErrorInfo :: EncodeJson ErrorInfo where
   encodeJson v = case v of
@@ -148,7 +148,7 @@ instance decodeJsonErrorInfo :: DecodeJson ErrorInfo where
           { eRange:eRange
           , eText:eText
           } 
-      _ -> unsafeCrashWith "decodeJson @ ErrorInfo"
+      _ -> Left ("decodeJsonErrorInfo - unknown tag: " <> tag)
 
 instance encodeJsonCompileResult :: EncodeJson CompileResult where
   encodeJson v = case v of
@@ -162,5 +162,5 @@ instance decodeJsonCompileResult :: DecodeJson CompileResult where
     case tag of
       "CompileError" -> CompileError <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2" <*> obj .? "arg3"
       "Compiled" -> Compiled <$> obj .? "arg0" <*> obj .? "arg1" <*> obj .? "arg2" <*> obj .? "arg3" <*> obj .? "arg4"
-      _ -> unsafeCrashWith "decodeJson @ CompileResult"
+      _ -> Left ("decodeJsonCompileResult - unknown tag: " <> tag)
 
