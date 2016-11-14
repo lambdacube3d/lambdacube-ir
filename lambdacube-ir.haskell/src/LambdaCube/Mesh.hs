@@ -1,1 +1,1 @@
-../../../ddl/out/LambdaCube.Mesh.hs
+../../../ddl/out/haskell/LambdaCube/Mesh.hs

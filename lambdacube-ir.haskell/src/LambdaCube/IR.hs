@@ -1,1 +1,1 @@
-../../../ddl/out/LambdaCube.IR.hs
+../../../ddl/out/haskell/LambdaCube/IR.hs

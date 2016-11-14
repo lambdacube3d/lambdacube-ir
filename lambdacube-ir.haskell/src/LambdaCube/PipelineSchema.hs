@@ -1,1 +1,1 @@
-../../../ddl/out/LambdaCube.PipelineSchema.hs
+../../../ddl/out/haskell/LambdaCube/PipelineSchema.hs
