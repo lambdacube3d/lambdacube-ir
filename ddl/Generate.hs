@@ -61,8 +61,15 @@ main = do
                 , "swiftType"       @: swiftType aliasMap
                 , "hasEnumConstructor" @: hasEnumConstructor
                 ]
+
+            toPath a = flip map a $ \case
+              '.' -> '/'
+              c -> c
+
             writeFileIfDiffer fname txt = doesFileExist fname >>= \case
-              False -> writeFile fname txt
+              False -> do
+                        createDirectoryIfMissing True $ takeDirectory fname
+                        writeFile fname txt
               True  -> do
                         oldTxt <- readFile fname
                         case (lines oldTxt, lines txt) of
@@ -70,17 +77,14 @@ main = do
                           _ -> removeFile fname >> writeFile fname txt
 
         -- Haskell
-        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".hs") $ LText.unpack x) $ dataHs >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/haskell/" ++ toPath name ++ ".hs") $ LText.unpack x) $ dataHs >>= (\t -> eitherRenderWith mylib t env)
         -- Purescript
-        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".purs") $ LText.unpack x) $ dataPs >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/purescript/" ++ toPath name ++ ".purs") $ LText.unpack x) $ dataPs >>= (\t -> eitherRenderWith mylib t env)
         -- C++
-        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ "2.hpp") $ LText.unpack x) $ dataHpp2 >>= (\t -> eitherRenderWith mylib t env)
-        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".hpp") $ LText.unpack x) $ dataHpp >>= (\t -> eitherRenderWith mylib t env)
-        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".cpp") $ LText.unpack x) $ dataCpp >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/cpp/" ++ name ++ "2.hpp") $ LText.unpack x) $ dataHpp2 >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/cpp/" ++ name ++ ".hpp") $ LText.unpack x) $ dataHpp >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/cpp/" ++ name ++ ".cpp") $ LText.unpack x) $ dataCpp >>= (\t -> eitherRenderWith mylib t env)
         -- Java
-        let toPath a = flip map a $ \case
-              '.' -> '/'
-              c -> c
         forM_ [a | a@DataDef{} <- def {-TODO-}] $ \d -> do
           let env = fromPairs
                 [ "def"         .= d
@@ -89,12 +93,10 @@ main = do
                 , "imports"     .= imports
                 ]
               fname = "out/java/" ++ toPath name ++ "/" ++ dataName d ++ ".java"
-              dir = takeDirectory fname
-          createDirectoryIfMissing True dir
           either error (\x -> writeFileIfDiffer fname $ LText.unpack x) $ dataJava >>= (\t -> eitherRenderWith mylib t env)
         either error (\x -> writeFileIfDiffer ("out/java/" ++ toPath name ++ "/JSON.java") $ LText.unpack x) $ jsonJava >>= (\t -> eitherRenderWith mylib t env)
         -- C#
-        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".cs") $ LText.unpack x) $ dataCs >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/csharp/" ++ name ++ ".cs") $ LText.unpack x) $ dataCs >>= (\t -> eitherRenderWith mylib t env)
         -- Swift
-        either error (\x -> writeFileIfDiffer ("out/" ++ name ++ ".swift") $ LText.unpack x) $ dataSwift >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer ("out/swift/" ++ name ++ ".swift") $ LText.unpack x) $ dataSwift >>= (\t -> eitherRenderWith mylib t env)
   mapM_ generate $ execWriter modules
