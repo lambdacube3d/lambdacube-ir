@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-11-12T12:48:59.849829000000Z
+-- 2016-11-14T21:30:02.999731000000Z
 
 module LambdaCube.PipelineSchema where
 import Prelude
@@ -9,7 +9,7 @@ import Data.Maybe (Maybe(..))
 import Data.StrMap (StrMap(..))
 import Data.Map (Map(..))
 import Data.List (List(..))
-import LinearBase
+import LambdaCube.LinearBase
 
 import Data.Argonaut.Encode.Combinators ((~>), (:=))
 import Data.Argonaut.Decode.Combinators ((.?))
