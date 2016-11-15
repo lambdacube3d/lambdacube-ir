@@ -39,11 +39,24 @@ type {{ t.value.aliasName }} = {{ t.value.aliasType | psType }}
 
 {% endcase %}
 {% endfor %}
-{% for t in definitions %}{% let l = t.value.instances | length %}{% if l > 0 %}{# FIXME!!! #}
+{% for t in definitions %}
+{% let l = t.value.instances | psInstances %}
+{% for i in l %}
+{% if i.first %}
+
 derive instance generic{{ t.value.dataName }} :: Generic {{ t.value.dataName }}
+{% endif %}
+{% case i.value %}
+{% when "Show" %}
 instance show{{ t.value.dataName }} :: Show {{ t.value.dataName }} where show = gShow
+{% when "Eq" %}
 instance eq{{ t.value.dataName }}   :: Eq {{ t.value.dataName }}   where eq = gEq
-{% endif %}{% endlet %}{% endfor %}
+{% else %}
+-- FIXME: {{ i.value }} instance is not supported!
+{% endcase %}
+{% endfor %}
+{% endlet %}
+{% endfor %}
 
 {# JSON Encode and Decode #}
 {% for t in definitions %}

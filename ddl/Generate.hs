@@ -21,8 +21,10 @@ import Language
 instance Unquote [Field]
 instance Unquote [Char]
 instance Quote [Char]
+instance Quote [Instance]
 instance Unquote DataDef
 instance Unquote Type
+instance Unquote [(Target,Instance)]
 
 main :: IO ()
 main = do
@@ -60,6 +62,8 @@ main = do
                 , "javaType"        @: javaType aliasMap
                 , "swiftType"       @: swiftType aliasMap
                 , "hasEnumConstructor" @: hasEnumConstructor
+                , "psInstances"     @: filterInstances PureScript
+                , "hsInstances"     @: filterInstances Haskell
                 ]
 
             toPath a = flip map a $ \case

@@ -26,7 +26,7 @@ data DataDef
   = DataDef
   { dataName      :: String
   , constructors  :: [ConstructorDef]
-  , instances     :: [Instance]
+  , instances     :: [(Target,Instance)]
   }
   | TypeAlias
   { aliasName     :: String
@@ -59,7 +59,7 @@ data Target
   | PureScript
   | Cpp
   | CSharp
-  deriving (Show,Generic)
+  deriving (Show,Eq,Generic)
 
 data Type
   = Int
@@ -80,6 +80,9 @@ data Type
   -- user defined
   | Data { name_ :: String }
   deriving (Show,Generic,Eq,Ord)
+
+filterInstances :: Target -> [(Target,Instance)] -> [Instance]
+filterInstances target l = [inst | (t,inst) <- l, t == target]
 
 hasEnumConstructor :: DataDef -> Bool
 hasEnumConstructor DataDef{..} = or [null fields | ConstructorDef{..} <- constructors]
@@ -359,16 +362,18 @@ instance ToJSON DataDef
 instance ToJSON Instance
 instance ToJSON Field
 instance ToJSON Type
+instance ToJSON Target
 
 instance FromJSON ConstructorDef
 instance FromJSON DataDef
 instance FromJSON Instance
 instance FromJSON Field
 instance FromJSON Type
+instance FromJSON Target
 
 type MDef = Writer [ModuleDef]
 type DDef = Writer ([DataDef],[String])
-type CDef = Writer ([ConstructorDef],[Instance])
+type CDef = Writer ([ConstructorDef],[(Target,Instance)])
 
 module_ :: String -> DDef () -> MDef ()
 module_ n m = tell [let (d,i) = execWriter m in ModuleDef n i d]
@@ -394,7 +399,7 @@ instance IsField Type where
   toField a = Field "" a
 
 deriving_ :: [Target] -> [Instance] -> CDef ()
-deriving_ t l = tell (mempty,l)
+deriving_ targets instances = tell (mempty,[(t,i) | i <- instances, t <- targets])
 
 const_ :: String -> [Type] -> CDef ()
 const_ n t = tell ([ConstructorDef n [Field a b | Field a b <- map toField t]],mempty)
