@@ -513,6 +513,7 @@ pipelineSchema = do
     enum_ "Attribute_M42F"
     enum_ "Attribute_M43F"
     enum_ "Attribute_M44F"
+    deriving_ [PureScript] [Show,Eq]
 
   data_ "ObjectArraySchema" $ do
     constR_ "ObjectArraySchema"
