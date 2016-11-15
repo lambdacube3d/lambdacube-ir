@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-11-14T21:30:03.236917000000Z
+-- 2016-11-15T20:33:23.597363000000Z
 
 module TestData where
 import Prelude
@@ -74,7 +74,6 @@ data FrameResult
 data RenderJobResult
   = RenderJobResult FrameResult
   | RenderJobError String
-
 
 
 instance encodeJsonClientInfo :: EncodeJson ClientInfo where

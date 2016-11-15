@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-11-14T21:30:03.153267000000Z
+-- 2016-11-15T20:33:23.520088000000Z
 
 module LambdaCube.TypeInfo where
 import Prelude
@@ -53,7 +53,6 @@ data ErrorInfo
 data CompileResult
   = CompileError String (Array TypeInfo) (Array WarningInfo) (Array ErrorInfo)
   | Compiled String String Pipeline (Array TypeInfo) (Array WarningInfo)
-
 
 
 instance encodeJsonRange :: EncodeJson Range where

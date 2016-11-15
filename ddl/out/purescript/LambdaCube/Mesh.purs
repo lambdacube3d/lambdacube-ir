@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-11-14T21:30:03.056917000000Z
+-- 2016-11-15T20:33:23.430512000000Z
 
 module LambdaCube.Mesh where
 import Prelude
@@ -42,7 +42,6 @@ data Mesh
   { mAttributes :: StrMap MeshAttribute
   , mPrimitive :: MeshPrimitive
   }
-
 
 
 

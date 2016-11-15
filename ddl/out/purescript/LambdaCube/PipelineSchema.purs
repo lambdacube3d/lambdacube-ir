@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-11-15T13:20:49.544037000000Z
+-- 2016-11-15T20:33:23.372931000000Z
 
 module LambdaCube.PipelineSchema where
 import Prelude
@@ -61,7 +61,6 @@ data PipelineSchema
 derive instance genericStreamType :: Generic StreamType
 instance showStreamType :: Show StreamType where show = gShow
 instance eqStreamType   :: Eq StreamType   where eq = gEq
-
 
 instance encodeJsonStreamType :: EncodeJson StreamType where
   encodeJson v = case v of
