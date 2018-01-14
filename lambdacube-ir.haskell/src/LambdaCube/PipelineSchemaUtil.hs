@@ -1,4 +1,4 @@
-{-# LANGUAGE FlexibleContexts, TypeSynonymInstances, FlexibleInstances #-}
+{-# LANGUAGE CPP, FlexibleContexts, TypeSynonymInstances, FlexibleInstances #-}
 module LambdaCube.PipelineSchemaUtil where
 
 import Control.Monad.Writer
@@ -16,5 +16,11 @@ unionObjectArraySchema (ObjectArraySchema a1 b1) (ObjectArraySchema a2 b2) =
 
 instance Monoid PipelineSchema where
   mempty = PipelineSchema mempty mempty
+#if !MIN_VERSION_base(4,11,0)
   mappend (PipelineSchema a1 b1) (PipelineSchema a2 b2) =
     PipelineSchema (Map.unionWith unionObjectArraySchema a1 a2) (Map.unionWith (\a b -> if a == b then a else error $ "schema type mismatch " ++ show (a,b)) b1 b2)
+#else
+instance Semigroup PipelineSchema where
+  (<>)    (PipelineSchema a1 b1) (PipelineSchema a2 b2) =
+    PipelineSchema (Map.unionWith unionObjectArraySchema a1 a2) (Map.unionWith (\a b -> if a == b then a else error $ "schema type mismatch " ++ show (a,b)) b1 b2)
+#endif
