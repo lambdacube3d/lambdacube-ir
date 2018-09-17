@@ -489,6 +489,7 @@ data Pipeline
   , textures :: Vector TextureDescriptor
   , samplers :: Vector SamplerDescriptor
   , targets :: Vector RenderTarget
+  , finalTargets :: Vector RenderTarget
   , programs :: Vector Program
   , slots :: Vector Slot
   , streams :: Vector StreamData
