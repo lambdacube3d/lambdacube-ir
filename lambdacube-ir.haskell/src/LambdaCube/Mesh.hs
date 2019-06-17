@@ -1,1 +1,0 @@
-../../../ddl/out/haskell/LambdaCube/Mesh.hs

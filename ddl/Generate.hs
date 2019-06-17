@@ -104,3 +104,8 @@ main = do
         -- Swift
         either error (\x -> writeFileIfDiffer ("out/swift/" ++ name ++ ".swift") $ LText.unpack x) $ dataSwift >>= (\t -> eitherRenderWith mylib t env)
   mapM_ generate $ execWriter modules
+
+  -- install files
+  copyFile "out/haskell/LambdaCube/IR.hs"               "../lambdacube-ir.haskell/src-generated/LambdaCube/IR.hs"
+  copyFile "out/haskell/LambdaCube/Mesh.hs"             "../lambdacube-ir.haskell/src-generated/LambdaCube/Mesh.hs"
+  copyFile "out/haskell/LambdaCube/PipelineSchema.hs"   "../lambdacube-ir.haskell/src-generated/LambdaCube/PipelineSchema.hs"

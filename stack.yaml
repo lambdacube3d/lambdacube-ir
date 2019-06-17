@@ -1,6 +1,4 @@
 resolver: lts-10.4
 packages:
 - lambdacube-ir.haskell
-extra-deps: []
-flags: {}
-extra-package-dbs: []
+- ddl
