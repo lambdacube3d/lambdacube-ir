@@ -3,6 +3,8 @@
 
 package {{ moduleName }};
 
+import RT.*;
+
 {% for m in imports %}
 import {{ m.value }};
 {% endfor %}

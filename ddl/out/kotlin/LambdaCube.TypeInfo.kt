@@ -1,7 +1,9 @@
 // generated file, do not modify!
-// 2020-05-18T22:30:51.129384Z
+// 2020-05-18T22:52:34.350061Z
 
 package LambdaCube.TypeInfo;
+
+import RT.*;
 
 import LambdaCube.IR;
 
