@@ -268,6 +268,48 @@ javaType aliasMap a = case normalize aliasMap a of
   Maybe t       -> "Maybe<" ++ parens (javaType aliasMap t) ++ ">"
   x -> error $ "javaType: " ++ show x
 
+ktType :: AliasMap -> Type -> String
+ktType aliasMap = \case
+  Int     -> "Long"
+  Int32   -> "Int"
+  Word    -> "Long"
+  Word32  -> "Int"
+  Float   -> "Float"
+  Bool    -> "Bool"
+  String  -> "String"
+
+  V2 Int        -> "V2I"
+  V2 Word       -> "V2U"
+  V2 Float      -> "V2F"
+  V2 Bool       -> "V2B"
+  V2 (V2 Float) -> "M22F"
+  V2 (V3 Float) -> "M32F"
+  V2 (V4 Float) -> "M42F"
+
+  V3 Int        -> "V3I"
+  V3 Word       -> "V3U"
+  V3 Float      -> "V3F"
+  V3 Bool       -> "V3B"
+  V3 (V2 Float) -> "M23F"
+  V3 (V3 Float) -> "M33F"
+  V3 (V4 Float) -> "M43F"
+
+  V4 Int        -> "V4I"
+  V4 Word       -> "V4U"
+  V4 Float      -> "V4F"
+  V4 Bool       -> "V4B"
+  V4 (V2 Float) -> "M24F"
+  V4 (V3 Float) -> "M34F"
+  V4 (V4 Float) -> "M44F"
+
+  Array t       -> "Array<" ++ parens (ktType aliasMap t) ++ ">"
+  List t        -> "List<" ++ ktType aliasMap t ++ ">"
+  Maybe t       -> parens (ktType aliasMap t) ++ "?"
+  Map k v       -> "Map<" ++ parens (ktType aliasMap k) ++ ", " ++ parens (hsType aliasMap v) ++ ">"
+  -- user defined
+  Data t        -> t
+  x -> error $ "unknown type: " ++ show x
+
 typeEnum :: AliasMap -> Type -> String
 typeEnum aliasMap a = case normalize aliasMap a of
   Data t        -> t
@@ -353,6 +395,11 @@ cppType aliasMap = \case
 hasFieldNames :: [Field] -> Bool
 hasFieldNames [] = False
 hasFieldNames l = all (not . null . fieldName) l
+
+nonSingular :: [ConstructorDef] -> Bool
+nonSingular [] = False
+nonSingular (_:[]) = False
+nonSingular (_:_:_) = True
 
 constType :: DataDef -> String
 constType = head . words . show

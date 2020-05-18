@@ -19,6 +19,7 @@ import Definitions
 import Language
 
 instance Unquote [Field]
+instance Unquote [ConstructorDef]
 instance Unquote [Char]
 instance Quote [Char]
 instance Quote [Instance]
@@ -31,6 +32,7 @@ main = do
   dataSwift <- eitherParseFile "templates/data.swift.ede"
   dataJava <- eitherParseFile "templates/data.java.ede"
   jsonJava <- eitherParseFile "templates/json.java.ede"
+  dataKt <- eitherParseFile "templates/data.kt.ede"
   dataHpp <- eitherParseFile "templates/data.hpp.ede"
   dataHpp2 <- eitherParseFile "templates/data.hpp2.ede"
   dataCpp <- eitherParseFile "templates/data.cpp.ede"
@@ -52,6 +54,7 @@ main = do
             mylib :: HashMap Text Term
             mylib = HashMap.fromList
                 [ "hasFieldNames"   @: hasFieldNames
+                , "nonSingular"     @: nonSingular
                 , "parens"          @: parens
                 , "constType"       @: constType
                 , "hsType"          @: hsType aliasMap
@@ -60,6 +63,7 @@ main = do
                 , "csType"          @: csType name aliasMap
                 , "typeEnum"        @: typeEnum aliasMap
                 , "javaType"        @: javaType aliasMap
+                , "ktType"          @: ktType aliasMap
                 , "swiftType"       @: swiftType aliasMap
                 , "hasEnumConstructor" @: hasEnumConstructor
                 , "psInstances"     @: filterInstances PureScript
@@ -99,6 +103,8 @@ main = do
               fname = "out/java/" ++ toPath name ++ "/" ++ dataName d ++ ".java"
           either error (\x -> writeFileIfDiffer fname $ LText.unpack x) $ dataJava >>= (\t -> eitherRenderWith mylib t env)
         either error (\x -> writeFileIfDiffer ("out/java/" ++ toPath name ++ "/JSON.java") $ LText.unpack x) $ jsonJava >>= (\t -> eitherRenderWith mylib t env)
+        -- Kotlin
+        either error (\x -> writeFileIfDiffer ("out/kotlin/" ++ name ++ ".kt") $ LText.unpack x) $ dataKt >>= (\t -> eitherRenderWith mylib t env)
         -- C#
         either error (\x -> writeFileIfDiffer ("out/csharp/" ++ name ++ ".cs") $ LText.unpack x) $ dataCs >>= (\t -> eitherRenderWith mylib t env)
         -- Swift
