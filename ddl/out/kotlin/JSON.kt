@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2020-05-21T20:27:28.444912Z
+// 2020-05-21T23:35:27.114328Z
 
 package TestData
 
@@ -43,52 +43,52 @@ object JSON {
   @Throws(JSONException::class, Exception::class)
   fun fromJSON(Type type, Object rawObj): Object {
     when (type) {
-      is Int -> return (rawObj as Number).intValue()
-      is Float -> return (rawObj as Number).floatValue()
-      is String -> return rawObj as String
-      is Array_Int -> {
+      Type.Int -> return (rawObj as Number).intValue()
+      Type.Float -> return (rawObj as Number).floatValue()
+      Type.String -> return rawObj as String
+      Type.Array_Int -> {
         val obj = rawObj as JSONArray
         return Array<Int>(obj.length()) { ind: Int ->
           fromJSON(Type.Int, obj.get(ind)) as Int
         }
       }
-      is Array_Float -> {
+      Type.Array_Float -> {
         val obj = rawObj as JSONArray
         return Array<Float>(obj.length()) { ind: Int ->
           fromJSON(Type.Float, obj.get(ind)) as Float
         }
       }
-      is Array_String -> {
+      Type.Array_String -> {
         val obj = rawObj as JSONArray
         return Array<String>(obj.length()) { ind: Int ->
           fromJSON(Type.String, obj.get(ind)) as String
         }
       }
-      is Array_Frame -> {
+      Type.Array_Frame -> {
         val obj = rawObj as JSONArray
         return Array<Frame>(obj.length()) { ind: Int ->
           fromJSON(Type.Frame, obj.get(ind)) as Frame
         }
       }
-      is Array_Mesh -> {
+      Type.Array_Mesh -> {
         val obj = rawObj as JSONArray
         return Array<Mesh>(obj.length()) { ind: Int ->
           fromJSON(Type.Mesh, obj.get(ind)) as Mesh
         }
       }
-      is Array_PipelineInfo -> {
+      Type.Array_PipelineInfo -> {
         val obj = rawObj as JSONArray
         return Array<PipelineInfo>(obj.length()) { ind: Int ->
           fromJSON(Type.PipelineInfo, obj.get(ind)) as PipelineInfo
         }
       }
-      is Array_Scene -> {
+      Type.Array_Scene -> {
         val obj = rawObj as JSONArray
         return Array<Scene>(obj.length()) { ind: Int ->
           fromJSON(Type.Scene, obj.get(ind)) as Scene
         }
       }
-      is Map_String_Int -> {
+      Type.Map_String_Int -> {
         val obj = rawObj as JSONObject
         Map<String, Int> map = Map<String, Int>()
         val keyIt = obj.keys()
@@ -98,7 +98,7 @@ object JSON {
         }
         return map
       }
-      is Map_String_Array_Int -> {
+      Type.Map_String_Array_Int -> {
         val obj = rawObj as JSONObject
         Map<String, (Vector Int)> map = Map<String, (Vector Int)>()
         val keyIt = obj.keys()
@@ -108,7 +108,7 @@ object JSON {
         }
         return map
       }
-      is Map_String_Value -> {
+      Type.Map_String_Value -> {
         val obj = rawObj as JSONObject
         Map<String, Value> map = Map<String, Value>()
         val keyIt = obj.keys()
@@ -119,11 +119,11 @@ object JSON {
         return map
       }
 
-      is ClientInfo -> {
+      Type.ClientInfo -> {
         val obj = rawObj as JSONObject
         val tag = obj.getString("tag")
         when (tag) {
-          is "ClientInfo" -> {
+          "ClientInfo" -> {
             return             ClientInfo(
               clientName = fromJSON(Type.String, obj.get("clientName")) as String,
               clientBackend = fromJSON(Type.Backend, obj.get("clientBackend")) as Backend,
@@ -131,11 +131,11 @@ object JSON {
           }
         }
       }
-      is Frame -> {
+      Type.Frame -> {
         val obj = rawObj as JSONObject
         val tag = obj.getString("tag")
         when (tag) {
-          is "Frame" -> {
+          "Frame" -> {
             return             Frame(
               renderCount = fromJSON(Type.Int, obj.get("renderCount")) as Int,
               frameUniforms = fromJSON(Type.Map_String_Value, obj.get("frameUniforms")) as Map<String, Value>,
@@ -144,11 +144,11 @@ object JSON {
           }
         }
       }
-      is Scene -> {
+      Type.Scene -> {
         val obj = rawObj as JSONObject
         val tag = obj.getString("tag")
         when (tag) {
-          is "Scene" -> {
+          "Scene" -> {
             return             Scene(
               objectArrays = fromJSON(Type.Map_String_Array_Int, obj.get("objectArrays")) as Map<String, (Vector Int)>,
               renderTargetWidth = fromJSON(Type.Int, obj.get("renderTargetWidth")) as Int,
@@ -158,11 +158,11 @@ object JSON {
           }
         }
       }
-      is PipelineInfo -> {
+      Type.PipelineInfo -> {
         val obj = rawObj as JSONObject
         val tag = obj.getString("tag")
         when (tag) {
-          is "PipelineInfo" -> {
+          "PipelineInfo" -> {
             return             PipelineInfo(
               pipelineName = fromJSON(Type.String, obj.get("pipelineName")) as String,
               pipeline = fromJSON(Type.Pipeline, obj.get("pipeline")) as Pipeline,
@@ -170,11 +170,11 @@ object JSON {
           }
         }
       }
-      is RenderJob -> {
+      Type.RenderJob -> {
         val obj = rawObj as JSONObject
         val tag = obj.getString("tag")
         when (tag) {
-          is "RenderJob" -> {
+          "RenderJob" -> {
             return             RenderJob(
               meshes = fromJSON(Type.Array_Mesh, obj.get("meshes")) as Array<Mesh>,
               textures = fromJSON(Type.Array_String, obj.get("textures")) as Array<String>,
@@ -185,11 +185,11 @@ object JSON {
           }
         }
       }
-      is FrameResult -> {
+      Type.FrameResult -> {
         val obj = rawObj as JSONObject
         val tag = obj.getString("tag")
         when (tag) {
-          is "FrameResult" -> {
+          "FrameResult" -> {
             return             FrameResult(
               frRenderTimes = fromJSON(Type.Array_Float, obj.get("frRenderTimes")) as Array<Float>,
               frImageWidth = fromJSON(Type.Int, obj.get("frImageWidth")) as Int,
@@ -198,19 +198,91 @@ object JSON {
           }
         }
       }
-      is RenderJobResult -> {
+      Type.RenderJobResult -> {
         val obj = rawObj as JSONObject
         val tag = obj.getString("tag")
         when (tag) {
-          is "RenderJobResult" -> {
+          "RenderJobResult" -> {
             return             _RenderJobResult(
               _0 = fromJSON(Type.FrameResult, obj.get("arg0")) as FrameResult,
             )
           }
-          is "RenderJobError" -> {
+          "RenderJobError" -> {
             return             _RenderJobError(
               _0 = fromJSON(Type.String, obj.get("arg0")) as String,
             )
+          }
+        }
+      }
+    }
+  }
+
+  @Throws(JSONException::class, Exception::class)
+  fn toJSON(Type type, Object rawObj): Object {
+    when (type) {
+      Type.ClientInfo -> {
+        val v = rawObj as ClientInfo
+	val obj = JSONObject()
+	when (v) {
+          is ClientInfo -> {
+            obj.put("tag", "ClientInfo")
+          }
+        }
+      }
+      Type.Frame -> {
+        val v = rawObj as Frame
+	val obj = JSONObject()
+	when (v) {
+          is Frame -> {
+            obj.put("tag", "Frame")
+          }
+        }
+      }
+      Type.Scene -> {
+        val v = rawObj as Scene
+	val obj = JSONObject()
+	when (v) {
+          is Scene -> {
+            obj.put("tag", "Scene")
+          }
+        }
+      }
+      Type.PipelineInfo -> {
+        val v = rawObj as PipelineInfo
+	val obj = JSONObject()
+	when (v) {
+          is PipelineInfo -> {
+            obj.put("tag", "PipelineInfo")
+          }
+        }
+      }
+      Type.RenderJob -> {
+        val v = rawObj as RenderJob
+	val obj = JSONObject()
+	when (v) {
+          is RenderJob -> {
+            obj.put("tag", "RenderJob")
+          }
+        }
+      }
+      Type.FrameResult -> {
+        val v = rawObj as FrameResult
+	val obj = JSONObject()
+	when (v) {
+          is FrameResult -> {
+            obj.put("tag", "FrameResult")
+          }
+        }
+      }
+      Type.RenderJobResult -> {
+        val v = rawObj as RenderJobResult
+	val obj = JSONObject()
+	when (v) {
+          is RenderJobResult -> {
+            obj.put("tag", "RenderJobResult")
+          }
+          is RenderJobError -> {
+            obj.put("tag", "RenderJobError")
           }
         }
       }

@@ -23,7 +23,7 @@ object JSON {
       {% case t.value.tag %}
       {% when "Data" %}
       {% when "V2" %}
-      is {{ t.value | typeEnum }} -> {
+      Type.{{ t.value | typeEnum }} -> {
         val obj = rawObj as JSONObject
         return {{ t.value | ktType }}(
           fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("x")) as {{ t.value.type_ | ktType }},
@@ -31,7 +31,7 @@ object JSON {
         )
       }
       {% when "V3" %}
-      is {{ t.value | typeEnum }} -> {
+      Type.{{ t.value | typeEnum }} -> {
         val obj = rawObj as JSONObject
         return {{ t.value | ktType }}(
           fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("x")) as {{ t.value.type_ | ktType }},
@@ -40,7 +40,7 @@ object JSON {
         )
       }
       {% when "V4" %}
-      is {{ t.value | typeEnum }} -> {
+      Type.{{ t.value | typeEnum }} -> {
         val obj = rawObj as JSONObject
         return {{ t.value | ktType }}(
           fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("x")) as {{ t.value.type_ | ktType }},
@@ -50,7 +50,7 @@ object JSON {
         )
       }
       {% when "Map" %}
-      is {{ t.value | typeEnum }} -> {
+      Type.{{ t.value | typeEnum }} -> {
         val obj = rawObj as JSONObject
         {{ t.value | ktType }} map = {{ t.value | ktType }}()
         val keyIt = obj.keys()
@@ -61,21 +61,21 @@ object JSON {
         return map
       }
       {% when "Array" %}
-      is {{ t.value | typeEnum }} -> {
+      Type.{{ t.value | typeEnum }} -> {
         val obj = rawObj as JSONArray
         return {{ t.value | ktType }}(obj.length()) { ind: Int ->
           fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get(ind)) as {{ t.value.type_ | ktType }}
         }
       }
       {% when "List" %}
-      is {{ t.value | typeEnum }} -> {
+      Type.{{ t.value | typeEnum }} -> {
         val obj = rawObj as JSONArray
         return {{ t.value | ktType }}(obj.length()) { ind: Int ->
           fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get(ind)) as {{ t.value.type_ | ktType }}
         }
       }
       {% when "Maybe" %}
-      is {{ t.value | typeEnum }} -> {
+      Type.{{ t.value | typeEnum }} -> {
         return if(rawObj == null || rawObj = JSONObject.NULL) {
           null
         } else {
@@ -83,27 +83,27 @@ object JSON {
         }
       }
       {% when "Int" %}
-      is {{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
+      Type.{{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
       {% when "Int32" %}
-      is {{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
+      Type.{{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
       {% when "Word" %}
-      is {{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
+      Type.{{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
       {% when "Word32" %}
-      is {{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
+      Type.{{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
       {% when "Float" %}
-      is {{ t.value | typeEnum }} -> return (rawObj as Number).floatValue()
+      Type.{{ t.value | typeEnum }} -> return (rawObj as Number).floatValue()
       {% else %}
-      is {{ t.value | typeEnum }} -> return rawObj as {{ t.value | ktType }}
+      Type.{{ t.value | typeEnum }} -> return rawObj as {{ t.value | ktType }}
       {% endcase %}
       {% endfor %}
 
       {% for t in definitions %}
-      is {{ t.value.dataName }} -> {
+      Type.{{ t.value.dataName }} -> {
         val obj = rawObj as JSONObject
         val tag = obj.getString("tag")
         when (tag) {
         {% for c in t.value.constructors %}
-          is "{{ c.value.name }}" -> {
+          "{{ c.value.name }}" -> {
             return {% if c.value.fields | empty %}
             {% if t.value.constructors | nonSingular %}_{% endif %}{{c.value.name}}
             {% else %}
@@ -117,6 +117,25 @@ object JSON {
         }
       }
       {% endfor %}
+    }
+  }
+
+  @Throws(JSONException::class, Exception::class)
+  fn toJSON(Type type, Object rawObj): Object {
+    when (type) {
+    {% for t in definitions %}
+      Type.{{ t.value.dataName }} -> {
+        val v = rawObj as {{ t.value.dataName }}
+	val obj = JSONObject()
+	when (v) {
+	{% for c in t.value.constructors %}
+          is {{ c.value.name }} -> {
+            obj.put("tag", "{{ c.value.name }}")
+          }
+	{% endfor %}
+        }
+      }
+    {% endfor %}
     }
   }
 
