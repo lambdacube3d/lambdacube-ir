@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2020-05-21T18:52:11.102922Z
+// 2020-05-21T20:25:27.786125Z
 
 package LambdaCube.TypeInfo
 
@@ -30,13 +30,13 @@ data class ErrorInfo(
 )
 
 sealed class CompileResult()
-data class CompileError(
+data class _CompileError(
   val _0 : String,
   val _1 : Array<TypeInfo>,
   val _2 : Array<WarningInfo>,
   val _3 : Array<ErrorInfo>,
 ) : CompileResult()
-data class Compiled(
+data class _Compiled(
   val _0 : String,
   val _1 : String,
   val _2 : Pipeline,

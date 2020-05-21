@@ -17,9 +17,9 @@ sealed class {{ t.value.dataName }}()
 {% endif %}
 {% for c in t.value.constructors %}
 {% if c.value.fields | empty %}
-object {{ c.value.name }}{% if t.value.constructors | nonSingular %} : {{ t.value.dataName }}(){% endif %}
+object {% if t.value.constructors | nonSingular %}_{% endif %}{{ c.value.name }}{% if t.value.constructors | nonSingular %} : {{ t.value.dataName }}(){% endif %}
 {% else %}
-data class {{ c.value.name }}({% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
+data class {% if t.value.constructors | nonSingular %}_{% endif %}{{ c.value.name }}({% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
   val {{ f.value.fieldName }} : {{ f.value.fieldType | ktType }},{% else %}
   val _{{ f.index0 }} : {{ f.value.fieldType | ktType }},{% endif %}{% endfor %}
 ){% if t.value.constructors | nonSingular %} : {{ t.value.dataName }}(){% endif %}

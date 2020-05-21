@@ -105,9 +105,9 @@ object JSON {
         {% for c in t.value.constructors %}
           is "{{ c.value.name }}" -> {
             return {% if c.value.fields | empty %}
-            {{c.value.name}}
+            {% if t.value.constructors | nonSingular %}_{% endif %}{{c.value.name}}
             {% else %}
-            {{c.value.name}}({% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
+            {% if t.value.constructors | nonSingular %}_{% endif %}{{c.value.name}}({% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
               {{ f.value.fieldName }} = fromJSON(Type.{{ f.value.fieldType | typeEnum }}, obj.get("{{ f.value.fieldName }}")) as {{ f.value.fieldType | ktType }}{% else %}
               _{{ f.index0 }} = fromJSON(Type.{{ f.value.fieldType | typeEnum }}, obj.get("arg{{ f.index0 }}")) as {{ f.value.fieldType | ktType }}{% endif %},{% endfor %}
             )

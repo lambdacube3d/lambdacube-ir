@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2020-05-21T19:10:15.739651Z
+// 2020-05-21T20:27:28.444912Z
 
 package TestData
 
@@ -203,12 +203,12 @@ object JSON {
         val tag = obj.getString("tag")
         when (tag) {
           is "RenderJobResult" -> {
-            return             RenderJobResult(
+            return             _RenderJobResult(
               _0 = fromJSON(Type.FrameResult, obj.get("arg0")) as FrameResult,
             )
           }
           is "RenderJobError" -> {
-            return             RenderJobError(
+            return             _RenderJobError(
               _0 = fromJSON(Type.String, obj.get("arg0")) as String,
             )
           }

@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2020-05-21T18:52:11.118474Z
+// 2020-05-21T20:25:27.802172Z
 
 package TestData
 
@@ -47,10 +47,10 @@ data class FrameResult(
 )
 
 sealed class RenderJobResult()
-data class RenderJobResult(
+data class _RenderJobResult(
   val _0 : FrameResult,
 ) : RenderJobResult()
-data class RenderJobError(
+data class _RenderJobError(
   val _0 : String,
 ) : RenderJobResult()
 
