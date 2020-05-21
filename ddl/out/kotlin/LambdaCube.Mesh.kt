@@ -1,9 +1,9 @@
 // generated file, do not modify!
-// 2020-05-18T22:52:34.32849Z
+// 2020-05-21T18:29:16.473984Z
 
-package LambdaCube.Mesh;
+package LambdaCube.Mesh
 
-import RT.*;
+import RT.*
 
 
 sealed class MeshAttribute()

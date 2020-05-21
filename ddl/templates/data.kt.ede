@@ -1,12 +1,12 @@
 // generated file, do not modify!
 // {{ dateTime }}
 
-package {{ moduleName }};
+package {{ moduleName }}
 
-import RT.*;
+import RT.*
 
 {% for m in imports %}
-import {{ m.value }}.*;
+import {{ m.value }}.*
 {% endfor %}
 
 {% for t in dataAndType %}

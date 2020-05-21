@@ -1,17 +1,17 @@
 // generated file, do not modify!
-// 2020-05-18T22:52:34.350061Z
+// 2020-05-21T18:52:11.102922Z
 
-package LambdaCube.TypeInfo;
+package LambdaCube.TypeInfo
 
-import RT.*;
+import RT.*
 
-import LambdaCube.IR;
+import LambdaCube.IR.*
 
 data class Range(
-  val startLine : Long,
-  val startColumn : Long,
-  val endLine : Long,
-  val endColumn : Long,
+  val startLine : Int,
+  val startColumn : Int,
+  val endLine : Int,
+  val endColumn : Int,
 )
 
 data class TypeInfo(

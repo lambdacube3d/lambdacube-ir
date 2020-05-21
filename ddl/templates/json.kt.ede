@@ -1,0 +1,123 @@
+// generated file, do not modify!
+// {{ dateTime }}
+
+package {{ moduleName }}
+
+import org.json.*
+import RT.*
+
+{% for m in imports %}
+import {{ m.value }}.*
+{% endfor %}
+
+object JSON {
+
+  enum class Type { {% for t in usedTypes %}
+    {{ t.value | typeEnum }},{% endfor %}
+  }
+
+  @Throws(JSONException::class, Exception::class)
+  fun fromJSON(Type type, Object rawObj): Object {
+    when (type) {
+      {% for t in usedTypes %}
+      {% case t.value.tag %}
+      {% when "Data" %}
+      {% when "V2" %}
+      is {{ t.value | typeEnum }} -> {
+        val obj = rawObj as JSONObject
+        return {{ t.value | ktType }}(
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("x")) as {{ t.value.type_ | ktType }},
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("y")) as {{ t.value.type_ | ktType }}
+        )
+      }
+      {% when "V3" %}
+      is {{ t.value | typeEnum }} -> {
+        val obj = rawObj as JSONObject
+        return {{ t.value | ktType }}(
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("x")) as {{ t.value.type_ | ktType }},
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("y")) as {{ t.value.type_ | ktType }},
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("z")) as {{ t.value.type_ | ktType }}
+        )
+      }
+      {% when "V4" %}
+      is {{ t.value | typeEnum }} -> {
+        val obj = rawObj as JSONObject
+        return {{ t.value | ktType }}(
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("x")) as {{ t.value.type_ | ktType }},
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("y")) as {{ t.value.type_ | ktType }},
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("z")) as {{ t.value.type_ | ktType }},
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get("w")) as {{ t.value.type_ | ktType }}
+        )
+      }
+      {% when "Map" %}
+      is {{ t.value | typeEnum }} -> {
+        val obj = rawObj as JSONObject
+        {{ t.value | ktType }} map = {{ t.value | ktType }}()
+        val keyIt = obj.keys()
+        while(keyIt.hasNext()) {
+          String key = keyIt.next()
+          map.put(key, fromJSON(Type.{{ t.value.value_ | typeEnum }}, obj.get(key)) as {{ t.value.value_ | ktType }})
+        }
+        return map
+      }
+      {% when "Array" %}
+      is {{ t.value | typeEnum }} -> {
+        val obj = rawObj as JSONArray
+        return {{ t.value | ktType }}(obj.length()) { ind: Int ->
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get(ind)) as {{ t.value.type_ | ktType }}
+        }
+      }
+      {% when "List" %}
+      is {{ t.value | typeEnum }} -> {
+        val obj = rawObj as JSONArray
+        return {{ t.value | ktType }}(obj.length()) { ind: Int ->
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, obj.get(ind)) as {{ t.value.type_ | ktType }}
+        }
+      }
+      {% when "Maybe" %}
+      is {{ t.value | typeEnum }} -> {
+        return if(rawObj == null || rawObj = JSONObject.NULL) {
+          null
+        } else {
+          fromJSON(Type.{{ t.value.type_ | typeEnum }}, rawObj as JSONObject) as {{ t.value.type_ | ktType }}
+        }
+      }
+      {% when "Int" %}
+      is {{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
+      {% when "Int32" %}
+      is {{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
+      {% when "Word" %}
+      is {{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
+      {% when "Word32" %}
+      is {{ t.value | typeEnum }} -> return (rawObj as Number).intValue()
+      {% when "Float" %}
+      is {{ t.value | typeEnum }} -> return (rawObj as Number).floatValue()
+      {% else %}
+      is {{ t.value | typeEnum }} -> return rawObj as {{ t.value | ktType }}
+      {% endcase %}
+      {% endfor %}
+
+      {% for t in definitions %}
+      is {{ t.value.dataName }} -> {
+        val obj = rawObj as JSONObject
+        val tag = obj.getString("tag")
+        when (tag) {
+        {% for c in t.value.constructors %}
+          is "{{ c.value.name }}" -> {
+            return {% if c.value.fields | empty %}
+            {{c.value.name}}
+            {% else %}
+            {{c.value.name}}({% for f in c.value.fields %}{% if c.value.fields | hasFieldNames %}
+              {{ f.value.fieldName }} = fromJSON(Type.{{ f.value.fieldType | typeEnum }}, obj.get("{{ f.value.fieldName }}")) as {{ f.value.fieldType | ktType }}{% else %}
+              _{{ f.index0 }} = fromJSON(Type.{{ f.value.fieldType | typeEnum }}, obj.get("arg{{ f.index0 }}")) as {{ f.value.fieldType | ktType }}{% endif %},{% endfor %}
+            )
+            {% endif %}
+          }
+        {% endfor %}
+        }
+      }
+      {% endfor %}
+    }
+  }
+
+}

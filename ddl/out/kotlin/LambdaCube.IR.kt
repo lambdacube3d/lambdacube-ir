@@ -1,28 +1,28 @@
 // generated file, do not modify!
-// 2020-05-18T22:52:34.098621Z
+// 2020-05-21T18:52:10.885834Z
 
-package LambdaCube.IR;
+package LambdaCube.IR
 
-import RT.*;
+import RT.*
 
 
-typealias StreamName = Long
+typealias StreamName = Int
 
-typealias ProgramName = Long
+typealias ProgramName = Int
 
-typealias TextureName = Long
+typealias TextureName = Int
 
-typealias SamplerName = Long
+typealias SamplerName = Int
 
 typealias UniformName = String
 
-typealias SlotName = Long
+typealias SlotName = Int
 
-typealias FrameBufferComponent = Long
+typealias FrameBufferComponent = Int
 
-typealias TextureUnit = Long
+typealias TextureUnit = Int
 
-typealias RenderTargetName = Long
+typealias RenderTargetName = Int
 
 typealias TextureUnitMapping = Map<UniformName, TextureUnit>
 
@@ -388,11 +388,11 @@ object ShadowT : TextureDataType()
 sealed class TextureType()
 data class Texture1D(
   val _0 : TextureDataType,
-  val _1 : Long,
+  val _1 : Int,
 ) : TextureType()
 data class Texture2D(
   val _0 : TextureDataType,
-  val _1 : Long,
+  val _1 : Int,
 ) : TextureType()
 data class Texture3D(
   val _0 : TextureDataType,
@@ -405,8 +405,8 @@ data class TextureRect(
 ) : TextureType()
 data class Texture2DMS(
   val _0 : TextureDataType,
-  val _1 : Long,
-  val _2 : Long,
+  val _1 : Int,
+  val _2 : Int,
   val _3 : Bool,
 ) : TextureType()
 data class TextureBuffer(
@@ -415,13 +415,13 @@ data class TextureBuffer(
 
 sealed class MipMap()
 data class Mip(
-  val _0 : Long,
-  val _1 : Long,
+  val _0 : Int,
+  val _1 : Int,
 ) : MipMap()
 object NoMip : MipMap()
 data class AutoMip(
-  val _0 : Long,
-  val _1 : Long,
+  val _0 : Int,
+  val _1 : Int,
 ) : MipMap()
 
 sealed class Filter()
@@ -446,8 +446,8 @@ object Color : ImageSemantic()
 sealed class ImageRef()
 data class TextureImage(
   val _0 : TextureName,
-  val _1 : Long,
-  val _2 : Long?,
+  val _1 : Int,
+  val _2 : Int?,
 ) : ImageRef()
 data class Framebuffer(
   val _0 : ImageSemantic,
@@ -522,8 +522,8 @@ data class TextureDescriptor(
   val textureSize : Value,
   val textureSemantic : ImageSemantic,
   val textureSampler : SamplerDescriptor,
-  val textureBaseLevel : Long,
-  val textureMaxLevel : Long,
+  val textureBaseLevel : Int,
+  val textureMaxLevel : Int,
 )
 
 data class Parameter(

@@ -33,6 +33,7 @@ main = do
   dataJava <- eitherParseFile "templates/data.java.ede"
   jsonJava <- eitherParseFile "templates/json.java.ede"
   dataKt <- eitherParseFile "templates/data.kt.ede"
+  jsonKt <- eitherParseFile "templates/json.kt.ede"
   dataHpp <- eitherParseFile "templates/data.hpp.ede"
   dataHpp2 <- eitherParseFile "templates/data.hpp2.ede"
   dataCpp <- eitherParseFile "templates/data.cpp.ede"
@@ -105,6 +106,7 @@ main = do
         either error (\x -> writeFileIfDiffer ("out/java/" ++ toPath name ++ "/JSON.java") $ LText.unpack x) $ jsonJava >>= (\t -> eitherRenderWith mylib t env)
         -- Kotlin
         either error (\x -> writeFileIfDiffer ("out/kotlin/" ++ name ++ ".kt") $ LText.unpack x) $ dataKt >>= (\t -> eitherRenderWith mylib t env)
+        either error (\x -> writeFileIfDiffer "out/kotlin/JSON.kt" $ LText.unpack x) $ jsonKt >>= (\t -> eitherRenderWith mylib t env)
         -- C#
         either error (\x -> writeFileIfDiffer ("out/csharp/" ++ name ++ ".cs") $ LText.unpack x) $ dataCs >>= (\t -> eitherRenderWith mylib t env)
         -- Swift

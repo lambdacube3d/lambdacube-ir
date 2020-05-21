@@ -1,11 +1,11 @@
 // generated file, do not modify!
-// 2020-05-18T22:52:34.314708Z
+// 2020-05-21T18:29:16.46264Z
 
-package LambdaCube.PipelineSchema;
+package LambdaCube.PipelineSchema
 
-import RT.*;
+import RT.*
 
-import LambdaCube.IR;
+import LambdaCube.IR.*
 
 sealed class StreamType()
 object Attribute_Word : StreamType()

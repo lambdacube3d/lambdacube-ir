@@ -270,9 +270,9 @@ javaType aliasMap a = case normalize aliasMap a of
 
 ktType :: AliasMap -> Type -> String
 ktType aliasMap = \case
-  Int     -> "Long"
+  Int     -> "Int"
   Int32   -> "Int"
-  Word    -> "Long"
+  Word    -> "Int"
   Word32  -> "Int"
   Float   -> "Float"
   Bool    -> "Bool"

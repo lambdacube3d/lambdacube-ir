@@ -1,13 +1,13 @@
 // generated file, do not modify!
-// 2020-05-18T22:52:34.367596Z
+// 2020-05-21T18:52:11.118474Z
 
-package TestData;
+package TestData
 
-import RT.*;
+import RT.*
 
-import LambdaCube.IR;
-import LambdaCube.Mesh;
-import LambdaCube.PipelineSchema;
+import LambdaCube.IR.*
+import LambdaCube.Mesh.*
+import LambdaCube.PipelineSchema.*
 
 data class ClientInfo(
   val clientName : String,
@@ -15,15 +15,15 @@ data class ClientInfo(
 )
 
 data class Frame(
-  val renderCount : Long,
+  val renderCount : Int,
   val frameUniforms : Map<String, Value>,
   val frameTextures : Map<String, Int>,
 )
 
 data class Scene(
   val objectArrays : Map<String, (Vector Int)>,
-  val renderTargetWidth : Long,
-  val renderTargetHeight : Long,
+  val renderTargetWidth : Int,
+  val renderTargetHeight : Int,
   val frames : Array<Frame>,
 )
 
@@ -42,8 +42,8 @@ data class RenderJob(
 
 data class FrameResult(
   val frRenderTimes : Array<Float>,
-  val frImageWidth : Long,
-  val frImageHeight : Long,
+  val frImageWidth : Int,
+  val frImageHeight : Int,
 )
 
 sealed class RenderJobResult()
