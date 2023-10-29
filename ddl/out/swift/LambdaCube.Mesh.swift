@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-11T11:17:03.517567000000Z
+// 2023-10-27T02:34:24.280572454Z
 
 enum MeshAttribute {
   case A_Float(Array<Float>)
@@ -15,7 +15,11 @@ enum MeshAttribute {
 
 enum MeshPrimitive {
   case P_Points
+  case P_LineStrip
+  case P_LineLoop
+  case P_Lines
   case P_TriangleStrip
+  case P_TriangleFan
   case P_Triangles
   case P_TriangleStripI(Array<Int32>)
   case P_TrianglesI(Array<Int32>)
@@ -112,8 +116,16 @@ extension MeshPrimitive {
     switch self {
       case .P_Points:
         return [ "tag" : "P_Points"]
+      case .P_LineStrip:
+        return [ "tag" : "P_LineStrip"]
+      case .P_LineLoop:
+        return [ "tag" : "P_LineLoop"]
+      case .P_Lines:
+        return [ "tag" : "P_Lines"]
       case .P_TriangleStrip:
         return [ "tag" : "P_TriangleStrip"]
+      case .P_TriangleFan:
+        return [ "tag" : "P_TriangleFan"]
       case .P_Triangles:
         return [ "tag" : "P_Triangles"]
       case .P_TriangleStripI(let arg0):

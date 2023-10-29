@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-11-15T20:33:23.430512000000Z
+-- 2023-10-27T02:34:24.280572454Z
 
 module LambdaCube.Mesh where
 import Prelude
@@ -32,7 +32,11 @@ data MeshAttribute
 
 data MeshPrimitive
   = P_Points
+  | P_LineStrip
+  | P_LineLoop
+  | P_Lines
   | P_TriangleStrip
+  | P_TriangleFan
   | P_Triangles
   | P_TriangleStripI (Array Int32)
   | P_TrianglesI (Array Int32)
@@ -76,7 +80,11 @@ instance decodeJsonMeshAttribute :: DecodeJson MeshAttribute where
 instance encodeJsonMeshPrimitive :: EncodeJson MeshPrimitive where
   encodeJson v = case v of
     P_Points -> "tag" := "P_Points" ~> jsonEmptyObject
+    P_LineStrip -> "tag" := "P_LineStrip" ~> jsonEmptyObject
+    P_LineLoop -> "tag" := "P_LineLoop" ~> jsonEmptyObject
+    P_Lines -> "tag" := "P_Lines" ~> jsonEmptyObject
     P_TriangleStrip -> "tag" := "P_TriangleStrip" ~> jsonEmptyObject
+    P_TriangleFan -> "tag" := "P_TriangleFan" ~> jsonEmptyObject
     P_Triangles -> "tag" := "P_Triangles" ~> jsonEmptyObject
     P_TriangleStripI arg0 -> "tag" := "P_TriangleStripI" ~> "arg0" := arg0 ~> jsonEmptyObject
     P_TrianglesI arg0 -> "tag" := "P_TrianglesI" ~> "arg0" := arg0 ~> jsonEmptyObject
@@ -87,7 +95,11 @@ instance decodeJsonMeshPrimitive :: DecodeJson MeshPrimitive where
     tag <- obj .? "tag"
     case tag of
       "P_Points" -> pure P_Points
+      "P_LineStrip" -> pure P_LineStrip
+      "P_LineLoop" -> pure P_LineLoop
+      "P_Lines" -> pure P_Lines
       "P_TriangleStrip" -> pure P_TriangleStrip
+      "P_TriangleFan" -> pure P_TriangleFan
       "P_Triangles" -> pure P_Triangles
       "P_TriangleStripI" -> P_TriangleStripI <$> obj .? "arg0"
       "P_TrianglesI" -> P_TrianglesI <$> obj .? "arg0"
