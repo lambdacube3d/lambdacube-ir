@@ -448,7 +448,11 @@ mesh = do
 
   data_ "MeshPrimitive" $ do
     enum_  "P_Points"
+    enum_  "P_LineStrip"
+    enum_  "P_LineLoop"
+    enum_  "P_Lines"
     enum_  "P_TriangleStrip"
+    enum_  "P_TriangleFan"
     enum_  "P_Triangles"
     const_ "P_TriangleStripI" [Array Int32]
     const_ "P_TrianglesI"     [Array Int32]
