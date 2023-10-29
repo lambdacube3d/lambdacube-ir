@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-11T11:17:03.517567000000Z
+// 2023-10-27T02:34:24.280572454Z
 
 using System;
 using System.Linq;
@@ -64,7 +64,11 @@ namespace LambdaCube.Mesh {
   public class MeshPrimitive {
       public enum Tag { 
         P_Points,
+        P_LineStrip,
+        P_LineLoop,
+        P_Lines,
         P_TriangleStrip,
+        P_TriangleFan,
         P_Triangles,
         P_TriangleStripI,
         P_TrianglesI
@@ -241,7 +245,11 @@ namespace LambdaCube.Mesh {
           MeshPrimitive.Tag tagType;
           switch (tag) {
             case "P_Points": tagType = MeshPrimitive.Tag.P_Points; break;
+            case "P_LineStrip": tagType = MeshPrimitive.Tag.P_LineStrip; break;
+            case "P_LineLoop": tagType = MeshPrimitive.Tag.P_LineLoop; break;
+            case "P_Lines": tagType = MeshPrimitive.Tag.P_Lines; break;
             case "P_TriangleStrip": tagType = MeshPrimitive.Tag.P_TriangleStrip; break;
+            case "P_TriangleFan": tagType = MeshPrimitive.Tag.P_TriangleFan; break;
             case "P_Triangles": tagType = MeshPrimitive.Tag.P_Triangles; break;
             case "P_TriangleStripI": {
               data.P_TriangleStripI tv = new data.P_TriangleStripI();
@@ -351,8 +359,20 @@ namespace LambdaCube.Mesh {
         case MeshPrimitive.Tag.P_Points:
           obj["tag"] = "P_Points";
           break;
+        case MeshPrimitive.Tag.P_LineStrip:
+          obj["tag"] = "P_LineStrip";
+          break;
+        case MeshPrimitive.Tag.P_LineLoop:
+          obj["tag"] = "P_LineLoop";
+          break;
+        case MeshPrimitive.Tag.P_Lines:
+          obj["tag"] = "P_Lines";
+          break;
         case MeshPrimitive.Tag.P_TriangleStrip:
           obj["tag"] = "P_TriangleStrip";
+          break;
+        case MeshPrimitive.Tag.P_TriangleFan:
+          obj["tag"] = "P_TriangleFan";
           break;
         case MeshPrimitive.Tag.P_Triangles:
           obj["tag"] = "P_Triangles";

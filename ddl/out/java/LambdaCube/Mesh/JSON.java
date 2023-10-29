@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-11T11:17:03.517567000000Z
+// 2023-10-27T02:34:24.280572454Z
 
 package LambdaCube.Mesh;
 
@@ -234,7 +234,11 @@ public class JSON {
         MeshPrimitive.Tag tagType;
         switch (tag) {
           case "P_Points": tagType = MeshPrimitive.Tag.P_Points; break;
+          case "P_LineStrip": tagType = MeshPrimitive.Tag.P_LineStrip; break;
+          case "P_LineLoop": tagType = MeshPrimitive.Tag.P_LineLoop; break;
+          case "P_Lines": tagType = MeshPrimitive.Tag.P_Lines; break;
           case "P_TriangleStrip": tagType = MeshPrimitive.Tag.P_TriangleStrip; break;
+          case "P_TriangleFan": tagType = MeshPrimitive.Tag.P_TriangleFan; break;
           case "P_Triangles": tagType = MeshPrimitive.Tag.P_Triangles; break;
           case "P_TriangleStripI": {
             MeshPrimitive.P_TriangleStripI_ tv = new MeshPrimitive().new P_TriangleStripI_();
@@ -348,8 +352,20 @@ public class JSON {
           case P_Points:
             obj.put("tag", "P_Points");
             break;
+          case P_LineStrip:
+            obj.put("tag", "P_LineStrip");
+            break;
+          case P_LineLoop:
+            obj.put("tag", "P_LineLoop");
+            break;
+          case P_Lines:
+            obj.put("tag", "P_Lines");
+            break;
           case P_TriangleStrip:
             obj.put("tag", "P_TriangleStrip");
+            break;
+          case P_TriangleFan:
+            obj.put("tag", "P_TriangleFan");
             break;
           case P_Triangles:
             obj.put("tag", "P_Triangles");

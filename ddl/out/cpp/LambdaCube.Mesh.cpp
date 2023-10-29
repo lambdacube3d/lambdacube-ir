@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-11T11:17:03.517567000000Z
+// 2023-10-27T02:34:24.280572454Z
 
 #include "LambdaCube.Mesh.hpp"
 template<> json toJSON<std::shared_ptr<MeshAttribute>>(std::shared_ptr<MeshAttribute> &v) {
@@ -141,8 +141,20 @@ template<> json toJSON<std::shared_ptr<MeshPrimitive>>(std::shared_ptr<MeshPrimi
     case ::MeshPrimitive::tag::P_Points:
       obj["tag"] = "P_Points";
       break;
+    case ::MeshPrimitive::tag::P_LineStrip:
+      obj["tag"] = "P_LineStrip";
+      break;
+    case ::MeshPrimitive::tag::P_LineLoop:
+      obj["tag"] = "P_LineLoop";
+      break;
+    case ::MeshPrimitive::tag::P_Lines:
+      obj["tag"] = "P_Lines";
+      break;
     case ::MeshPrimitive::tag::P_TriangleStrip:
       obj["tag"] = "P_TriangleStrip";
+      break;
+    case ::MeshPrimitive::tag::P_TriangleFan:
+      obj["tag"] = "P_TriangleFan";
       break;
     case ::MeshPrimitive::tag::P_Triangles:
       obj["tag"] = "P_Triangles";
@@ -171,8 +183,20 @@ template<> std::shared_ptr<MeshPrimitive> fromJSON<std::shared_ptr<MeshPrimitive
   if (tag == "P_Points") {
     tagType = ::MeshPrimitive::tag::P_Points;
   }
+  else if (tag == "P_LineStrip") {
+    tagType = ::MeshPrimitive::tag::P_LineStrip;
+  }
+  else if (tag == "P_LineLoop") {
+    tagType = ::MeshPrimitive::tag::P_LineLoop;
+  }
+  else if (tag == "P_Lines") {
+    tagType = ::MeshPrimitive::tag::P_Lines;
+  }
   else if (tag == "P_TriangleStrip") {
     tagType = ::MeshPrimitive::tag::P_TriangleStrip;
+  }
+  else if (tag == "P_TriangleFan") {
+    tagType = ::MeshPrimitive::tag::P_TriangleFan;
   }
   else if (tag == "P_Triangles") {
     tagType = ::MeshPrimitive::tag::P_Triangles;

@@ -1,5 +1,5 @@
 -- generated file, do not modify!
--- 2016-11-11T11:17:03.517567000000Z
+-- 2023-10-27T02:34:24.280572454Z
 
 {-# LANGUAGE OverloadedStrings, RecordWildCards #-}
 module LambdaCube.Mesh where
@@ -30,7 +30,11 @@ data MeshAttribute
 
 data MeshPrimitive
   = P_Points
+  | P_LineStrip
+  | P_LineLoop
+  | P_Lines
   | P_TriangleStrip
+  | P_TriangleFan
   | P_Triangles
   | P_TriangleStripI (Vector Int32)
   | P_TrianglesI (Vector Int32)
@@ -75,7 +79,11 @@ instance FromJSON MeshAttribute where
 instance ToJSON MeshPrimitive where
   toJSON v = case v of
     P_Points -> object [ "tag" .= ("P_Points" :: Text)]
+    P_LineStrip -> object [ "tag" .= ("P_LineStrip" :: Text)]
+    P_LineLoop -> object [ "tag" .= ("P_LineLoop" :: Text)]
+    P_Lines -> object [ "tag" .= ("P_Lines" :: Text)]
     P_TriangleStrip -> object [ "tag" .= ("P_TriangleStrip" :: Text)]
+    P_TriangleFan -> object [ "tag" .= ("P_TriangleFan" :: Text)]
     P_Triangles -> object [ "tag" .= ("P_Triangles" :: Text)]
     P_TriangleStripI arg0 -> object [ "tag" .= ("P_TriangleStripI" :: Text), "arg0" .= arg0]
     P_TrianglesI arg0 -> object [ "tag" .= ("P_TrianglesI" :: Text), "arg0" .= arg0]
@@ -85,7 +93,11 @@ instance FromJSON MeshPrimitive where
     tag <- obj .: "tag"
     case tag :: Text of
       "P_Points" -> pure P_Points
+      "P_LineStrip" -> pure P_LineStrip
+      "P_LineLoop" -> pure P_LineLoop
+      "P_Lines" -> pure P_Lines
       "P_TriangleStrip" -> pure P_TriangleStrip
+      "P_TriangleFan" -> pure P_TriangleFan
       "P_Triangles" -> pure P_Triangles
       "P_TriangleStripI" -> P_TriangleStripI <$> obj .: "arg0"
       "P_TrianglesI" -> P_TrianglesI <$> obj .: "arg0"

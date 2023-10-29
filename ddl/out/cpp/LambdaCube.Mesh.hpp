@@ -1,5 +1,5 @@
 // generated file, do not modify!
-// 2016-11-11T11:17:03.517567000000Z
+// 2023-10-27T02:34:24.280572454Z
 
 #ifndef HEADER_LambdaCube.Mesh_H
 #define HEADER_LambdaCube.Mesh_H
@@ -72,7 +72,11 @@ class MeshPrimitive {
   public:
     enum class tag { 
       P_Points,
+      P_LineStrip,
+      P_LineLoop,
+      P_Lines,
       P_TriangleStrip,
+      P_TriangleFan,
       P_Triangles,
       P_TriangleStripI,
       P_TrianglesI
